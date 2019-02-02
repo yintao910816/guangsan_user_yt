@@ -8,23 +8,55 @@
 
 /* Begin PBXBuildFile section */
 		5D46458DB41B31260940E2DE /* Pods_HuChuangApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA49B288AA9976792B904C2F /* Pods_HuChuangApp.framework */; };
-		C42132EF22054462006C10C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42132EE22054462006C10C4 /* AppDelegate.swift */; };
-		C42132F122054462006C10C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42132F022054462006C10C4 /* ViewController.swift */; };
-		C42132F422054462006C10C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C42132F222054462006C10C4 /* Main.storyboard */; };
 		C42132F622054463006C10C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C42132F522054463006C10C4 /* Assets.xcassets */; };
 		C42132F922054463006C10C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C42132F722054463006C10C4 /* LaunchScreen.storyboard */; };
+		C421330B22056B59006C10C4 /* HCAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421330A22056B59006C10C4 /* HCAppDelegate.swift */; };
+		C421331222056BD1006C10C4 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421331122056BD1006C10C4 /* BaseNavigationController.swift */; };
+		C421331422056C37006C10C4 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421331322056C37006C10C4 /* Debug.swift */; };
+		C421331622056C74006C10C4 /* HCAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421331522056C74006C10C4 /* HCAppConfig.swift */; };
+		C421331822056D5E006C10C4 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421331722056D5E006C10C4 /* MainNavigationController.swift */; };
+		C421331A22056E55006C10C4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421331922056E55006C10C4 /* BaseViewController.swift */; };
+		C421331C22056E83006C10C4 /* ViewControllerServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421331B22056E83006C10C4 /* ViewControllerServer.swift */; };
+		C421332622056F24006C10C4 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421331E22056F24006C10C4 /* FrameView.swift */; };
+		C421332722056F24006C10C4 /* HUDIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421331F22056F24006C10C4 /* HUDIndicatorView.swift */; };
+		C421332822056F24006C10C4 /* TYHUDAnimating.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421332022056F24006C10C4 /* TYHUDAnimating.swift */; };
+		C421332922056F24006C10C4 /* TYIndicatorBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421332122056F24006C10C4 /* TYIndicatorBaseView.swift */; };
+		C421332A22056F24006C10C4 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421332222056F24006C10C4 /* BackgroundView.swift */; };
+		C421332B22056F24006C10C4 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421332322056F24006C10C4 /* HUD.swift */; };
+		C421332C22056F24006C10C4 /* TYHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421332422056F24006C10C4 /* TYHUD.swift */; };
+		C421332D22056F24006C10C4 /* HUDUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421332522056F24006C10C4 /* HUDUtil.swift */; };
+		C421332F22056F4C006C10C4 /* NoticesCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421332E22056F4C006C10C4 /* NoticesCenter.swift */; };
+		C421333222056F96006C10C4 /* UIKit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421333122056F96006C10C4 /* UIKit+Extension.swift */; };
+		C421333422056FB8006C10C4 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421333322056FB8006C10C4 /* UIDevice+Extension.swift */; };
+		C4213336220570B6006C10C4 /* UIView+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4213335220570B6006C10C4 /* UIView+Frame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9AD9FF392745B099CB0232B2 /* Pods-HuChuangApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuChuangApp.debug.xcconfig"; path = "Target Support Files/Pods-HuChuangApp/Pods-HuChuangApp.debug.xcconfig"; sourceTree = "<group>"; };
 		B134908D77E06AADC9A7A4A3 /* Pods-HuChuangApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuChuangApp.release.xcconfig"; path = "Target Support Files/Pods-HuChuangApp/Pods-HuChuangApp.release.xcconfig"; sourceTree = "<group>"; };
 		C42132EB22054462006C10C4 /* HuChuangApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HuChuangApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C42132EE22054462006C10C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C42132F022054462006C10C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C42132F322054462006C10C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C42132F522054463006C10C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C42132F822054463006C10C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C42132FA22054463006C10C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C421330A22056B59006C10C4 /* HCAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCAppDelegate.swift; sourceTree = "<group>"; };
+		C421331122056BD1006C10C4 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		C421331322056C37006C10C4 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
+		C421331522056C74006C10C4 /* HCAppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCAppConfig.swift; sourceTree = "<group>"; };
+		C421331722056D5E006C10C4 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		C421331922056E55006C10C4 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		C421331B22056E83006C10C4 /* ViewControllerServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerServer.swift; sourceTree = "<group>"; };
+		C421331E22056F24006C10C4 /* FrameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
+		C421331F22056F24006C10C4 /* HUDIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDIndicatorView.swift; sourceTree = "<group>"; };
+		C421332022056F24006C10C4 /* TYHUDAnimating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TYHUDAnimating.swift; sourceTree = "<group>"; };
+		C421332122056F24006C10C4 /* TYIndicatorBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TYIndicatorBaseView.swift; sourceTree = "<group>"; };
+		C421332222056F24006C10C4 /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		C421332322056F24006C10C4 /* HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
+		C421332422056F24006C10C4 /* TYHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TYHUD.swift; sourceTree = "<group>"; };
+		C421332522056F24006C10C4 /* HUDUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDUtil.swift; sourceTree = "<group>"; };
+		C421332E22056F4C006C10C4 /* NoticesCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticesCenter.swift; sourceTree = "<group>"; };
+		C421333122056F96006C10C4 /* UIKit+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+Extension.swift"; sourceTree = "<group>"; };
+		C421333322056FB8006C10C4 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
+		C4213335220570B6006C10C4 /* UIView+Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Frame.swift"; sourceTree = "<group>"; };
 		DA49B288AA9976792B904C2F /* Pods_HuChuangApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HuChuangApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -78,14 +110,150 @@
 		C42132ED22054462006C10C4 /* HuChuangApp */ = {
 			isa = PBXGroup;
 			children = (
-				C42132EE22054462006C10C4 /* AppDelegate.swift */,
-				C42132F022054462006C10C4 /* ViewController.swift */,
-				C42132F222054462006C10C4 /* Main.storyboard */,
+				C421330722056B59006C10C4 /* Main */,
+				C421330422056B19006C10C4 /* Core */,
+				C421330522056B19006C10C4 /* HCHelper */,
+				C421330322056B19006C10C4 /* Server */,
+				C421330222056B19006C10C4 /* UI */,
+				C421330622056B19006C10C4 /* Utils */,
 				C42132F522054463006C10C4 /* Assets.xcassets */,
 				C42132F722054463006C10C4 /* LaunchScreen.storyboard */,
 				C42132FA22054463006C10C4 /* Info.plist */,
 			);
 			path = HuChuangApp;
+			sourceTree = "<group>";
+		};
+		C421330222056B19006C10C4 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C421330C22056B84006C10C4 /* Controller */,
+				C421330D22056B84006C10C4 /* Interface */,
+				C421330E22056B84006C10C4 /* View */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		C421330322056B19006C10C4 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Server;
+			sourceTree = "<group>";
+		};
+		C421330422056B19006C10C4 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		C421330522056B19006C10C4 /* HCHelper */ = {
+			isa = PBXGroup;
+			children = (
+				C421332E22056F4C006C10C4 /* NoticesCenter.swift */,
+			);
+			path = HCHelper;
+			sourceTree = "<group>";
+		};
+		C421330622056B19006C10C4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C421333022056F96006C10C4 /* Extension */,
+				C421331D22056F24006C10C4 /* TYHUD */,
+				C421331322056C37006C10C4 /* Debug.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C421330722056B59006C10C4 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				C421330822056B59006C10C4 /* Config */,
+				C421330922056B59006C10C4 /* AppDelegate */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		C421330822056B59006C10C4 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				C421331522056C74006C10C4 /* HCAppConfig.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		C421330922056B59006C10C4 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				C421330A22056B59006C10C4 /* HCAppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		C421330C22056B84006C10C4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C421330F22056BAE006C10C4 /* Base */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C421330D22056B84006C10C4 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		C421330E22056B84006C10C4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C421331022056BB4006C10C4 /* Base */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C421330F22056BAE006C10C4 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				C421331B22056E83006C10C4 /* ViewControllerServer.swift */,
+				C421331922056E55006C10C4 /* BaseViewController.swift */,
+				C421331122056BD1006C10C4 /* BaseNavigationController.swift */,
+				C421331722056D5E006C10C4 /* MainNavigationController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		C421331022056BB4006C10C4 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		C421331D22056F24006C10C4 /* TYHUD */ = {
+			isa = PBXGroup;
+			children = (
+				C421331E22056F24006C10C4 /* FrameView.swift */,
+				C421331F22056F24006C10C4 /* HUDIndicatorView.swift */,
+				C421332022056F24006C10C4 /* TYHUDAnimating.swift */,
+				C421332122056F24006C10C4 /* TYIndicatorBaseView.swift */,
+				C421332222056F24006C10C4 /* BackgroundView.swift */,
+				C421332322056F24006C10C4 /* HUD.swift */,
+				C421332422056F24006C10C4 /* TYHUD.swift */,
+				C421332522056F24006C10C4 /* HUDUtil.swift */,
+			);
+			path = TYHUD;
+			sourceTree = "<group>";
+		};
+		C421333022056F96006C10C4 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C421333322056FB8006C10C4 /* UIDevice+Extension.swift */,
+				C421333122056F96006C10C4 /* UIKit+Extension.swift */,
+				C4213335220570B6006C10C4 /* UIView+Frame.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,7 +318,6 @@
 			files = (
 				C42132F922054463006C10C4 /* LaunchScreen.storyboard in Resources */,
 				C42132F622054463006C10C4 /* Assets.xcassets in Resources */,
-				C42132F422054462006C10C4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,22 +397,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C42132F122054462006C10C4 /* ViewController.swift in Sources */,
-				C42132EF22054462006C10C4 /* AppDelegate.swift in Sources */,
+				C421332622056F24006C10C4 /* FrameView.swift in Sources */,
+				C421331822056D5E006C10C4 /* MainNavigationController.swift in Sources */,
+				C421332722056F24006C10C4 /* HUDIndicatorView.swift in Sources */,
+				C421332822056F24006C10C4 /* TYHUDAnimating.swift in Sources */,
+				C4213336220570B6006C10C4 /* UIView+Frame.swift in Sources */,
+				C421332F22056F4C006C10C4 /* NoticesCenter.swift in Sources */,
+				C421332922056F24006C10C4 /* TYIndicatorBaseView.swift in Sources */,
+				C421331222056BD1006C10C4 /* BaseNavigationController.swift in Sources */,
+				C421332C22056F24006C10C4 /* TYHUD.swift in Sources */,
+				C421332A22056F24006C10C4 /* BackgroundView.swift in Sources */,
+				C421332B22056F24006C10C4 /* HUD.swift in Sources */,
+				C421331422056C37006C10C4 /* Debug.swift in Sources */,
+				C421331622056C74006C10C4 /* HCAppConfig.swift in Sources */,
+				C421330B22056B59006C10C4 /* HCAppDelegate.swift in Sources */,
+				C421333422056FB8006C10C4 /* UIDevice+Extension.swift in Sources */,
+				C421332D22056F24006C10C4 /* HUDUtil.swift in Sources */,
+				C421331C22056E83006C10C4 /* ViewControllerServer.swift in Sources */,
+				C421331A22056E55006C10C4 /* BaseViewController.swift in Sources */,
+				C421333222056F96006C10C4 /* UIKit+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C42132F222054462006C10C4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C42132F322054462006C10C4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C42132F722054463006C10C4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
