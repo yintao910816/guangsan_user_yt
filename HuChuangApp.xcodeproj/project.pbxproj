@@ -29,6 +29,8 @@
 		C421333222056F96006C10C4 /* UIKit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421333122056F96006C10C4 /* UIKit+Extension.swift */; };
 		C421333422056FB8006C10C4 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421333322056FB8006C10C4 /* UIDevice+Extension.swift */; };
 		C4213336220570B6006C10C4 /* UIView+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4213335220570B6006C10C4 /* UIView+Frame.swift */; };
+		C4213338220572C6006C10C4 /* HCMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4213337220572C6006C10C4 /* HCMain.storyboard */; };
+		C421333A220572F2006C10C4 /* HCTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4213339220572F2006C10C4 /* HCTabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,8 @@
 		C421333122056F96006C10C4 /* UIKit+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+Extension.swift"; sourceTree = "<group>"; };
 		C421333322056FB8006C10C4 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		C4213335220570B6006C10C4 /* UIView+Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Frame.swift"; sourceTree = "<group>"; };
+		C4213337220572C6006C10C4 /* HCMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HCMain.storyboard; sourceTree = "<group>"; };
+		C4213339220572F2006C10C4 /* HCTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCTabBarViewController.swift; sourceTree = "<group>"; };
 		DA49B288AA9976792B904C2F /* Pods_HuChuangApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HuChuangApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -170,6 +174,7 @@
 			children = (
 				C421330822056B59006C10C4 /* Config */,
 				C421330922056B59006C10C4 /* AppDelegate */,
+				C4213339220572F2006C10C4 /* HCTabBarViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -201,6 +206,7 @@
 		C421330D22056B84006C10C4 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				C4213337220572C6006C10C4 /* HCMain.storyboard */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -317,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C42132F922054463006C10C4 /* LaunchScreen.storyboard in Resources */,
+				C4213338220572C6006C10C4 /* HCMain.storyboard in Resources */,
 				C42132F622054463006C10C4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,6 +417,7 @@
 				C421332B22056F24006C10C4 /* HUD.swift in Sources */,
 				C421331422056C37006C10C4 /* Debug.swift in Sources */,
 				C421331622056C74006C10C4 /* HCAppConfig.swift in Sources */,
+				C421333A220572F2006C10C4 /* HCTabBarViewController.swift in Sources */,
 				C421330B22056B59006C10C4 /* HCAppDelegate.swift in Sources */,
 				C421333422056FB8006C10C4 /* UIDevice+Extension.swift in Sources */,
 				C421332D22056F24006C10C4 /* HUDUtil.swift in Sources */,
