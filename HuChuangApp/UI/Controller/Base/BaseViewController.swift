@@ -37,8 +37,8 @@ class BaseViewController: UIViewController {
             UIApplication.shared.isStatusBarHidden = false
         }
         navigationController?.setNavigationBarHidden(false, animated: animated)
-        let imageView = findHarilineImageViewUnder(view: (self.navigationController?.navigationBar)!)
-        imageView.isHidden = true
+//        let imageView = findHarilineImageViewUnder(view: (self.navigationController?.navigationBar)!)
+//        imageView.isHidden = true
     }
 
     override func viewWillDisappear(_ animated: Bool) {
