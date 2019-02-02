@@ -1,6 +1,0 @@
-framework module Pods_HuChuangApp {
-  umbrella header "Pods-HuChuangApp-umbrella.h"
-
-  export *
-  module * { export * }
-}
