@@ -11,19 +11,29 @@ import RxSwift
 
 class HomeViewModel: BaseViewModel {
     
+    var bannerModelObser = Variable([HomeBannerModel]())
+    var noticeModelObser = Variable([HomeNoticeModel]())
+    var goodNewsModelObser = Variable([HomeGoodNewsModel]())
+
     override init() {
         super.init()
         
-        reloadSubject.withLatestFrom(requestBanner())
-            .subscribe(onNext: { [unowned self] data in
-                print(data)
-            })
+        reloadSubject
+            .subscribe(onNext: { [unowned self] in self.requestBanner() })
             .disposed(by: disposeBag)
+        
+        noticeModelObser.value = [HomeNoticeModel(), HomeNoticeModel(), HomeNoticeModel()]
+        goodNewsModelObser.value = [HomeGoodNewsModel(), HomeGoodNewsModel(), HomeGoodNewsModel()]
     }
     
-    private func requestBanner() ->Observable<[HomeBannerModel]>{
-        return HCProvider.request(.selectBanner())
+    private func requestBanner(){
+        HCProvider.request(.selectBanner())
             .map(models: HomeBannerModel.self)
-            .asObservable()
+            .subscribe(onSuccess: { [weak self] data in
+                self?.bannerModelObser.value = data
+            }) { error in
+                PrintLog(error)
+            }
+            .disposed(by: disposeBag)
     }
 }

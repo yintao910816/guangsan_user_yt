@@ -75,6 +75,8 @@
 		C42133A12205B41C006C10C4 /* BaseFilesOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42133A02205B41C006C10C4 /* BaseFilesOwner.swift */; };
 		C42133A52205B4FE006C10C4 /* HomeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C42133A42205B4FE006C10C4 /* HomeHeaderView.xib */; };
 		C42133A72205B50A006C10C4 /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42133A62205B50A006C10C4 /* HomeHeader.swift */; };
+		C4C3257B2205B8490091783C /* ScrollTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C3257A2205B8490091783C /* ScrollTextView.swift */; };
+		C4C3257D2205C3AD0091783C /* UIView+XIB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C3257C2205C3AC0091783C /* UIView+XIB.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -150,6 +152,8 @@
 		C42133A02205B41C006C10C4 /* BaseFilesOwner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFilesOwner.swift; sourceTree = "<group>"; };
 		C42133A42205B4FE006C10C4 /* HomeHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeaderView.xib; sourceTree = "<group>"; };
 		C42133A62205B50A006C10C4 /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
+		C4C3257A2205B8490091783C /* ScrollTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollTextView.swift; sourceTree = "<group>"; };
+		C4C3257C2205C3AC0091783C /* UIView+XIB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+XIB.swift"; sourceTree = "<group>"; };
 		DA49B288AA9976792B904C2F /* Pods_HuChuangApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HuChuangApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -362,6 +366,7 @@
 		C421333022056F96006C10C4 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				C4C3257C2205C3AC0091783C /* UIView+XIB.swift */,
 				C421333322056FB8006C10C4 /* UIDevice+Extension.swift */,
 				C421333122056F96006C10C4 /* UIKit+Extension.swift */,
 				C4213335220570B6006C10C4 /* UIView+Frame.swift */,
@@ -492,6 +497,7 @@
 			children = (
 				C42133A42205B4FE006C10C4 /* HomeHeaderView.xib */,
 				C42133A62205B50A006C10C4 /* HomeHeader.swift */,
+				C4C3257A2205B8490091783C /* ScrollTextView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -718,6 +724,8 @@
 				C421336622058F97006C10C4 /* HCLoginViewController.swift in Sources */,
 				C42133A12205B41C006C10C4 /* BaseFilesOwner.swift in Sources */,
 				C421330B22056B59006C10C4 /* HCAppDelegate.swift in Sources */,
+				C4C3257D2205C3AD0091783C /* UIView+XIB.swift in Sources */,
+				C4C3257B2205B8490091783C /* ScrollTextView.swift in Sources */,
 				C42133592205883D006C10C4 /* PageModel.swift in Sources */,
 				C421339E2205B224006C10C4 /* HttpImage.swift in Sources */,
 				C4213353220587F6006C10C4 /* APIServer.swift in Sources */,
