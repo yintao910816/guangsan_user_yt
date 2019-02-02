@@ -14,8 +14,11 @@ import Moya
 enum API{
     /// 登录
     case login(mobile: String, smsCode: String)
+    
     /// 首页banner
     case selectBanner()
+    /// 首页功能列表
+    case functionList()
 }
 
 //MARK:
@@ -28,6 +31,8 @@ extension API: TargetType{
             return "api/login/login"
         case .selectBanner():
             return "api/index/selectBanner"
+        case .functionList():
+            return "api/index/select"
         }
     }
     
@@ -38,9 +43,6 @@ extension API: TargetType{
             guard let jsonData = try? JSONSerialization.data(withJSONObject: _parameters, options: []) else {
                 return .requestPlain
             }
-//            return .requestCompositeParameters(bodyParameters: _parameters, bodyEncoding: URLEncoding.httpBody, urlParameters: [:])
-//            return .requestData(jsonData)
-//            return .requestParameters(parameters: _parameters, encoding: URLEncoding.default)
             return .requestCompositeData(bodyData: jsonData, urlParameters: [:])
         }
         return .requestPlain
@@ -73,6 +75,8 @@ extension API {
             params["smsCode"] = smsCode
         case .selectBanner():
             params["code"] = "banner"
+        default:
+            return nil
         }
         return params
     }

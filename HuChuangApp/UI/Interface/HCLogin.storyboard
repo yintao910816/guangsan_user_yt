@@ -12,7 +12,7 @@
         <!--Main Navigation Controller-->
         <scene sceneID="AOf-e2-yRI">
             <objects>
-                <navigationController id="9dJ-v9-J3u" customClass="MainNavigationController" customModule="HuChuangApp" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="loginControl" id="9dJ-v9-J3u" customClass="MainNavigationController" customModule="HuChuangApp" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UdW-bv-9ee">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -28,7 +28,7 @@
         <!--Login View Controller-->
         <scene sceneID="ZoR-ny-vz6">
             <objects>
-                <viewController storyboardIdentifier="loginControl" id="RTX-Se-1rC" customClass="HCLoginViewController" customModule="HuChuangApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="RTX-Se-1rC" customClass="HCLoginViewController" customModule="HuChuangApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6sj-NM-oUU"/>
                         <viewControllerLayoutGuide type="bottom" id="hAD-P3-DYw"/>

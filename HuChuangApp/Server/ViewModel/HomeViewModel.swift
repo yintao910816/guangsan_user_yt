@@ -19,7 +19,10 @@ class HomeViewModel: BaseViewModel {
         super.init()
         
         reloadSubject
-            .subscribe(onNext: { [unowned self] in self.requestBanner() })
+            .subscribe(onNext: { [unowned self] in
+                self.requestBanner()
+                self.requestFunctionList()
+            })
             .disposed(by: disposeBag)
         
         noticeModelObser.value = [HomeNoticeModel(), HomeNoticeModel(), HomeNoticeModel()]
@@ -31,6 +34,17 @@ class HomeViewModel: BaseViewModel {
             .map(models: HomeBannerModel.self)
             .subscribe(onSuccess: { [weak self] data in
                 self?.bannerModelObser.value = data
+            }) { error in
+                PrintLog(error)
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    private func requestFunctionList() {
+        HCProvider.request(.functionList())
+            .map(models: HomeBannerModel.self)
+            .subscribe(onSuccess: { [weak self] data in
+                
             }) { error in
                 PrintLog(error)
             }
