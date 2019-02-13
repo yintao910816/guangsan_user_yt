@@ -1033,7 +1033,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.huchuang.guangsan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huchuang.guangsanuser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/HuChuangApp/Main/Config/HcChuangApp-Bridge-Header.h";
@@ -1056,7 +1056,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.huchuang.guangsan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huchuang.guangsanuser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/HuChuangApp/Main/Config/HcChuangApp-Bridge-Header.h";
