@@ -54,9 +54,8 @@ class HCHomeViewController: BaseViewController {
         viewModel.reloadSubject.onNext(Void())
         
         header.functionDidSelected
-            .subscribe(onNext: { [unowned self] model in
-                PrintLog(model.name)
-            })
+            .map{ [unowned self] in ($0, self.navigationController) }
+            .bind(to: viewModel.functionItemDidSelected)
             .disposed(by: disposeBag)
     }
     
