@@ -23,6 +23,10 @@ class HCHomeViewController: BaseViewController {
     }
     
     override func setupUI() {
+        if #available(iOS 11, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        }
+
         header = HomeHeader()
         
         tableView.tableHeaderView = header.contentView

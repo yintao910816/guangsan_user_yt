@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import RxSwift
 
 class HCHelper {
     
     static let share = HCHelper()
     
-    var isPresentLogin: Bool = false
+    public let userInfoHasReload = PublishSubject<HCUserModel>()
+    public var userInfoModel: HCUserModel?
+    public var isPresentLogin: Bool = false
     
     class func presentLogin() {
         HCHelper.share.isPresentLogin = true
@@ -25,5 +28,9 @@ class HCHelper {
     class func saveLogin(user: HCUserModel) {
         userDefault.uid = user.uid
         userDefault.token = user.token
+        
+        HCHelper.share.userInfoModel = user
+        
+        HCHelper.share.userInfoHasReload.onNext(user)
     }
 }

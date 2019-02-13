@@ -14,7 +14,10 @@ import Moya
 enum API{
     /// 登录
     case login(mobile: String, smsCode: String)
-    
+    /// 获取用户信息
+    case selectInfo()
+    /// 修改用户信息
+    case updateInfo(param: [String: String])
     /// 首页banner
     case selectBanner()
     /// 首页功能列表
@@ -29,6 +32,10 @@ extension API: TargetType{
         switch self {
         case .login(_):
             return "api/login/login"
+        case .selectInfo():
+            return "api/member/selectInfo"
+        case .updateInfo(_):
+            return "api/member/updateInfo"
         case .selectBanner():
             return "api/index/selectBanner"
         case .functionList():
@@ -73,6 +80,8 @@ extension API {
         case .login(let mobile, let smsCode):
             params["mobile"] = mobile
             params["smsCode"] = smsCode
+        case .updateInfo(let param):
+            params = param
         case .selectBanner():
             params["code"] = "banner"
         default:

@@ -10,21 +10,44 @@ import UIKit
 
 class HCMineViewController: BaseViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    @IBOutlet weak var tableView: UITableView!
+    private var header: MineHeader!
+    
+    private var viewModel: MineViewModel!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func setupUI() {
+        if #available(iOS 11, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        }
+        
+        header = MineHeader()
+        tableView.tableHeaderView = header.contentView
+        
+        tableView.rowHeight = 45
+        tableView.register(UINib.init(nibName: "MineCell", bundle: Bundle.main), forCellReuseIdentifier: "MineCellID")
     }
-    */
-
+    
+    override func rxBind() {
+        viewModel = MineViewModel()
+        
+        header.gotoEditUserInfo
+            .bind(to: viewModel.gotoEditUserInfo)
+            .disposed(by: disposeBag)
+        
+        viewModel.datasource
+            .bind(to: tableView.rx.items(cellIdentifier: "MineCellID", cellType: MineCell.self)) { _, model, cell in
+                cell.title = model
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.userInfo
+            .bind(to: header.userModel)
+            .disposed(by: disposeBag)
+        
+        viewModel.reloadSubject.onNext(Void())
+    }
 }

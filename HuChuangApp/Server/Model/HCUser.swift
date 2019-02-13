@@ -21,7 +21,7 @@ class HCUserModel: HJModel {
     var modifys: String = ""
     var bak: String = ""
     var birthday: String = ""
-    var sex: String = ""
+    var sex: Int = 1
     var synopsis: String = ""
     var bindDate: String = ""
     var mobileInfo: String = ""
@@ -41,6 +41,10 @@ class HCUserModel: HJModel {
     var createDate: String = ""
     var headPath: String = ""
     
+    var sexText: String {
+        get { return sex == 1 ? "男" : "女" }
+    }
+        
     override func mapping(mapper: HelpingMapper) {
         mapper.specify(property: &uid, name: "id")
     }

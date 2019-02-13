@@ -8,6 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		5D46458DB41B31260940E2DE /* Pods_HuChuangApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA49B288AA9976792B904C2F /* Pods_HuChuangApp.framework */; };
+		B8BE34ED2214598F00EF16F1 /* MineHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE34EC2214598F00EF16F1 /* MineHeader.swift */; };
+		B8BE34EF2214599B00EF16F1 /* MineHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BE34EE2214599B00EF16F1 /* MineHeaderView.xib */; };
+		B8BE34F222145DF000EF16F1 /* UserFunctionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE34F122145DF000EF16F1 /* UserFunctionButton.swift */; };
+		B8BE34F42214645900EF16F1 /* MineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE34F32214645900EF16F1 /* MineViewModel.swift */; };
+		B8BE34F7221465D900EF16F1 /* MineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE34F5221465D900EF16F1 /* MineCell.swift */; };
+		B8BE34F8221465D900EF16F1 /* MineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BE34F6221465D900EF16F1 /* MineCell.xib */; };
+		B8BE34FB221470B800EF16F1 /* HCEditUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE34FA221470B800EF16F1 /* HCEditUserInfoViewController.swift */; };
+		B8BE34FD221470D900EF16F1 /* EditUserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE34FC221470D900EF16F1 /* EditUserInfoViewModel.swift */; };
+		B8BE35042214723C00EF16F1 /* EditUserInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE35022214723C00EF16F1 /* EditUserInfoCell.swift */; };
+		B8BE35052214723C00EF16F1 /* EditUserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BE35032214723C00EF16F1 /* EditUserInfoCell.xib */; };
+		B8BE35092214738000EF16F1 /* EditUserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE35082214738000EF16F1 /* EditUserInfoModel.swift */; };
+		B8BE350B221478A900EF16F1 /* VCServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE350A221478A900EF16F1 /* VCServer.swift */; };
+		B8BE350D2214794900EF16F1 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE350C2214794900EF16F1 /* Bundle+Extension.swift */; };
+		B8BE350F2214797200EF16F1 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE350E2214797200EF16F1 /* FileManager+Extension.swift */; };
+		B8BE351122147AE600EF16F1 /* HCEditUserIconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE351022147AE600EF16F1 /* HCEditUserIconViewController.swift */; };
+		B8BE351322147AF500EF16F1 /* HCEditNickNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE351222147AF500EF16F1 /* HCEditNickNameViewController.swift */; };
+		B8BE351522147AFF00EF16F1 /* HCEditSexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE351422147AFF00EF16F1 /* HCEditSexViewController.swift */; };
+		B8BE351722147B1E00EF16F1 /* HCEditBirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE351622147B1E00EF16F1 /* HCEditBirthdayViewController.swift */; };
+		B8BE351922147B4000EF16F1 /* HCEditSynopsisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE351822147B4000EF16F1 /* HCEditSynopsisViewController.swift */; };
+		B8BE351B22147DE500EF16F1 /* EditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE351A22147DE500EF16F1 /* EditViewModel.swift */; };
+		B8BE351D221484C600EF16F1 /* UINavigationController+BarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE351C221484C600EF16F1 /* UINavigationController+BarButtonItem.swift */; };
 		C42132F622054463006C10C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C42132F522054463006C10C4 /* Assets.xcassets */; };
 		C42132F922054463006C10C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C42132F722054463006C10C4 /* LaunchScreen.storyboard */; };
 		C421330B22056B59006C10C4 /* HCAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421330A22056B59006C10C4 /* HCAppDelegate.swift */; };
@@ -86,6 +107,27 @@
 /* Begin PBXFileReference section */
 		9AD9FF392745B099CB0232B2 /* Pods-HuChuangApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuChuangApp.debug.xcconfig"; path = "Target Support Files/Pods-HuChuangApp/Pods-HuChuangApp.debug.xcconfig"; sourceTree = "<group>"; };
 		B134908D77E06AADC9A7A4A3 /* Pods-HuChuangApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuChuangApp.release.xcconfig"; path = "Target Support Files/Pods-HuChuangApp/Pods-HuChuangApp.release.xcconfig"; sourceTree = "<group>"; };
+		B8BE34EC2214598F00EF16F1 /* MineHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineHeader.swift; sourceTree = "<group>"; };
+		B8BE34EE2214599B00EF16F1 /* MineHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineHeaderView.xib; sourceTree = "<group>"; };
+		B8BE34F122145DF000EF16F1 /* UserFunctionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFunctionButton.swift; sourceTree = "<group>"; };
+		B8BE34F32214645900EF16F1 /* MineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewModel.swift; sourceTree = "<group>"; };
+		B8BE34F5221465D900EF16F1 /* MineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineCell.swift; sourceTree = "<group>"; };
+		B8BE34F6221465D900EF16F1 /* MineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineCell.xib; sourceTree = "<group>"; };
+		B8BE34FA221470B800EF16F1 /* HCEditUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCEditUserInfoViewController.swift; sourceTree = "<group>"; };
+		B8BE34FC221470D900EF16F1 /* EditUserInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserInfoViewModel.swift; sourceTree = "<group>"; };
+		B8BE35022214723C00EF16F1 /* EditUserInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserInfoCell.swift; sourceTree = "<group>"; };
+		B8BE35032214723C00EF16F1 /* EditUserInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditUserInfoCell.xib; sourceTree = "<group>"; };
+		B8BE35082214738000EF16F1 /* EditUserInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserInfoModel.swift; sourceTree = "<group>"; };
+		B8BE350A221478A900EF16F1 /* VCServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCServer.swift; sourceTree = "<group>"; };
+		B8BE350C2214794900EF16F1 /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		B8BE350E2214797200EF16F1 /* FileManager+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
+		B8BE351022147AE600EF16F1 /* HCEditUserIconViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCEditUserIconViewController.swift; sourceTree = "<group>"; };
+		B8BE351222147AF500EF16F1 /* HCEditNickNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCEditNickNameViewController.swift; sourceTree = "<group>"; };
+		B8BE351422147AFF00EF16F1 /* HCEditSexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCEditSexViewController.swift; sourceTree = "<group>"; };
+		B8BE351622147B1E00EF16F1 /* HCEditBirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCEditBirthdayViewController.swift; sourceTree = "<group>"; };
+		B8BE351822147B4000EF16F1 /* HCEditSynopsisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCEditSynopsisViewController.swift; sourceTree = "<group>"; };
+		B8BE351A22147DE500EF16F1 /* EditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewModel.swift; sourceTree = "<group>"; };
+		B8BE351C221484C600EF16F1 /* UINavigationController+BarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+BarButtonItem.swift"; sourceTree = "<group>"; };
 		C42132EB22054462006C10C4 /* HuChuangApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HuChuangApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C42132F522054463006C10C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C42132F822054463006C10C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -192,6 +234,36 @@
 				DA49B288AA9976792B904C2F /* Pods_HuChuangApp.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B8BE34EB2214597800EF16F1 /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				B8BE34EC2214598F00EF16F1 /* MineHeader.swift */,
+				B8BE34EE2214599B00EF16F1 /* MineHeaderView.xib */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		B8BE34F022145DF000EF16F1 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				B8BE34F122145DF000EF16F1 /* UserFunctionButton.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		B8BE34F92214704300EF16F1 /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				B8BE34FA221470B800EF16F1 /* HCEditUserInfoViewController.swift */,
+				B8BE351022147AE600EF16F1 /* HCEditUserIconViewController.swift */,
+				B8BE351222147AF500EF16F1 /* HCEditNickNameViewController.swift */,
+				B8BE351422147AFF00EF16F1 /* HCEditSexViewController.swift */,
+				B8BE351622147B1E00EF16F1 /* HCEditBirthdayViewController.swift */,
+				B8BE351822147B4000EF16F1 /* HCEditSynopsisViewController.swift */,
+			);
+			path = Mine;
 			sourceTree = "<group>";
 		};
 		C42132E222054462006C10C4 = {
@@ -314,6 +386,7 @@
 		C421330C22056B84006C10C4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B8BE34F92214704300EF16F1 /* Mine */,
 				C43F09BF22143F0600910437 /* Home */,
 				C421336422058F8C006C10C4 /* Login */,
 				C421333B220586B0006C10C4 /* Main */,
@@ -334,6 +407,8 @@
 		C421330E22056B84006C10C4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B8BE34F022145DF000EF16F1 /* Custom */,
+				B8BE34EB2214597800EF16F1 /* Mine */,
 				C421338D2205B155006C10C4 /* Home */,
 				C421331022056BB4006C10C4 /* Base */,
 			);
@@ -378,6 +453,9 @@
 		C421333022056F96006C10C4 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				B8BE351C221484C600EF16F1 /* UINavigationController+BarButtonItem.swift */,
+				B8BE350E2214797200EF16F1 /* FileManager+Extension.swift */,
+				B8BE350C2214794900EF16F1 /* Bundle+Extension.swift */,
 				C4C3257C2205C3AC0091783C /* UIView+XIB.swift */,
 				C421333322056FB8006C10C4 /* UIDevice+Extension.swift */,
 				C421333122056F96006C10C4 /* UIKit+Extension.swift */,
@@ -403,6 +481,9 @@
 				C42133542205883D006C10C4 /* Base */,
 				C42133672205902A006C10C4 /* AccountViewModel.swift */,
 				C421338922059D7A006C10C4 /* HomeViewModel.swift */,
+				B8BE34F32214645900EF16F1 /* MineViewModel.swift */,
+				B8BE34FC221470D900EF16F1 /* EditUserInfoViewModel.swift */,
+				B8BE351A22147DE500EF16F1 /* EditViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -423,6 +504,7 @@
 				C421335B220588AC006C10C4 /* Base */,
 				C4213374220599A9006C10C4 /* HCUser.swift */,
 				C421338B2205A544006C10C4 /* Home.swift */,
+				B8BE35082214738000EF16F1 /* EditUserInfoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -440,6 +522,7 @@
 		C42133542205883D006C10C4 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				B8BE350A221478A900EF16F1 /* VCServer.swift */,
 				C42133552205883D006C10C4 /* BaseViewModel.swift */,
 				C42133562205883D006C10C4 /* PageModel.swift */,
 				C42133572205883D006C10C4 /* RefreshServer.swift */,
@@ -548,6 +631,10 @@
 				C43F09B822142DEA00910437 /* Base */,
 				C43F09B92214315900910437 /* HomeFunctionCell.swift */,
 				C43F09BA2214315900910437 /* HomeFunctionCell.xib */,
+				B8BE34F5221465D900EF16F1 /* MineCell.swift */,
+				B8BE34F6221465D900EF16F1 /* MineCell.xib */,
+				B8BE35022214723C00EF16F1 /* EditUserInfoCell.swift */,
+				B8BE35032214723C00EF16F1 /* EditUserInfoCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -626,11 +713,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8BE35052214723C00EF16F1 /* EditUserInfoCell.xib in Resources */,
 				C43F09BC2214315900910437 /* HomeFunctionCell.xib in Resources */,
 				C42132F922054463006C10C4 /* LaunchScreen.storyboard in Resources */,
 				C42133A52205B4FE006C10C4 /* HomeHeaderView.xib in Resources */,
+				B8BE34EF2214599B00EF16F1 /* MineHeaderView.xib in Resources */,
 				C421336122058E50006C10C4 /* HCLogin.storyboard in Resources */,
 				C4213338220572C6006C10C4 /* HCMain.storyboard in Resources */,
+				B8BE34F8221465D900EF16F1 /* MineCell.xib in Resources */,
 				C42132F622054463006C10C4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -711,14 +801,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8BE351B22147DE500EF16F1 /* EditViewModel.swift in Sources */,
 				C421338322059B8C006C10C4 /* CacheKey.swift in Sources */,
 				C421337722059A6D006C10C4 /* HCHelper.swift in Sources */,
 				C421333D220586BD006C10C4 /* HCHomeViewController.swift in Sources */,
 				C421334B220587DC006C10C4 /* Response+ModelMapper.swift in Sources */,
 				C4213375220599A9006C10C4 /* HCUser.swift in Sources */,
 				C421332622056F24006C10C4 /* FrameView.swift in Sources */,
+				B8BE34FD221470D900EF16F1 /* EditUserInfoViewModel.swift in Sources */,
 				C421331822056D5E006C10C4 /* MainNavigationController.swift in Sources */,
 				C42133A72205B50A006C10C4 /* HomeHeader.swift in Sources */,
+				B8BE350B221478A900EF16F1 /* VCServer.swift in Sources */,
 				C421332722056F24006C10C4 /* HUDIndicatorView.swift in Sources */,
 				C42133932205B1E9006C10C4 /* KeyboardManager.swift in Sources */,
 				C4213352220587F6006C10C4 /* APIAdapt.swift in Sources */,
@@ -732,46 +825,61 @@
 				C421336F2205961D006C10C4 /* ObservableType+Extension.swift in Sources */,
 				C421335F220588FD006C10C4 /* HandyModel.swift in Sources */,
 				C421332F22056F4C006C10C4 /* NoticesCenter.swift in Sources */,
+				B8BE350F2214797200EF16F1 /* FileManager+Extension.swift in Sources */,
 				C421332922056F24006C10C4 /* TYIndicatorBaseView.swift in Sources */,
 				C421331222056BD1006C10C4 /* BaseNavigationController.swift in Sources */,
+				B8BE34F42214645900EF16F1 /* MineViewModel.swift in Sources */,
+				B8BE351122147AE600EF16F1 /* HCEditUserIconViewController.swift in Sources */,
 				C421332C22056F24006C10C4 /* TYHUD.swift in Sources */,
 				C42133582205883D006C10C4 /* BaseViewModel.swift in Sources */,
 				C421332A22056F24006C10C4 /* BackgroundView.swift in Sources */,
+				B8BE351322147AF500EF16F1 /* HCEditNickNameViewController.swift in Sources */,
+				B8BE351922147B4000EF16F1 /* HCEditSynopsisViewController.swift in Sources */,
 				C421338C2205A544006C10C4 /* Home.swift in Sources */,
 				C421332B22056F24006C10C4 /* HUD.swift in Sources */,
 				C421339D2205B224006C10C4 /* ImageRx.swift in Sources */,
+				B8BE34ED2214598F00EF16F1 /* MineHeader.swift in Sources */,
 				C421331422056C37006C10C4 /* Debug.swift in Sources */,
 				C421338822059B8C006C10C4 /* DB+Extension.swift in Sources */,
 				C42133952205B1E9006C10C4 /* CarouselDatasource.swift in Sources */,
+				B8BE350D2214794900EF16F1 /* Bundle+Extension.swift in Sources */,
 				C4213341220586DE006C10C4 /* HCCircleViewController.swift in Sources */,
 				C421338222059B8C006C10C4 /* UserDefaults+Cache.swift in Sources */,
 				C421334D220587DC006C10C4 /* Single+ModelMapper.swift in Sources */,
 				C421334C220587DC006C10C4 /* HandyJSON+MapModel.swift in Sources */,
+				B8BE34F7221465D900EF16F1 /* MineCell.swift in Sources */,
+				B8BE351522147AFF00EF16F1 /* HCEditSexViewController.swift in Sources */,
 				C421331622056C74006C10C4 /* HCAppConfig.swift in Sources */,
 				C421335A2205883D006C10C4 /* RefreshServer.swift in Sources */,
 				C421333A220572F2006C10C4 /* HCTabBarViewController.swift in Sources */,
 				C421339C2205B224006C10C4 /* ImageCacheCenter.swift in Sources */,
 				C42133942205B1E9006C10C4 /* CarouselView.swift in Sources */,
+				B8BE351D221484C600EF16F1 /* UINavigationController+BarButtonItem.swift in Sources */,
 				C42133712205961D006C10C4 /* UIControl+_Rx.swift in Sources */,
 				C4213343220586E6006C10C4 /* HCMineViewController.swift in Sources */,
 				C421338622059B8C006C10C4 /* DB.swift in Sources */,
 				C421338422059B8C006C10C4 /* DBQueue.swift in Sources */,
+				B8BE34FB221470B800EF16F1 /* HCEditUserInfoViewController.swift in Sources */,
 				C421338722059B8C006C10C4 /* DBCtrl.swift in Sources */,
 				C421338522059B8C006C10C4 /* DBProtocol.swift in Sources */,
 				C421336622058F97006C10C4 /* HCLoginViewController.swift in Sources */,
+				B8BE35092214738000EF16F1 /* EditUserInfoModel.swift in Sources */,
 				C43F09BE22143B5200910437 /* BaseWebViewController.swift in Sources */,
 				C42133A12205B41C006C10C4 /* BaseFilesOwner.swift in Sources */,
 				C421330B22056B59006C10C4 /* HCAppDelegate.swift in Sources */,
 				C4C3257D2205C3AD0091783C /* UIView+XIB.swift in Sources */,
+				B8BE351722147B1E00EF16F1 /* HCEditBirthdayViewController.swift in Sources */,
 				C4C3257B2205B8490091783C /* ScrollTextView.swift in Sources */,
 				C42133592205883D006C10C4 /* PageModel.swift in Sources */,
 				C421339E2205B224006C10C4 /* HttpImage.swift in Sources */,
 				C4213353220587F6006C10C4 /* APIServer.swift in Sources */,
 				C421333F220586D4006C10C4 /* HCConsultViewController.swift in Sources */,
+				B8BE35042214723C00EF16F1 /* EditUserInfoCell.swift in Sources */,
 				C421335D220588B7006C10C4 /* BaseModel.swift in Sources */,
 				C421333422056FB8006C10C4 /* UIDevice+Extension.swift in Sources */,
 				C43F09BB2214315900910437 /* HomeFunctionCell.swift in Sources */,
 				C42133682205902A006C10C4 /* AccountViewModel.swift in Sources */,
+				B8BE34F222145DF000EF16F1 /* UserFunctionButton.swift in Sources */,
 				C421338A22059D7A006C10C4 /* HomeViewModel.swift in Sources */,
 				C43F09C3221448B000910437 /* HCNotifications.swift in Sources */,
 				C421332D22056F24006C10C4 /* HUDUtil.swift in Sources */,
@@ -916,7 +1024,9 @@
 			baseConfigurationReference = 9AD9FF392745B099CB0232B2 /* Pods-HuChuangApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CFDEYX33BB;
 				INFOPLIST_FILE = HuChuangApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -925,6 +1035,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.huchuang.guangsan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/HuChuangApp/Main/Config/HcChuangApp-Bridge-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -936,7 +1047,9 @@
 			baseConfigurationReference = B134908D77E06AADC9A7A4A3 /* Pods-HuChuangApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CFDEYX33BB;
 				INFOPLIST_FILE = HuChuangApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -945,6 +1058,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.huchuang.guangsan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/HuChuangApp/Main/Config/HcChuangApp-Bridge-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

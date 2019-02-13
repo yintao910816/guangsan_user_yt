@@ -47,11 +47,26 @@ extension Reactive where Base: UIImageView {
         }
     }
     
-//    func rx_image(forStrategy model: ImageStrategy = .bookOriginal) -> Binder<String> {
-//        return Binder(self.base) { view, url in
-//            view.setImage(url, model)
-//        }
-//    }
+    func image(forStrategy model: ImageStrategy = .userIcon) -> Binder<String?> {
+        return Binder(self.base) { view, url in
+            view.setImage(url, model)
+        }
+    }
+}
+
+extension Reactive where Base: UIButton {
+    
+    public var image: Binder<UIImage?> {
+        return Binder(self.base) { view, image in
+            view.setImage(image, for: .normal)
+        }
+    }
+    
+    func image(forStrategy model: ImageStrategy = .userIcon) -> Binder<String> {
+        return Binder(self.base) { view, url in
+            view.setImage(url, model)
+        }
+    }
 }
 
 extension Reactive where Base: UINavigationController {
