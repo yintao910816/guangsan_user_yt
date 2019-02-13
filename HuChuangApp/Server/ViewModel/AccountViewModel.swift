@@ -45,10 +45,11 @@ class LoginViewModel: BaseViewModel {
             .map(model: HCUserModel.self)
             .subscribe(onSuccess: { [weak self] user in
                 HCHelper.saveLogin(user: user)
-                
-                self?.hud.successHidden("登录成功", {
-                    self?.popSubject.onNext(Void())
-                })
+
+                self?.popSubject.onNext(Void())
+//                self?.hud.successHidden("登录成功", {
+//                    self?.popSubject.onNext(Void())
+//                })
             }) { [weak self] error in
                 self?.hud.failureHidden(self?.errorMessage(error))
             }

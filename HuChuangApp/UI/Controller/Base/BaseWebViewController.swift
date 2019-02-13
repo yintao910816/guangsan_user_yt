@@ -28,21 +28,26 @@ class BaseWebViewController: BaseViewController {
     var url: String!{
         didSet{
             url = url + "?token=" + userDefault.token
-            PrintLog(url)
-
-            requestData()
         }
     }
     
     override func setupUI() {
         view.backgroundColor = .white
-        
+        if #available(iOS 11, *) {
+            webView.scrollView.contentInsetAdjustmentBehavior = .never
+        }
+
         view.addSubview(webView)
+        
+        webView.snp.makeConstraints{ $0.edges.equalTo(UIEdgeInsets.zero) }
+        
+        requestData()
     }
 
     private func requestData(){
         hud.noticeLoading()
-        let request = URLRequest.init(url: URL.init(string: url!)!)
+        
+        let request = URLRequest.init(url: URL.init(string: url)!)
         webView.loadRequest(request)
     }
 
@@ -62,8 +67,6 @@ extension BaseWebViewController: UIWebViewDelegate{
         if s == "app://reload"{
             webView.loadRequest(URLRequest.init(url: URL.init(string: url!)!))
             return false
-        }else if (s?.contains("http"))!{
-            return true
         }
         
         return true

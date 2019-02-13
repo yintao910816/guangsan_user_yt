@@ -23,6 +23,9 @@ class HCMineViewController: BaseViewController {
         if #available(iOS 11, *) {
             tableView.contentInsetAdjustmentBehavior = .never
         }
+//        else {
+//            automaticallyAdjustsScrollViewInsets = false
+//        }
         
         header = MineHeader()
         tableView.tableHeaderView = header.contentView
