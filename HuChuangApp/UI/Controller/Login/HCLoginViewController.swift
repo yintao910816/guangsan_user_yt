@@ -103,6 +103,7 @@ class HCLoginViewController: BaseViewController {
         viewModel.popSubject
             .subscribe(onNext: { [weak self] in
                 HCHelper.share.isPresentLogin = false
+                NotificationCenter.default.post(name: NotificationName.User.LoginSuccess, object: nil)
                 self?.navigationController?.dismiss(animated: true, completion: nil)
             })
             .disposed(by: disposeBag)

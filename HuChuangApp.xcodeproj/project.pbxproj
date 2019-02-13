@@ -78,6 +78,7 @@
 		C43F09BB2214315900910437 /* HomeFunctionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43F09B92214315900910437 /* HomeFunctionCell.swift */; };
 		C43F09BC2214315900910437 /* HomeFunctionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C43F09BA2214315900910437 /* HomeFunctionCell.xib */; };
 		C43F09BE22143B5200910437 /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43F09BD22143B5200910437 /* BaseWebViewController.swift */; };
+		C43F09C3221448B000910437 /* HCNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43F09C2221448B000910437 /* HCNotifications.swift */; };
 		C4C3257B2205B8490091783C /* ScrollTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C3257A2205B8490091783C /* ScrollTextView.swift */; };
 		C4C3257D2205C3AD0091783C /* UIView+XIB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C3257C2205C3AC0091783C /* UIView+XIB.swift */; };
 /* End PBXBuildFile section */
@@ -158,6 +159,7 @@
 		C43F09B92214315900910437 /* HomeFunctionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFunctionCell.swift; sourceTree = "<group>"; };
 		C43F09BA2214315900910437 /* HomeFunctionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeFunctionCell.xib; sourceTree = "<group>"; };
 		C43F09BD22143B5200910437 /* BaseWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWebViewController.swift; sourceTree = "<group>"; };
+		C43F09C2221448B000910437 /* HCNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCNotifications.swift; sourceTree = "<group>"; };
 		C4C3257A2205B8490091783C /* ScrollTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollTextView.swift; sourceTree = "<group>"; };
 		C4C3257C2205C3AC0091783C /* UIView+XIB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+XIB.swift"; sourceTree = "<group>"; };
 		DA49B288AA9976792B904C2F /* Pods_HuChuangApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HuChuangApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -261,6 +263,7 @@
 			children = (
 				C421332E22056F4C006C10C4 /* NoticesCenter.swift */,
 				C421337622059A6D006C10C4 /* HCHelper.swift */,
+				C43F09C2221448B000910437 /* HCNotifications.swift */,
 			);
 			path = HCHelper;
 			sourceTree = "<group>";
@@ -770,6 +773,7 @@
 				C43F09BB2214315900910437 /* HomeFunctionCell.swift in Sources */,
 				C42133682205902A006C10C4 /* AccountViewModel.swift in Sources */,
 				C421338A22059D7A006C10C4 /* HomeViewModel.swift in Sources */,
+				C43F09C3221448B000910437 /* HCNotifications.swift in Sources */,
 				C421332D22056F24006C10C4 /* HUDUtil.swift in Sources */,
 				C421331C22056E83006C10C4 /* ViewControllerServer.swift in Sources */,
 				C421331A22056E55006C10C4 /* BaseViewController.swift in Sources */,

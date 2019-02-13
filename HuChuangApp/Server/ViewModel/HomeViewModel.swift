@@ -26,8 +26,7 @@ class HomeViewModel: BaseViewModel {
         let loadDataSignal = Observable.combineLatest(requestBanner(), requestFunctionList()){ ($0, $1) }
         reloadSubject.flatMap{ loadDataSignal }
             .subscribe(onNext: { [unowned self] data in
-                self.bannerModelObser.value = data.0
-                self.functionModelsObser.value = data.1
+                self.dealHomeHeaderData(data: data)
                 self.hud.noticeHidden()
                 }, onError: { [unowned self] error in
                     self.hud.failureHidden(self.errorMessage(error))
@@ -39,8 +38,20 @@ class HomeViewModel: BaseViewModel {
         })
             .disposed(by: disposeBag)
         
+        NotificationCenter.default.rx.notification(NotificationName.User.LoginSuccess)
+            .flatMap{ _ in loadDataSignal }
+            .subscribe(onNext: { [unowned self] data in
+                self.dealHomeHeaderData(data: data)
+            })
+            .disposed(by: disposeBag)
+        
         noticeModelObser.value = [HomeNoticeModel(), HomeNoticeModel(), HomeNoticeModel()]
         goodNewsModelObser.value = [HomeGoodNewsModel(), HomeGoodNewsModel(), HomeGoodNewsModel()]
+    }
+    
+    private func dealHomeHeaderData(data: ([HomeBannerModel], [HomeFunctionModel])) {
+        bannerModelObser.value = data.0
+        functionModelsObser.value = data.1
     }
     
     private func requestBanner() ->Observable<[HomeBannerModel]>{
