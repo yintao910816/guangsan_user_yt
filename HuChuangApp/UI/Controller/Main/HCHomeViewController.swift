@@ -35,6 +35,14 @@ class HCHomeViewController: BaseViewController {
             .drive(header.bannerModelObser)
             .disposed(by: disposeBag)
         
+        viewModel.functionModelsObser.asDriver()
+            .do(onNext: { [unowned self] data in
+                self.header.fixHeaderHeight(dataCount: data.count)
+                self.tableView.tableHeaderView = self.header.contentView
+            })
+            .drive(header.functionModelObser)
+            .disposed(by: disposeBag)
+
         viewModel.noticeModelObser.asDriver()
             .drive(header.noticeModelObser)
             .disposed(by: disposeBag)
@@ -44,6 +52,12 @@ class HCHomeViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         viewModel.reloadSubject.onNext(Void())
+        
+        header.functionDidSelected
+            .subscribe(onNext: { [unowned self] model in
+                PrintLog(model.name)
+            })
+            .disposed(by: disposeBag)
     }
     
 }

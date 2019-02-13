@@ -102,6 +102,7 @@ class HCLoginViewController: BaseViewController {
         
         viewModel.popSubject
             .subscribe(onNext: { [weak self] in
+                HCHelper.share.isPresentLogin = false
                 self?.navigationController?.dismiss(animated: true, completion: nil)
             })
             .disposed(by: disposeBag)

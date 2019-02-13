@@ -76,7 +76,7 @@ class ScrollTextView: UITableView {
         if scrolToRow >= datasourceModel.count {
             scrolToRow = 0
             scrolIndexPath = IndexPath.init(row: scrolToRow, section: 0)
-            scrollToRow(at: scrolIndexPath, at: .top, animated: false)
+            scrollToRow(at: scrolIndexPath, at: .top, animated: true)
         }else {
             scrolIndexPath = IndexPath.init(row: scrolToRow, section: 0)
             scrollToRow(at: scrolIndexPath, at: .top, animated: true)

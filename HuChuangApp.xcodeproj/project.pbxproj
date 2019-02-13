@@ -75,6 +75,8 @@
 		C42133A12205B41C006C10C4 /* BaseFilesOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42133A02205B41C006C10C4 /* BaseFilesOwner.swift */; };
 		C42133A52205B4FE006C10C4 /* HomeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C42133A42205B4FE006C10C4 /* HomeHeaderView.xib */; };
 		C42133A72205B50A006C10C4 /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42133A62205B50A006C10C4 /* HomeHeader.swift */; };
+		C43F09BB2214315900910437 /* HomeFunctionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43F09B92214315900910437 /* HomeFunctionCell.swift */; };
+		C43F09BC2214315900910437 /* HomeFunctionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C43F09BA2214315900910437 /* HomeFunctionCell.xib */; };
 		C4C3257B2205B8490091783C /* ScrollTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C3257A2205B8490091783C /* ScrollTextView.swift */; };
 		C4C3257D2205C3AD0091783C /* UIView+XIB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C3257C2205C3AC0091783C /* UIView+XIB.swift */; };
 /* End PBXBuildFile section */
@@ -152,6 +154,8 @@
 		C42133A02205B41C006C10C4 /* BaseFilesOwner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFilesOwner.swift; sourceTree = "<group>"; };
 		C42133A42205B4FE006C10C4 /* HomeHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeaderView.xib; sourceTree = "<group>"; };
 		C42133A62205B50A006C10C4 /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
+		C43F09B92214315900910437 /* HomeFunctionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFunctionCell.swift; sourceTree = "<group>"; };
+		C43F09BA2214315900910437 /* HomeFunctionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeFunctionCell.xib; sourceTree = "<group>"; };
 		C4C3257A2205B8490091783C /* ScrollTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollTextView.swift; sourceTree = "<group>"; };
 		C4C3257C2205C3AC0091783C /* UIView+XIB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+XIB.swift"; sourceTree = "<group>"; };
 		DA49B288AA9976792B904C2F /* Pods_HuChuangApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HuChuangApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,6 +227,7 @@
 		C421330222056B19006C10C4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				C43F09B722142DEA00910437 /* Cell */,
 				C421330C22056B84006C10C4 /* Controller */,
 				C421330D22056B84006C10C4 /* Interface */,
 				C421330E22056B84006C10C4 /* View */,
@@ -530,6 +535,23 @@
 			path = ImageUtls;
 			sourceTree = "<group>";
 		};
+		C43F09B722142DEA00910437 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C43F09B822142DEA00910437 /* Base */,
+				C43F09B92214315900910437 /* HomeFunctionCell.swift */,
+				C43F09BA2214315900910437 /* HomeFunctionCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C43F09B822142DEA00910437 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -590,6 +612,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C43F09BC2214315900910437 /* HomeFunctionCell.xib in Resources */,
 				C42132F922054463006C10C4 /* LaunchScreen.storyboard in Resources */,
 				C42133A52205B4FE006C10C4 /* HomeHeaderView.xib in Resources */,
 				C421336122058E50006C10C4 /* HCLogin.storyboard in Resources */,
@@ -732,6 +755,7 @@
 				C421333F220586D4006C10C4 /* HCConsultViewController.swift in Sources */,
 				C421335D220588B7006C10C4 /* BaseModel.swift in Sources */,
 				C421333422056FB8006C10C4 /* UIDevice+Extension.swift in Sources */,
+				C43F09BB2214315900910437 /* HomeFunctionCell.swift in Sources */,
 				C42133682205902A006C10C4 /* AccountViewModel.swift in Sources */,
 				C421338A22059D7A006C10C4 /* HomeViewModel.swift in Sources */,
 				C421332D22056F24006C10C4 /* HUDUtil.swift in Sources */,

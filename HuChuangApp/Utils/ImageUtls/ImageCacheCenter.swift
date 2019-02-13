@@ -85,6 +85,7 @@ extension KingfisherCacheFolder {
 enum ImageStrategy {
     case original
     case scale
+    case homeFunction
     
     case userIcon
 }
@@ -98,6 +99,8 @@ extension ImageStrategy {
         case .original,
              .scale:
             return UIImage.init(named: "default_cover")
+        case .homeFunction:
+            return UIImage.init(named: "default_func_icon")
         case .userIcon:
             return UIImage.init(named: "default_user_icon")
         }

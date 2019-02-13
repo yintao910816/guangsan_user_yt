@@ -48,7 +48,6 @@ public extension Response {
         guard let jsonDictionary = try mapJSON() as? NSDictionary else {
             throw MapperError.json(message: "json解析失败")
         }
-        PrintLog(jsonDictionary)
         guard let serverModel = JSONDeserializer<DataModel<[T]>>.deserializeFrom(dict: jsonDictionary) else {
             throw MapperError.json(message: "json解析失败")
         }

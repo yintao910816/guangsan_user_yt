@@ -12,16 +12,23 @@ import RxSwift
 class HomeViewModel: BaseViewModel {
     
     var bannerModelObser = Variable([HomeBannerModel]())
+    var functionModelsObser = Variable([HomeFunctionModel]())
     var noticeModelObser = Variable([HomeNoticeModel]())
     var goodNewsModelObser = Variable([HomeGoodNewsModel]())
 
     override init() {
         super.init()
         
-        reloadSubject
-            .subscribe(onNext: { [unowned self] in
-                self.requestBanner()
-                self.requestFunctionList()
+        hud.noticeLoading()
+
+        let loadDataSignal = Observable.combineLatest(requestBanner(), requestFunctionList()){ ($0, $1) }
+        reloadSubject.flatMap{ loadDataSignal }
+            .subscribe(onNext: { [unowned self] data in
+                self.bannerModelObser.value = data.0
+                self.functionModelsObser.value = data.1
+                self.hud.noticeHidden()
+                }, onError: { [unowned self] error in
+                    self.hud.failureHidden(self.errorMessage(error))
             })
             .disposed(by: disposeBag)
         
@@ -29,25 +36,16 @@ class HomeViewModel: BaseViewModel {
         goodNewsModelObser.value = [HomeGoodNewsModel(), HomeGoodNewsModel(), HomeGoodNewsModel()]
     }
     
-    private func requestBanner(){
-        HCProvider.request(.selectBanner())
+    private func requestBanner() ->Observable<[HomeBannerModel]>{
+        return HCProvider.request(.selectBanner())
             .map(models: HomeBannerModel.self)
-            .subscribe(onSuccess: { [weak self] data in
-                self?.bannerModelObser.value = data
-            }) { error in
-                PrintLog(error)
-            }
-            .disposed(by: disposeBag)
+            .asObservable()
     }
     
-    private func requestFunctionList() {
-        HCProvider.request(.functionList())
-            .map(models: HomeBannerModel.self)
-            .subscribe(onSuccess: { [weak self] data in
-                
-            }) { error in
-                PrintLog(error)
-            }
-            .disposed(by: disposeBag)
+    private func requestFunctionList() ->Observable<[HomeFunctionModel]>{
+        return HCProvider.request(.functionList())
+            .map(models: HomeFunctionModel.self)
+            .asObservable()
     }
+
 }
