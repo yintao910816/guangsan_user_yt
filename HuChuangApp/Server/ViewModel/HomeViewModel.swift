@@ -70,8 +70,12 @@ class HomeViewModel: BaseViewModel {
         if model.functionUrl.count > 0 {
             let webVC = BaseWebViewController()
             webVC.title = model.name
-            webVC.url   = model.functionUrl + "&unitId=\(model.unitId)"
+            webVC.url   = model.functionUrl + "?unitId=\(model.unitId)"
             navigationVC?.pushViewController(webVC, animated: true)
+//            let webVC = BaseWKWebViewViewController()
+//            webVC.title = model.name
+//            webVC.url = model.functionUrl + "&unitId=\(model.unitId)"
+//            navigationVC?.pushViewController(webVC, animated: true)
         }else {
             hud.failureHidden("功能暂不开放")
         }

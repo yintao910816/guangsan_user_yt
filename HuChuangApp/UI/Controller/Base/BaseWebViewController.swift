@@ -27,7 +27,7 @@ class BaseWebViewController: BaseViewController {
     
     var url: String!{
         didSet{
-            url = url + "?token=" + userDefault.token
+            url = url + "&token=" + userDefault.token
         }
     }
     
@@ -64,6 +64,8 @@ extension BaseWebViewController: UIWebViewDelegate{
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool{
         
         let s = request.url?.absoluteString
+        PrintLog("shouldStartLoadWith -- \(s)")
+
         if s == "app://reload"{
             webView.loadRequest(URLRequest.init(url: URL.init(string: url!)!))
             return false
