@@ -46,21 +46,15 @@ import Moya
 struct APIAssistance {
     
     private static let base   = "http://210.21.12.73:9090/hc-patient/"
-
+    private static let fileBase = "http://210.21.12.73:9090/hc-files/"
+    
     static public func baseURL(API: API) ->URL{
-//        switch API {
-//        case .bindPhone(_, _, _),
-//             .sendCode(_),
-//             .setPassword(_,  _, _),
-//             .register(_, _, _),
-//             .getUserInfo(_),
-//             .refreshToken( _),
-//             .thirdPartyLogin(_),
-//             .bindWX(token: _, _):
-//            return URL(string: userBase)!
-//        default:
+        switch API {
+        case .uploadIcon(_):
+            return URL(string: fileBase)!
+        default:
             return URL(string: base)!
-//        }
+        }
     }
     
     /**

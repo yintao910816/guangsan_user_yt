@@ -16,7 +16,7 @@ class EditUserIconViewModel: BaseViewModel {
 
     override init() {
         super.init()
-       
+
         finishEdit
             .filter({ [unowned self] image -> Bool in
                 if image == nil {
@@ -26,8 +26,15 @@ class EditUserIconViewModel: BaseViewModel {
                 return true
             })
             ._doNext(forNotice: hud)
-            .subscribe(onNext: { [weak self] image in
-                self?.requestEditIcon(icon: image!)
+            .flatMap({ [unowned self] image -> Observable<HCUserModel> in
+                return self.requestEditIcon(icon: image!).concatMap{ self.requestUpdateUserInfo(iconPath: $0.filePath) }
+            })
+            .subscribe(onNext: { [weak self] user in
+                HCHelper.saveLogin(user: user)
+                self?.hud.noticeHidden()
+                self?.popSubject.onNext(Void())
+                }, onError: { [weak self] error in
+                    self?.hud.failureHidden(self?.errorMessage(error))
             })
             .disposed(by: disposeBag)
 
@@ -36,16 +43,31 @@ class EditUserIconViewModel: BaseViewModel {
         })
             .disposed(by: disposeBag)
     }
+
+    private func requestEditIcon(icon: UIImage) ->Observable<UpLoadIconModel>{
+        return HCProvider.request(.uploadIcon(image: icon))
+            .map(model: UpLoadIconModel.self)
+            .asObservable()
+    }
     
-    private func requestEditIcon(icon: UIImage) {
-        HCProvider.request(.uploadIcon(image: icon))
-            .mapJSON()
-            .subscribe(onSuccess: { r in
-                PrintLog(r)
-            }) { error in
-                PrintLog(error)
+    private func requestUpdateUserInfo(iconPath: String) ->Observable<HCUserModel> {
+        guard let user = HCHelper.share.userInfoModel else {
+            hud.failureHidden("用户信息获取失败，请重新登录") {
+                HCHelper.presentLogin()
             }
-            .disposed(by: disposeBag)
+            return Observable.empty()
+        }
+        
+        let params: [String: String] = ["patientId": user.uid,
+                                        "name": user.name,
+                                        "sex": "\(user.sex)",
+                                        "headPath": iconPath,
+                                        "synopsis": user.synopsis,
+                                        "birthday": user.birthday]
+        
+        return HCProvider.request(.updateInfo(param: params))
+            .map(model: HCUserModel.self)
+            .asObservable()
     }
 }
 

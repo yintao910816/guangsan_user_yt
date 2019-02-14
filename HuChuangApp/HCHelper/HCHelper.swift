@@ -55,10 +55,12 @@ extension HCHelper {
     class func authorizationForCamera(confirmBlock : @escaping blankBlock){
         
         AVCaptureDevice.requestAccess(for: AVMediaType.video) { (granted) in
-            if granted == true {
-                confirmBlock()
-            }else{
-                NoticesCenter.alert(title: nil, message: "未能开启相机！")
+            DispatchQueue.main.async {
+                if granted == true {
+                    confirmBlock()
+                }else{
+                    NoticesCenter.alert(title: nil, message: "未能开启相机！")
+                }
             }
         }
     }

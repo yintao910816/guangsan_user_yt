@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5D46458DB41B31260940E2DE /* Pods_HuChuangApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA49B288AA9976792B904C2F /* Pods_HuChuangApp.framework */; };
 		B81C2F772215B60E00A887AF /* MineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81C2F762215B60E00A887AF /* MineHeaderView.swift */; };
+		B81C2F792215BBFB00A887AF /* FileUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81C2F782215BBFB00A887AF /* FileUpload.swift */; };
 		B8BE34EF2214599B00EF16F1 /* MineHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BE34EE2214599B00EF16F1 /* MineHeaderView.xib */; };
 		B8BE34F222145DF000EF16F1 /* UserFunctionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE34F122145DF000EF16F1 /* UserFunctionButton.swift */; };
 		B8BE34F42214645900EF16F1 /* MineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE34F32214645900EF16F1 /* MineViewModel.swift */; };
@@ -109,6 +110,7 @@
 		9AD9FF392745B099CB0232B2 /* Pods-HuChuangApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuChuangApp.debug.xcconfig"; path = "Target Support Files/Pods-HuChuangApp/Pods-HuChuangApp.debug.xcconfig"; sourceTree = "<group>"; };
 		B134908D77E06AADC9A7A4A3 /* Pods-HuChuangApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuChuangApp.release.xcconfig"; path = "Target Support Files/Pods-HuChuangApp/Pods-HuChuangApp.release.xcconfig"; sourceTree = "<group>"; };
 		B81C2F762215B60E00A887AF /* MineHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineHeaderView.swift; sourceTree = "<group>"; };
+		B81C2F782215BBFB00A887AF /* FileUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUpload.swift; sourceTree = "<group>"; };
 		B8BE34EE2214599B00EF16F1 /* MineHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineHeaderView.xib; sourceTree = "<group>"; };
 		B8BE34F122145DF000EF16F1 /* UserFunctionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFunctionButton.swift; sourceTree = "<group>"; };
 		B8BE34F32214645900EF16F1 /* MineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewModel.swift; sourceTree = "<group>"; };
@@ -538,6 +540,7 @@
 			children = (
 				C421335C220588B7006C10C4 /* BaseModel.swift */,
 				C421335E220588FD006C10C4 /* HandyModel.swift */,
+				B81C2F782215BBFB00A887AF /* FileUpload.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -813,6 +816,7 @@
 				C421332622056F24006C10C4 /* FrameView.swift in Sources */,
 				B8BE34FD221470D900EF16F1 /* EditUserInfoViewModel.swift in Sources */,
 				C421331822056D5E006C10C4 /* MainNavigationController.swift in Sources */,
+				B81C2F792215BBFB00A887AF /* FileUpload.swift in Sources */,
 				C42133A72205B50A006C10C4 /* HomeHeader.swift in Sources */,
 				B8BE350B221478A900EF16F1 /* VCServer.swift in Sources */,
 				C421332722056F24006C10C4 /* HUDIndicatorView.swift in Sources */,

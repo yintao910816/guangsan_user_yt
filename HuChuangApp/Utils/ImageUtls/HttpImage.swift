@@ -57,10 +57,8 @@ extension UIImageView {
                     progressBlock: { (current, totle) in
 //                        PrintLog("当前进度 \(current), 总进度 \(totle)")
                     }) { (image, error, cacheType, url) in
-                        if type != .userIcon {
-                            if let _image = image, let _url = url {
-                                KingfisherManager.shared.cache.store(_image, forKey: _url.absoluteString, toDisk: false)
-                            }
+                        if let _image = image, let _url = url {
+                            KingfisherManager.shared.cache.store(_image, forKey: _url.absoluteString, toDisk: false)
                         }
                     }
     }
@@ -118,10 +116,8 @@ extension UIButton {
                               progressBlock: { (current, totle) in
 //                                PrintLog("当前进度 \(current), 总进度 \(totle)")
                               }) { (image, error, cacheType, url) in
-                                if type != .userIcon {
-                                    if let _image = image, let _url = url {
-                                        KingfisherManager.shared.cache.store(_image, forKey: _url.absoluteString, toDisk: false)
-                                    }
+                                if let _image = image, let _url = url {
+                                    KingfisherManager.shared.cache.store(_image, forKey: _url.absoluteString, toDisk: false)
                                 }
                               }
     }

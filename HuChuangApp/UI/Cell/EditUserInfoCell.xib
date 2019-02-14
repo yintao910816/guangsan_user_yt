@@ -30,12 +30,17 @@
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dKP-YY-fUz">
-                        <rect key="frame" x="252" y="7.5" width="35" height="35"/>
+                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dKP-YY-fUz">
+                        <rect key="frame" x="251" y="7" width="36" height="36"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="35" id="Lh5-oN-UdS"/>
+                            <constraint firstAttribute="width" constant="36" id="Lh5-oN-UdS"/>
                             <constraint firstAttribute="width" secondItem="dKP-YY-fUz" secondAttribute="height" multiplier="1:1" id="ad5-jB-wBG"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="18"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cell_right_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="goC-Hk-aA6">
                         <rect key="frame" x="292" y="18" width="8" height="14"/>

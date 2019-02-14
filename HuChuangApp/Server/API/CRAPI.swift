@@ -40,6 +40,7 @@ extension API: TargetType{
             return "api/member/updateInfo"
         case .uploadIcon(_):
             return "api/upload/imgSingle"
+//            return "api/upload/fileSingle"
         case .selectBanner():
             return "api/index/selectBanner"
         case .functionList():
@@ -53,15 +54,13 @@ extension API: TargetType{
         switch self {
         case .uploadIcon(let image):
             let data = image.jpegData(compressionQuality: 0.6)!
-//            //根据当前时间设置图片上传时候的名字
-//            let date:Date = Date()
-//            let formatter = DateFormatter()
-//            formatter.dateFormat = "yyyy-MM-dd-HH:mm:ss"
-//            var dateStr:String = formatter.string(from: date as Date)
-//            //别忘记这里给名字加上图片的后缀哦
-//            dateStr = dateStr.appendingFormat("-%i.png", index)
+            //根据当前时间设置图片上传时候的名字
+            let date:Date = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd-HH:mm:ss"
+            let dateStr:String = formatter.string(from: date)
             
-            let formData = MultipartFormData(provider: .data(data), name: "file", fileName: nil, mimeType: "image/jpeg")
+            let formData = MultipartFormData(provider: .data(data), name: "file", fileName: dateStr, mimeType: "image/jpeg")
             return .uploadMultipart([formData])
         default:
             break
