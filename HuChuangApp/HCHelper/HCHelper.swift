@@ -13,6 +13,8 @@ class HCHelper {
     
     static let share = HCHelper()
     
+    typealias blankBlock = ()->()
+
     public let userInfoHasReload = PublishSubject<HCUserModel>()
     public var userInfoModel: HCUserModel?
     public var isPresentLogin: Bool = false
@@ -33,4 +35,32 @@ class HCHelper {
         
         HCHelper.share.userInfoHasReload.onNext(user)
     }
+}
+
+import AVFoundation
+extension HCHelper {
+    
+    // 相机权限
+    class func checkCameraPermissions() -> Bool {
+        
+        let authStatus : AVAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+        
+        if authStatus == AVAuthorizationStatus.denied || authStatus == AVAuthorizationStatus.restricted || authStatus == AVAuthorizationStatus.notDetermined {
+            return false
+        }else {
+            return true
+        }
+    }
+    
+    class func authorizationForCamera(confirmBlock : @escaping blankBlock){
+        
+        AVCaptureDevice.requestAccess(for: AVMediaType.video) { (granted) in
+            if granted == true {
+                confirmBlock()
+            }else{
+                NoticesCenter.alert(title: nil, message: "未能开启相机！")
+            }
+        }
+    }
+
 }

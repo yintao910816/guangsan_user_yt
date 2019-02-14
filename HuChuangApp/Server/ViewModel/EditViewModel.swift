@@ -12,18 +12,39 @@ import RxSwift
 class EditUserIconViewModel: BaseViewModel {
     
     let userIcon = PublishSubject<String?>()
-    let finishEdit = PublishSubject<Void>()
+    let finishEdit = PublishSubject<UIImage?>()
 
     override init() {
         super.init()
        
-        finishEdit.subscribe(onNext: { [weak self] _ in
-        })
+        finishEdit
+            .filter({ [unowned self] image -> Bool in
+                if image == nil {
+                    self.hud.failureHidden("请选择头像")
+                    return false
+                }
+                return true
+            })
+            ._doNext(forNotice: hud)
+            .subscribe(onNext: { [weak self] image in
+                self?.requestEditIcon(icon: image!)
+            })
             .disposed(by: disposeBag)
 
         reloadSubject.subscribe(onNext: { [weak self] _ in
             self?.userIcon.onNext(HCHelper.share.userInfoModel?.headPath)
         })
+            .disposed(by: disposeBag)
+    }
+    
+    private func requestEditIcon(icon: UIImage) {
+        HCProvider.request(.uploadIcon(image: icon))
+            .mapJSON()
+            .subscribe(onSuccess: { r in
+                PrintLog(r)
+            }) { error in
+                PrintLog(error)
+            }
             .disposed(by: disposeBag)
     }
 }

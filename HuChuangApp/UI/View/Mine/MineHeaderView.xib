@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MineHeader" customModule="HuChuangApp" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MineHeaderView" customModule="HuChuangApp" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="Lr0-5T-znd"/>
                 <outlet property="headerBgHeightCns" destination="KxH-Us-Y7K" id="HjZ-Fg-jk1"/>
@@ -90,14 +90,14 @@
                     <rect key="frame" x="125.5" y="100" width="124" height="80"/>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VQt-dN-eJP">
-                    <rect key="frame" x="124.5" y="100" width="1" height="90"/>
+                    <rect key="frame" x="124.5" y="100" width="1" height="80"/>
                     <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="1" id="FPf-X2-Gmc"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="45c-M8-7xP">
-                    <rect key="frame" x="249.5" y="100" width="1" height="88"/>
+                    <rect key="frame" x="249.5" y="100" width="1" height="80"/>
                     <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="1" id="aK6-w8-Svd"/>
@@ -120,18 +120,18 @@
                 <constraint firstItem="cfm-Cq-IfZ" firstAttribute="height" secondItem="BqC-Oy-oQF" secondAttribute="height" id="FXd-pI-aqE"/>
                 <constraint firstItem="cfm-Cq-IfZ" firstAttribute="width" secondItem="BqC-Oy-oQF" secondAttribute="width" id="IkT-gZ-nZr"/>
                 <constraint firstItem="qE9-6j-Mq4" firstAttribute="width" secondItem="cfm-Cq-IfZ" secondAttribute="width" id="SHZ-8Y-NDh"/>
+                <constraint firstItem="VQt-dN-eJP" firstAttribute="bottom" secondItem="BqC-Oy-oQF" secondAttribute="bottom" id="TAj-8q-11f"/>
+                <constraint firstItem="45c-M8-7xP" firstAttribute="bottom" secondItem="VQt-dN-eJP" secondAttribute="bottom" id="g0T-yx-uYf"/>
                 <constraint firstItem="qE9-6j-Mq4" firstAttribute="leading" secondItem="45c-M8-7xP" secondAttribute="trailing" id="gbH-tS-XXj"/>
                 <constraint firstAttribute="trailing" secondItem="fas-aT-vyu" secondAttribute="trailing" id="goP-1c-eNd"/>
-                <constraint firstAttribute="bottom" secondItem="VQt-dN-eJP" secondAttribute="bottom" id="hAh-wp-UrX"/>
                 <constraint firstItem="cfm-Cq-IfZ" firstAttribute="leading" secondItem="VQt-dN-eJP" secondAttribute="trailing" id="iwm-hw-INg"/>
                 <constraint firstItem="fas-aT-vyu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="l0d-EZ-LKl"/>
                 <constraint firstItem="fas-aT-vyu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ml4-ZY-TLu"/>
-                <constraint firstAttribute="bottom" secondItem="45c-M8-7xP" secondAttribute="bottom" constant="2" id="oxk-gl-l0x"/>
                 <constraint firstItem="45c-M8-7xP" firstAttribute="top" secondItem="fas-aT-vyu" secondAttribute="bottom" id="rj9-dB-3rQ"/>
                 <constraint firstItem="45c-M8-7xP" firstAttribute="leading" secondItem="cfm-Cq-IfZ" secondAttribute="trailing" id="z05-kn-Cga"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="173.59999999999999" y="46.776611694152926"/>
+            <point key="canvasLocation" x="92" y="42"/>
         </view>
         <tapGestureRecognizer id="94v-Mb-nCm"/>
     </objects>

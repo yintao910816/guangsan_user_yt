@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5D46458DB41B31260940E2DE /* Pods_HuChuangApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA49B288AA9976792B904C2F /* Pods_HuChuangApp.framework */; };
-		B8BE34ED2214598F00EF16F1 /* MineHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE34EC2214598F00EF16F1 /* MineHeader.swift */; };
+		B81C2F772215B60E00A887AF /* MineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81C2F762215B60E00A887AF /* MineHeaderView.swift */; };
 		B8BE34EF2214599B00EF16F1 /* MineHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BE34EE2214599B00EF16F1 /* MineHeaderView.xib */; };
 		B8BE34F222145DF000EF16F1 /* UserFunctionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE34F122145DF000EF16F1 /* UserFunctionButton.swift */; };
 		B8BE34F42214645900EF16F1 /* MineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE34F32214645900EF16F1 /* MineViewModel.swift */; };
@@ -108,7 +108,7 @@
 /* Begin PBXFileReference section */
 		9AD9FF392745B099CB0232B2 /* Pods-HuChuangApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuChuangApp.debug.xcconfig"; path = "Target Support Files/Pods-HuChuangApp/Pods-HuChuangApp.debug.xcconfig"; sourceTree = "<group>"; };
 		B134908D77E06AADC9A7A4A3 /* Pods-HuChuangApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuChuangApp.release.xcconfig"; path = "Target Support Files/Pods-HuChuangApp/Pods-HuChuangApp.release.xcconfig"; sourceTree = "<group>"; };
-		B8BE34EC2214598F00EF16F1 /* MineHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineHeader.swift; sourceTree = "<group>"; };
+		B81C2F762215B60E00A887AF /* MineHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineHeaderView.swift; sourceTree = "<group>"; };
 		B8BE34EE2214599B00EF16F1 /* MineHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineHeaderView.xib; sourceTree = "<group>"; };
 		B8BE34F122145DF000EF16F1 /* UserFunctionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFunctionButton.swift; sourceTree = "<group>"; };
 		B8BE34F32214645900EF16F1 /* MineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewModel.swift; sourceTree = "<group>"; };
@@ -241,7 +241,7 @@
 		B8BE34EB2214597800EF16F1 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
-				B8BE34EC2214598F00EF16F1 /* MineHeader.swift */,
+				B81C2F762215B60E00A887AF /* MineHeaderView.swift */,
 				B8BE34EE2214599B00EF16F1 /* MineHeaderView.xib */,
 			);
 			path = Mine;
@@ -836,13 +836,13 @@
 				C4481E2422154D66007F4B0C /* BaseWKWebViewViewController.swift in Sources */,
 				C421332C22056F24006C10C4 /* TYHUD.swift in Sources */,
 				C42133582205883D006C10C4 /* BaseViewModel.swift in Sources */,
+				B81C2F772215B60E00A887AF /* MineHeaderView.swift in Sources */,
 				C421332A22056F24006C10C4 /* BackgroundView.swift in Sources */,
 				B8BE351322147AF500EF16F1 /* HCEditNickNameViewController.swift in Sources */,
 				B8BE351922147B4000EF16F1 /* HCEditSynopsisViewController.swift in Sources */,
 				C421338C2205A544006C10C4 /* Home.swift in Sources */,
 				C421332B22056F24006C10C4 /* HUD.swift in Sources */,
 				C421339D2205B224006C10C4 /* ImageRx.swift in Sources */,
-				B8BE34ED2214598F00EF16F1 /* MineHeader.swift in Sources */,
 				C421331422056C37006C10C4 /* Debug.swift in Sources */,
 				C421338822059B8C006C10C4 /* DB+Extension.swift in Sources */,
 				C42133952205B1E9006C10C4 /* CarouselDatasource.swift in Sources */,

@@ -429,8 +429,13 @@
                                     <constraint firstAttribute="width" constant="120" id="HN2-Jq-qT3"/>
                                     <constraint firstAttribute="width" secondItem="HtN-lw-3SX" secondAttribute="height" multiplier="1:1" id="jpd-rZ-7zC"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="60"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XT9-Qh-8Ie">
+                            <button opaque="NO" clipsSubviews="YES" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XT9-Qh-8Ie">
                                 <rect key="frame" x="25" y="264" width="150" height="40"/>
                                 <color key="backgroundColor" red="0.54117647058823526" green="0.23529411764705882" blue="0.42745098039215684" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
@@ -449,7 +454,7 @@
                                     <action selector="actions:" destination="FTO-HI-WkE" eventType="touchUpInside" id="qGK-Yn-Wjq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qpa-ag-RyY">
+                            <button opaque="NO" clipsSubviews="YES" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qpa-ag-RyY">
                                 <rect key="frame" x="200" y="264" width="150" height="40"/>
                                 <color key="backgroundColor" red="0.54117647059999996" green="0.23529411759999999" blue="0.42745098040000001" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="15"/>

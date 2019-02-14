@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import RxSwift
 
-class MineHeader: BaseFilesOwner {
+class MineHeaderView: UIView {
     
     private let disposeBag = DisposeBag()
     
@@ -30,11 +30,13 @@ class MineHeader: BaseFilesOwner {
     let userModel = PublishSubject<HCUserModel>()
     let gotoEditUserInfo = PublishSubject<Void>()
 
-    override init() {
-        super.init()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
         contentView = (Bundle.main.loadNibNamed("MineHeaderView", owner: self, options: nil)?.first as! UIView)
-        contentView.correctWidth()
+        addSubview(contentView)
+        
+        contentView.snp.makeConstraints{ $0.edges.equalTo(UIEdgeInsets.zero) }
         
         if UIDevice.current.isX {
             var frame = contentView.frame
@@ -47,6 +49,10 @@ class MineHeader: BaseFilesOwner {
         
         setupUI()
         rxBind()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func setupUI() {

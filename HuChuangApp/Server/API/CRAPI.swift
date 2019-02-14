@@ -18,6 +18,8 @@ enum API{
     case selectInfo()
     /// 修改用户信息
     case updateInfo(param: [String: String])
+    /// 上传头像
+    case uploadIcon(image: UIImage)
     /// 首页banner
     case selectBanner()
     /// 首页功能列表
@@ -36,6 +38,8 @@ extension API: TargetType{
             return "api/member/selectInfo"
         case .updateInfo(_):
             return "api/member/updateInfo"
+        case .uploadIcon(_):
+            return "api/upload/imgSingle"
         case .selectBanner():
             return "api/index/selectBanner"
         case .functionList():
@@ -46,6 +50,23 @@ extension API: TargetType{
     var baseURL: URL{ return APIAssistance.baseURL(API: self) }
     
     var task: Task {
+        switch self {
+        case .uploadIcon(let image):
+            let data = image.jpegData(compressionQuality: 0.6)!
+//            //根据当前时间设置图片上传时候的名字
+//            let date:Date = Date()
+//            let formatter = DateFormatter()
+//            formatter.dateFormat = "yyyy-MM-dd-HH:mm:ss"
+//            var dateStr:String = formatter.string(from: date as Date)
+//            //别忘记这里给名字加上图片的后缀哦
+//            dateStr = dateStr.appendingFormat("-%i.png", index)
+            
+            let formData = MultipartFormData(provider: .data(data), name: "file", fileName: nil, mimeType: "image/jpeg")
+            return .uploadMultipart([formData])
+        default:
+            break
+        }
+        
         if let _parameters = parameters {
             guard let jsonData = try? JSONSerialization.data(withJSONObject: _parameters, options: []) else {
                 return .requestPlain
@@ -62,8 +83,15 @@ extension API: TargetType{
     var validate: Bool { return false }
     
     var headers: [String : String]? {
+        var contentType: String = "application/json; charset=utf-8"
+        switch self {
+        case .uploadIcon(_):
+            contentType = "image/jpeg"
+        default:
+            break
+        }
         return ["token": userDefault.token,
-                "Content-Type": "application/json; charset=utf-8",
+                "Content-Type": contentType,
                 "Accept": "application/json",
                 "unitId": "36"]
     }

@@ -11,7 +11,7 @@ import UIKit
 class HCMineViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    private var header: MineHeader!
+    private var header: MineHeaderView!
     
     private var viewModel: MineViewModel!
     
@@ -26,9 +26,11 @@ class HCMineViewController: BaseViewController {
 //        else {
 //            automaticallyAdjustsScrollViewInsets = false
 //        }
-        
-        header = MineHeader()
-        tableView.tableHeaderView = header.contentView
+       
+        var headerHeight: CGFloat = 190
+        if UIDevice.current.isX { headerHeight += 44 }
+        header =  MineHeaderView.init(frame: .init(x: 0, y: 0, width: tableView.width, height: headerHeight))
+        tableView.tableHeaderView = header
         
         tableView.rowHeight = 45
         tableView.register(UINib.init(nibName: "MineCell", bundle: Bundle.main), forCellReuseIdentifier: "MineCellID")
