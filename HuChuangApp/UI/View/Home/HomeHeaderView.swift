@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxDataSources
 
-class HomeHeader: BaseFilesOwner {
+class HomeHeaderView: UIView {
     
     private let disposeBag = DisposeBag()
     
@@ -29,14 +29,20 @@ class HomeHeader: BaseFilesOwner {
     
     public let functionDidSelected = PublishSubject<HomeFunctionModel>()
 
-    override init() {
-        super.init()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
         contentView = (Bundle.main.loadNibNamed("HomeHeaderView", owner: self, options: nil)?.first as! UIView)
-        contentView.correctWidth()
-        
+        addSubview(contentView)
+
+        contentView.snp.makeConstraints{ $0.edges.equalTo(UIEdgeInsets.zero) }
+       
         setupUI()
         rxBind()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func setupUI() {
@@ -83,19 +89,16 @@ class HomeHeader: BaseFilesOwner {
     }
 }
 
-extension HomeHeader {
+extension HomeHeaderView {
     
-    func fixHeaderHeight(dataCount: Int) {
-        if dataCount == 0 { return }
+    func headerHeight(dataCount: Int) ->CGFloat {
+        if dataCount == 0 { return 0 }
         
         let itemHeight: CGFloat = (PPScreenW - 1) / 4.0
         let height = CGFloat((dataCount / 4 + (dataCount % 4 == 0 ? 0 : 1))) * itemHeight + 10.0
         
         functionViewHeightCns.constant = height
-        
-        var frame = contentView.frame
-        frame.size.height += height
-        
-        contentView.frame = frame
+
+        return 423 + height
     }
 }

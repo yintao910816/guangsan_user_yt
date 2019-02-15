@@ -39,6 +39,7 @@ class ScrollTextView: UITableView {
     private func setupUI() {
         register(ScrollTextCell.self, forCellReuseIdentifier: "ScrollTextCellID")
         
+        isScrollEnabled = false
         separatorStyle = .none
         showsVerticalScrollIndicator = false
         dataSource = self

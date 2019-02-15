@@ -12,7 +12,7 @@ class HCHomeViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    private var header: HomeHeader!
+    private var header: HomeHeaderView!
     
     private var viewModel: HomeViewModel!
 
@@ -26,10 +26,8 @@ class HCHomeViewController: BaseViewController {
         if #available(iOS 11, *) {
             tableView.contentInsetAdjustmentBehavior = .never
         }
-
-        header = HomeHeader()
         
-        tableView.tableHeaderView = header.contentView
+        header = HomeHeaderView.init(frame: .init(x: 0, y: 0, width: tableView.width, height: 0))
     }
     
     override func rxBind() {
@@ -41,8 +39,10 @@ class HCHomeViewController: BaseViewController {
         
         viewModel.functionModelsObser.asDriver()
             .do(onNext: { [unowned self] data in
-                self.header.fixHeaderHeight(dataCount: data.count)
-                self.tableView.tableHeaderView = self.header.contentView
+                var rect = self.header.frame
+                rect.size.height = self.header.headerHeight(dataCount: data.count)
+                self.header.frame = rect
+                self.tableView.tableHeaderView = self.header
             })
             .drive(header.functionModelObser)
             .disposed(by: disposeBag)

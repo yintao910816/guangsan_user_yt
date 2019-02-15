@@ -68,9 +68,15 @@ class HomeViewModel: BaseViewModel {
 
     private func functionPush(model: HomeFunctionModel, navigationVC: UINavigationController?) {
         if model.functionUrl.count > 0 {
+            var url = model.functionUrl
+            if url.last != "?" {
+                url += "?unitId=\(model.unitId)"
+            }else {
+                url += "unitId=\(model.unitId)"
+            }
             let webVC = BaseWebViewController()
             webVC.title = model.name
-            webVC.url   = model.functionUrl + "?unitId=\(model.unitId)"
+            webVC.url   = url
             navigationVC?.pushViewController(webVC, animated: true)
 //            let webVC = BaseWKWebViewViewController()
 //            webVC.title = model.name

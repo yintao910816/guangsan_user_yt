@@ -30,6 +30,7 @@
 		B8BE351922147B4000EF16F1 /* HCEditSynopsisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE351822147B4000EF16F1 /* HCEditSynopsisViewController.swift */; };
 		B8BE351B22147DE500EF16F1 /* EditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE351A22147DE500EF16F1 /* EditViewModel.swift */; };
 		B8BE351D221484C600EF16F1 /* UINavigationController+BarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE351C221484C600EF16F1 /* UINavigationController+BarButtonItem.swift */; };
+		B8FC3AA52216FEEB00889483 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FC3AA42216FEEB00889483 /* HomeHeaderView.swift */; };
 		C42132F622054463006C10C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C42132F522054463006C10C4 /* Assets.xcassets */; };
 		C42132F922054463006C10C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C42132F722054463006C10C4 /* LaunchScreen.storyboard */; };
 		C421330B22056B59006C10C4 /* HCAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421330A22056B59006C10C4 /* HCAppDelegate.swift */; };
@@ -96,7 +97,6 @@
 		C421339E2205B224006C10C4 /* HttpImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421339A2205B224006C10C4 /* HttpImage.swift */; };
 		C42133A12205B41C006C10C4 /* BaseFilesOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42133A02205B41C006C10C4 /* BaseFilesOwner.swift */; };
 		C42133A52205B4FE006C10C4 /* HomeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C42133A42205B4FE006C10C4 /* HomeHeaderView.xib */; };
-		C42133A72205B50A006C10C4 /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42133A62205B50A006C10C4 /* HomeHeader.swift */; };
 		C43F09BB2214315900910437 /* HomeFunctionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43F09B92214315900910437 /* HomeFunctionCell.swift */; };
 		C43F09BC2214315900910437 /* HomeFunctionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C43F09BA2214315900910437 /* HomeFunctionCell.xib */; };
 		C43F09BE22143B5200910437 /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43F09BD22143B5200910437 /* BaseWebViewController.swift */; };
@@ -131,6 +131,7 @@
 		B8BE351822147B4000EF16F1 /* HCEditSynopsisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCEditSynopsisViewController.swift; sourceTree = "<group>"; };
 		B8BE351A22147DE500EF16F1 /* EditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewModel.swift; sourceTree = "<group>"; };
 		B8BE351C221484C600EF16F1 /* UINavigationController+BarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+BarButtonItem.swift"; sourceTree = "<group>"; };
+		B8FC3AA42216FEEB00889483 /* HomeHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		C42132EB22054462006C10C4 /* HuChuangApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HuChuangApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C42132F522054463006C10C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C42132F822054463006C10C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -200,7 +201,6 @@
 		C421339F2205B366006C10C4 /* HcChuangApp-Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HcChuangApp-Bridge-Header.h"; sourceTree = "<group>"; };
 		C42133A02205B41C006C10C4 /* BaseFilesOwner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFilesOwner.swift; sourceTree = "<group>"; };
 		C42133A42205B4FE006C10C4 /* HomeHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeaderView.xib; sourceTree = "<group>"; };
-		C42133A62205B50A006C10C4 /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
 		C43F09B92214315900910437 /* HomeFunctionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFunctionCell.swift; sourceTree = "<group>"; };
 		C43F09BA2214315900910437 /* HomeFunctionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeFunctionCell.xib; sourceTree = "<group>"; };
 		C43F09BD22143B5200910437 /* BaseWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWebViewController.swift; sourceTree = "<group>"; };
@@ -596,8 +596,8 @@
 		C421338D2205B155006C10C4 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				B8FC3AA42216FEEB00889483 /* HomeHeaderView.swift */,
 				C42133A42205B4FE006C10C4 /* HomeHeaderView.xib */,
-				C42133A62205B50A006C10C4 /* HomeHeader.swift */,
 				C4C3257A2205B8490091783C /* ScrollTextView.swift */,
 			);
 			path = Home;
@@ -817,7 +817,6 @@
 				B8BE34FD221470D900EF16F1 /* EditUserInfoViewModel.swift in Sources */,
 				C421331822056D5E006C10C4 /* MainNavigationController.swift in Sources */,
 				B81C2F792215BBFB00A887AF /* FileUpload.swift in Sources */,
-				C42133A72205B50A006C10C4 /* HomeHeader.swift in Sources */,
 				B8BE350B221478A900EF16F1 /* VCServer.swift in Sources */,
 				C421332722056F24006C10C4 /* HUDIndicatorView.swift in Sources */,
 				C42133932205B1E9006C10C4 /* KeyboardManager.swift in Sources */,
@@ -868,6 +867,7 @@
 				C421338622059B8C006C10C4 /* DB.swift in Sources */,
 				C421338422059B8C006C10C4 /* DBQueue.swift in Sources */,
 				B8BE34FB221470B800EF16F1 /* HCEditUserInfoViewController.swift in Sources */,
+				B8FC3AA52216FEEB00889483 /* HomeHeaderView.swift in Sources */,
 				C421338722059B8C006C10C4 /* DBCtrl.swift in Sources */,
 				C421338522059B8C006C10C4 /* DBProtocol.swift in Sources */,
 				C421336622058F97006C10C4 /* HCLoginViewController.swift in Sources */,

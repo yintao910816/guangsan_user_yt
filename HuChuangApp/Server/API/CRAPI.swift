@@ -24,6 +24,8 @@ enum API{
     case selectBanner()
     /// 首页功能列表
     case functionList()
+    /// api/index/goodNews
+//    case goodNews
 }
 
 //MARK:
