@@ -22,8 +22,8 @@ class HomeViewModel: BaseViewModel {
         super.init()
         
         hud.noticeLoading()
-
-        let loadDataSignal = Observable.combineLatest(requestBanner(), requestFunctionList()){ ($0, $1) }
+        
+        let loadDataSignal = Observable.combineLatest(requestBanner(), requestFunctionList(), requestNoticeList()){ ($0, $1, $2) }
         reloadSubject.flatMap{ loadDataSignal }
             .subscribe(onNext: { [unowned self] data in
                 self.dealHomeHeaderData(data: data)
@@ -45,13 +45,13 @@ class HomeViewModel: BaseViewModel {
             })
             .disposed(by: disposeBag)
         
-        noticeModelObser.value = [HomeNoticeModel(), HomeNoticeModel(), HomeNoticeModel()]
         goodNewsModelObser.value = [HomeGoodNewsModel(), HomeGoodNewsModel(), HomeGoodNewsModel()]
     }
     
-    private func dealHomeHeaderData(data: ([HomeBannerModel], [HomeFunctionModel])) {
+    private func dealHomeHeaderData(data: ([HomeBannerModel], [HomeFunctionModel], [HomeNoticeModel])) {
         bannerModelObser.value = data.0
         functionModelsObser.value = data.1
+        noticeModelObser.value = data.2
     }
     
     private func requestBanner() ->Observable<[HomeBannerModel]>{
@@ -63,6 +63,12 @@ class HomeViewModel: BaseViewModel {
     private func requestFunctionList() ->Observable<[HomeFunctionModel]>{
         return HCProvider.request(.functionList())
             .map(models: HomeFunctionModel.self)
+            .asObservable()
+    }
+    
+    private func requestNoticeList() ->Observable<[HomeNoticeModel]> {
+        return HCProvider.request(.noticeList(type: "new", pageNum: 1, pageSize: 10))
+            .map(models: HomeNoticeModel.self)
             .asObservable()
     }
 

@@ -12,6 +12,7 @@ class HCMineViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     private var header: MineHeaderView!
+    private var footer: MineFooterView!
     
     private var viewModel: MineViewModel!
     
@@ -31,6 +32,9 @@ class HCMineViewController: BaseViewController {
         if UIDevice.current.isX { headerHeight += 44 }
         header =  MineHeaderView.init(frame: .init(x: 0, y: 0, width: tableView.width, height: headerHeight))
         tableView.tableHeaderView = header
+        
+        footer = MineFooterView.init(frame: .init(x: 0, y: 0, width: tableView.width, height: 55))
+        tableView.tableFooterView = footer
         
         tableView.rowHeight = 45
         tableView.register(UINib.init(nibName: "MineCell", bundle: Bundle.main), forCellReuseIdentifier: "MineCellID")
@@ -52,6 +56,11 @@ class HCMineViewController: BaseViewController {
         viewModel.userInfo
             .bind(to: header.userModel)
             .disposed(by: disposeBag)
+        
+        footer.loginOut = {
+            HCHelper.share.clearUser()
+            HCHelper.presentLogin()
+        }
         
         viewModel.reloadSubject.onNext(Void())
     }

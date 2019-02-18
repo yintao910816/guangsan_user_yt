@@ -34,15 +34,27 @@ extension HomeBannerModel: CarouselSource {
 
 class HomeNoticeModel: HJModel {
     
+    var bak: String = ""
+    var content: String = ""
+    var createDate: String = ""
+    var creates: String = ""
+    var id: String = ""
+    var modifyDate: String = ""
+    var modifys: String = ""
+    var title: String = ""
+    var type: String = ""
+    var unitId: String = ""
+    var url: String = ""
+    var validDate: String = ""
 }
 
 extension HomeNoticeModel: ScrollTextModel {
    
     var textContent: String {
-        return "侧都能分两块三空间浪费你说打卡机开发能力健康三方就可能是电脑数据看妇科"
+        return content
     }
     
-    var height: CGFloat { return 59 }
+    var height: CGFloat { return 35 }
     
 }
 

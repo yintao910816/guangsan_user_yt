@@ -12,6 +12,8 @@ import Moya
 //MARK:
 //MARK: 接口定义
 enum API{
+    /// 获取验证码
+    case validateCode(mobile: String)
     /// 登录
     case login(mobile: String, smsCode: String)
     /// 获取用户信息
@@ -26,6 +28,8 @@ enum API{
     case functionList()
     /// api/index/goodNews
 //    case goodNews
+    /// 首页通知消息
+    case noticeList(type: String, pageNum: Int, pageSize: Int)
 }
 
 //MARK:
@@ -34,6 +38,8 @@ extension API: TargetType{
     
     var path: String{
         switch self {
+        case .validateCode(_):
+            return "api/login/validateCode"
         case .login(_):
             return "api/login/login"
         case .selectInfo():
@@ -47,6 +53,8 @@ extension API: TargetType{
             return "api/index/selectBanner"
         case .functionList():
             return "api/index/select"
+        case .noticeList(_):
+            return "api/index/noticeList"
         }
     }
     
@@ -91,10 +99,12 @@ extension API: TargetType{
         default:
             break
         }
-        return ["token": userDefault.token,
-                "Content-Type": contentType,
-                "Accept": "application/json",
-                "unitId": "36"]
+        
+        let customHeaders: [String: String] = ["token": userDefault.token,
+                                               "Content-Type": contentType,
+                                               "Accept": "application/json",
+                                               "unitId": "36"]
+        return customHeaders
     }
     
 }
@@ -106,6 +116,8 @@ extension API {
     private var parameters: [String: Any]? {
         var params = [String: Any]()
         switch self {
+        case .validateCode(let mobile):
+            params["mobile"] = mobile
         case .login(let mobile, let smsCode):
             params["mobile"] = mobile
             params["smsCode"] = smsCode
@@ -113,6 +125,10 @@ extension API {
             params = param
         case .selectBanner():
             params["code"] = "banner"
+        case .noticeList(let type, let pageNum, let pageSize):
+            params["type"] = type
+            params["pageNum"] = pageNum
+            params["pageSize"] = pageSize
         default:
             return nil
         }

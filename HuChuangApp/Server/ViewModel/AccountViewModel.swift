@@ -30,14 +30,25 @@ class LoginViewModel: BaseViewModel {
             .disposed(by: disposeBag)
         
         tap.sendCodeTap.withLatestFrom(input.account)
-            ._doNext(forNotice: hud)
             .filter{ [unowned self] in self.dealInputError(phone: $0) }
+            ._doNext(forNotice: hud)
             .drive(onNext: { [unowned self] in self.sendCode(phone: $0) })
             .disposed(by: disposeBag)
     }
     
     private func sendCode(phone: String) {
-        
+        HCProvider.request(.validateCode(mobile: phone))
+            .mapResponse()
+            .subscribe(onSuccess: { [weak self] model in
+                if RequestCode(rawValue: model.code) == .success {
+                    self?.hud.noticeHidden()
+                }else {
+                    self?.hud.failureHidden(model.message)
+                }
+            }) { [weak self] error in
+                self?.hud.failureHidden(self?.errorMessage(error))
+            }
+            .disposed(by: disposeBag)
     }
     
     private func login(data: (String, String, LoginType)) {

@@ -10,6 +10,8 @@
 		5D46458DB41B31260940E2DE /* Pods_HuChuangApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA49B288AA9976792B904C2F /* Pods_HuChuangApp.framework */; };
 		B81C2F772215B60E00A887AF /* MineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81C2F762215B60E00A887AF /* MineHeaderView.swift */; };
 		B81C2F792215BBFB00A887AF /* FileUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81C2F782215BBFB00A887AF /* FileUpload.swift */; };
+		B879A060221AF0B200E573C9 /* MineFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879A05F221AF0B200E573C9 /* MineFooterView.swift */; };
+		B879A062221AF0BB00E573C9 /* MineFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B879A061221AF0BB00E573C9 /* MineFooterView.xib */; };
 		B8BE34EF2214599B00EF16F1 /* MineHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BE34EE2214599B00EF16F1 /* MineHeaderView.xib */; };
 		B8BE34F222145DF000EF16F1 /* UserFunctionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE34F122145DF000EF16F1 /* UserFunctionButton.swift */; };
 		B8BE34F42214645900EF16F1 /* MineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE34F32214645900EF16F1 /* MineViewModel.swift */; };
@@ -111,6 +113,8 @@
 		B134908D77E06AADC9A7A4A3 /* Pods-HuChuangApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuChuangApp.release.xcconfig"; path = "Target Support Files/Pods-HuChuangApp/Pods-HuChuangApp.release.xcconfig"; sourceTree = "<group>"; };
 		B81C2F762215B60E00A887AF /* MineHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineHeaderView.swift; sourceTree = "<group>"; };
 		B81C2F782215BBFB00A887AF /* FileUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUpload.swift; sourceTree = "<group>"; };
+		B879A05F221AF0B200E573C9 /* MineFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineFooterView.swift; sourceTree = "<group>"; };
+		B879A061221AF0BB00E573C9 /* MineFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineFooterView.xib; sourceTree = "<group>"; };
 		B8BE34EE2214599B00EF16F1 /* MineHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineHeaderView.xib; sourceTree = "<group>"; };
 		B8BE34F122145DF000EF16F1 /* UserFunctionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFunctionButton.swift; sourceTree = "<group>"; };
 		B8BE34F32214645900EF16F1 /* MineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewModel.swift; sourceTree = "<group>"; };
@@ -245,6 +249,8 @@
 			children = (
 				B81C2F762215B60E00A887AF /* MineHeaderView.swift */,
 				B8BE34EE2214599B00EF16F1 /* MineHeaderView.xib */,
+				B879A05F221AF0B200E573C9 /* MineFooterView.swift */,
+				B879A061221AF0BB00E573C9 /* MineFooterView.xib */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -727,6 +733,7 @@
 				C421336122058E50006C10C4 /* HCLogin.storyboard in Resources */,
 				C4213338220572C6006C10C4 /* HCMain.storyboard in Resources */,
 				B8BE34F8221465D900EF16F1 /* MineCell.xib in Resources */,
+				B879A062221AF0BB00E573C9 /* MineFooterView.xib in Resources */,
 				C42132F622054463006C10C4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -873,6 +880,7 @@
 				C421336622058F97006C10C4 /* HCLoginViewController.swift in Sources */,
 				B8BE35092214738000EF16F1 /* EditUserInfoModel.swift in Sources */,
 				C43F09BE22143B5200910437 /* BaseWebViewController.swift in Sources */,
+				B879A060221AF0B200E573C9 /* MineFooterView.swift in Sources */,
 				C42133A12205B41C006C10C4 /* BaseFilesOwner.swift in Sources */,
 				C421330B22056B59006C10C4 /* HCAppDelegate.swift in Sources */,
 				C4C3257D2205C3AD0091783C /* UIView+XIB.swift in Sources */,

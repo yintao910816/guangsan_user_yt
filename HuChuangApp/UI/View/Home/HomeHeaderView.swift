@@ -18,6 +18,7 @@ class HomeHeaderView: UIView {
     @IBOutlet weak var carouselView: CarouselView!
     @IBOutlet weak var functionView: UICollectionView!
     @IBOutlet weak var noticeView: ScrollTextView!
+    @IBOutlet weak var noticeMessageTitleOutlet: UILabel!
     @IBOutlet weak var goodNewsView: ScrollTextView!
     
     @IBOutlet weak var functionViewHeightCns: NSLayoutConstraint!
@@ -59,6 +60,11 @@ class HomeHeaderView: UIView {
     
     private func rxBind() {
         
+        noticeView.cellDidScroll = { [weak self] row in
+            print(row)
+            self?.configNoticeTitle(model: self?.noticeModelObser.value[row])
+        }
+        
         bannerModelObser.asDriver()
             .drive(onNext: { [weak self] data in
                 self?.carouselView.setData(source: data)
@@ -67,6 +73,7 @@ class HomeHeaderView: UIView {
         
         noticeModelObser.asDriver()
             .drive(onNext: { [weak self] data in
+                self?.configNoticeTitle(model: data.first)
                 self?.noticeView.datasourceModel = data
             })
             .disposed(by: disposeBag)
@@ -91,14 +98,26 @@ class HomeHeaderView: UIView {
 
 extension HomeHeaderView {
     
+    private func configNoticeTitle(model: HomeNoticeModel?) {
+        if let title = model?.title {
+            print(title)
+            noticeMessageTitleOutlet.text = "通知提醒 | \(title)"
+        }else {
+            noticeMessageTitleOutlet.text = "通知提醒 | 最新消息"
+        }
+    }
+}
+
+extension HomeHeaderView {
+    
     func headerHeight(dataCount: Int) ->CGFloat {
-        if dataCount == 0 { return 0 }
+        if dataCount == 0 { return 392 }
         
         let itemHeight: CGFloat = (PPScreenW - 1) / 4.0
         let height = CGFloat((dataCount / 4 + (dataCount % 4 == 0 ? 0 : 1))) * itemHeight + 10.0
         
         functionViewHeightCns.constant = height
 
-        return 423 + height
+        return 392 + height
     }
 }

@@ -33,10 +33,8 @@ extension UserDefaults{
             return rtToken
         }
         set{
-            if newValue.isEmpty == false && newValue.count > 0 {
-                set(newValue, forKey: kToken)
-                synchronize()
-            }
+            set(newValue, forKey: kToken)
+            synchronize()
         }
     }
     

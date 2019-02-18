@@ -31,3 +31,9 @@ class DataModel<T>: ResponseModel {
     var data: T?
     
 }
+
+/// 只返回请求是否成功
+class RequestResultModel: ResponseModel {
+    
+    var data: String = ""
+}

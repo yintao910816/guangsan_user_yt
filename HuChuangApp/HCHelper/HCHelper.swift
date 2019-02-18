@@ -27,6 +27,13 @@ class HCHelper {
         NSObject().visibleViewController?.present(loginControl, animated: true, completion: nil)
     }
     
+    func clearUser() {
+        userDefault.uid = noUID
+        userDefault.token = ""
+        
+        userInfoModel = nil
+    }
+    
     class func saveLogin(user: HCUserModel) {
         userDefault.uid = user.uid
         userDefault.token = user.token

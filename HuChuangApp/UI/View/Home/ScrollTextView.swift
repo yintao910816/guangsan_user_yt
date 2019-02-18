@@ -11,8 +11,9 @@ import UIKit
 class ScrollTextView: UITableView {
 
     private var timer: Timer!
-    
     private var scrolToRow: Int = 0
+    
+    public var cellDidScroll: ((Int) ->())?
 
     var datasourceModel: [ScrollTextModel]! {
         didSet {
@@ -78,9 +79,11 @@ class ScrollTextView: UITableView {
             scrolToRow = 0
             scrolIndexPath = IndexPath.init(row: scrolToRow, section: 0)
             scrollToRow(at: scrolIndexPath, at: .top, animated: true)
+            cellDidScroll?(scrolToRow)
         }else {
             scrolIndexPath = IndexPath.init(row: scrolToRow, section: 0)
             scrollToRow(at: scrolIndexPath, at: .top, animated: true)
+            cellDidScroll?(scrolToRow)
         }
     }
     
@@ -140,7 +143,7 @@ extension ScrollTextView: UITableViewDataSource, UITableViewDelegate {
 class ScrollTextCell: UITableViewCell {
     
     private var titleLable: UILabel!
-    private var pointView: UIView!
+//    private var pointView: UIView!
     
     var model: ScrollTextModel! {
         didSet{
@@ -161,10 +164,10 @@ class ScrollTextCell: UITableViewCell {
     func setupUI(){
         selectionStyle = .none
         
-        pointView = UIView()
-        pointView.layer.cornerRadius = 3
-        pointView.clipsToBounds = true
-        pointView.backgroundColor = HC_MAIN_COLOR
+//        pointView = UIView()
+//        pointView.layer.cornerRadius = 3
+//        pointView.clipsToBounds = true
+//        pointView.backgroundColor = HC_MAIN_COLOR
 
         titleLable = UILabel()
         titleLable.font = UIFont.systemFont(ofSize: 13)
@@ -172,19 +175,19 @@ class ScrollTextCell: UITableViewCell {
         titleLable.lineBreakMode = .byCharWrapping
         titleLable.textColor = RGB(65, 65, 65)
         
-        contentView.addSubview(pointView)
+//        contentView.addSubview(pointView)
         contentView.addSubview(titleLable)
         
-        pointView.snp.makeConstraints { make in
-            make.left.equalTo(contentView).offset(15)
-            make.top.equalTo(contentView).offset(12)
-            make.size.equalTo(CGSize.init(width: 6, height: 6))
-        }
+//        pointView.snp.makeConstraints { make in
+//            make.left.equalTo(contentView).offset(15)
+//            make.top.equalTo(contentView).offset(12)
+//            make.size.equalTo(CGSize.init(width: 6, height: 6))
+//        }
         
         titleLable.snp.makeConstraints { make in
-            make.left.equalTo(pointView.snp.right).offset(7)
+            make.left.equalTo(contentView).offset(15)
             make.right.equalTo(contentView).offset(-15)
-            make.top.equalTo(contentView).offset(6)
+            make.top.equalTo(contentView)
             make.bottom.equalTo(contentView)
         }
     }
