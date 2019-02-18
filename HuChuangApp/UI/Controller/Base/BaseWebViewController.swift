@@ -47,8 +47,12 @@ class BaseWebViewController: BaseViewController {
     private func requestData(){
         hud.noticeLoading()
         
-        let request = URLRequest.init(url: URL.init(string: url)!)
-        webView.loadRequest(request)
+        if let requestUrl = URL.init(string: url) {
+            let request = URLRequest.init(url: requestUrl)
+            webView.loadRequest(request)
+        }else {
+            hud.failureHidden("url错误")
+        }
     }
 
     private func setTitle() {
