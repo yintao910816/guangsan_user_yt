@@ -15,15 +15,24 @@ class HomeViewModel: RefreshVM<HomeArticleModel> {
     var functionModelsObser = Variable([HomeFunctionModel]())
     var noticeModelObser = Variable([HomeNoticeModel]())
     var goodNewsModelObser = Variable([HomeGoodNewsModel]())
+    var columnModelObser   = Variable(HomeColumnModel())
     
+    var didSelectItemSubject = PublishSubject<HomeColumnItemModel>()
+
     let functionItemDidSelected = PublishSubject<(HomeFunctionModel, UINavigationController?)>()
+    
+    private var articleTypeID: String = ""
 
     override init() {
         super.init()
         
         hud.noticeLoading()
         
-        let loadDataSignal = Observable.combineLatest(requestBanner(), requestFunctionList(), requestNoticeList()){ ($0, $1, $2) }
+        let loadDataSignal = Observable.combineLatest(requestBanner(),
+                                                      requestFunctionList(),
+                                                      requestNoticeList(),
+                                                      requestColumData(),
+                                                      requestGoodNew()){ ($0, $1, $2, $3, $4) }
         reloadSubject.flatMap{ loadDataSignal }
             .subscribe(onNext: { [unowned self] data in
                 self.dealHomeHeaderData(data: data)
@@ -38,25 +47,31 @@ class HomeViewModel: RefreshVM<HomeArticleModel> {
         })
             .disposed(by: disposeBag)
         
+        didSelectItemSubject
+            .subscribe(onNext: { [weak self] model in
+                self?.setOffset(refresh: true)
+                self?.articleTypeID = model.id
+                self?.requestData(true)
+            })
+            .disposed(by: disposeBag)
+        
         NotificationCenter.default.rx.notification(NotificationName.User.LoginSuccess)
             .flatMap{ _ in loadDataSignal }
             .subscribe(onNext: { [unowned self] data in
                 self.dealHomeHeaderData(data: data)
             })
             .disposed(by: disposeBag)
-        
-        goodNewsModelObser.value = [HomeGoodNewsModel(), HomeGoodNewsModel(), HomeGoodNewsModel()]
     }
     
     override func requestData(_ refresh: Bool) {
         setOffset(refresh: refresh)
         
-        HCProvider.request(.article(id: "6"))
+        HCProvider.request(.article(id: articleTypeID))
             .map(models: HomeArticleModel.self)
-            .subscribe(onSuccess: { data in
-                PrintLog("article data -- \(data)")
+            .subscribe(onSuccess: { [weak self] data in
+                self?.updateRefresh(refresh, data, nil)
             }) { error in
-                PrintLog("article error -- \(error)")
+
             }
             .disposed(by: disposeBag)
     }
@@ -79,6 +94,18 @@ class HomeViewModel: RefreshVM<HomeArticleModel> {
         return HCProvider.request(.noticeList(type: "new", pageNum: 1, pageSize: 10))
             .map(models: HomeNoticeModel.self)
             .asObservable()
+    }
+    
+    private func requestGoodNew() ->Observable<[HomeGoodNewsModel]> {
+        return HCProvider.request(.goodNews())
+        .map(models: HomeGoodNewsModel.self)
+        .asObservable()
+    }
+    
+    private func requestColumData() ->Observable<HomeColumnModel>{
+        return HCProvider.request(.column(cmsCode: "aa"))
+        .map(model: HomeColumnModel.self)
+        .asObservable()
     }
 }
 
@@ -108,10 +135,18 @@ extension HomeViewModel {
         }
     }
     
-    private func dealHomeHeaderData(data: ([HomeBannerModel], [HomeFunctionModel], [HomeNoticeModel])) {
+    private func dealHomeHeaderData(data: ([HomeBannerModel], [HomeFunctionModel], [HomeNoticeModel], HomeColumnModel, [HomeGoodNewsModel])) {
         bannerModelObser.value = data.0
         functionModelsObser.value = data.1
         noticeModelObser.value = data.2
+        
+        let firstColumModel = data.3.content.first
+        firstColumModel?.isSelected = true
+        articleTypeID = firstColumModel?.id ?? ""
+        columnModelObser.value = data.3
+        requestData(true)
+        
+        goodNewsModelObser.value = data.4
     }
-
+    
 }

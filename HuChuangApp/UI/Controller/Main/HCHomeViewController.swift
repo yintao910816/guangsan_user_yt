@@ -28,12 +28,14 @@ class HCHomeViewController: BaseViewController {
         }
         
         header = HomeHeaderView.init(frame: .init(x: 0, y: 0, width: tableView.width, height: 0))
+        
+        tableView.rowHeight = 60
+        tableView.register(UINib.init(nibName: "ArticleCell", bundle: Bundle.main),
+                           forCellReuseIdentifier: "ArticleCellID")
     }
     
     override func rxBind() {
         viewModel = HomeViewModel()
-        
-//        tableView.prepare(viewModel, HomeArticleModel.self, showFooter: true, showHeader: true, isAddNoMoreContent: false)
         
         viewModel.bannerModelObser.asDriver()
             .drive(header.bannerModelObser)
@@ -57,12 +59,29 @@ class HCHomeViewController: BaseViewController {
             .drive(header.goodNewsModelObser)
             .disposed(by: disposeBag)
         
-        viewModel.reloadSubject.onNext(Void())
+        tableView.prepare(viewModel, HomeArticleModel.self, showFooter: false, showHeader: true, isAddNoMoreContent: false)
+
+        viewModel.datasource.asDriver()
+            .drive(tableView.rx.items(cellIdentifier: "ArticleCellID", cellType: ArticleCell.self)) { _, model, cell in
+                cell.model = model
+            }
+            .disposed(by: disposeBag)
         
         header.functionDidSelected
             .map{ [unowned self] in ($0, self.navigationController) }
             .bind(to: viewModel.functionItemDidSelected)
             .disposed(by: disposeBag)
+        
+        // 今日知识
+        viewModel.columnModelObser.asDriver()
+            .drive(header.colunmModelObser)
+            .disposed(by: disposeBag)
+        
+        header.didSelectItemSubject
+            .bind(to: viewModel.didSelectItemSubject)
+            .disposed(by: disposeBag)
+        
+        viewModel.reloadSubject.onNext(Void())
     }
     
 }

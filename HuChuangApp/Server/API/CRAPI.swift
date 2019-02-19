@@ -26,8 +26,8 @@ enum API{
     case selectBanner()
     /// 首页功能列表
     case functionList()
-    /// api/index/goodNews
-//    case goodNews
+    /// 好消息
+    case goodNews()
     /// 首页通知消息
     case noticeList(type: String, pageNum: Int, pageSize: Int)
     /// 今日知识
@@ -51,13 +51,14 @@ extension API: TargetType{
             return "api/member/updateInfo"
         case .uploadIcon(_):
             return "api/upload/imgSingle"
-//            return "api/upload/fileSingle"
         case .selectBanner():
             return "api/index/selectBanner"
         case .functionList():
             return "api/index/select"
         case .noticeList(_):
             return "api/index/noticeList"
+        case .goodNews():
+            return "api/index/goodNews"
         case .column(_):
             return "api/index/column"
         case .article(_):

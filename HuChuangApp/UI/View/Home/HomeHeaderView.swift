@@ -20,14 +20,19 @@ class HomeHeaderView: UIView {
     @IBOutlet weak var noticeView: ScrollTextView!
     @IBOutlet weak var noticeMessageTitleOutlet: UILabel!
     @IBOutlet weak var goodNewsView: ScrollTextView!
-    
+    // 今日知识
+    @IBOutlet weak var colunmCollectionView: UICollectionView!
     @IBOutlet weak var functionViewHeightCns: NSLayoutConstraint!
+    
+    private var lastSelectedIndexPath: IndexPath?
     
     var bannerModelObser = Variable([HomeBannerModel]())
     var functionModelObser = Variable([HomeFunctionModel]())
     var noticeModelObser = Variable([HomeNoticeModel]())
     var goodNewsModelObser = Variable([HomeGoodNewsModel]())
-    
+    var colunmModelObser = Variable(HomeColumnModel())
+    var didSelectItemSubject = PublishSubject<HomeColumnItemModel>()
+
     public let functionDidSelected = PublishSubject<HomeFunctionModel>()
 
     override init(frame: CGRect) {
@@ -38,6 +43,9 @@ class HomeHeaderView: UIView {
 
         contentView.snp.makeConstraints{ $0.edges.equalTo(UIEdgeInsets.zero) }
        
+        colunmCollectionView.register(UINib.init(nibName: "ColunmCollectionViewCell", bundle: Bundle.main),
+                                      forCellWithReuseIdentifier: "ColunmCollectionViewCellID")
+        
         setupUI()
         rxBind()
     }
@@ -93,6 +101,58 @@ class HomeHeaderView: UIView {
         functionView.rx.modelSelected(HomeFunctionModel.self)
             .bind(to: functionDidSelected)
             .disposed(by: disposeBag)
+        
+        // 今日知识
+        let columData = colunmModelObser.asDriver().map{ [weak self] model -> [HomeColumnItemModel] in
+            self?.lastSelectedIndexPath = IndexPath.init(row: 0, section: 0)
+            return model.content
+        }
+        columData.drive(colunmCollectionView.rx.items(cellIdentifier: "ColunmCollectionViewCellID", cellType: ColunmCollectionViewCell.self)) { _, model, cell in
+            cell.model = model
+            }
+            .disposed(by: disposeBag)
+        
+        colunmCollectionView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+        
+    }
+}
+
+extension HomeHeaderView: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return colunmModelObser.value.content[indexPath.row].cellSize
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return .zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let _lastSelectedIndexPath = lastSelectedIndexPath, indexPath != _lastSelectedIndexPath {
+            let selectedModel = colunmModelObser.value.content[indexPath.row]
+            let lastSelectedModel = colunmModelObser.value.content[_lastSelectedIndexPath.row]
+
+            selectedModel.isSelected = true
+            lastSelectedModel.isSelected = false
+            
+            didSelectItemSubject.onNext(selectedModel)
+            
+            var cell = collectionView.cellForItem(at: indexPath) as? ColunmCollectionViewCell
+            cell?.updateUI()
+            cell = collectionView.cellForItem(at: _lastSelectedIndexPath) as? ColunmCollectionViewCell
+            cell?.updateUI()
+
+            lastSelectedIndexPath = indexPath
+        }
     }
 }
 
@@ -111,13 +171,13 @@ extension HomeHeaderView {
 extension HomeHeaderView {
     
     func headerHeight(dataCount: Int) ->CGFloat {
-        if dataCount == 0 { return 392 }
+        if dataCount == 0 { return 439 }
         
         let itemHeight: CGFloat = (PPScreenW - 1) / 4.0
         let height = CGFloat((dataCount / 4 + (dataCount % 4 == 0 ? 0 : 1))) * itemHeight + 10.0
         
         functionViewHeightCns.constant = height
 
-        return 392 + height
+        return 439 + height
     }
 }

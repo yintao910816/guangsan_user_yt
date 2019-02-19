@@ -59,13 +59,24 @@ extension HomeNoticeModel: ScrollTextModel {
 }
 
 class HomeGoodNewsModel: HJModel {
-    
+    var appid: String = ""
+    var name: String = ""
+    var count: String = ""
+    var deliver: String = ""
+    var pid: String = ""
+    var oid: String = ""
+    var type: String = ""
+    var mcardno: String = ""
+    var rowid: String = ""
 }
 
 extension HomeGoodNewsModel: ScrollTextModel {
     
     var textContent: String {
-        return "侧都能分两块三空间浪费你说打卡机开发能力健康三方就可能是电脑数据看妇科"
+        if type == "childbirth" {
+            return "热烈庆祝\(name)于\(deliver)成功分娩"
+        }
+        return "未知类型"
     }
     
     var height: CGFloat { return 63 }
@@ -136,6 +147,15 @@ class HomeColumnItemModel: HJModel {
     var unitId: String = ""
     var hide: Bool = false
     var del: Bool = false
+    
+    var isSelected: Bool = false
+    
+    lazy var cellSize: CGSize = {
+        let width = self.name.getTexWidth(fontSize: 13, height: 20)
+        return CGSize.init(width: width, height: 35)
+    }()
+    
+    
 }
 
 class HomeColumnModel: HJModel {

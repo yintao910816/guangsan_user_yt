@@ -10,6 +10,11 @@
 		5D46458DB41B31260940E2DE /* Pods_HuChuangApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA49B288AA9976792B904C2F /* Pods_HuChuangApp.framework */; };
 		B81C2F772215B60E00A887AF /* MineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81C2F762215B60E00A887AF /* MineHeaderView.swift */; };
 		B81C2F792215BBFB00A887AF /* FileUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81C2F782215BBFB00A887AF /* FileUpload.swift */; };
+		B826AF7F221C671B000428C1 /* ColunmCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B826AF7D221C671B000428C1 /* ColunmCollectionViewCell.swift */; };
+		B826AF80221C671B000428C1 /* ColunmCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B826AF7E221C671B000428C1 /* ColunmCollectionViewCell.xib */; };
+		B826AF82221C6C24000428C1 /* String+Extends.swift in Sources */ = {isa = PBXBuildFile; fileRef = B826AF81221C6C23000428C1 /* String+Extends.swift */; };
+		B826AF85221C7205000428C1 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B826AF83221C7205000428C1 /* ArticleCell.swift */; };
+		B826AF86221C7205000428C1 /* ArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B826AF84221C7205000428C1 /* ArticleCell.xib */; };
 		B879A060221AF0B200E573C9 /* MineFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879A05F221AF0B200E573C9 /* MineFooterView.swift */; };
 		B879A062221AF0BB00E573C9 /* MineFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B879A061221AF0BB00E573C9 /* MineFooterView.xib */; };
 		B8BE34EF2214599B00EF16F1 /* MineHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BE34EE2214599B00EF16F1 /* MineHeaderView.xib */; };
@@ -113,6 +118,11 @@
 		B134908D77E06AADC9A7A4A3 /* Pods-HuChuangApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuChuangApp.release.xcconfig"; path = "Target Support Files/Pods-HuChuangApp/Pods-HuChuangApp.release.xcconfig"; sourceTree = "<group>"; };
 		B81C2F762215B60E00A887AF /* MineHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineHeaderView.swift; sourceTree = "<group>"; };
 		B81C2F782215BBFB00A887AF /* FileUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUpload.swift; sourceTree = "<group>"; };
+		B826AF7D221C671B000428C1 /* ColunmCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColunmCollectionViewCell.swift; sourceTree = "<group>"; };
+		B826AF7E221C671B000428C1 /* ColunmCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColunmCollectionViewCell.xib; sourceTree = "<group>"; };
+		B826AF81221C6C23000428C1 /* String+Extends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extends.swift"; sourceTree = "<group>"; };
+		B826AF83221C7205000428C1 /* ArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
+		B826AF84221C7205000428C1 /* ArticleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleCell.xib; sourceTree = "<group>"; };
 		B879A05F221AF0B200E573C9 /* MineFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineFooterView.swift; sourceTree = "<group>"; };
 		B879A061221AF0BB00E573C9 /* MineFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineFooterView.xib; sourceTree = "<group>"; };
 		B8BE34EE2214599B00EF16F1 /* MineHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineHeaderView.xib; sourceTree = "<group>"; };
@@ -464,6 +474,7 @@
 		C421333022056F96006C10C4 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				B826AF81221C6C23000428C1 /* String+Extends.swift */,
 				B8BE351C221484C600EF16F1 /* UINavigationController+BarButtonItem.swift */,
 				B8BE350E2214797200EF16F1 /* FileManager+Extension.swift */,
 				B8BE350C2214794900EF16F1 /* Bundle+Extension.swift */,
@@ -647,6 +658,10 @@
 				B8BE34F6221465D900EF16F1 /* MineCell.xib */,
 				B8BE35022214723C00EF16F1 /* EditUserInfoCell.swift */,
 				B8BE35032214723C00EF16F1 /* EditUserInfoCell.xib */,
+				B826AF7D221C671B000428C1 /* ColunmCollectionViewCell.swift */,
+				B826AF7E221C671B000428C1 /* ColunmCollectionViewCell.xib */,
+				B826AF83221C7205000428C1 /* ArticleCell.swift */,
+				B826AF84221C7205000428C1 /* ArticleCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -729,8 +744,10 @@
 				C43F09BC2214315900910437 /* HomeFunctionCell.xib in Resources */,
 				C42132F922054463006C10C4 /* LaunchScreen.storyboard in Resources */,
 				C42133A52205B4FE006C10C4 /* HomeHeaderView.xib in Resources */,
+				B826AF86221C7205000428C1 /* ArticleCell.xib in Resources */,
 				B8BE34EF2214599B00EF16F1 /* MineHeaderView.xib in Resources */,
 				C421336122058E50006C10C4 /* HCLogin.storyboard in Resources */,
+				B826AF80221C671B000428C1 /* ColunmCollectionViewCell.xib in Resources */,
 				C4213338220572C6006C10C4 /* HCMain.storyboard in Resources */,
 				B8BE34F8221465D900EF16F1 /* MineCell.xib in Resources */,
 				B879A062221AF0BB00E573C9 /* MineFooterView.xib in Resources */,
@@ -860,6 +877,7 @@
 				C4213341220586DE006C10C4 /* HCCircleViewController.swift in Sources */,
 				C421338222059B8C006C10C4 /* UserDefaults+Cache.swift in Sources */,
 				C421334D220587DC006C10C4 /* Single+ModelMapper.swift in Sources */,
+				B826AF85221C7205000428C1 /* ArticleCell.swift in Sources */,
 				C421334C220587DC006C10C4 /* HandyJSON+MapModel.swift in Sources */,
 				B8BE34F7221465D900EF16F1 /* MineCell.swift in Sources */,
 				B8BE351522147AFF00EF16F1 /* HCEditSexViewController.swift in Sources */,
@@ -895,8 +913,10 @@
 				C421333422056FB8006C10C4 /* UIDevice+Extension.swift in Sources */,
 				C43F09BB2214315900910437 /* HomeFunctionCell.swift in Sources */,
 				C42133682205902A006C10C4 /* AccountViewModel.swift in Sources */,
+				B826AF7F221C671B000428C1 /* ColunmCollectionViewCell.swift in Sources */,
 				B8BE34F222145DF000EF16F1 /* UserFunctionButton.swift in Sources */,
 				C421338A22059D7A006C10C4 /* HomeViewModel.swift in Sources */,
+				B826AF82221C6C24000428C1 /* String+Extends.swift in Sources */,
 				C43F09C3221448B000910437 /* HCNotifications.swift in Sources */,
 				C421332D22056F24006C10C4 /* HUDUtil.swift in Sources */,
 				C421331C22056E83006C10C4 /* ViewControllerServer.swift in Sources */,
