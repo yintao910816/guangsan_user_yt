@@ -90,3 +90,55 @@ class HomeFunctionModel: HJModel {
     var unitId: String = ""
     var unitName: String = ""
 }
+
+class HomeArticleModel: HJModel {
+    var id: String = ""
+    var shopId: String = ""
+    var title: String = ""
+    var info: String = ""
+    var author: String = ""
+    var picPath: String = ""
+    var content: String = ""
+    var publishDate: String = ""
+    var sort: Int = 0
+    var channelId: Int = 0
+    var createDate: String = ""
+    var modifyDate: String = ""
+    var creates: String = ""
+    var modifys: String = ""
+    var bak: String = ""
+    var seoDescription: String = ""
+    var seoKeywords: String = ""
+    var code: String = ""
+    var unitId: String = ""
+    var del: String = ""
+    var recom: String = ""
+    var top: Bool = false
+    var release: Bool = false
+}
+
+class HomeColumnItemModel: HJModel {
+    var id: String = ""
+    var shopId: String = ""
+    var parentId: String = ""
+    var path: String = ""
+    var name: String = ""
+    var type: String = ""
+    var url: String = ""
+    var target: String = ""
+    var sort: String = ""
+    var createDate: String = ""
+    var modifyDate: String = ""
+    var creates: String = ""
+    var modifys: String = ""
+    var bak: String = ""
+    var code: String = ""
+    var unitId: String = ""
+    var hide: Bool = false
+    var del: Bool = false
+}
+
+class HomeColumnModel: HJModel {
+    var title: String = ""
+    var content: [HomeColumnItemModel] = []
+}

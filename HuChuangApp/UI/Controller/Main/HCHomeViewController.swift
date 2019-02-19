@@ -33,6 +33,8 @@ class HCHomeViewController: BaseViewController {
     override func rxBind() {
         viewModel = HomeViewModel()
         
+//        tableView.prepare(viewModel, HomeArticleModel.self, showFooter: true, showHeader: true, isAddNoMoreContent: false)
+        
         viewModel.bannerModelObser.asDriver()
             .drive(header.bannerModelObser)
             .disposed(by: disposeBag)

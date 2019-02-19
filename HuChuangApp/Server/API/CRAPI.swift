@@ -30,6 +30,9 @@ enum API{
 //    case goodNews
     /// 首页通知消息
     case noticeList(type: String, pageNum: Int, pageSize: Int)
+    /// 今日知识
+    case column(cmsCode: String)
+    case article(id: String)
 }
 
 //MARK:
@@ -55,6 +58,10 @@ extension API: TargetType{
             return "api/index/select"
         case .noticeList(_):
             return "api/index/noticeList"
+        case .column(_):
+            return "api/index/column"
+        case .article(_):
+            return "api/index/article"
         }
     }
     
@@ -129,6 +136,10 @@ extension API {
             params["type"] = type
             params["pageNum"] = pageNum
             params["pageSize"] = pageSize
+        case .column(let cmsCode):
+            params["cmsCode"] = cmsCode
+        case .article(let id):
+            params["id"] = id
         default:
             return nil
         }

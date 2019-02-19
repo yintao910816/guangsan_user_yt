@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class HomeViewModel: BaseViewModel {
+class HomeViewModel: RefreshVM<HomeArticleModel> {
     
     var bannerModelObser = Variable([HomeBannerModel]())
     var functionModelsObser = Variable([HomeFunctionModel]())
@@ -48,12 +48,21 @@ class HomeViewModel: BaseViewModel {
         goodNewsModelObser.value = [HomeGoodNewsModel(), HomeGoodNewsModel(), HomeGoodNewsModel()]
     }
     
-    private func dealHomeHeaderData(data: ([HomeBannerModel], [HomeFunctionModel], [HomeNoticeModel])) {
-        bannerModelObser.value = data.0
-        functionModelsObser.value = data.1
-        noticeModelObser.value = data.2
+    override func requestData(_ refresh: Bool) {
+        setOffset(refresh: refresh)
+        
+        HCProvider.request(.article(id: "6"))
+            .map(models: HomeArticleModel.self)
+            .subscribe(onSuccess: { data in
+                PrintLog("article data -- \(data)")
+            }) { error in
+                PrintLog("article error -- \(error)")
+            }
+            .disposed(by: disposeBag)
     }
     
+    //MARK:
+    //MARK: request
     private func requestBanner() ->Observable<[HomeBannerModel]>{
         return HCProvider.request(.selectBanner())
             .map(models: HomeBannerModel.self)
@@ -71,7 +80,10 @@ class HomeViewModel: BaseViewModel {
             .map(models: HomeNoticeModel.self)
             .asObservable()
     }
+}
 
+extension HomeViewModel {
+    
     private func functionPush(model: HomeFunctionModel, navigationVC: UINavigationController?) {
         if model.functionUrl.count > 0 {
             var url = model.functionUrl
@@ -82,17 +94,24 @@ class HomeViewModel: BaseViewModel {
                 url += "&token=\(userDefault.token)&unitId=\(model.unitId)"
             }
             PrintLog("h5拼接后地址：\(url)")
-
+            
             let webVC = BaseWebViewController()
             webVC.title = model.name
             webVC.url   = url
             navigationVC?.pushViewController(webVC, animated: true)
-//            let webVC = BaseWKWebViewViewController()
-//            webVC.title = model.name
-//            webVC.url = model.functionUrl + "&unitId=\(model.unitId)"
-//            navigationVC?.pushViewController(webVC, animated: true)
+            //            let webVC = BaseWKWebViewViewController()
+            //            webVC.title = model.name
+            //            webVC.url = model.functionUrl + "&unitId=\(model.unitId)"
+            //            navigationVC?.pushViewController(webVC, animated: true)
         }else {
             hud.failureHidden("功能暂不开放")
         }
     }
+    
+    private func dealHomeHeaderData(data: ([HomeBannerModel], [HomeFunctionModel], [HomeNoticeModel])) {
+        bannerModelObser.value = data.0
+        functionModelsObser.value = data.1
+        noticeModelObser.value = data.2
+    }
+
 }
