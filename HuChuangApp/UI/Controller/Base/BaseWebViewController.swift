@@ -11,6 +11,8 @@ import JavaScriptCore
 
 class BaseWebViewController: BaseViewController {
 
+    var url: String = ""
+
     var context : JSContext?
 
     lazy var hud: NoticesCenter = {
@@ -24,12 +26,6 @@ class BaseWebViewController: BaseViewController {
         w.delegate = self
         return w
     }()
-    
-    var url: String!{
-        didSet{
-            url = url + "&token=" + userDefault.token
-        }
-    }
     
     override func setupUI() {
         view.backgroundColor = .white
@@ -71,7 +67,7 @@ extension BaseWebViewController: UIWebViewDelegate{
         PrintLog("shouldStartLoadWith -- \(s)")
 
         if s == "app://reload"{
-            webView.loadRequest(URLRequest.init(url: URL.init(string: url!)!))
+            webView.loadRequest(URLRequest.init(url: URL.init(string: url)!))
             return false
         }
         

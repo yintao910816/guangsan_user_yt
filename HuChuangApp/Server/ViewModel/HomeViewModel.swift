@@ -75,11 +75,14 @@ class HomeViewModel: BaseViewModel {
     private func functionPush(model: HomeFunctionModel, navigationVC: UINavigationController?) {
         if model.functionUrl.count > 0 {
             var url = model.functionUrl
-            if url.last != "?" {
-                url += "?unitId=\(model.unitId)"
+            PrintLog("h5拼接前地址：\(url)")
+            if url.contains("?") == false {
+                url += "?token=\(userDefault.token)&unitId=\(model.unitId)"
             }else {
-                url += "unitId=\(model.unitId)"
+                url += "&token=\(userDefault.token)&unitId=\(model.unitId)"
             }
+            PrintLog("h5拼接后地址：\(url)")
+
             let webVC = BaseWebViewController()
             webVC.title = model.name
             webVC.url   = url
