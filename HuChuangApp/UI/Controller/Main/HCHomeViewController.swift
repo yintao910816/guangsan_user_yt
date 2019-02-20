@@ -11,11 +11,24 @@ import UIKit
 class HCHomeViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var navHeightCns: NSLayoutConstraint!
+    @IBOutlet weak var navOutlet: UIView!
     
     private var header: HomeHeaderView!
     
     private var viewModel: HomeViewModel!
 
+    @IBAction func actions(_ sender: UIButton) {
+        switch sender.tag {
+        case 100:
+            navigationController?.pushViewController(HCScanViewController(), animated: true)
+        case 101:
+            break
+        default:
+            break
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -26,7 +39,8 @@ class HCHomeViewController: BaseViewController {
         if #available(iOS 11, *) {
             tableView.contentInsetAdjustmentBehavior = .never
         }
-        
+        navHeightCns.constant += LayoutSize.fitTopArea
+
         header = HomeHeaderView.init(frame: .init(x: 0, y: 0, width: tableView.width, height: 0))
         
         tableView.rowHeight = 60

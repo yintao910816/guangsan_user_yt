@@ -11,4 +11,8 @@
 
 #import <CommonCrypto/CommonCrypto.h>
 
+#import "LBXScanViewController.h"
+#import "LBXScanView.h"
+#import "ZXingWrapper.h"
+
 #endif /* HcChuangApp_Bridge_Header_h */

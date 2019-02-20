@@ -27,6 +27,14 @@ class BaseWebViewController: BaseViewController {
         return w
     }()
     
+    override func prepare(parameters: [String : Any]?) {
+        guard let _url = parameters?["url"] as? String else {
+            return
+        }
+        
+        url = _url
+    }
+    
     override func setupUI() {
         view.backgroundColor = .white
         if #available(iOS 11, *) {

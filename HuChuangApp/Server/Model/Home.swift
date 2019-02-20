@@ -59,6 +59,11 @@ extension HomeNoticeModel: ScrollTextModel {
 }
 
 class HomeGoodNewsModel: HJModel {
+    var unitName: String = ""
+    var list: [HomeGoodNewsItemModel] = []
+}
+
+class HomeGoodNewsItemModel: HJModel {
     var appid: String = ""
     var name: String = ""
     var count: String = ""
@@ -70,7 +75,7 @@ class HomeGoodNewsModel: HJModel {
     var rowid: String = ""
 }
 
-extension HomeGoodNewsModel: ScrollTextModel {
+extension HomeGoodNewsItemModel: ScrollTextModel {
     
     var textContent: String {
         if type == "childbirth" {

@@ -14,7 +14,7 @@ class HomeViewModel: RefreshVM<HomeArticleModel> {
     var bannerModelObser = Variable([HomeBannerModel]())
     var functionModelsObser = Variable([HomeFunctionModel]())
     var noticeModelObser = Variable([HomeNoticeModel]())
-    var goodNewsModelObser = Variable([HomeGoodNewsModel]())
+    var goodNewsModelObser = Variable(HomeGoodNewsModel())
     var columnModelObser   = Variable(HomeColumnModel())
     
     var didSelectItemSubject = PublishSubject<HomeColumnItemModel>()
@@ -96,10 +96,10 @@ class HomeViewModel: RefreshVM<HomeArticleModel> {
             .asObservable()
     }
     
-    private func requestGoodNew() ->Observable<[HomeGoodNewsModel]> {
+    private func requestGoodNew() ->Observable<HomeGoodNewsModel> {
         return HCProvider.request(.goodNews())
-        .map(models: HomeGoodNewsModel.self)
-        .asObservable()
+            .map(model: HomeGoodNewsModel.self)
+            .asObservable()
     }
     
     private func requestColumData() ->Observable<HomeColumnModel>{
@@ -135,7 +135,7 @@ extension HomeViewModel {
         }
     }
     
-    private func dealHomeHeaderData(data: ([HomeBannerModel], [HomeFunctionModel], [HomeNoticeModel], HomeColumnModel, [HomeGoodNewsModel])) {
+    private func dealHomeHeaderData(data: ([HomeBannerModel], [HomeFunctionModel], [HomeNoticeModel], HomeColumnModel, HomeGoodNewsModel)) {
         bannerModelObser.value = data.0
         functionModelsObser.value = data.1
         noticeModelObser.value = data.2

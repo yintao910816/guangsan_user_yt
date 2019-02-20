@@ -29,7 +29,7 @@ class HomeHeaderView: UIView {
     var bannerModelObser = Variable([HomeBannerModel]())
     var functionModelObser = Variable([HomeFunctionModel]())
     var noticeModelObser = Variable([HomeNoticeModel]())
-    var goodNewsModelObser = Variable([HomeGoodNewsModel]())
+    var goodNewsModelObser = Variable(HomeGoodNewsModel())
     var colunmModelObser = Variable(HomeColumnModel())
     var didSelectItemSubject = PublishSubject<HomeColumnItemModel>()
 
@@ -87,6 +87,7 @@ class HomeHeaderView: UIView {
             .disposed(by: disposeBag)
 
         goodNewsModelObser.asDriver()
+            .map{ $0.list }
             .drive(onNext: { [weak self] data in
                 self?.goodNewsView.datasourceModel = data
             })
