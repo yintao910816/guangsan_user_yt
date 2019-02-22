@@ -25,7 +25,7 @@ class ScanViewModel: BaseViewModel, VMNavigation {
         let urlRegex = "((http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(www.[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)"
         let predt = NSPredicate.init(format: "SELF MATCHES %@", urlRegex)
         if predt.evaluate(with: url){
-            ScanViewModel.push(BaseWebViewController.self, ["url": "\(url)&token=\(userDefault.token)"])
+            ScanViewModel.push(BaseWebViewController.self, ["url": "\(url)&app=ios&token=\(userDefault.token)"])
         }
     }
 }
