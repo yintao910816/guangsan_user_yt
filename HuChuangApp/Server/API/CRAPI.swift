@@ -9,6 +9,12 @@
 import Foundation
 import Moya
 
+enum H5Type: String {
+    case goodNews = "goodnews"
+    /// 消息中心
+    case notification = "notification"
+}
+
 //MARK:
 //MARK: 接口定义
 enum API{
@@ -33,6 +39,9 @@ enum API{
     /// 今日知识
     case column(cmsCode: String)
     case article(id: String)
+    
+    /// 获取h5地址
+    case unitSetting(type: H5Type)
 }
 
 //MARK:
@@ -63,6 +72,8 @@ extension API: TargetType{
             return "api/index/column"
         case .article(_):
             return "api/index/article"
+        case .unitSetting(_):
+            return "api/index/unitSetting"
         }
     }
     
@@ -141,6 +152,8 @@ extension API {
             params["cmsCode"] = cmsCode
         case .article(let id):
             params["id"] = id
+        case .unitSetting(let type):
+            params["settingCode"] = type.rawValue
         default:
             return nil
         }
