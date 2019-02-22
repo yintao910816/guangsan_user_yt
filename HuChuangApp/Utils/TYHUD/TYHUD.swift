@@ -45,7 +45,6 @@ class TYHUD: NSObject{
     //MARK: 控制 HUD 显 隐
     public func show(forStatue statue: LoadingStatus, onView view: UIView? = nil) {
         updateBg(view)
-        PrintLog("bbbbb -b \(statue.hint())")
         indicator.setStatue(statue: statue)
         indicator.startAnimation()
         bgView.frameViewLayout()
@@ -64,9 +63,7 @@ class TYHUD: NSObject{
     public func hidden(forStatue statue: LoadingStatus, forIntervar after: TimeInterval, _ completion: (()-> Void)?) {
         complement = completion
         loadingStatu = statue
-        
-        PrintLog("cccc --- \(statue.hint())")
-        
+                
         let _after = Date().timeIntervalSince(timerWhenShow)
 
         if statue.hint()?.isEmpty == true {

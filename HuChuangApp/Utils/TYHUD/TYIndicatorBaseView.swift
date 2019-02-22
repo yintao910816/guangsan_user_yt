@@ -30,6 +30,13 @@ open class TYIndicatorBaseView: UIView ,TYHUDAnimating{
         
         addSubview(indicatorView)
         addSubview(textLabel)
+        
+        textLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(self.snp.centerX)
+            make.centerY.equalTo(self.snp.centerY)
+            make.width.equalTo(1)
+            make.height.equalTo(1)
+        }
     }
     
     public var fontSize: CGFloat = 14.0 {
@@ -73,7 +80,7 @@ open class TYIndicatorBaseView: UIView ,TYHUDAnimating{
     //MARK:
     public func setStatue(statue: LoadingStatus) {
         loadingStatu   = statue
-        textLabel.text = "草泥马的啊"//statue.hint()
+        textLabel.text = statue.hint()
         
         frame.size = frameSize()
         layoutIfNeeded()
@@ -157,7 +164,15 @@ fileprivate extension TYIndicatorBaseView {
             }
         }
         // 在 最小文字宽度 和 最大文字宽度 之间
-        textLabel.size = CGSize.init(width: width, height: IndicatorSize.minTextHeight)
+        textLabel.snp.updateConstraints{
+            $0.width.equalTo(width)
+            $0.height.equalTo(IndicatorSize.minTextHeight)
+        }
+//        var rect = textLabel.frame
+//        rect.size.width = width
+//        rect.size.height = IndicatorSize.minTextHeight
+//        textLabel.frame = rect
+//        textLabel.size = CGSize.init(width: width, height: IndicatorSize.minTextHeight)
         return indicator == true ? CGSize.init(width: width + 2*IndicatorSize.h_margin,
                                                height: IndicatorSize.defaultSize.height):
                                    CGSize.init(width: width + 2*IndicatorSize.h_margin,

@@ -37,8 +37,8 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
                                                       requestGoodNew()){ ($0, $1, $2, $3, $4) }
         reloadSubject.flatMap{ loadDataSignal }
             .subscribe(onNext: { [unowned self] data in
+                self.hud.noticeHidden()
                 self.dealHomeHeaderData(data: data)
-                self.hud.failureHidden("发声方法是")
                 }, onError: { [unowned self] error in
                     self.hud.failureHidden(self.errorMessage(error))
             })
