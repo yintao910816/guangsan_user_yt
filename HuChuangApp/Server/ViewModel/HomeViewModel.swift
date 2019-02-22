@@ -18,6 +18,8 @@ class HomeViewModel: RefreshVM<HomeArticleModel> {
     var columnModelObser   = Variable(HomeColumnModel())
     
     var didSelectItemSubject = PublishSubject<HomeColumnItemModel>()
+    let noticeDidSelected = PublishSubject<Int>()
+    let goodnewsDidSelected = PublishSubject<Int>()
 
     let functionItemDidSelected = PublishSubject<(HomeFunctionModel, UINavigationController?)>()
     
@@ -52,6 +54,18 @@ class HomeViewModel: RefreshVM<HomeArticleModel> {
                 self?.setOffset(refresh: true)
                 self?.articleTypeID = model.id
                 self?.requestData(true)
+            })
+            .disposed(by: disposeBag)
+        
+        goodnewsDidSelected
+            .subscribe(onNext: { [weak self] row in
+                
+            })
+            .disposed(by: disposeBag)
+        
+        noticeDidSelected
+            .subscribe(onNext: { [weak self] row in
+                
             })
             .disposed(by: disposeBag)
         
@@ -106,6 +120,11 @@ class HomeViewModel: RefreshVM<HomeArticleModel> {
         return HCProvider.request(.column(cmsCode: "aa"))
         .map(model: HomeColumnModel.self)
         .asObservable()
+    }
+    
+    private func requestH5(type: H5Type) {
+        HCProvider.request(.unitSetting(type: type))
+        
     }
 }
 

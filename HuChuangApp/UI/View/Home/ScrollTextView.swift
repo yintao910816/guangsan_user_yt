@@ -14,6 +14,7 @@ class ScrollTextView: UITableView {
     private var scrolToRow: Int = 0
     
     public var cellDidScroll: ((Int) ->())?
+    public var cellDidSelected: ((IndexPath) ->())?
 
     var datasourceModel: [ScrollTextModel]! {
         didSet {
@@ -136,7 +137,7 @@ extension ScrollTextView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        PrintLog("ScrollTextView -- didSelectRowAt")
+        cellDidSelected?(indexPath)
     }
 }
 

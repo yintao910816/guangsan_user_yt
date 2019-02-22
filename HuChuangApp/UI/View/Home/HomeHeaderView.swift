@@ -32,6 +32,9 @@ class HomeHeaderView: UIView {
     var goodNewsModelObser = Variable(HomeGoodNewsModel())
     var colunmModelObser = Variable(HomeColumnModel())
     var didSelectItemSubject = PublishSubject<HomeColumnItemModel>()
+    
+    public let noticeDidSelected = PublishSubject<Int>()
+    public let goodnewsDidSelected = PublishSubject<Int>()
 
     public let functionDidSelected = PublishSubject<HomeFunctionModel>()
 
@@ -116,6 +119,14 @@ class HomeHeaderView: UIView {
         colunmCollectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
+        noticeView.cellDidSelected = { [weak self] indexPath in
+            self?.noticeDidSelected.onNext(indexPath.row)
+        }
+        
+        goodNewsView.cellDidSelected = { [weak self] indexPath in
+            self?.goodnewsDidSelected.onNext(indexPath.row)
+        }
+
     }
 }
 
