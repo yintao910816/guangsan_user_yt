@@ -57,6 +57,10 @@ class HCMineViewController: BaseViewController {
             .bind(to: header.userModel)
             .disposed(by: disposeBag)
         
+        tableView.rx.modelSelected(String.self)
+            .bind(to: viewModel.cellDidSelected)
+            .disposed(by: disposeBag)
+        
         footer.loginOut = {
             HCHelper.share.clearUser()
             HCHelper.presentLogin()

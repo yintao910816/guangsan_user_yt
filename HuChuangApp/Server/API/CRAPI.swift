@@ -10,9 +10,12 @@ import Foundation
 import Moya
 
 enum H5Type: String {
+    /// 好孕消息
     case goodNews = "goodnews"
     /// 消息中心
     case notification = "notification"
+    /// 认证
+    case bindHos = "bindHos"
 }
 
 //MARK:

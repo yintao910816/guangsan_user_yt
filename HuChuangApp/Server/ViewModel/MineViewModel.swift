@@ -14,6 +14,7 @@ class MineViewModel: BaseViewModel, VMNavigation {
     let userInfo = PublishSubject<HCUserModel>()
     let datasource = PublishSubject<[String]>()
     let gotoEditUserInfo = PublishSubject<Void>()
+    let cellDidSelected = PublishSubject<String>()
     
     override init() {
         super.init()
@@ -21,6 +22,12 @@ class MineViewModel: BaseViewModel, VMNavigation {
         gotoEditUserInfo
             .subscribe(onNext: { _ in
                 MineViewModel.sbPush("HCMain", "editUserInfoVC")
+            })
+            .disposed(by: disposeBag)
+        
+        cellDidSelected
+            .subscribe(onNext: { [unowned self] title in
+                self.cellDidSelected(title: title)
             })
             .disposed(by: disposeBag)
         
@@ -34,6 +41,26 @@ class MineViewModel: BaseViewModel, VMNavigation {
             .disposed(by: disposeBag)
     }
     
+    private func cellDidSelected(title: String) {
+        if title == "身份认证" {
+            hud.noticeLoading()
+            requestH5(type: .bindHos)
+                .subscribe(onNext: { [weak self] model in
+                    self?.hud.noticeHidden()
+                    self?.pushH5(model: model)
+                    }, onError: { error in
+                        self.hud.failureHidden(self.errorMessage(error))
+                })
+                .disposed(by: disposeBag)
+        }
+    }
+    
+    private func requestH5(type: H5Type) ->Observable<H5InfoModel> {
+        return HCProvider.request(.unitSetting(type: type))
+            .map(model: H5InfoModel.self)
+            .asObservable()
+    }
+
     private func requestUserInfo() {
         let data = ["身份认证", "我的消息", "意见反馈", "分享给好友", "设置"]
         datasource.onNext(data)
@@ -48,4 +75,10 @@ class MineViewModel: BaseViewModel, VMNavigation {
             }
             .disposed(by: disposeBag)
     }
+    
+    private func pushH5(model: H5InfoModel) {
+        let url = "\(model.setValue)&token=\(userDefault.token)"
+        HomeViewModel.push(BaseWebViewController.self, ["url": url])
+    }
+
 }
