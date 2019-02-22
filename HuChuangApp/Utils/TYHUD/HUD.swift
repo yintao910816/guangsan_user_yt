@@ -21,7 +21,9 @@ public final class HUD {
         hudCtrl = TYHUD.init(content, HUD.indicatorView(content), bgStyle)
     }
     
-    public func showLoading(onView view: UIView? = nil, forText text: String? = nil) { hudCtrl.show(forStatue: LoadingStatus.loading(text: text), onView: view) }
+    public func showLoading(onView view: UIView? = nil, forText text: String? = nil) {
+        hudCtrl.show(forStatue: LoadingStatus.loading(text: text), onView: view)
+    }
     public func hiddenSuccess(forText text: String? = nil, forIntervar after: TimeInterval, _ completion: (()-> Void)?) {
         hudCtrl.hidden(forStatue: LoadingStatus.success(text: text), forIntervar: after, completion)
     }

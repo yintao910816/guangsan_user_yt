@@ -73,7 +73,7 @@ open class TYIndicatorBaseView: UIView ,TYHUDAnimating{
     //MARK:
     public func setStatue(statue: LoadingStatus) {
         loadingStatu   = statue
-        textLabel.text = statue.hint()
+        textLabel.text = "草泥马的啊"//statue.hint()
         
         frame.size = frameSize()
         layoutIfNeeded()

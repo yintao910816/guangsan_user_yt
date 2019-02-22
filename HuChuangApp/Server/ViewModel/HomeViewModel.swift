@@ -38,7 +38,7 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
         reloadSubject.flatMap{ loadDataSignal }
             .subscribe(onNext: { [unowned self] data in
                 self.dealHomeHeaderData(data: data)
-                self.hud.noticeHidden()
+                self.hud.failureHidden("发声方法是")
                 }, onError: { [unowned self] error in
                     self.hud.failureHidden(self.errorMessage(error))
             })
@@ -58,8 +58,8 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
             .disposed(by: disposeBag)
         
         goodnewsDidSelected
-            .flatMap{ [unowned self] _ in self.requestH5(type: .goodNews) }
             ._doNext(forNotice: hud)
+            .flatMap{ [unowned self] _ in self.requestH5(type: .goodNews) }
             .subscribe(onNext: { [unowned self] model in
                 self.hud.noticeHidden()
                 self.pushH5(model: model)
@@ -69,6 +69,7 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
             .disposed(by: disposeBag)
         
         noticeDidSelected
+            ._doNext(forNotice: hud)
             .flatMap{ [unowned self] _ in self.requestH5(type: .notification) }
             .subscribe(onNext: { mdoel in
                 self.hud.noticeHidden()
