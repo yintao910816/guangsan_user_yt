@@ -86,6 +86,14 @@ class HCHomeViewController: BaseViewController {
             .bind(to: viewModel.functionItemDidSelected)
             .disposed(by: disposeBag)
         
+        header.noticeDidSelected
+            .bind(to: viewModel.noticeDidSelected)
+            .disposed(by: disposeBag)
+        
+        header.goodnewsDidSelected
+            .bind(to: viewModel.goodnewsDidSelected)
+            .disposed(by: disposeBag)
+
         // 今日知识
         viewModel.columnModelObser.asDriver()
             .drive(header.colunmModelObser)

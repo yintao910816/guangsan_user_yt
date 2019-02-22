@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class HomeViewModel: RefreshVM<HomeArticleModel> {
+class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
     
     var bannerModelObser = Variable([HomeBannerModel]())
     var functionModelsObser = Variable([HomeFunctionModel]())
@@ -58,17 +58,26 @@ class HomeViewModel: RefreshVM<HomeArticleModel> {
             .disposed(by: disposeBag)
         
         goodnewsDidSelected
-            .subscribe(onNext: { [weak self] row in
-                
+            .flatMap{ [unowned self] _ in self.requestH5(type: .goodNews) }
+            ._doNext(forNotice: hud)
+            .subscribe(onNext: { [unowned self] model in
+                self.hud.noticeHidden()
+                self.pushH5(model: model)
+            }, onError: { error in
+                self.hud.failureHidden(self.errorMessage(error))
             })
             .disposed(by: disposeBag)
         
         noticeDidSelected
-            .subscribe(onNext: { [weak self] row in
-                
+            .flatMap{ [unowned self] _ in self.requestH5(type: .notification) }
+            .subscribe(onNext: { mdoel in
+                self.hud.noticeHidden()
+                self.pushH5(model: mdoel)
+            }, onError: { error in
+                self.hud.failureHidden(self.errorMessage(error))
             })
             .disposed(by: disposeBag)
-        
+
         NotificationCenter.default.rx.notification(NotificationName.User.LoginSuccess)
             .flatMap{ _ in loadDataSignal }
             .subscribe(onNext: { [unowned self] data in
@@ -88,6 +97,11 @@ class HomeViewModel: RefreshVM<HomeArticleModel> {
 
             }
             .disposed(by: disposeBag)
+    }
+    
+    private func pushH5(model: H5InfoModel) {
+        let url = "\(model.setValue)&token=\(userDefault.token)"
+        HomeViewModel.push(BaseWebViewController.self, ["url": url])
     }
     
     //MARK:
@@ -122,9 +136,10 @@ class HomeViewModel: RefreshVM<HomeArticleModel> {
         .asObservable()
     }
     
-    private func requestH5(type: H5Type) {
-        HCProvider.request(.unitSetting(type: type))
-        
+    private func requestH5(type: H5Type) ->Observable<H5InfoModel> {
+        return HCProvider.request(.unitSetting(type: type))
+            .map(model: H5InfoModel.self)
+            .asObservable()
     }
 }
 
