@@ -101,7 +101,7 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
     }
     
     private func pushH5(model: H5InfoModel) {
-        let url = "\(model.setValue)&token=\(userDefault.token)"
+        let url = "\(model.setValue)?token=\(userDefault.token)&unitId=36"
         HomeViewModel.push(BaseWebViewController.self, ["url": url])
     }
     
