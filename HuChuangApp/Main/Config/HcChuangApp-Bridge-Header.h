@@ -15,4 +15,8 @@
 #import "LBXScanView.h"
 #import "ZXingWrapper.h"
 
+#import <UMPush/UMessage.h>
+#import <UMCommon/UMCommon.h>
+#import <UMCommon/UMConfigure.h>
+
 #endif /* HcChuangApp_Bridge_Header_h */

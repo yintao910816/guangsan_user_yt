@@ -248,6 +248,7 @@
 		B826AF82221C6C24000428C1 /* String+Extends.swift in Sources */ = {isa = PBXBuildFile; fileRef = B826AF81221C6C23000428C1 /* String+Extends.swift */; };
 		B826AF85221C7205000428C1 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B826AF83221C7205000428C1 /* ArticleCell.swift */; };
 		B826AF86221C7205000428C1 /* ArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B826AF84221C7205000428C1 /* ArticleCell.xib */; };
+		B842D1FE22258CC000A4F8DF /* HCAppDelegate+UM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B842D1FD22258CC000A4F8DF /* HCAppDelegate+UM.swift */; };
 		B879A060221AF0B200E573C9 /* MineFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879A05F221AF0B200E573C9 /* MineFooterView.swift */; };
 		B879A062221AF0BB00E573C9 /* MineFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B879A061221AF0BB00E573C9 /* MineFooterView.xib */; };
 		B8BE34EF2214599B00EF16F1 /* MineHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BE34EE2214599B00EF16F1 /* MineHeaderView.xib */; };
@@ -837,6 +838,8 @@
 		B826AF81221C6C23000428C1 /* String+Extends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extends.swift"; sourceTree = "<group>"; };
 		B826AF83221C7205000428C1 /* ArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
 		B826AF84221C7205000428C1 /* ArticleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleCell.xib; sourceTree = "<group>"; };
+		B842D1FD22258CC000A4F8DF /* HCAppDelegate+UM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HCAppDelegate+UM.swift"; sourceTree = "<group>"; };
+		B842D1FF22258D7F00A4F8DF /* HuChuangApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HuChuangApp.entitlements; sourceTree = "<group>"; };
 		B879A05F221AF0B200E573C9 /* MineFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineFooterView.swift; sourceTree = "<group>"; };
 		B879A061221AF0BB00E573C9 /* MineFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineFooterView.xib; sourceTree = "<group>"; };
 		B8BE34EE2214599B00EF16F1 /* MineHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineHeaderView.xib; sourceTree = "<group>"; };
@@ -1794,6 +1797,7 @@
 		C42132ED22054462006C10C4 /* HuChuangApp */ = {
 			isa = PBXGroup;
 			children = (
+				B842D1FF22258D7F00A4F8DF /* HuChuangApp.entitlements */,
 				C421330722056B59006C10C4 /* Main */,
 				C421330422056B19006C10C4 /* Core */,
 				C421330522056B19006C10C4 /* HCHelper */,
@@ -1888,6 +1892,7 @@
 			isa = PBXGroup;
 			children = (
 				C421330A22056B59006C10C4 /* HCAppDelegate.swift */,
+				B842D1FD22258CC000A4F8DF /* HCAppDelegate+UM.swift */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -2198,6 +2203,14 @@
 				TargetAttributes = {
 					C42132EA22054462006C10C4 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -2379,6 +2392,7 @@
 				B816EB49221DABF400F024D5 /* ZXProductParsedResult.m in Sources */,
 				C4213351220587F6006C10C4 /* CRAPI.swift in Sources */,
 				B816EA92221DABF400F024D5 /* ZXAztecSimpleToken.m in Sources */,
+				B842D1FE22258CC000A4F8DF /* HCAppDelegate+UM.swift in Sources */,
 				B816EA76221DABF400F024D5 /* LBXScanVideoZoomView.m in Sources */,
 				C42133732205974A006C10C4 /* Validate.swift in Sources */,
 				B816EAAD221DABF400F024D5 /* ZXQRCodeAlignmentPatternFinder.m in Sources */,
@@ -2778,6 +2792,7 @@
 			baseConfigurationReference = 9AD9FF392745B099CB0232B2 /* Pods-HuChuangApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HuChuangApp/HuChuangApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = J9M9SRP484;
@@ -2801,6 +2816,7 @@
 			baseConfigurationReference = B134908D77E06AADC9A7A4A3 /* Pods-HuChuangApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HuChuangApp/HuChuangApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = J9M9SRP484;

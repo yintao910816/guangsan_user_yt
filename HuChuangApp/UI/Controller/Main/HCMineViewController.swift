@@ -66,6 +66,24 @@ class HCMineViewController: BaseViewController {
             HCHelper.presentLogin()
         }
         
+        header.yuyueOutlet.rx.tap.asDriver()
+            .drive(onNext: { [unowned self] _ in
+                NoticesCenter.alert(message: "开发中...")
+            })
+            .disposed(by: disposeBag)
+        
+        header.wenzhenOutlet.rx.tap.asDriver()
+            .drive(onNext: { [unowned self] _ in
+                NoticesCenter.alert(message: "开发中...")
+            })
+            .disposed(by: disposeBag)
+
+        header.quanziOutlet.rx.tap.asDriver()
+            .drive(onNext: { [unowned self] _ in
+                NoticesCenter.alert(message: "开发中...")
+            })
+            .disposed(by: disposeBag)
+
         viewModel.reloadSubject.onNext(Void())
     }
 }

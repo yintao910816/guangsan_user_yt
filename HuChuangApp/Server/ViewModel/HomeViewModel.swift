@@ -22,7 +22,8 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
     let goodnewsDidSelected = PublishSubject<Int>()
 
     let functionItemDidSelected = PublishSubject<(HomeFunctionModel, UINavigationController?)>()
-    
+    let messageListPublish = PublishSubject<Void>()
+
     private var articleTypeID: String = ""
 
     override init() {
@@ -44,6 +45,11 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
             })
             .disposed(by: disposeBag)
         
+        messageListPublish.subscribe(onNext: { [unowned self] _ in
+
+        })
+            .disposed(by: disposeBag)
+
         functionItemDidSelected.subscribe(onNext: { [unowned self] data in
             self.functionPush(model: data.0, navigationVC: data.1)
         })

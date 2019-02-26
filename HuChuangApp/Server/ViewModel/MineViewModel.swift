@@ -62,7 +62,8 @@ class MineViewModel: BaseViewModel, VMNavigation {
     }
 
     private func requestUserInfo() {
-        let data = ["身份认证", "我的消息", "意见反馈", "分享给好友", "设置"]
+//        let data = ["身份认证", "我的消息", "意见反馈", "分享给好友", "设置"]
+        let data = ["身份认证"]
         datasource.onNext(data)
         
         HCProvider.request(.selectInfo())
