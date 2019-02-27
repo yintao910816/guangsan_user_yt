@@ -11,6 +11,8 @@ import Foundation
 let kUID              = "uid"
 let kToken            = "token"
 
+let kLoginPhone       = "loginPhone"
+
 /**
  * 是否加载引导界面
  *

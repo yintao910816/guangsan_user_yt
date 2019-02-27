@@ -25,6 +25,20 @@ extension UserDefaults{
             synchronize()
         }
     }
+    
+    var loginPhone: String {
+        get {
+            guard let phone = object(forKey: kLoginPhone) as? String else {
+                return ""
+            }
+            return phone
+        }
+        set {
+            set(loginPhone, forKey: kLoginPhone)
+            synchronize()
+        }
+    }
+    
     var token: String {
         get{
             guard let rtToken = (object(forKey: kToken) as? String) else {

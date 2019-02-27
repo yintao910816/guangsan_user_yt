@@ -26,6 +26,6 @@ class ScanViewModel: BaseViewModel, VMNavigation {
 //        let predt = NSPredicate.init(format: "SELF MATCHES %@", urlRegex)
 //        if predt.evaluate(with: url){
 //        }
-        ScanViewModel.push(BaseWebViewController.self, ["url": "\(url)&app=ios&token=\(userDefault.token)"])
+        ScanViewModel.push(BaseWebViewController.self, ["url": "\(url)?app=ios&token=\(userDefault.token)"])
     }
 }

@@ -65,7 +65,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n9k-NE-kdM">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
-                                    <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KiM-Dw-ec0">
+                                    <button hidden="YES" opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KiM-Dw-ec0">
                                         <rect key="frame" x="325" y="24.5" width="35" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="KiM-Dw-ec0" secondAttribute="height" multiplier="1:1" id="Tyw-QE-83T"/>

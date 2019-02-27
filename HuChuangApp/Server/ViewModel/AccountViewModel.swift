@@ -55,12 +55,10 @@ class LoginViewModel: BaseViewModel {
         HCProvider.request(.login(mobile: data.0, smsCode: data.1))
             .map(model: HCUserModel.self)
             .subscribe(onSuccess: { [weak self] user in
+                userDefault.loginPhone = data.0
                 HCHelper.saveLogin(user: user)
 
                 self?.popSubject.onNext(Void())
-//                self?.hud.successHidden("登录成功", {
-//                    self?.popSubject.onNext(Void())
-//                })
             }) { [weak self] error in
                 self?.hud.failureHidden(self?.errorMessage(error))
             }
