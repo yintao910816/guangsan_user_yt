@@ -68,6 +68,10 @@ class HCLoginViewController: BaseViewController {
             
             authorWidthCns.constant = 0
             authorHMarginCns.constant = 0
+        }else if sender.tag == 1000 {
+            let webVC = BaseWebViewController()
+            webVC.url = "http://120.24.79.125/static/html/roujiyunbao.html"
+            navigationController?.pushViewController(webVC, animated: true)
         }
     }
     

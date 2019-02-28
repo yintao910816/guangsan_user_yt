@@ -54,7 +54,7 @@
                                             <action selector="actions:" destination="RTX-Se-1rC" eventType="touchUpInside" id="tsh-uf-JOB"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y9R-E8-IeJ">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y9R-E8-IeJ">
                                         <rect key="frame" x="187.5" y="258.5" width="157.5" height="30"/>
                                         <color key="backgroundColor" red="0.90588235289999997" green="0.90980392160000001" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -169,6 +169,21 @@
                                             <color key="titleColor" red="0.14117647059999999" green="0.14117647059999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>
+                                    <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHx-03-8qa">
+                                        <rect key="frame" x="150.5" y="521" width="74" height="27"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="27" id="EVb-iw-OL4"/>
+                                            <constraint firstAttribute="width" constant="74" id="q2E-0g-YeX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="用户注册协议">
+                                            <color key="titleColor" red="0.5568627451" green="0.24313725489999999" blue="0.43921568630000002" alpha="1" colorSpace="deviceRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="actions:" destination="RTX-Se-1rC" eventType="touchUpInside" id="hpd-wf-UZA"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
@@ -178,6 +193,7 @@
                                     <constraint firstItem="y9R-E8-IeJ" firstAttribute="leading" secondItem="63M-mV-qwI" secondAttribute="trailing" id="5FH-hZ-pAQ"/>
                                     <constraint firstItem="y9R-E8-IeJ" firstAttribute="width" secondItem="63M-mV-qwI" secondAttribute="width" id="7vn-dj-vHO"/>
                                     <constraint firstItem="63M-mV-qwI" firstAttribute="leading" secondItem="Lrx-dy-0xm" secondAttribute="leading" id="9A8-5n-fIj"/>
+                                    <constraint firstItem="pHx-03-8qa" firstAttribute="top" secondItem="Xj7-Wy-dLN" secondAttribute="bottom" constant="8" id="AvV-yJ-RPe"/>
                                     <constraint firstItem="qzS-ot-nGp" firstAttribute="leading" secondItem="R7o-sd-o2j" secondAttribute="leading" id="BvR-cl-85s"/>
                                     <constraint firstItem="71r-m4-x7N" firstAttribute="centerY" secondItem="vYa-PB-Sed" secondAttribute="centerY" id="Eiz-9R-0lB"/>
                                     <constraint firstItem="y9R-E8-IeJ" firstAttribute="baseline" secondItem="63M-mV-qwI" secondAttribute="baseline" id="GZ5-aQ-rXb"/>
@@ -194,6 +210,7 @@
                                     <constraint firstItem="fdw-sn-FSh" firstAttribute="centerX" secondItem="a5u-Gp-u42" secondAttribute="centerX" id="c7W-Ky-XGE"/>
                                     <constraint firstItem="y9R-E8-IeJ" firstAttribute="trailing" secondItem="aQN-Sn-6aU" secondAttribute="trailing" id="ccq-j5-65f"/>
                                     <constraint firstItem="uZX-J2-eIJ" firstAttribute="top" secondItem="cwI-wg-sWr" secondAttribute="bottom" constant="25" id="cvS-Ni-Ph5"/>
+                                    <constraint firstItem="pHx-03-8qa" firstAttribute="centerX" secondItem="a5u-Gp-u42" secondAttribute="centerX" id="d7u-RF-reB"/>
                                     <constraint firstItem="aQN-Sn-6aU" firstAttribute="top" secondItem="63M-mV-qwI" secondAttribute="bottom" constant="30" id="dua-n8-MPG"/>
                                     <constraint firstItem="aQN-Sn-6aU" firstAttribute="leading" secondItem="Lrx-dy-0xm" secondAttribute="trailing" constant="15" id="hIH-64-owE"/>
                                     <constraint firstItem="Alm-pQ-yEK" firstAttribute="centerX" secondItem="a5u-Gp-u42" secondAttribute="centerX" id="hqX-1J-GeS"/>
