@@ -142,11 +142,15 @@ fileprivate extension TYIndicatorBaseView {
             return IndicatorSize.defaultSize
         }
         let font = UIFont.systemFont(ofSize: fontSize)
-        let width = hint.textSize(font: font, width: CGFloat(MAXFLOAT), height: IndicatorSize.minTextHeight).width
+        let width = hint.textSize(font: font, width: CGFloat(MAXFLOAT), height: IndicatorSize.minTextHeight).width + 10
         // 比最大文字宽度大
         if width > IndicatorSize.maxTextWidth {
-            let height = hint.textSize(font: font, width: IndicatorSize.maxTextWidth, height: CGFloat(MAXFLOAT)).height
-            textLabel.size = CGSize.init(width: IndicatorSize.maxTextWidth, height: height)
+            let height = hint.textSize(font: font, width: IndicatorSize.maxTextWidth, height: CGFloat(MAXFLOAT)).height + 10
+//            textLabel.size = CGSize.init(width: IndicatorSize.maxTextWidth, height: height)
+            textLabel.snp.updateConstraints{
+                $0.width.equalTo(IndicatorSize.maxTextWidth)
+                $0.height.equalTo(height)
+            }
             return indicator == true ? CGSize.init(width: IndicatorSize.maxWidth,
                                                    height: IndicatorSize.defaultSize.height + height - IndicatorSize.minTextHeight)
                 :
@@ -156,10 +160,18 @@ fileprivate extension TYIndicatorBaseView {
         // 比最小文字宽度小
         if width <= IndicatorSize.minTextWidth  {
             if indicator {
-                textLabel.size = CGSize.init(width: IndicatorSize.minTextWidth, height: IndicatorSize.minTextHeight)
+//                textLabel.size = CGSize.init(width: IndicatorSize.minTextWidth, height: IndicatorSize.minTextHeight)
+                textLabel.snp.updateConstraints{
+                    $0.width.equalTo(IndicatorSize.minTextWidth)
+                    $0.height.equalTo(IndicatorSize.minTextHeight)
+                }
                 return IndicatorSize.defaultSize
             }else {
-                textLabel.size = CGSize.init(width: width, height: IndicatorSize.minTextHeight)
+//                textLabel.size = CGSize.init(width: width, height: IndicatorSize.minTextHeight)
+                textLabel.snp.updateConstraints{
+                    $0.width.equalTo(width)
+                    $0.height.equalTo(IndicatorSize.minTextHeight)
+                }
                 return CGSize.init(width: width + 2*IndicatorSize.h_margin, height: IndicatorSize.minTextHeight + 2*IndicatorSize.v_margin)
             }
         }

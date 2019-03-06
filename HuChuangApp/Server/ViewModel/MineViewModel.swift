@@ -15,7 +15,8 @@ class MineViewModel: BaseViewModel, VMNavigation {
     let datasource = PublishSubject<[String]>()
     let gotoEditUserInfo = PublishSubject<Void>()
     let cellDidSelected = PublishSubject<String>()
-    
+    let pushH5Subject = PublishSubject<H5Type>()
+
     override init() {
         super.init()
      
@@ -31,6 +32,32 @@ class MineViewModel: BaseViewModel, VMNavigation {
             })
             .disposed(by: disposeBag)
         
+//        let _ = pushH5Subject
+//            .debug("ssss")
+//            ._doNext(forNotice: hud)
+//            .flatMap{ [unowned self] in self.requestH5(type: $0) }
+//            .subscribe(onNext: { [unowned self] model in
+//                self.hud.noticeHidden()
+//                self.pushH5(model: model)
+//                }, onError: { [unowned self] error in
+//                    self.hud.failureHidden(self.errorMessage(error))
+//            })
+////            .disposed(by: disposeBag)
+
+        pushH5Subject
+            ._doNext(forNotice: hud)
+            .subscribe(onNext: { [unowned self] type in
+                self.requestH5(type: type)
+                    .subscribe(onNext: { model in
+                        self.hud.noticeHidden()
+                        self.pushH5(model: model)
+                    }, onError: { error in
+                        self.hud.failureHidden(self.errorMessage(error))
+                    })
+                    .disposed(by: self.disposeBag)
+            })
+            .disposed(by: disposeBag)
+
         HCHelper.share.userInfoHasReload
             .subscribe(onNext: { [unowned self] user in
                 self.userInfo.onNext(user)
@@ -44,7 +71,18 @@ class MineViewModel: BaseViewModel, VMNavigation {
     private func cellDidSelected(title: String) {
         if title == "身份认证" {
             hud.noticeLoading()
-            requestH5(type: .bindHos)
+            let type = (HCHelper.share.userInfoModel?.visitCard.count ?? 0) > 0 ? H5Type.succBind : H5Type.bindHos
+            requestH5(type: type)
+                .subscribe(onNext: { [weak self] model in
+                    self?.hud.noticeHidden()
+                    self?.pushH5(model: model)
+                    }, onError: { error in
+                        self.hud.failureHidden(self.errorMessage(error))
+                })
+                .disposed(by: disposeBag)
+        }else if title == "意见反馈" {
+            hud.noticeLoading()
+            requestH5(type: .memberFeedback)
                 .subscribe(onNext: { [weak self] model in
                     self?.hud.noticeHidden()
                     self?.pushH5(model: model)
@@ -63,7 +101,7 @@ class MineViewModel: BaseViewModel, VMNavigation {
 
     private func requestUserInfo() {
 //        let data = ["身份认证", "我的消息", "意见反馈", "分享给好友", "设置"]
-        let data = ["身份认证"]
+        let data = ["身份认证", "意见反馈"]
         datasource.onNext(data)
         
         HCProvider.request(.selectInfo())

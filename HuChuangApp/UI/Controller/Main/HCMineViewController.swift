@@ -67,15 +67,13 @@ class HCMineViewController: BaseViewController {
         }
         
         header.yuyueOutlet.rx.tap.asDriver()
-            .drive(onNext: { [unowned self] _ in
-                NoticesCenter.alert(message: "开发中...")
-            })
+            .map{ H5Type.memberSubscribe }
+            .drive(viewModel.pushH5Subject)
             .disposed(by: disposeBag)
         
         header.wenzhenOutlet.rx.tap.asDriver()
-            .drive(onNext: { [unowned self] _ in
-                NoticesCenter.alert(message: "开发中...")
-            })
+            .map{ H5Type.consultRecord }
+            .drive(viewModel.pushH5Subject)
             .disposed(by: disposeBag)
 
         header.quanziOutlet.rx.tap.asDriver()

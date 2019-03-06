@@ -9,6 +9,19 @@
 import Foundation
 import Moya
 
+/*
+ 绑定用户    bindHos
+ 功能暂未开放    underDev
+ 喜报    goodnews
+ 消息中心    notification
+ 绑定成功    succBind
+ 公告    announce
+ 问诊记录    consultRecord
+ 我的预约    memberSubscribe
+ 我的收藏    memberCollect
+ 用户反馈    memberFeedback
+ **/
+
 enum H5Type: String {
     /// 好孕消息
     case goodNews = "goodnews"
@@ -16,6 +29,16 @@ enum H5Type: String {
     case notification = "notification"
     /// 认证
     case bindHos = "bindHos"
+    ///
+    case succBind = "succBind"
+    /// 问诊记录
+    case consultRecord = "consultRecord"
+    /// 我的预约
+    case memberSubscribe = "memberSubscribe"
+    /// 我的收藏
+    case memberCollect = "memberCollect"
+    /// 用户反馈
+    case memberFeedback = "memberFeedback"
 }
 
 //MARK:
