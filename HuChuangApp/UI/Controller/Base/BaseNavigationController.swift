@@ -33,9 +33,9 @@ class BaseNavigationController: UINavigationController {
         
         isSideBackEnable = true
         
-        self.navigationBar.barTintColor   =  HC_MAIN_COLOR
+        self.navigationBar.barTintColor   =  UIColor.white
         navigationBar.isTranslucent       = false
-        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor :UIColor.white]
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor :UIColor.black]
     }
     
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {

@@ -83,7 +83,7 @@ class HCLoginViewController: BaseViewController {
 
     override func setupUI() {
         #if DEBUG
-        accountInputOutlet.text = "18627844751"
+        accountInputOutlet.text = "18677777777"
         passInputOutlet.text  = "8888"
         #endif
     }

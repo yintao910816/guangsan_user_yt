@@ -23,7 +23,7 @@ class HCHomeViewController: BaseViewController {
         case 100:
             navigationController?.pushViewController(HCScanViewController(), animated: true)
         case 101:
-            break
+            viewModel.messageListPublish.onNext(navigationController)
         default:
             break
         }

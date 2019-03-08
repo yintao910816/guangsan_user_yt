@@ -14,6 +14,8 @@ class AppSetup {
     
     var requestParam: [String : Any] = [:]
     
+    var unitId: String = "36"
+    
     /**
      版本号拼接到所有请求url
      不能超过1000

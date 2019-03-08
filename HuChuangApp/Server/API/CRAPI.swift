@@ -27,6 +27,8 @@ enum H5Type: String {
     case goodNews = "goodnews"
     /// 消息中心
     case notification = "notification"
+    /// 通知消息
+    case announce = "announce"
     /// 认证
     case bindHos = "bindHos"
     ///

@@ -22,7 +22,7 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
     let goodnewsDidSelected = PublishSubject<Int>()
 
     let functionItemDidSelected = PublishSubject<(HomeFunctionModel, UINavigationController?)>()
-    let messageListPublish = PublishSubject<Void>()
+    let messageListPublish = PublishSubject<UINavigationController?>()
 
     private var articleTypeID: String = ""
 
@@ -45,9 +45,15 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
             })
             .disposed(by: disposeBag)
         
-        messageListPublish.subscribe(onNext: { [unowned self] _ in
-
-        })
+        messageListPublish
+            ._doNext(forNotice: hud)
+            .flatMap{ [unowned self] _ in self.requestH5(type: .notification) }
+            .subscribe(onNext: { [unowned self] model in
+                self.hud.noticeHidden()
+                self.pushH5(model: model)
+                }, onError: { error in
+                    self.hud.failureHidden(self.errorMessage(error))
+            })
             .disposed(by: disposeBag)
 
         functionItemDidSelected.subscribe(onNext: { [unowned self] data in
@@ -76,7 +82,7 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
         
         noticeDidSelected
             ._doNext(forNotice: hud)
-            .flatMap{ [unowned self] _ in self.requestH5(type: .notification) }
+            .flatMap{ [unowned self] _ in self.requestH5(type: .announce) }
             .subscribe(onNext: { mdoel in
                 self.hud.noticeHidden()
                 self.pushH5(model: mdoel)
@@ -107,7 +113,7 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
     }
     
     private func pushH5(model: H5InfoModel) {
-        let url = "\(model.setValue)?token=\(userDefault.token)&unitId=36"
+        let url = "\(model.setValue)?token=\(userDefault.token)&unitId=\(AppSetup.instance.unitId)"
         HomeViewModel.push(BaseWebViewController.self, ["url": url])
     }
     
@@ -167,10 +173,6 @@ extension HomeViewModel {
             webVC.title = model.name
             webVC.url   = url
             navigationVC?.pushViewController(webVC, animated: true)
-            //            let webVC = BaseWKWebViewViewController()
-            //            webVC.title = model.name
-            //            webVC.url = model.functionUrl + "&unitId=\(model.unitId)"
-            //            navigationVC?.pushViewController(webVC, animated: true)
         }else {
             hud.failureHidden("功能暂不开放")
         }
