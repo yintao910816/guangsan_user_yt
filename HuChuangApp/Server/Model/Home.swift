@@ -54,7 +54,7 @@ extension HomeNoticeModel: ScrollTextModel {
         return content
     }
     
-    var height: CGFloat { return 35 }
+    var height: CGFloat { return 45 }
     
 }
 
@@ -84,7 +84,7 @@ extension HomeGoodNewsItemModel: ScrollTextModel {
         return "未知类型"
     }
     
-    var height: CGFloat { return 63 }
+    var height: CGFloat { return 43 }
 }
 
 

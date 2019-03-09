@@ -66,18 +66,18 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
                                     <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KiM-Dw-ec0">
-                                        <rect key="frame" x="325" y="24.5" width="35" height="35"/>
+                                        <rect key="frame" x="335.5" y="37" width="24.5" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="KiM-Dw-ec0" secondAttribute="height" multiplier="1:1" id="Tyw-QE-83T"/>
-                                            <constraint firstAttribute="height" constant="35" id="hvq-xv-jYh"/>
+                                            <constraint firstAttribute="height" constant="20" id="ACS-OC-Va5"/>
+                                            <constraint firstAttribute="width" secondItem="KiM-Dw-ec0" secondAttribute="height" multiplier="21:17" id="tZh-ap-ttv"/>
                                         </constraints>
-                                        <state key="normal" image="message_black"/>
+                                        <state key="normal" backgroundImage="message_black"/>
                                         <connections>
                                             <action selector="actions:" destination="hnC-bI-7ao" eventType="touchUpInside" id="ppe-kh-6x5"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lf7-sh-gzc">
-                                        <rect key="frame" x="15" y="31" width="22" height="22"/>
+                                        <rect key="frame" x="15" y="36" width="22" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Lf7-sh-gzc" secondAttribute="height" multiplier="1:1" id="0wM-xF-qqu"/>
                                             <constraint firstAttribute="height" constant="22" id="tR4-bj-aMc"/>
@@ -93,7 +93,7 @@
                                     <constraint firstAttribute="trailing" secondItem="KiM-Dw-ec0" secondAttribute="trailing" constant="15" id="51d-fh-bm1"/>
                                     <constraint firstItem="Lf7-sh-gzc" firstAttribute="leading" secondItem="n9k-NE-kdM" secondAttribute="leading" constant="15" id="HSr-hW-DTg"/>
                                     <constraint firstItem="Lf7-sh-gzc" firstAttribute="centerY" secondItem="KiM-Dw-ec0" secondAttribute="centerY" id="UhF-en-77X"/>
-                                    <constraint firstAttribute="bottom" secondItem="KiM-Dw-ec0" secondAttribute="bottom" constant="4.5" id="ccg-f4-xe7"/>
+                                    <constraint firstAttribute="bottom" secondItem="KiM-Dw-ec0" secondAttribute="bottom" constant="7" id="ccg-f4-xe7"/>
                                     <constraint firstAttribute="height" constant="64" id="ggR-Gd-AAM"/>
                                     <constraint firstItem="Lf7-sh-gzc" firstAttribute="width" secondItem="Lf7-sh-gzc" secondAttribute="height" multiplier="1:1" id="mhj-dO-1Eg"/>
                                 </constraints>

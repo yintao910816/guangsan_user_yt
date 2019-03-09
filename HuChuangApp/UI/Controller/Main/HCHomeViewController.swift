@@ -43,7 +43,7 @@ class HCHomeViewController: BaseViewController {
 
         header = HomeHeaderView.init(frame: .init(x: 0, y: 0, width: tableView.width, height: 0))
         
-        tableView.rowHeight = 60
+        tableView.rowHeight = 43
         tableView.register(UINib.init(nibName: "ArticleCell", bundle: Bundle.main),
                            forCellReuseIdentifier: "ArticleCellID")
     }
