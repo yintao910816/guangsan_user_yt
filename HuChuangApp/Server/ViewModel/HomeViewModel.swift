@@ -20,6 +20,7 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
     var didSelectItemSubject = PublishSubject<HomeColumnItemModel>()
     let noticeDidSelected = PublishSubject<Int>()
     let goodnewsDidSelected = PublishSubject<Int>()
+    let todaySelected = PublishSubject<HomeArticleModel>()
 
     let functionItemDidSelected = PublishSubject<(HomeFunctionModel, UINavigationController?)>()
     let messageListPublish = PublishSubject<UINavigationController?>()
@@ -48,6 +49,17 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
         messageListPublish
             ._doNext(forNotice: hud)
             .flatMap{ [unowned self] _ in self.requestH5(type: .notification) }
+            .subscribe(onNext: { [unowned self] model in
+                self.hud.noticeHidden()
+                self.pushH5(model: model)
+                }, onError: { error in
+                    self.hud.failureHidden(self.errorMessage(error))
+            })
+            .disposed(by: disposeBag)
+
+        todaySelected
+            ._doNext(forNotice: hud)
+            .flatMap{ [unowned self] _ in self.requestH5(type: .hrefUrl) }
             .subscribe(onNext: { [unowned self] model in
                 self.hud.noticeHidden()
                 self.pushH5(model: model)

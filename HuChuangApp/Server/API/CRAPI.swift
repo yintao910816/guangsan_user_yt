@@ -41,6 +41,8 @@ enum H5Type: String {
     case memberCollect = "memberCollect"
     /// 用户反馈
     case memberFeedback = "memberFeedback"
+    /// cms功能：readNumber=阅读量,modifyDate=发布时间，hrefUrl=调整地址
+    case hrefUrl = "hrefUrl"
 }
 
 //MARK:

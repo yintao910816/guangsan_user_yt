@@ -183,13 +183,13 @@ extension HomeHeaderView {
 extension HomeHeaderView {
     
     func headerHeight(dataCount: Int) ->CGFloat {
-        if dataCount == 0 { return 439 }
+        if dataCount == 0 { return 436 }
         
         let itemHeight: CGFloat = (PPScreenW - 1) / 4.0
         let height = CGFloat((dataCount / 4 + (dataCount % 4 == 0 ? 0 : 1))) * itemHeight + 10.0
         
         functionViewHeightCns.constant = height
 
-        return 439 + height
+        return 436 + height
     }
 }

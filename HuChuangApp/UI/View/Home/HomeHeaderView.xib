@@ -23,7 +23,7 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="439"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="436"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ce6-H2-Zcr" customClass="CarouselView" customModule="HuChuangApp" customModuleProvider="target">
@@ -155,7 +155,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YXq-Ez-ovt">
-                    <rect key="frame" x="0.0" y="388" width="375" height="44"/>
+                    <rect key="frame" x="0.0" y="394" width="375" height="44"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="goodnews_title" translatesAutoresizingMaskIntoConstraints="NO" id="lz0-6a-4WW">
                             <rect key="frame" x="15" y="12" width="20" height="20"/>
@@ -204,7 +204,7 @@
                 <constraint firstItem="aW3-ew-LXP" firstAttribute="top" secondItem="lEf-yX-CmG" secondAttribute="bottom" constant="7" id="6ol-vj-fK1"/>
                 <constraint firstItem="YXq-Ez-ovt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ETg-BO-2sO"/>
                 <constraint firstAttribute="trailing" secondItem="aW3-ew-LXP" secondAttribute="trailing" id="JjU-R5-LdR"/>
-                <constraint firstItem="YXq-Ez-ovt" firstAttribute="top" secondItem="aW3-ew-LXP" secondAttribute="bottom" constant="1" id="SCi-TQ-IbW"/>
+                <constraint firstItem="YXq-Ez-ovt" firstAttribute="top" secondItem="aW3-ew-LXP" secondAttribute="bottom" constant="7" id="SCi-TQ-IbW"/>
                 <constraint firstAttribute="trailing" secondItem="lEf-yX-CmG" secondAttribute="trailing" id="VS1-aY-heP"/>
                 <constraint firstAttribute="trailing" secondItem="mfq-eg-fFX" secondAttribute="trailing" id="Wt6-a5-kya"/>
                 <constraint firstItem="mfq-eg-fFX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cIP-pQ-B1Q"/>

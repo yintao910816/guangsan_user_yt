@@ -103,6 +103,10 @@ class HCHomeViewController: BaseViewController {
             .bind(to: viewModel.didSelectItemSubject)
             .disposed(by: disposeBag)
         
+        tableView.rx.modelSelected(HomeArticleModel.self).asDriver()
+            .drive(viewModel.todaySelected)
+            .disposed(by: disposeBag)
+        
         viewModel.reloadSubject.onNext(Void())
     }
     
