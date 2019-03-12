@@ -131,6 +131,7 @@ class HomeArticleModel: HJModel {
     var recom: String = ""
     var top: Bool = false
     var release: Bool = false
+    var hrefUrl: String = ""
 }
 
 class HomeColumnItemModel: HJModel {

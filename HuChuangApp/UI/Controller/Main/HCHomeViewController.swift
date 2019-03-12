@@ -104,6 +104,7 @@ class HCHomeViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         tableView.rx.modelSelected(HomeArticleModel.self).asDriver()
+            .map{ [unowned self] in ($0, self.navigationController) }
             .drive(viewModel.todaySelected)
             .disposed(by: disposeBag)
         

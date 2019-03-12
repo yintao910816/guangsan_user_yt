@@ -20,7 +20,7 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
     var didSelectItemSubject = PublishSubject<HomeColumnItemModel>()
     let noticeDidSelected = PublishSubject<Int>()
     let goodnewsDidSelected = PublishSubject<Int>()
-    let todaySelected = PublishSubject<HomeArticleModel>()
+    let todaySelected = PublishSubject<(HomeArticleModel, UINavigationController?)>()
 
     let functionItemDidSelected = PublishSubject<(HomeFunctionModel, UINavigationController?)>()
     let messageListPublish = PublishSubject<UINavigationController?>()
@@ -58,11 +58,8 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
             .disposed(by: disposeBag)
 
         todaySelected
-            ._doNext(forNotice: hud)
-            .flatMap{ [unowned self] _ in self.requestH5(type: .hrefUrl) }
-            .subscribe(onNext: { [unowned self] model in
-                self.hud.noticeHidden()
-                self.pushH5(model: model)
+            .subscribe(onNext: { [unowned self] data in
+                self.pushH5(url: data.0.hrefUrl, navigationVC: data.1)
                 }, onError: { error in
                     self.hud.failureHidden(self.errorMessage(error))
             })
@@ -188,6 +185,12 @@ extension HomeViewModel {
         }else {
             hud.failureHidden("功能暂不开放")
         }
+    }
+    
+    private func pushH5(url: String, navigationVC: UINavigationController?) {
+        let webVC = BaseWebViewController()
+        webVC.url   = url
+        navigationVC?.pushViewController(webVC, animated: true)
     }
     
     private func dealHomeHeaderData(data: ([HomeBannerModel], [HomeFunctionModel], [HomeNoticeModel], HomeColumnModel, HomeGoodNewsModel)) {
