@@ -29,6 +29,8 @@ class HCLoginViewController: BaseViewController {
     
     private let loginTypeObser = Variable(LoginType.phone)
     
+    private var timer: CountdownTimer!
+    
     private var viewModel: LoginViewModel!
     
     @IBAction func tapAction(_ sender: UITapGestureRecognizer) {
@@ -82,6 +84,8 @@ class HCLoginViewController: BaseViewController {
     }
 
     override func setupUI() {
+        timer = CountdownTimer.init(totleCount: 5)
+        
         #if DEBUG
         accountInputOutlet.text = "18677777777"
         passInputOutlet.text  = "8888"
@@ -89,12 +93,25 @@ class HCLoginViewController: BaseViewController {
     }
     
     override func rxBind() {
+        timer.showText.asDriver()
+            .skip(1)
+            .drive(onNext: { [weak self] second in
+                if second == 0 {
+                    self?.viewModel.codeEnable.value = true
+                    self?.getAuthorOutlet.setTitle("获取验证码", for: .normal)
+                }else {
+                    self?.getAuthorOutlet.setTitle("\(second)s", for: .normal)
+                }
+            })
+            .disposed(by: disposeBag)
+        
         let loginDriver = loginOutlet.rx.tap.asDriver()
             .do(onNext: { [unowned self] _ in
                 self.view.endEditing(true)
             })
         let sendCodeDriver = getAuthorOutlet.rx.tap.asDriver()
             .do(onNext: { [unowned self] _ in
+                self.timer.timerStar()
                 self.view.endEditing(true)
             })
 
@@ -103,6 +120,9 @@ class HCLoginViewController: BaseViewController {
                                                 loginType: loginTypeObser.asDriver()),
                                         tap: (loginTap: loginDriver,
                                               sendCodeTap: sendCodeDriver))
+        viewModel.codeEnable.asDriver()
+            .drive(getAuthorOutlet.rx.enabled)
+            .disposed(by: disposeBag)
         
         viewModel.popSubject
             .subscribe(onNext: { [weak self] in

@@ -248,6 +248,7 @@
 		B826AF82221C6C24000428C1 /* String+Extends.swift in Sources */ = {isa = PBXBuildFile; fileRef = B826AF81221C6C23000428C1 /* String+Extends.swift */; };
 		B826AF85221C7205000428C1 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B826AF83221C7205000428C1 /* ArticleCell.swift */; };
 		B826AF86221C7205000428C1 /* ArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B826AF84221C7205000428C1 /* ArticleCell.xib */; };
+		B83F5A8122395CEF00EAC675 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83F5A8022395CEF00EAC675 /* Timer.swift */; };
 		B842D1FE22258CC000A4F8DF /* HCAppDelegate+UM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B842D1FD22258CC000A4F8DF /* HCAppDelegate+UM.swift */; };
 		B879A060221AF0B200E573C9 /* MineFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879A05F221AF0B200E573C9 /* MineFooterView.swift */; };
 		B879A062221AF0BB00E573C9 /* MineFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B879A061221AF0BB00E573C9 /* MineFooterView.xib */; };
@@ -838,6 +839,7 @@
 		B826AF81221C6C23000428C1 /* String+Extends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extends.swift"; sourceTree = "<group>"; };
 		B826AF83221C7205000428C1 /* ArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
 		B826AF84221C7205000428C1 /* ArticleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleCell.xib; sourceTree = "<group>"; };
+		B83F5A8022395CEF00EAC675 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		B842D1FD22258CC000A4F8DF /* HCAppDelegate+UM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HCAppDelegate+UM.swift"; sourceTree = "<group>"; };
 		B842D1FF22258D7F00A4F8DF /* HuChuangApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HuChuangApp.entitlements; sourceTree = "<group>"; };
 		B879A05F221AF0B200E573C9 /* MineFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineFooterView.swift; sourceTree = "<group>"; };
@@ -1854,6 +1856,7 @@
 		C421330622056B19006C10C4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				B83F5A8022395CEF00EAC675 /* Timer.swift */,
 				B816E872221DABF200F024D5 /* LBXScan */,
 				B816E86D221DA88600F024D5 /* Frame.swift */,
 				C421331322056C37006C10C4 /* Debug.swift */,
@@ -2588,6 +2591,7 @@
 				B816EA86221DABF400F024D5 /* ZXDecodeHints.m in Sources */,
 				B816EAB2221DABF400F024D5 /* ZXDetectorResult.m in Sources */,
 				C4C3257B2205B8490091783C /* ScrollTextView.swift in Sources */,
+				B83F5A8122395CEF00EAC675 /* Timer.swift in Sources */,
 				C42133592205883D006C10C4 /* PageModel.swift in Sources */,
 				B816EA9C221DABF400F024D5 /* ZXQRCodeBlockPair.m in Sources */,
 				B816EAE9221DABF400F024D5 /* ZXDataMatrixBase256Encoder.m in Sources */,

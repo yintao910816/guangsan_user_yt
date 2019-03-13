@@ -17,6 +17,8 @@ enum LoginType {
 
 class LoginViewModel: BaseViewModel {
     
+    let codeEnable = Variable(true)
+    
     init(input: (account: Driver<String>, pass: Driver<String>, loginType: Driver<LoginType>),
          tap: (loginTap: Driver<Void>, sendCodeTap: Driver<Void>)) {
         super.init()
@@ -37,12 +39,15 @@ class LoginViewModel: BaseViewModel {
     }
     
     private func sendCode(phone: String) {
+        codeEnable.value = false
+
         HCProvider.request(.validateCode(mobile: phone))
             .mapResponse()
             .subscribe(onSuccess: { [weak self] model in
                 if RequestCode(rawValue: model.code) == .success {
-                    self?.hud.noticeHidden()
+                    self?.hud.successHidden("验证码已发送")
                 }else {
+                    self?.codeEnable.value = true
                     self?.hud.failureHidden(model.message)
                 }
             }) { [weak self] error in
