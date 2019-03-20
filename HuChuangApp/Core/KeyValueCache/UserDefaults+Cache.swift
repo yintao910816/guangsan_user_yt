@@ -34,7 +34,7 @@ extension UserDefaults{
             return phone
         }
         set {
-            set(loginPhone, forKey: kLoginPhone)
+            set(newValue, forKey: kLoginPhone)
             synchronize()
         }
     }

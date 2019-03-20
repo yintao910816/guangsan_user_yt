@@ -132,6 +132,7 @@ class HomeArticleModel: HJModel {
     var top: Bool = false
     var release: Bool = false
     var hrefUrl: String = ""
+    var readNumber: String = "0"
 }
 
 class HomeColumnItemModel: HJModel {

@@ -18,5 +18,6 @@
 #import <UMPush/UMessage.h>
 #import <UMCommon/UMCommon.h>
 #import <UMCommon/UMConfigure.h>
+#import <UMAnalytics/MobClick.h>
 
 #endif /* HcChuangApp_Bridge_Header_h */

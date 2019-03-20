@@ -18,5 +18,6 @@ pod 'Kingfisher', '~> 4.6.1'
 pod 'UMCCommon'
 pod 'UMCPush'
 pod 'UMCSecurityPlugins'
+pod 'UMCAnalytics'
 
 end

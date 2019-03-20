@@ -84,12 +84,14 @@ class HCLoginViewController: BaseViewController {
     }
 
     override func setupUI() {
-        timer = CountdownTimer.init(totleCount: 5)
+        timer = CountdownTimer.init(totleCount: 60)
         
-        #if DEBUG
-        accountInputOutlet.text = "18677777777"
-        passInputOutlet.text  = "8888"
-        #endif
+//        #if DEBUG
+//        accountInputOutlet.text = "18677777777"
+//        passInputOutlet.text  = "8888"
+//        #endif
+        PrintLog(userDefault.loginPhone)
+        accountInputOutlet.text = userDefault.loginPhone
     }
     
     override func rxBind() {
