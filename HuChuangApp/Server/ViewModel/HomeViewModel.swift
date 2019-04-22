@@ -17,6 +17,9 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
     var goodNewsModelObser = Variable(HomeGoodNewsModel())
     var columnModelObser   = Variable(HomeColumnModel())
     
+    /// 根据是否有数据更新header高度
+    var headerDataCountObser = Variable((0, 0, 0))
+    
     var didSelectItemSubject = PublishSubject<HomeColumnItemModel>()
     let noticeDidSelected = PublishSubject<Int>()
     let goodnewsDidSelected = PublishSubject<Int>()
@@ -31,20 +34,6 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
         super.init()
         
         hud.noticeLoading()
-        
-        let loadDataSignal = Observable.combineLatest(requestBanner(),
-                                                      requestFunctionList(),
-                                                      requestNoticeList(),
-                                                      requestColumData(),
-                                                      requestGoodNew()){ ($0, $1, $2, $3, $4) }
-        reloadSubject.flatMap{ loadDataSignal }
-            .subscribe(onNext: { [unowned self] data in
-                self.hud.noticeHidden()
-                self.dealHomeHeaderData(data: data)
-                }, onError: { [unowned self] error in
-                    self.hud.failureHidden(self.errorMessage(error))
-            })
-            .disposed(by: disposeBag)
         
         messageListPublish
             ._doNext(forNotice: hud)
@@ -100,25 +89,49 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
             })
             .disposed(by: disposeBag)
 
+//        NotificationCenter.default.rx.notification(NotificationName.User.LoginSuccess)
+//            .flatMap{ _ in loadDataSignal }
+//            .subscribe(onNext: { [unowned self] data in
+//                self.dealHomeHeaderData(data: data)
+//            })
+//            .disposed(by: disposeBag)
+
         NotificationCenter.default.rx.notification(NotificationName.User.LoginSuccess)
-            .flatMap{ _ in loadDataSignal }
-            .subscribe(onNext: { [unowned self] data in
-                self.dealHomeHeaderData(data: data)
+            .subscribe(onNext: { [weak self] data in
+                self?.requestData(true)
             })
             .disposed(by: disposeBag)
     }
     
     override func requestData(_ refresh: Bool) {
         setOffset(refresh: refresh)
-        
-        HCProvider.request(.article(id: articleTypeID))
-            .map(models: HomeArticleModel.self)
-            .subscribe(onSuccess: { [weak self] data in
-                self?.updateRefresh(refresh, data, nil)
-            }) { error in
-
-            }
+//
+//        HCProvider.request(.article(id: articleTypeID))
+//            .map(models: HomeArticleModel.self)
+//            .subscribe(onSuccess: { [weak self] data in
+//                self?.updateRefresh(refresh, data, nil)
+//            }) { error in
+//
+//            }
+//            .disposed(by: disposeBag)
+        requestHeaderData()
+            .subscribe(onNext: { [weak self] data in
+                self?.hud.noticeHidden()
+                self?.dealHomeHeaderData(data: data)
+                self?.updateRefresh(true, [HomeArticleModel](), nil)
+                }, onError: { [unowned self] error in
+                    self.hud.failureHidden(self.errorMessage(error))
+            })
             .disposed(by: disposeBag)
+    }
+    
+    private func requestHeaderData() ->Observable<([HomeBannerModel], [HomeFunctionModel], [HomeNoticeModel], HomeColumnModel, HomeGoodNewsModel)> {
+        return Observable.combineLatest(requestBanner(),
+                                        requestFunctionList(),
+                                        requestNoticeList(),
+                                        requestColumData(),
+                                        requestGoodNew()){ ($0, $1, $2, $3, $4) }
+            .asObservable()
     }
     
     private func pushH5(model: H5InfoModel) {
@@ -194,15 +207,17 @@ extension HomeViewModel {
     }
     
     private func dealHomeHeaderData(data: ([HomeBannerModel], [HomeFunctionModel], [HomeNoticeModel], HomeColumnModel, HomeGoodNewsModel)) {
+        headerDataCountObser.value = (data.1.count, data.2.count, data.4.list.count)
+
         bannerModelObser.value = data.0
         functionModelsObser.value = data.1
         noticeModelObser.value = data.2
-        
+
         let firstColumModel = data.3.content.first
         firstColumModel?.isSelected = true
         articleTypeID = firstColumModel?.id ?? ""
         columnModelObser.value = data.3
-        requestData(true)
+//        requestData(true)
         
         goodNewsModelObser.value = data.4
     }

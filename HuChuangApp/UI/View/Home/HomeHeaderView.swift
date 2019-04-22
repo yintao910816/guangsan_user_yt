@@ -22,8 +22,13 @@ class HomeHeaderView: UIView {
     @IBOutlet weak var goodNewsView: ScrollTextView!
     // 今日知识
     @IBOutlet weak var colunmCollectionView: UICollectionView!
-    @IBOutlet weak var functionViewHeightCns: NSLayoutConstraint!
+    @IBOutlet weak var goodNewsHeaderView: UIView!
     
+    @IBOutlet weak var functionViewHeightCns: NSLayoutConstraint!
+    @IBOutlet weak var noticeHeightCns: NSLayoutConstraint!
+    @IBOutlet weak var goodNewsHeightCns: NSLayoutConstraint!
+
+    @IBOutlet weak var ttHeightCns: NSLayoutConstraint!
     private var lastSelectedIndexPath: IndexPath?
     
     var bannerModelObser = Variable([HomeBannerModel]())
@@ -182,14 +187,34 @@ extension HomeHeaderView {
 
 extension HomeHeaderView {
     
-    func headerHeight(dataCount: Int) ->CGFloat {
-        if dataCount == 0 { return 436 }
+    func headerHeight(functionDataCount: Int, noticeDataCount: Int, goodNewsDataCount: Int) ->CGFloat {
+        ttHeightCns.constant = 0 // 测试使用，正式删掉,原本高度44
         
-        let itemHeight: CGFloat = (PPScreenW - 1) / 4.0
-        let height = CGFloat((dataCount / 4 + (dataCount % 4 == 0 ? 0 : 1))) * itemHeight + 10.0
+        var minHeight: CGFloat = 436 - 85 - 75 - 44
+        if functionDataCount > 0 {
+            let itemHeight: CGFloat = (PPScreenW - 1) / 4.0
+            let height = CGFloat((functionDataCount / 4 + (functionDataCount % 4 == 0 ? 0 : 1))) * itemHeight + 10.0
+            minHeight += height
+            
+            functionViewHeightCns.constant = height
+        }else {
+            functionViewHeightCns.constant = 0
+        }
         
-        functionViewHeightCns.constant = height
+        if noticeDataCount > 0 {
+            minHeight += 85
+            noticeHeightCns.constant = 85
+        }else {
+            noticeHeightCns.constant = 0
+        }
 
-        return 436 + height
+        if goodNewsDataCount > 0 {
+            minHeight += 75
+            goodNewsHeightCns.constant = 75
+        }else {
+            goodNewsHeightCns.constant = 0
+        }
+
+        return minHeight
     }
 }

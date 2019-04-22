@@ -33,6 +33,8 @@ class HCLoginViewController: BaseViewController {
     
     private var viewModel: LoginViewModel!
     
+    private let keyBoardManager = KeyboardManager()
+    
     @IBAction func tapAction(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
@@ -84,12 +86,14 @@ class HCLoginViewController: BaseViewController {
     }
 
     override func setupUI() {
+        keyBoardManager.registerNotification()
+        
         timer = CountdownTimer.init(totleCount: 60)
         
-//        #if DEBUG
-//        accountInputOutlet.text = "18677777777"
-//        passInputOutlet.text  = "8888"
-//        #endif
+        #if DEBUG
+        accountInputOutlet.text = "18677777777"
+        passInputOutlet.text  = "8888"
+        #endif
         PrintLog(userDefault.loginPhone)
         accountInputOutlet.text = userDefault.loginPhone
     }
@@ -133,5 +137,13 @@ class HCLoginViewController: BaseViewController {
                 self?.navigationController?.dismiss(animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
+    }
+}
+
+extension HCLoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        keyBoardManager.move(coverView: loginOutlet, moveView: contentBgView)
+        return true
     }
 }

@@ -55,13 +55,17 @@ class HCHomeViewController: BaseViewController {
             .drive(header.bannerModelObser)
             .disposed(by: disposeBag)
         
-        viewModel.functionModelsObser.asDriver()
-            .do(onNext: { [unowned self] data in
-                var rect = self.header.frame
-                rect.size.height = self.header.headerHeight(dataCount: data.count)
-                self.header.frame = rect
-                self.tableView.tableHeaderView = self.header
+        viewModel.headerDataCountObser.asDriver()
+            .drive(onNext: { [weak self] data in
+                guard let strongSelf = self else { return }
+                var rect = strongSelf.header.frame
+                rect.size.height = strongSelf.header.headerHeight(functionDataCount: data.0, noticeDataCount: data.1, goodNewsDataCount: data.2)
+                strongSelf.header.frame = rect
+                strongSelf.tableView.tableHeaderView = strongSelf.header
             })
+            .disposed(by: disposeBag)
+        
+        viewModel.functionModelsObser.asDriver()
             .drive(header.functionModelObser)
             .disposed(by: disposeBag)
 
@@ -75,11 +79,11 @@ class HCHomeViewController: BaseViewController {
         
         tableView.prepare(viewModel, HomeArticleModel.self, showFooter: false, showHeader: true, isAddNoMoreContent: false)
 
-        viewModel.datasource.asDriver()
-            .drive(tableView.rx.items(cellIdentifier: "ArticleCellID", cellType: ArticleCell.self)) { _, model, cell in
-                cell.model = model
-            }
-            .disposed(by: disposeBag)
+//        viewModel.datasource.asDriver()
+//            .drive(tableView.rx.items(cellIdentifier: "ArticleCellID", cellType: ArticleCell.self)) { _, model, cell in
+//                cell.model = model
+//            }
+//            .disposed(by: disposeBag)
         
         header.functionDidSelected
             .map{ [unowned self] in ($0, self.navigationController) }
@@ -108,7 +112,8 @@ class HCHomeViewController: BaseViewController {
             .drive(viewModel.todaySelected)
             .disposed(by: disposeBag)
         
-        viewModel.reloadSubject.onNext(Void())
+//        viewModel.reloadSubject.onNext(Void())
+        tableView.headerRefreshing()
     }
     
 }
