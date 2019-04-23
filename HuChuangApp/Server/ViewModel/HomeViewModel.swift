@@ -184,7 +184,10 @@ extension HomeViewModel {
         if model.functionUrl.count > 0 {
             var url = model.functionUrl
             PrintLog("h5拼接前地址：\(url)")
-            if url.contains("?") == false {
+            if url.contains("photoSeach") == true {
+                HomeViewModel.push(HCScanViewController.self, nil)
+                return
+            }else if url.contains("?") == false {
                 url += "?token=\(userDefault.token)&unitId=\(model.unitId)"
             }else {
                 url += "&token=\(userDefault.token)&unitId=\(model.unitId)"
