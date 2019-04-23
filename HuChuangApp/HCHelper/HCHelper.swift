@@ -19,12 +19,16 @@ class HCHelper {
     public var userInfoModel: HCUserModel?
     public var isPresentLogin: Bool = false
     
-    class func presentLogin() {
+    class func presentLogin(presentVC: UIViewController? = nil, _ completion: (() ->())? = nil) {
         HCHelper.share.isPresentLogin = true
         
         let loginSB = UIStoryboard.init(name: "HCLogin", bundle: Bundle.main)
         let loginControl = loginSB.instantiateViewController(withIdentifier: "loginControl")
-        NSObject().visibleViewController?.present(loginControl, animated: true, completion: nil)
+        if let presentV = presentVC {
+            presentV.present(loginControl, animated: true, completion: completion)
+        }else{
+            NSObject().visibleViewController?.present(loginControl, animated: true, completion: completion)
+        }
     }
     
     func clearUser() {

@@ -112,10 +112,13 @@ extension BaseWebViewController: UIWebViewDelegate{
         }
         context?.setObject(unsafeBitCast(backToList, to: AnyObject.self), forKeyedSubscript: "backToList" as NSCopying & NSObjectProtocol)
         
-        let userInvalid: @convention(block) () ->() = {
+        let userInvalid: @convention(block) () ->() = { [weak self] in
+            guard let strongSelf = self else { return }
             DispatchQueue.main.async {
                 PrintLog("h5 调用 - userInvalid")
-                HCHelper.presentLogin()
+                HCHelper.presentLogin(presentVC: strongSelf.navigationController, {
+                    strongSelf.navigationController?.popToRootViewController(animated: true)
+                })
             }
         }
         context?.setObject(unsafeBitCast(userInvalid, to: AnyObject.self), forKeyedSubscript: "userInvalid" as NSCopying & NSObjectProtocol)
