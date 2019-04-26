@@ -48,6 +48,9 @@ enum H5Type: String {
 //MARK:
 //MARK: 接口定义
 enum API{
+    /// 向app服务器注册友盟token
+    case UMAdd(deviceToken: String)
+
     /// 获取验证码
     case validateCode(mobile: String)
     /// 登录
@@ -80,6 +83,8 @@ extension API: TargetType{
     
     var path: String{
         switch self {
+        case .UMAdd(_):
+            return "api/umeng/add"
         case .validateCode(_):
             return "api/login/validateCode"
         case .login(_):
@@ -165,6 +170,14 @@ extension API {
     private var parameters: [String: Any]? {
         var params = [String: Any]()
         switch self {
+        case .UMAdd(let deviceToken):
+            let infoDic = Bundle.main.infoDictionary
+            let identif = infoDic?["CFBundleIdentifier"]
+            
+            params["deviceToken"] = deviceToken
+            params["appPackage"] = identif
+            params["appType"] = "IOS"
+
         case .validateCode(let mobile):
             params["mobile"] = mobile
         case .login(let mobile, let smsCode):

@@ -59,6 +59,10 @@ extension HCAppDelegate {
             UIApplication.shared.registerUserNotificationSettings(set)
         }
         
+        _ = NotificationCenter.default.rx.notification(NotificationName.User.LoginSuccess, object: nil)
+            .subscribe(onNext: { [weak self] _ in
+                self?.uploadUMToken()
+            })
     }
 }
 
@@ -75,20 +79,10 @@ extension HCAppDelegate : UNUserNotificationCenterDelegate{
         
         let data = deviceToken as NSData
         let token = data.description.replacingOccurrences(of: "<", with: "").replacingOccurrences(of: ">", with: "").replacingOccurrences(of: " ", with: "")
-        
-        PrintLog( token)
-        
-        let infoDic = Bundle.main.infoDictionary
-        let identif = infoDic?["CFBundleIdentifier"]
-        
-        let infoD = ["umengDeviceToken": token, "packageName" : identif]
-//        HttpRequestManager.shareIntance.HC_updateDeviceToken(infoDic: infoD as NSDictionary) { (success, msg) in
-//            if success == false {
-//                HCPrint(message: "上传token失败！")
-//            }else{
-//                HCPrint(message: "上传token成功！")
-//            }
-//        }
+
+        self.deviceToken = token
+
+        uploadUMToken()
     }
     
     //收到远程推送消息
@@ -163,4 +157,21 @@ extension HCAppDelegate : UNUserNotificationCenterDelegate{
 //        UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
     }
     
+}
+
+extension HCAppDelegate {
+    
+    private func uploadUMToken() {
+        _ = HCProvider.request(.UMAdd(deviceToken: deviceToken))
+            .mapResponse()
+            .subscribe(onSuccess: { res in
+                if RequestCode(rawValue: res.code) == RequestCode.success {
+                    PrintLog("友盟token上传成功")
+                }else {
+                    PrintLog(res.message)
+                }
+            }) { error in
+                PrintLog("友盟token上传失败：\(error)")
+        }
+    }
 }

@@ -14,7 +14,7 @@ extension Notification.Name {
     
     public struct User {
         /**
-         * 登录成功，需要重新拉取数据的界面可接受此通知
+         * 登录成功，需要重新拉取数据和重新向app后台上传umtoken的界面可接受此通知
          */
         static let LoginSuccess = Notification.Name(rawValue: "org.user.notification.name.loginSuccess")
     }
