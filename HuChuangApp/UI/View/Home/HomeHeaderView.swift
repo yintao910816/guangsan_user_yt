@@ -188,7 +188,7 @@ extension HomeHeaderView {
 extension HomeHeaderView {
     
     func headerHeight(functionDataCount: Int, noticeDataCount: Int, goodNewsDataCount: Int) ->CGFloat {
-        ttHeightCns.constant = 0 // 测试使用，正式删掉,原本高度44
+//        ttHeightCns.constant = 0 // 测试使用，正式删掉,原本高度44
         
         var minHeight: CGFloat = 436 - 85 - 75 - 44
         if functionDataCount > 0 {
