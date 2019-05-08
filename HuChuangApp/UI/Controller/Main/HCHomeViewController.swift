@@ -13,7 +13,10 @@ class HCHomeViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var navHeightCns: NSLayoutConstraint!
     @IBOutlet weak var navOutlet: UIView!
-    
+    @IBOutlet weak var unreadCountOutlet: UILabel!
+    @IBOutlet weak var unreadCountWidthCns: NSLayoutConstraint!
+    @IBOutlet weak var unreadBgOutlet: UIView!
+
     private var header: HomeHeaderView!
     
     private var viewModel: HomeViewModel!
@@ -50,6 +53,15 @@ class HCHomeViewController: BaseViewController {
     
     override func rxBind() {
         viewModel = HomeViewModel()
+        
+        viewModel.unreadCountObser
+            .asDriver()
+            .drive(onNext: { [unowned self] data in
+                self.unreadCountOutlet.text = data.0
+                self.unreadCountWidthCns.constant = data.1
+                self.unreadBgOutlet.layer.cornerRadius = data.1 / 2.0
+            })
+            .disposed(by: disposeBag)
         
         viewModel.bannerModelObser.asDriver()
             .drive(header.bannerModelObser)

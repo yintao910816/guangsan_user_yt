@@ -19,6 +19,8 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
     
     /// 根据是否有数据更新header高度
     var headerDataCountObser = Variable((0, 0, 0))
+    /// 设置右上角消息数量提醒
+    var unreadCountObser = Variable(("", CGFloat(0.0)))
     
     var didSelectItemSubject = PublishSubject<HomeColumnItemModel>()
     let noticeDidSelected = PublishSubject<Int>()
@@ -32,7 +34,6 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
 
     override init() {
         super.init()
-        
         hud.noticeLoading()
         
         messageListPublish
@@ -114,6 +115,8 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
 //
 //            }
 //            .disposed(by: disposeBag)
+        requestUnread()
+        
         requestHeaderData()
             .subscribe(onNext: { [weak self] data in
                 self?.hud.noticeHidden()
@@ -179,6 +182,25 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
         return HCProvider.request(.unitSetting(type: type))
             .map(model: H5InfoModel.self)
             .asObservable()
+    }
+    
+    private func requestUnread() {
+        HCProvider.request(.messageUnreadCount)
+            .mapJSON()
+            .subscribe(onSuccess: { [weak self] res in
+                if let dic = res as? [String: Any],
+                    let count = dic["data"] as? Int,
+                    count > 0{
+                    let countString = "\(count)"
+                    let countWidth = countString.getTexWidth(fontSize: 12, height: 20) + 10
+                    self?.unreadCountObser.value = (countString, countWidth)
+                }else {
+                    self?.unreadCountObser.value = ("", 0)
+                }
+            }) { error in
+                PrintLog(error)
+            }
+            .disposed(by: disposeBag)
     }
 }
 

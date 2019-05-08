@@ -69,6 +69,8 @@ enum API{
     case goodNews()
     /// 首页通知消息
     case noticeList(type: String, pageNum: Int, pageSize: Int)
+    /// 获取未读消息
+    case messageUnreadCount
     /// 今日知识
     case column(cmsCode: String)
     case article(id: String)
@@ -101,6 +103,8 @@ extension API: TargetType{
             return "api/index/select"
         case .noticeList(_):
             return "api/index/noticeList"
+        case .messageUnreadCount:
+            return "api/messageCenter/unread"
         case .goodNews():
             return "api/index/goodNews"
         case .column(_):

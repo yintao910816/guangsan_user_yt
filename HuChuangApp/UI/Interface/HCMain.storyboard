@@ -87,12 +87,33 @@
                                             <action selector="actions:" destination="hnC-bI-7ao" eventType="touchUpInside" id="kdx-gR-BMj"/>
                                         </connections>
                                     </button>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Skk-bK-naU">
+                                        <rect key="frame" x="348" y="29" width="20" height="20"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vsl-Dp-uyS">
+                                                <rect key="frame" x="6.5" y="3" width="7" height="14"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.94117647059999998" green="0.30196078430000001" blue="0.38823529410000002" alpha="1" colorSpace="deviceRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="Vsl-Dp-uyS" firstAttribute="centerY" secondItem="Skk-bK-naU" secondAttribute="centerY" id="M0J-oe-EC7"/>
+                                            <constraint firstItem="Vsl-Dp-uyS" firstAttribute="centerX" secondItem="Skk-bK-naU" secondAttribute="centerX" id="NjB-GL-aYw"/>
+                                            <constraint firstAttribute="width" constant="20" id="enl-WB-mI8"/>
+                                            <constraint firstAttribute="width" secondItem="Skk-bK-naU" secondAttribute="height" multiplier="1:1" id="lNs-ha-Key"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="KiM-Dw-ec0" secondAttribute="trailing" constant="15" id="51d-fh-bm1"/>
                                     <constraint firstItem="Lf7-sh-gzc" firstAttribute="leading" secondItem="n9k-NE-kdM" secondAttribute="leading" constant="15" id="HSr-hW-DTg"/>
+                                    <constraint firstItem="Skk-bK-naU" firstAttribute="trailing" secondItem="KiM-Dw-ec0" secondAttribute="trailing" constant="8" id="Ty6-pJ-O2X"/>
                                     <constraint firstItem="Lf7-sh-gzc" firstAttribute="centerY" secondItem="KiM-Dw-ec0" secondAttribute="centerY" id="UhF-en-77X"/>
+                                    <constraint firstItem="Skk-bK-naU" firstAttribute="top" secondItem="KiM-Dw-ec0" secondAttribute="top" constant="-8" id="cIH-cf-748"/>
                                     <constraint firstAttribute="bottom" secondItem="KiM-Dw-ec0" secondAttribute="bottom" constant="7" id="ccg-f4-xe7"/>
                                     <constraint firstAttribute="height" constant="64" id="ggR-Gd-AAM"/>
                                     <constraint firstItem="Lf7-sh-gzc" firstAttribute="width" secondItem="Lf7-sh-gzc" secondAttribute="height" multiplier="1:1" id="mhj-dO-1Eg"/>
@@ -117,11 +138,14 @@
                         <outlet property="navHeightCns" destination="ggR-Gd-AAM" id="reU-J1-uWC"/>
                         <outlet property="navOutlet" destination="n9k-NE-kdM" id="F5Y-Ma-tSa"/>
                         <outlet property="tableView" destination="boU-aX-wNL" id="jZF-CW-fhc"/>
+                        <outlet property="unreadBgOutlet" destination="Skk-bK-naU" id="AaX-xs-rJD"/>
+                        <outlet property="unreadCountOutlet" destination="Vsl-Dp-uyS" id="Iu5-mD-76w"/>
+                        <outlet property="unreadCountWidthCns" destination="enl-WB-mI8" id="VUN-O3-qvp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3I-ox-O6o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="524" y="-1201.3493253373315"/>
+            <point key="canvasLocation" x="656.79999999999995" y="-1212.1439280359821"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="GJw-Zs-FAD">
