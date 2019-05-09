@@ -180,7 +180,7 @@ extension API {
             
             params["deviceToken"] = deviceToken
             params["appPackage"] = identif
-            params["appType"] = "IOS"
+            params["appType"] = "ios"
 
         case .validateCode(let mobile):
             params["mobile"] = mobile
