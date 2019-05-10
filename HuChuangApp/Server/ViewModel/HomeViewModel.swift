@@ -29,6 +29,7 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
 
     let functionItemDidSelected = PublishSubject<(HomeFunctionModel, UINavigationController?)>()
     let messageListPublish = PublishSubject<UINavigationController?>()
+    let refreshUnreadPublish = PublishSubject<Void>()
 
     private var articleTypeID: String = ""
 
@@ -87,6 +88,12 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
                 self.pushH5(model: mdoel)
             }, onError: { error in
                 self.hud.failureHidden(self.errorMessage(error))
+            })
+            .disposed(by: disposeBag)
+        
+        refreshUnreadPublish
+            .subscribe(onNext: { [unowned self] in
+                self.requestUnread()
             })
             .disposed(by: disposeBag)
 

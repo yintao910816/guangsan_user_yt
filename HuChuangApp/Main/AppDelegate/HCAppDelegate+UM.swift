@@ -162,6 +162,7 @@ extension HCAppDelegate : UNUserNotificationCenterDelegate{
 extension HCAppDelegate {
     
     private func uploadUMToken() {
+        PrintLog("上传token：\(deviceToken)")
         _ = HCProvider.request(.UMAdd(deviceToken: deviceToken))
             .mapResponse()
             .subscribe(onSuccess: { res in

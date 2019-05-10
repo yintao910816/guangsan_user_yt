@@ -36,6 +36,7 @@ class HCHomeViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        if viewModel != nil { viewModel.refreshUnreadPublish.onNext(Void()) }
     }
     
     override func setupUI() {
