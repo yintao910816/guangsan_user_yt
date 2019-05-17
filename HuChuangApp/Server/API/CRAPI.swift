@@ -77,6 +77,9 @@ enum API{
     
     /// 获取h5地址
     case unitSetting(type: H5Type)
+    
+    /// 检查版本更新
+    case version()
 }
 
 //MARK:
@@ -113,6 +116,8 @@ extension API: TargetType{
             return "api/index/article"
         case .unitSetting(_):
             return "api/index/unitSetting"
+        case .version():
+            return "api/apk/version"
         }
     }
     
@@ -201,6 +206,10 @@ extension API {
             params["id"] = id
         case .unitSetting(let type):
             params["settingCode"] = type.rawValue
+        
+        case .version():
+            params["type"] = "ios"
+            params["packageName "] = "com.huchuang.guangsanuser"
         default:
             return nil
         }

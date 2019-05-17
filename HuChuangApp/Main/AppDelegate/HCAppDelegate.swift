@@ -18,6 +18,7 @@ class HCAppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         setupUM(launchOptions: launchOptions)
+        checkVersion()
         return true
     }
 
@@ -43,6 +44,18 @@ class HCAppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+}
 
+extension HCAppDelegate {
+    
+    private func checkVersion() {
+        _ = HCProvider.request(.version())
+            .mapResponse()
+            .subscribe(onSuccess: { res in
+                print("---- \(res.message)")
+            }) { error in
+                print("--- \(error)")
+            }
+    }
 }
 
