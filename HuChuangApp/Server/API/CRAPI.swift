@@ -135,16 +135,17 @@ extension API: TargetType{
             
             let formData = MultipartFormData(provider: .data(data), name: "file", fileName: dateStr, mimeType: "image/jpeg")
             return .uploadMultipart([formData])
+        case .version():
+            return .requestParameters(parameters: parameters!, encoding: URLEncoding.default)
         default:
-            break
+            if let _parameters = parameters {
+                guard let jsonData = try? JSONSerialization.data(withJSONObject: _parameters, options: []) else {
+                    return .requestPlain
+                }
+                return .requestCompositeData(bodyData: jsonData, urlParameters: [:])
+            }
         }
         
-        if let _parameters = parameters {
-            guard let jsonData = try? JSONSerialization.data(withJSONObject: _parameters, options: []) else {
-                return .requestPlain
-            }
-            return .requestCompositeData(bodyData: jsonData, urlParameters: [:])
-        }
         return .requestPlain
     }
     
@@ -167,6 +168,7 @@ extension API: TargetType{
                                                "Content-Type": contentType,
                                                "Accept": "application/json",
                                                "unitId": "36"]
+        PrintLog("request headers -- \(customHeaders)")
         return customHeaders
     }
     

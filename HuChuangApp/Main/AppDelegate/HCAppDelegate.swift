@@ -18,7 +18,9 @@ class HCAppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         setupUM(launchOptions: launchOptions)
-        checkVersion()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+            self.checkVersion()
+        }
         return true
     }
 

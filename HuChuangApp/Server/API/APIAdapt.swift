@@ -63,16 +63,12 @@ struct APIAssistance {
      请求方式
      */
     static public func mothed(API: API) ->Moya.Method{
-//        switch API {
-//        case .register(_, _, _),
-////             .login(_, _),
-//             .submitOrder(_),
-//             .wxPay(_, _),
-//             .alipay(_):
-//            return .post
-//        default:
+        switch API {
+        case .version():
+            return .get
+        default:
             return .post
-//        }
+        }
     }
     
 }
