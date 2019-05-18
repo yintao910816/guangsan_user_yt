@@ -41,7 +41,7 @@ class EditUserInfoViewModel: BaseViewModel, VMNavigation {
             return
         }
         
-        HCProvider.request(.selectInfo())
+        HCProvider.request(.selectInfo)
             .map(model: HCUserModel.self)
             .subscribe(onSuccess: { [weak self] user in
                 self?.dealData(user: user)

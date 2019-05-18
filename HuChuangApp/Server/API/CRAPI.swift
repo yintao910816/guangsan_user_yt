@@ -56,17 +56,17 @@ enum API{
     /// 登录
     case login(mobile: String, smsCode: String)
     /// 获取用户信息
-    case selectInfo()
+    case selectInfo
     /// 修改用户信息
     case updateInfo(param: [String: String])
     /// 上传头像
     case uploadIcon(image: UIImage)
     /// 首页banner
-    case selectBanner()
+    case selectBanner
     /// 首页功能列表
-    case functionList()
+    case functionList
     /// 好消息
-    case goodNews()
+    case goodNews
     /// 首页通知消息
     case noticeList(type: String, pageNum: Int, pageSize: Int)
     /// 获取未读消息
@@ -79,7 +79,7 @@ enum API{
     case unitSetting(type: H5Type)
     
     /// 检查版本更新
-    case version()
+    case version
 }
 
 //MARK:
@@ -94,21 +94,21 @@ extension API: TargetType{
             return "api/login/validateCode"
         case .login(_):
             return "api/login/login"
-        case .selectInfo():
+        case .selectInfo:
             return "api/member/selectInfo"
         case .updateInfo(_):
             return "api/member/updateInfo"
         case .uploadIcon(_):
             return "api/upload/imgSingle"
-        case .selectBanner():
+        case .selectBanner:
             return "api/index/selectBanner"
-        case .functionList():
+        case .functionList:
             return "api/index/select"
         case .noticeList(_):
             return "api/index/noticeList"
         case .messageUnreadCount:
             return "api/messageCenter/unread"
-        case .goodNews():
+        case .goodNews:
             return "api/index/goodNews"
         case .column(_):
             return "api/index/column"
@@ -116,8 +116,8 @@ extension API: TargetType{
             return "api/index/article"
         case .unitSetting(_):
             return "api/index/unitSetting"
-        case .version():
-            return "api/apk/version"
+        case .version:
+            return "api/apk/version?type=ios&packageName=com.huchuang.guangsanuser"
         }
     }
     
@@ -135,8 +135,6 @@ extension API: TargetType{
             
             let formData = MultipartFormData(provider: .data(data), name: "file", fileName: dateStr, mimeType: "image/jpeg")
             return .uploadMultipart([formData])
-        case .version():
-            return .requestParameters(parameters: parameters!, encoding: URLEncoding.default)
         default:
             if let _parameters = parameters {
                 guard let jsonData = try? JSONSerialization.data(withJSONObject: _parameters, options: []) else {
@@ -196,7 +194,7 @@ extension API {
             params["smsCode"] = smsCode
         case .updateInfo(let param):
             params = param
-        case .selectBanner():
+        case .selectBanner:
             params["code"] = "banner"
         case .noticeList(let type, let pageNum, let pageSize):
             params["type"] = type
@@ -209,9 +207,6 @@ extension API {
         case .unitSetting(let type):
             params["settingCode"] = type.rawValue
         
-        case .version():
-            params["type"] = "ios"
-            params["packageName "] = "com.huchuang.guangsanuser"
         default:
             return nil
         }

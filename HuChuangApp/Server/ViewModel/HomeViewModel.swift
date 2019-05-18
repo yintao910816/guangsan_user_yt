@@ -152,14 +152,14 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
     //MARK:
     //MARK: request
     private func requestBanner() ->Observable<[HomeBannerModel]>{
-        return HCProvider.request(.selectBanner())
+        return HCProvider.request(.selectBanner)
             .map(models: HomeBannerModel.self)
             .asObservable()
             .catchErrorJustReturn([HomeBannerModel]())
     }
     
     private func requestFunctionList() ->Observable<[HomeFunctionModel]>{
-        return HCProvider.request(.functionList())
+        return HCProvider.request(.functionList)
             .map(models: HomeFunctionModel.self)
             .asObservable()
             .catchErrorJustReturn([HomeFunctionModel]())
@@ -173,7 +173,7 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
     }
     
     private func requestGoodNew() ->Observable<HomeGoodNewsModel> {
-        return HCProvider.request(.goodNews())
+        return HCProvider.request(.goodNews)
             .map(model: HomeGoodNewsModel.self)
             .asObservable()
             .catchErrorJustReturn(HomeGoodNewsModel())

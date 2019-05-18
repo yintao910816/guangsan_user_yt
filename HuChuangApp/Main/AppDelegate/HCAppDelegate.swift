@@ -51,7 +51,7 @@ class HCAppDelegate: UIResponder, UIApplicationDelegate {
 extension HCAppDelegate {
     
     private func checkVersion() {
-        _ = HCProvider.request(.version())
+        _ = HCProvider.request(.version)
             .mapResponse()
             .subscribe(onSuccess: { res in
                 print("---- \(res.message)")

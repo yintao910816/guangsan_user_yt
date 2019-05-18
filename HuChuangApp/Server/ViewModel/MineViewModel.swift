@@ -104,7 +104,7 @@ class MineViewModel: BaseViewModel, VMNavigation {
         let data = ["身份认证", "意见反馈"]
         datasource.onNext(data)
         
-        HCProvider.request(.selectInfo())
+        HCProvider.request(.selectInfo)
             .map(model: HCUserModel.self)
             .subscribe(onSuccess: { [unowned self] user in
                 HCHelper.saveLogin(user: user)
