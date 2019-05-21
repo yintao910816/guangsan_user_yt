@@ -117,7 +117,7 @@ extension API: TargetType{
         case .unitSetting(_):
             return "api/index/unitSetting"
         case .version:
-            return "api/apk/version?type=ios&packageName=com.huchuang.guangsanuser"
+            return "api/apk/version"
         }
     }
     
@@ -135,6 +135,9 @@ extension API: TargetType{
             
             let formData = MultipartFormData(provider: .data(data), name: "file", fileName: dateStr, mimeType: "image/jpeg")
             return .uploadMultipart([formData])
+        case .version:
+            return .requestParameters(parameters: ["type": "ios", "packageName": "com.huchuang.guangsanuser"],
+                                      encoding: URLEncoding.default)
         default:
             if let _parameters = parameters {
                 guard let jsonData = try? JSONSerialization.data(withJSONObject: _parameters, options: []) else {

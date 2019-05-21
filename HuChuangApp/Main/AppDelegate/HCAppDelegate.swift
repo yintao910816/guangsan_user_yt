@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 
 @UIApplicationMain
 class HCAppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,13 @@ class HCAppDelegate: UIResponder, UIApplicationDelegate {
         setupUM(launchOptions: launchOptions)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
             self.checkVersion()
+            
+//            SKStoreProductViewController *storeProductVC = [[SKStoreProductViewController alloc] init];
+//            storeProductVC.delegate = self;
+//            NSDictionary *dic = [NSDictionary dictionaryWithObject:@"1205952707" forKey:SKStoreProductParameterITunesItemIdentifier];
+//            [storeProductVC loadProductWithParameters:dic completionBlock:^(BOOL result, NSError * _Nullable error) {
+//            }];
+//            [self presentViewController:storeProductVC animated:YES completion:nil];
         }
         return true
     }
@@ -48,15 +56,21 @@ class HCAppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+import Alamofire
 extension HCAppDelegate {
     
     private func checkVersion() {
         _ = HCProvider.request(.version)
-            .mapResponse()
+            .map(model: RequestResultModel.self)
             .subscribe(onSuccess: { res in
-                print("---- \(res.message)")
+                NoticesCenter.alert(title: "有最新版本可以升级", message: "", cancleTitle: "取消", okTitle: "去更新", callBackOK: {
+                    let storeProductVC = SKStoreProductViewController()
+                    storeProductVC.loadProduct(withParameters: [SKStoreProductParameterITunesItemIdentifier: "1454537873"], completionBlock: { (flag, error) in
+                    })
+                   NSObject().visibleViewController?.present(storeProductVC, animated: true, completion: nil)
+                })
             }) { error in
-                print("--- \(error)")
+                print("--- \(error) -- 已是最新版本")
             }
     }
 }
