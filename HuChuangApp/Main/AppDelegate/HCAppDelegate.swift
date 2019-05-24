@@ -61,14 +61,18 @@ extension HCAppDelegate {
     
     private func checkVersion() {
         _ = HCProvider.request(.version)
-            .map(model: RequestResultModel.self)
+            .map(model: AppVersionModel.self)
             .subscribe(onSuccess: { res in
-                NoticesCenter.alert(title: "有最新版本可以升级", message: "", cancleTitle: "取消", okTitle: "去更新", callBackOK: {
-                    let storeProductVC = SKStoreProductViewController()
-                    storeProductVC.loadProduct(withParameters: [SKStoreProductParameterITunesItemIdentifier: "1454537873"], completionBlock: { (flag, error) in
+//                let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+                if res.updateApk == 1
+                {
+                    NoticesCenter.alert(title: "有最新版本可以升级", message: "", cancleTitle: "取消", okTitle: "去更新", callBackOK: {
+                        let storeProductVC = SKStoreProductViewController()
+                        storeProductVC.loadProduct(withParameters: [SKStoreProductParameterITunesItemIdentifier: "1454537873"], completionBlock: { (flag, error) in
+                        })
+                        NSObject().visibleViewController?.present(storeProductVC, animated: true, completion: nil)
                     })
-                   NSObject().visibleViewController?.present(storeProductVC, animated: true, completion: nil)
-                })
+                }
             }) { error in
                 print("--- \(error) -- 已是最新版本")
             }

@@ -344,6 +344,7 @@
 		C43F09BE22143B5200910437 /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43F09BD22143B5200910437 /* BaseWebViewController.swift */; };
 		C43F09C3221448B000910437 /* HCNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43F09C2221448B000910437 /* HCNotifications.swift */; };
 		C4481E2422154D66007F4B0C /* BaseWKWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4481E2322154D66007F4B0C /* BaseWKWebViewViewController.swift */; };
+		C449FA5B2298021D00B7803E /* AppAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C449FA5A2298021D00B7803E /* AppAbout.swift */; };
 		C4C3257B2205B8490091783C /* ScrollTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C3257A2205B8490091783C /* ScrollTextView.swift */; };
 		C4C3257D2205C3AD0091783C /* UIView+XIB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C3257C2205C3AC0091783C /* UIView+XIB.swift */; };
 		C4F3E87622201D1B008B143C /* H5.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F3E87522201D1B008B143C /* H5.swift */; };
@@ -939,6 +940,7 @@
 		C43F09BD22143B5200910437 /* BaseWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWebViewController.swift; sourceTree = "<group>"; };
 		C43F09C2221448B000910437 /* HCNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCNotifications.swift; sourceTree = "<group>"; };
 		C4481E2322154D66007F4B0C /* BaseWKWebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWKWebViewViewController.swift; sourceTree = "<group>"; };
+		C449FA5A2298021D00B7803E /* AppAbout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAbout.swift; sourceTree = "<group>"; };
 		C4C3257A2205B8490091783C /* ScrollTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollTextView.swift; sourceTree = "<group>"; };
 		C4C3257C2205C3AC0091783C /* UIView+XIB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+XIB.swift"; sourceTree = "<group>"; };
 		C4F3E87522201D1B008B143C /* H5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H5.swift; sourceTree = "<group>"; };
@@ -2026,6 +2028,7 @@
 				C421338B2205A544006C10C4 /* Home.swift */,
 				B8BE35082214738000EF16F1 /* EditUserInfoModel.swift */,
 				C4F3E87522201D1B008B143C /* H5.swift */,
+				C449FA5A2298021D00B7803E /* AppAbout.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2534,6 +2537,7 @@
 				C42133712205961D006C10C4 /* UIControl+_Rx.swift in Sources */,
 				B816EB00221DABF400F024D5 /* ZXMultiFormatUPCEANReader.m in Sources */,
 				C4213343220586E6006C10C4 /* HCMineViewController.swift in Sources */,
+				C449FA5B2298021D00B7803E /* AppAbout.swift in Sources */,
 				B816EAA5221DABF400F024D5 /* ZXQRCodeDataBlock.m in Sources */,
 				B816EACE221DABF400F024D5 /* ZXPDF417BarcodeRow.m in Sources */,
 				B816EABD221DABF400F024D5 /* ZXPerspectiveTransform.m in Sources */,
