@@ -14,6 +14,7 @@ class HCHomeViewController: BaseViewController {
     @IBOutlet weak var navHeightCns: NSLayoutConstraint!
     @IBOutlet weak var navOutlet: UIView!
     @IBOutlet weak var unreadCountOutlet: UILabel!
+    @IBOutlet weak var rightBarButton: TYClickedButton!
     @IBOutlet weak var unreadCountWidthCns: NSLayoutConstraint!
     @IBOutlet weak var unreadBgOutlet: UIView!
 
@@ -45,6 +46,8 @@ class HCHomeViewController: BaseViewController {
         }
         navHeightCns.constant += LayoutSize.fitTopArea
 
+        rightBarButton.setEnlargeEdge(top: 10, bottom: 10, left: 10, right: 10)
+        
         header = HomeHeaderView.init(frame: .init(x: 0, y: 0, width: tableView.width, height: 0))
         
         tableView.rowHeight = 90

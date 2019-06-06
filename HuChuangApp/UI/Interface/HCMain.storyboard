@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RGT-h1-fgX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RGT-h1-fgX">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -65,7 +65,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n9k-NE-kdM">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
-                                    <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KiM-Dw-ec0">
+                                    <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KiM-Dw-ec0" customClass="TYClickedButton" customModule="HuChuangApp" customModuleProvider="target">
                                         <rect key="frame" x="335.5" y="37" width="24.5" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="ACS-OC-Va5"/>
@@ -137,6 +137,7 @@
                     <connections>
                         <outlet property="navHeightCns" destination="ggR-Gd-AAM" id="reU-J1-uWC"/>
                         <outlet property="navOutlet" destination="n9k-NE-kdM" id="F5Y-Ma-tSa"/>
+                        <outlet property="rightBarButton" destination="KiM-Dw-ec0" id="zRA-eU-8eh"/>
                         <outlet property="tableView" destination="boU-aX-wNL" id="jZF-CW-fhc"/>
                         <outlet property="unreadBgOutlet" destination="Skk-bK-naU" id="AaX-xs-rJD"/>
                         <outlet property="unreadCountOutlet" destination="Vsl-Dp-uyS" id="Iu5-mD-76w"/>

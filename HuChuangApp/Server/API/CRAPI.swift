@@ -20,6 +20,7 @@ import Moya
  我的预约    memberSubscribe
  我的收藏    memberCollect
  用户反馈    memberFeedback
+ 功能暂未开放 underDev
  **/
 
 enum H5Type: String {
@@ -43,6 +44,8 @@ enum H5Type: String {
     case memberFeedback = "memberFeedback"
     /// cms功能：readNumber=阅读量,modifyDate=发布时间，hrefUrl=调整地址
     case hrefUrl = "hrefUrl"
+    /// 开发中
+    case underDev = "underDev"
 }
 
 //MARK:

@@ -77,9 +77,8 @@ class HCMineViewController: BaseViewController {
             .disposed(by: disposeBag)
 
         header.quanziOutlet.rx.tap.asDriver()
-            .drive(onNext: { [unowned self] _ in
-                NoticesCenter.alert(message: "开发中...")
-            })
+            .map{ H5Type.underDev }
+            .drive(viewModel.pushH5Subject)
             .disposed(by: disposeBag)
 
         viewModel.reloadSubject.onNext(Void())
