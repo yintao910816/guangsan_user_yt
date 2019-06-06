@@ -81,7 +81,7 @@ class MineViewModel: BaseViewModel, VMNavigation {
                 .disposed(by: disposeBag)
         }else if title == "我的消息" {
             hud.noticeLoading()
-            requestH5(type: .underDev)
+            requestH5(type: .notification)
                 .subscribe(onNext: { [weak self] model in
                     self?.hud.noticeHidden()
                     self?.pushH5(model: model)
