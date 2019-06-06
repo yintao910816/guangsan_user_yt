@@ -228,7 +228,7 @@ extension HomeViewModel {
             PrintLog("h5拼接后地址：\(url)")
             
             let webVC = BaseWebViewController()
-            webVC.title = model.name
+//            webVC.title = model.name
             webVC.url   = url
             navigationVC?.pushViewController(webVC, animated: true)
         }else {
