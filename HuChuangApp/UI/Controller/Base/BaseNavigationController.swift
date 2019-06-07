@@ -57,7 +57,13 @@ class BaseNavigationController: UINavigationController {
     //MARK
     //MARK: action
     @objc func backAction() {
-        popViewController(animated: true)
+        if let webVC = topViewController as? BaseWebViewController,
+            webVC.webCanBack() == true
+        {
+            PrintLog("网页跳转返回")
+        }else {
+            popViewController(animated: true)
+        }
     }
     
     deinit {

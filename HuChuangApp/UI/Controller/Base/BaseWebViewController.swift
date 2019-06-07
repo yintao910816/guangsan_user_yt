@@ -13,13 +13,13 @@ class BaseWebViewController: BaseViewController {
 
     var url: String = ""
 
-    var context : JSContext?
-
-    lazy var hud: NoticesCenter = {
+    private var context : JSContext?
+    
+    private lazy var hud: NoticesCenter = {
         return NoticesCenter()
     }()
     
-    lazy var webView: UIWebView = {
+    private lazy var webView: UIWebView = {
         let w = UIWebView()
         w.backgroundColor = .clear
         w.scrollView.bounces = false
@@ -33,6 +33,15 @@ class BaseWebViewController: BaseViewController {
         }
         
         url = _url
+    }
+    
+    func webCanBack(_ goBack: Bool = true) -> Bool {
+        if webView.canGoBack == true,
+            goBack == true {
+            webView.goBack()
+            return true
+        }
+        return false
     }
     
     override func setupUI() {
@@ -72,7 +81,7 @@ extension BaseWebViewController: UIWebViewDelegate{
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool{
         
         let s = request.url?.absoluteString
-        PrintLog("shouldStartLoadWith -- \(s)")
+        PrintLog("shouldStartLoadWith -- \(String(describing: s))")
 
         if s == "app://reload"{
             webView.loadRequest(URLRequest.init(url: URL.init(string: url)!))
@@ -91,6 +100,19 @@ extension BaseWebViewController: UIWebViewDelegate{
         hud.noticeHidden()
         
         context = (webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as! JSContext)
+        
+        // 设置标题
+        let changeTitle: @convention(block) () ->() = {[weak self]in
+            DispatchQueue.main.async {
+                let args = JSContext.currentArguments()
+                if let firstObj = args?.first,
+                    let title = firstObj as? String
+                {
+                    self?.navigationItem.title = title
+                }
+            }
+        }
+        context?.setObject(unsafeBitCast(changeTitle, to: AnyObject.self), forKeyedSubscript: "changeTitle" as NSCopying & NSObjectProtocol)
         
         let backHomeFnApi: @convention(block) () ->() = {[weak self]in
             DispatchQueue.main.async {
