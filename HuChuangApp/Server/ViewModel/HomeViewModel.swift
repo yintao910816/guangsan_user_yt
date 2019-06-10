@@ -146,7 +146,7 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
     
     private func pushH5(model: H5InfoModel) {
         let url = "\(model.setValue)?token=\(userDefault.token)&unitId=\(AppSetup.instance.unitId)"
-        HomeViewModel.push(BaseWebViewController.self, ["url": url])
+        HomeViewModel.push(BaseWebViewController.self, ["url": url, "title": model.name])
     }
     
     //MARK:
@@ -228,7 +228,7 @@ extension HomeViewModel {
             PrintLog("h5拼接后地址：\(url)")
             
             let webVC = BaseWebViewController()
-//            webVC.title = model.name
+            webVC.title = model.name
             webVC.url   = url
             navigationVC?.pushViewController(webVC, animated: true)
         }else {

@@ -14,6 +14,7 @@ class BaseWebViewController: BaseViewController {
     var url: String = ""
 
     private var context : JSContext?
+    private var webTitle: String?
     
     private lazy var hud: NoticesCenter = {
         return NoticesCenter()
@@ -32,6 +33,7 @@ class BaseWebViewController: BaseViewController {
             return
         }
         
+        webTitle = (parameters?["title"] as? String)
         url = _url
     }
     
@@ -51,6 +53,8 @@ class BaseWebViewController: BaseViewController {
         }
 
         view.addSubview(webView)
+        
+        if webTitle?.count ?? 0 > 0 { navigationItem.title = webTitle }
         
         webView.snp.makeConstraints{ $0.edges.equalTo(UIEdgeInsets.zero) }
         
@@ -102,13 +106,13 @@ extension BaseWebViewController: UIWebViewDelegate{
         context = (webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as! JSContext)
         
         // 设置标题
-        let changeTitle: @convention(block) () ->() = {[weak self]in
-            DispatchQueue.main.async {
-                let args = JSContext.currentArguments()
-                if let firstObj = args?.first,
-                    let title = firstObj as? String
-                {
-                    self?.navigationItem.title = title
+        let changeTitle: @convention(block) () ->() = {[weak self] in
+            guard let params = JSContext.currentArguments() else { return }
+            
+            for idx in 0..<params.count {
+                if idx == 0 {
+                    let _title = ((params[0] as AnyObject).toString()) ?? ""
+                    self?.navigationItem.title = _title
                 }
             }
         }
