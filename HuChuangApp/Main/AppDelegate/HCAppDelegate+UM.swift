@@ -18,6 +18,9 @@ extension HCAppDelegate {
         MobClick.setScenarioType(.E_UM_NORMAL)
         UMConfigure.setLogEnabled(true)
         
+        UMessage.setAutoAlert(false)
+        UMessage.setBadgeClear(true)
+        
         if #available(iOS 10.0, *) {
             let entity = UMessageRegisterEntity()
             entity.types = Int(UMessageAuthorizationOptions.badge.rawValue) | Int(UMessageAuthorizationOptions.alert.rawValue)
@@ -113,7 +116,7 @@ extension HCAppDelegate : UNUserNotificationCenterDelegate{
             //应用处于前台时的本地推送接受
         }
         //当应用处于前台时提示设置，需要哪个可以设置哪一个
-        completionHandler(UNNotificationPresentationOptions.alert)
+        completionHandler(UNNotificationPresentationOptions.badge)
     }
     
     

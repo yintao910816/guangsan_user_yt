@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MineFooterView" customModule="HuChuangApp" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="1Jb-Ch-nnT"/>
+                <outlet property="versionOutlet" destination="3UH-3r-EdT" id="opa-Fd-fkE"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D8G-G9-2Ka">
                     <rect key="frame" x="0.0" y="10" width="375" height="45"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="4wG-HG-jPc"/>
+                    </constraints>
                     <state key="normal" title="退出登陆">
                         <color key="titleColor" red="0.54117647058823526" green="0.23529411764705882" blue="0.42745098039215684" alpha="1" colorSpace="deviceRGB"/>
                     </state>
@@ -29,12 +33,20 @@
                         <action selector="loginOutAction:" destination="-1" eventType="touchUpInside" id="n3s-0V-VMr"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3UH-3r-EdT">
+                    <rect key="frame" x="0.0" y="74" width="375" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.5490196078431373" green="0.5490196078431373" blue="0.5490196078431373" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="3UH-3r-EdT" secondAttribute="trailing" id="B5K-u0-1hX"/>
                 <constraint firstAttribute="trailing" secondItem="D8G-G9-2Ka" secondAttribute="trailing" id="KeI-uN-8iI"/>
-                <constraint firstAttribute="bottom" secondItem="D8G-G9-2Ka" secondAttribute="bottom" id="UhQ-R8-vv5"/>
+                <constraint firstAttribute="bottom" secondItem="3UH-3r-EdT" secondAttribute="bottom" id="QSg-Qe-CG7"/>
                 <constraint firstItem="D8G-G9-2Ka" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="XXw-gx-lfq"/>
+                <constraint firstItem="3UH-3r-EdT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ZMf-rg-BX1"/>
                 <constraint firstItem="D8G-G9-2Ka" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="eVH-fU-AqL"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
