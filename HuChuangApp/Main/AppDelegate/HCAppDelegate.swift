@@ -63,8 +63,8 @@ extension HCAppDelegate {
         _ = HCProvider.request(.version)
             .map(model: AppVersionModel.self)
             .subscribe(onSuccess: { res in
-//                let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-                if res.updateApk == 1
+                let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+                if appVersion != res.versionName
                 {
                     NoticesCenter.alert(title: "有最新版本可以升级", message: "", cancleTitle: "取消", okTitle: "去更新", callBackOK: {
                         let storeProductVC = SKStoreProductViewController()
