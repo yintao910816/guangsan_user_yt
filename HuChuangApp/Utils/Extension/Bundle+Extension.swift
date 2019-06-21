@@ -41,7 +41,7 @@ extension Bundle {
     /// 获取int型版本号
     var intAppVersion: Int {
         get {
-            let transFormVersion = version.replacingOccurrences(of: ".", with: "")
+            let transFormVersion = transformVersion(version: version)
             guard let intVersion = NumberFormatter().number(from: transFormVersion)?.intValue else {
                 return 0
             }
@@ -51,11 +51,17 @@ extension Bundle {
     
     /// 与当前版本号比较
     func isNewest(version aVersion: String) ->Bool {
-        let transFormVersion = aVersion.replacingOccurrences(of: ".", with: "")
+        let transFormVersion = transformVersion(version: aVersion)
         guard let intVersion = NumberFormatter().number(from: transFormVersion)?.intValue else {
             return true
         }
         return intAppVersion >= intVersion
+    }
+    
+    private func transformVersion(version: String) ->String {
+        let tempArr = version.components(separatedBy: ".")
+        let tempString = tempArr.joined(separator: "")
+        return tempString
     }
 }
 

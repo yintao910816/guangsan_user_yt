@@ -2813,7 +2813,7 @@
 				CODE_SIGN_ENTITLEMENTS = HuChuangApp/HuChuangApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = J9M9SRP484;
+				DEVELOPMENT_TEAM = KZ83WEMA2D;
 				INFOPLIST_FILE = HuChuangApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2822,7 +2822,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.huchuang.guangsanuser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = guangsan_user_dev_profile;
+				PROVISIONING_PROFILE_SPECIFIER = potatochat_beta_dev;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/HuChuangApp/Main/Config/HcChuangApp-Bridge-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

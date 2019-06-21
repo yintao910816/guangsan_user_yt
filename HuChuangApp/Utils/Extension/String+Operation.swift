@@ -11,6 +11,7 @@ extension String {
     
     /// 替换指定字符串
     func replacingOccurrences(of target: String, with replacement: String) ->String {
+        
         guard let targetRange = range(of: target) else {
             return self
         }
