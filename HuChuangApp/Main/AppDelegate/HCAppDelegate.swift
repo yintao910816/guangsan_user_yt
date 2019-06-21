@@ -68,14 +68,27 @@ extension HCAppDelegate {
                 {
                     NoticesCenter.alert(title: "有最新版本可以升级", message: "", cancleTitle: "取消", okTitle: "去更新", callBackOK: {
                         let storeProductVC = SKStoreProductViewController()
-                        storeProductVC.loadProduct(withParameters: [SKStoreProductParameterITunesItemIdentifier: "1454537873"], completionBlock: { (flag, error) in
+                        storeProductVC.delegate = self
+                        storeProductVC.loadProduct(withParameters: [SKStoreProductParameterITunesItemIdentifier: "1454537873"],
+                                                   completionBlock:
+                            { (flag, error) in
+                                if flag
+                                {
+                                    NSObject().visibleViewController?.present(storeProductVC, animated: true, completion: nil)
+                                }
                         })
-                        NSObject().visibleViewController?.present(storeProductVC, animated: true, completion: nil)
                     })
                 }
             }) { error in
                 print("--- \(error) -- 已是最新版本")
             }
+    }
+}
+
+extension HCAppDelegate: SKStoreProductViewControllerDelegate {
+    
+    func productViewControllerDidFinish(_ viewController: SKStoreProductViewController) {
+        viewController.dismiss(animated: true, completion: nil)
     }
 }
 
