@@ -15,6 +15,8 @@ class HCAppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     var deviceToken: String = ""
+    
+    var isAuthorizedPush: Bool = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

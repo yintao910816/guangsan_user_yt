@@ -165,17 +165,56 @@ extension HCAppDelegate : UNUserNotificationCenterDelegate{
 extension HCAppDelegate {
     
     private func uploadUMToken() {
-        PrintLog("上传token：\(deviceToken)")
-        _ = HCProvider.request(.UMAdd(deviceToken: deviceToken))
-            .mapResponse()
-            .subscribe(onSuccess: { res in
-                if RequestCode(rawValue: res.code) == RequestCode.success {
-                    PrintLog("友盟token上传成功")
-                }else {
-                    PrintLog(res.message)
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().getNotificationSettings { [weak self] (set) in
+                guard let strongSelf = self else { return }
+                if set.authorizationStatus == UNAuthorizationStatus.notDetermined{
+                    PrintLog("推送不允许")
+                    strongSelf.isAuthorizedPush = false
+                }else if set.authorizationStatus == UNAuthorizationStatus.denied{
+                    PrintLog("推送不允许")
+                    strongSelf.isAuthorizedPush = false
+                }else if set.authorizationStatus == UNAuthorizationStatus.authorized
+                {
+                    PrintLog("推送允许")
+                    strongSelf.isAuthorizedPush = true
+                    _ = HCProvider.request(.UMAdd(deviceToken: strongSelf.deviceToken))
+                        .mapResponse()
+                        .subscribe(onSuccess: { res in
+                            if RequestCode(rawValue: res.code) == RequestCode.success {
+                                PrintLog("友盟token上传成功")
+                            }else {
+                                PrintLog(res.message)
+                            }
+                        }) { error in
+                            PrintLog("友盟token上传失败：\(error)")
+                    }
                 }
-            }) { error in
-                PrintLog("友盟token上传失败：\(error)")
+            }
+            
+        } else {
+            
+            guard let ty = UIApplication.shared.currentUserNotificationSettings?.types else { return }
+            if Int(ty.rawValue) == 0{
+                PrintLog("用户不允许推送")
+                isAuthorizedPush = false
+            }else{
+                PrintLog("用户允许推送")
+                isAuthorizedPush = true
+                _ = HCProvider.request(.UMAdd(deviceToken: deviceToken))
+                    .mapResponse()
+                    .subscribe(onSuccess: { res in
+                        if RequestCode(rawValue: res.code) == RequestCode.success {
+                            PrintLog("友盟token上传成功")
+                        }else {
+                            PrintLog(res.message)
+                        }
+                    }) { error in
+                        PrintLog("友盟token上传失败：\(error)")
+                }
+            }
+            
         }
+        
     }
 }

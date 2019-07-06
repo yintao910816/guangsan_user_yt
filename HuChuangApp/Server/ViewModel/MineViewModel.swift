@@ -136,6 +136,8 @@ class MineViewModel: BaseViewModel, VMNavigation {
     }
     
     private func pushH5(model: H5InfoModel) {
+        guard model.setValue.count > 0 else { return }
+        
         let url = "\(model.setValue)?token=\(userDefault.token)&unitId=\(AppSetup.instance.unitId)"
         HomeViewModel.push(BaseWebViewController.self, ["url": url])
     }

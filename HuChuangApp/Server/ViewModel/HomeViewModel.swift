@@ -71,7 +71,8 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
         
         goodnewsDidSelected
             ._doNext(forNotice: hud)
-            .flatMap{ [unowned self] _ in self.requestH5(type: .goodNews) }
+//            .flatMap{ [unowned self] _ in self.requestH5(type: .goodNews) }
+            .flatMap{ [unowned self] _ in self.requestH5(type: .underDev) }
             .subscribe(onNext: { [unowned self] model in
                 self.hud.noticeHidden()
                 self.pushH5(model: model)
@@ -145,6 +146,7 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
     }
     
     private func pushH5(model: H5InfoModel) {
+        guard model.setValue.count > 0 else { return }
         let url = "\(model.setValue)?token=\(userDefault.token)&unitId=\(AppSetup.instance.unitId)"
         HomeViewModel.push(BaseWebViewController.self, ["url": url, "title": model.name])
     }
