@@ -71,8 +71,7 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
         
         goodnewsDidSelected
             ._doNext(forNotice: hud)
-//            .flatMap{ [unowned self] _ in self.requestH5(type: .goodNews) }
-            .flatMap{ [unowned self] _ in self.requestH5(type: .underDev) }
+            .flatMap{ [unowned self] _ in self.requestH5(type: .goodNews) }
             .subscribe(onNext: { [unowned self] model in
                 self.hud.noticeHidden()
                 self.pushH5(model: model)
@@ -234,11 +233,13 @@ extension HomeViewModel {
             webVC.url   = url
             navigationVC?.pushViewController(webVC, animated: true)
         }else {
-            hud.failureHidden("功能暂不开放")
+//            hud.failureHidden("功能暂不开放")
         }
     }
     
     private func pushH5(url: String, navigationVC: UINavigationController?) {
+        guard url.count > 0 else { return }
+        
         let webVC = BaseWebViewController()
         webVC.url   = url
         navigationVC?.pushViewController(webVC, animated: true)
