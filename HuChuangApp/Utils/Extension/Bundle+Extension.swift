@@ -38,6 +38,13 @@ extension Bundle {
         }
     }
     
+    /// app bundle id
+    var bundleIdentifier: String {
+        get {
+            return self.object(forInfoDictionaryKey: "CFBundleIdentifier") as? String ?? ""
+        }
+    }
+    
     /// 获取int型版本号
     var intAppVersion: Int {
         get {

@@ -138,8 +138,23 @@ class MineViewModel: BaseViewModel, VMNavigation {
     private func pushH5(model: H5InfoModel) {
         guard model.setValue.count > 0 else { return }
         
-        let url = "\(model.setValue)?token=\(userDefault.token)&unitId=\(AppSetup.instance.unitId)"
-        HomeViewModel.push(BaseWebViewController.self, ["url": url])
+        if model.setValue.count > 0 {
+            var url = model.setValue
+            PrintLog("h5拼接前地址：\(url)")
+            if url.contains("?") == false {
+                url += "?token=\(userDefault.token)&unitId=36"
+            }else {
+                url += "&token=\(userDefault.token)&unitId=36"
+            }
+            PrintLog("h5拼接后地址：\(url)")
+            
+            HomeViewModel.push(BaseWebViewController.self, ["url": url])
+        }else {
+            hud.failureHidden("功能暂不开放")
+        }
+
+//        let url = "\(model.setValue)?token=\(userDefault.token)&unitId=\(AppSetup.instance.unitId)"
+//        HomeViewModel.push(BaseWebViewController.self, ["url": url])
     }
 
 }

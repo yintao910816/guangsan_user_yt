@@ -16,6 +16,8 @@ class BaseWebViewController: BaseViewController {
     private var context : JSContext?
     private var webTitle: String?
     
+    private var bridge: WebViewJavascriptBridge!
+    
     private lazy var hud: NoticesCenter = {
         return NoticesCenter()
     }()
@@ -54,6 +56,8 @@ class BaseWebViewController: BaseViewController {
 
         view.addSubview(webView)
         
+//        setupBridge()
+        
         if webTitle?.count ?? 0 > 0 { navigationItem.title = webTitle }
         
         webView.snp.makeConstraints{ $0.edges.equalTo(UIEdgeInsets.zero) }
@@ -61,6 +65,16 @@ class BaseWebViewController: BaseViewController {
         requestData()
     }
 
+    private func setupBridge() {
+        WebViewJavascriptBridge.enableLogging()
+        bridge = WebViewJavascriptBridge.init(forWebView: webView)
+        bridge.setWebViewDelegate(self)
+        bridge.registerHandler("appInfo") { [weak self] (data, responseCallBack) in
+            PrintLog("appInfo - \(data) ")
+            responseCallBack?(self?.stringForAppInfo() ?? "")
+        }
+    }
+    
     private func requestData(){
         hud.noticeLoading()
         
@@ -82,6 +96,8 @@ class BaseWebViewController: BaseViewController {
 
 extension BaseWebViewController: UIWebViewDelegate{
    
+    
+    
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool{
         
         let s = request.url?.absoluteString
@@ -104,11 +120,11 @@ extension BaseWebViewController: UIWebViewDelegate{
         hud.noticeHidden()
         
         context = (webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as! JSContext)
-        
+
         // 设置标题
         let changeTitle: @convention(block) () ->() = {[weak self] in
             guard let params = JSContext.currentArguments() else { return }
-            
+
             for idx in 0..<params.count {
                 if idx == 0 {
                     let _title = ((params[0] as AnyObject).toString()) ?? ""
@@ -117,27 +133,27 @@ extension BaseWebViewController: UIWebViewDelegate{
             }
         }
         context?.setObject(unsafeBitCast(changeTitle, to: AnyObject.self), forKeyedSubscript: "changeTitle" as NSCopying & NSObjectProtocol)
-        
+
         let backHomeFnApi: @convention(block) () ->() = {[weak self]in
             DispatchQueue.main.async {
                 PrintLog("h5 调用 - backHomeFnApi")
-                
+
                 self?.navigationController?.popToRootViewController(animated: true)
             }
         }
         context?.setObject(unsafeBitCast(backHomeFnApi, to: AnyObject.self), forKeyedSubscript: "backHomeFnApi" as NSCopying & NSObjectProtocol)
-        
+
         let backToList: @convention(block) () ->() = { [weak self] in
             DispatchQueue.main.async {
                 PrintLog("h5 调用 - backToList")
-                
+
                 if self?.webView.canGoBack == true {
                     self?.webView.goBack()
                 }
             }
         }
         context?.setObject(unsafeBitCast(backToList, to: AnyObject.self), forKeyedSubscript: "backToList" as NSCopying & NSObjectProtocol)
-        
+
         let userInvalid: @convention(block) () ->() = { [weak self] in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
@@ -153,22 +169,21 @@ extension BaseWebViewController: UIWebViewDelegate{
             PrintLog("暂时不用 - isApp")
         }
         context?.setObject(unsafeBitCast(isApp, to: AnyObject.self), forKeyedSubscript: "isApp" as NSCopying & NSObjectProtocol)
-        
+
         let nativeOpenURL: @convention(block) () ->() = { [weak self] in
             PrintLog("暂时不用 - nativeOpenURL")
         }
         context?.setObject(unsafeBitCast(nativeOpenURL, to: AnyObject.self), forKeyedSubscript: "nativeOpenURL" as NSCopying & NSObjectProtocol)
-        
+
         context?.exceptionHandler = {(context, value)in
             PrintLog(value)
         }
-        
+
         let appInfo: @convention(block) () ->(String) = { [weak self] in
-            PrintLog("1111111111")
-            return "1111111111"
+            return self?.stringForAppInfo() ?? ""
         }
         context?.setObject(unsafeBitCast(appInfo, to: AnyObject.self), forKeyedSubscript: "appInfo" as NSCopying & NSObjectProtocol)
-        
+
         setTitle()
     }
     
@@ -177,3 +192,18 @@ extension BaseWebViewController: UIWebViewDelegate{
     }
 }
 
+extension BaseWebViewController {
+    
+    private func stringForAppInfo() ->String {
+        let infoDic: [String : String] = ["app_version": Bundle.main.version,
+                                          "app_name": Bundle.main.appName,
+                                          "app_packge": Bundle.main.bundleIdentifier,
+                                          "app_sign": "",
+                                          "app_type": "ios"]
+        guard JSONSerialization.isValidJSONObject(infoDic) else { return "" }
+        guard let jsonData =  try? JSONSerialization.data(withJSONObject: infoDic, options: []) else { return "" }
+        guard let jsonString =  String.init(data: jsonData, encoding: .utf8) else { return "" }
+        PrintLog("app信息：\(jsonString)")
+        return jsonString
+    }
+}

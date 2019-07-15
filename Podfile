@@ -8,6 +8,7 @@ pod 'RxCocoa', '~> 4.4.0'
 pod 'RxDataSources', '~> 3.1.0'
 pod 'Moya/RxSwift', '~> 12.0.1'
 pod 'HandyJSON', '~> 5.0.0-beta.1'
+pod 'WebViewJavascriptBridge'
 
 pod 'SQLite.swift', '~> 0.11.5'
 

@@ -14,6 +14,7 @@
 #import "LBXScanViewController.h"
 #import "LBXScanView.h"
 #import "ZXingWrapper.h"
+#import "WebViewJavascriptBridge.h"
 
 #import <UMPush/UMessage.h>
 #import <UMCommon/UMCommon.h>
