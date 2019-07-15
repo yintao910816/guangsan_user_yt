@@ -148,7 +148,7 @@ extension BaseWebViewController: UIWebViewDelegate{
             }
         }
         context?.setObject(unsafeBitCast(userInvalid, to: AnyObject.self), forKeyedSubscript: "userInvalid" as NSCopying & NSObjectProtocol)
-        
+
         let isApp: @convention(block) () ->() = { [weak self] in
             PrintLog("暂时不用 - isApp")
         }
@@ -162,6 +162,12 @@ extension BaseWebViewController: UIWebViewDelegate{
         context?.exceptionHandler = {(context, value)in
             PrintLog(value)
         }
+        
+        let appInfo: @convention(block) () ->(String) = { [weak self] in
+            PrintLog("1111111111")
+            return "1111111111"
+        }
+        context?.setObject(unsafeBitCast(appInfo, to: AnyObject.self), forKeyedSubscript: "appInfo" as NSCopying & NSObjectProtocol)
         
         setTitle()
     }
