@@ -17,9 +17,10 @@ class MineCell: UITableViewCell {
         
         selectionStyle = .none
     }
-    var title: String! {
+    
+    var model: MenuListItemModel! {
         didSet {
-            titleOutlet.text = title
+            titleOutlet.text = model.title
         }
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxDataSources
 
 class HCMineViewController: BaseViewController {
 
@@ -28,7 +29,7 @@ class HCMineViewController: BaseViewController {
 //            automaticallyAdjustsScrollViewInsets = false
 //        }
        
-        var headerHeight: CGFloat = 190
+        var headerHeight: CGFloat = 180
         if UIDevice.current.isX { headerHeight += 44 }
         header =  MineHeaderView.init(frame: .init(x: 0, y: 0, width: tableView.width, height: headerHeight))
         tableView.tableHeaderView = header
@@ -47,17 +48,24 @@ class HCMineViewController: BaseViewController {
             .bind(to: viewModel.gotoEditUserInfo)
             .disposed(by: disposeBag)
         
+        let datasource = RxTableViewSectionedReloadDataSource<SectionModel<Int, MenuListItemModel>>.init(configureCell: { (_, tb, indexPath, model) -> UITableViewCell in
+            let cell = tb.dequeueReusableCell(withIdentifier: "MineCellID") as! MineCell
+            cell.model = model
+            return cell
+        })
+
         viewModel.datasource
-            .bind(to: tableView.rx.items(cellIdentifier: "MineCellID", cellType: MineCell.self)) { _, model, cell in
-                cell.title = model
-            }
+            .bind(to: tableView.rx.items(dataSource: datasource))
             .disposed(by: disposeBag)
         
+        tableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+
         viewModel.userInfo
             .bind(to: header.userModel)
             .disposed(by: disposeBag)
         
-        tableView.rx.modelSelected(String.self)
+        tableView.rx.modelSelected(MenuListItemModel.self)
             .bind(to: viewModel.cellDidSelected)
             .disposed(by: disposeBag)
         
@@ -83,4 +91,18 @@ class HCMineViewController: BaseViewController {
 
         viewModel.reloadSubject.onNext(Void())
     }
+}
+
+extension HCMineViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let sepView = UIView()
+        sepView.backgroundColor = .clear
+        return sepView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 12
+    }
+
 }

@@ -30,7 +30,7 @@ enum H5Type: String {
     case notification = "notification"
     /// 通知消息
     case announce = "announce"
-    /// 认证
+    /// 认证管理
     case bindHos = "bindHos"
     ///
     case succBind = "succBind"
@@ -43,7 +43,14 @@ enum H5Type: String {
     /// 用户反馈
     case memberFeedback = "memberFeedback"
     /// cms功能：readNumber=阅读量,modifyDate=发布时间，hrefUrl=调整地址
-    case hrefUrl = "hrefUrl"
+    case hrefUrl = "hrefUrl"    
+    /// 配偶信息
+    case memberMate = "memberMate"
+    /// 缴费记录
+    case memberCharge = "memberCharge"
+    /// 个人信息
+    case memberInfo = "memberInfo"
+    
     /// 开发中
     case underDev = "underDev"
 }

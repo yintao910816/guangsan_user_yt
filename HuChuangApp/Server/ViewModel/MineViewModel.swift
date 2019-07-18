@@ -8,13 +8,14 @@
 
 import Foundation
 import RxSwift
+import RxDataSources
 
 class MineViewModel: BaseViewModel, VMNavigation {
     
     let userInfo = PublishSubject<HCUserModel>()
-    let datasource = PublishSubject<[String]>()
+    let datasource = PublishSubject<[SectionModel<Int, MenuListItemModel>]>()
     let gotoEditUserInfo = PublishSubject<Void>()
-    let cellDidSelected = PublishSubject<String>()
+    let cellDidSelected = PublishSubject<MenuListItemModel>()
     let pushH5Subject = PublishSubject<H5Type>()
 
     override init() {
@@ -27,8 +28,8 @@ class MineViewModel: BaseViewModel, VMNavigation {
             .disposed(by: disposeBag)
         
         cellDidSelected
-            .subscribe(onNext: { [unowned self] title in
-                self.cellDidSelected(title: title)
+            .subscribe(onNext: { [unowned self] model in
+                self.cellDidSelected(model: model)
             })
             .disposed(by: disposeBag)
         
@@ -67,51 +68,16 @@ class MineViewModel: BaseViewModel, VMNavigation {
             .disposed(by: disposeBag)
     }
     
-    private func cellDidSelected(title: String) {
-        if title == "绑定机构" {
-            hud.noticeLoading()
-            let type = (HCHelper.share.userInfoModel?.visitCard.count ?? 0) > 0 ? H5Type.succBind : H5Type.bindHos
-            requestH5(type: type)
-                .subscribe(onNext: { [weak self] model in
-                    self?.hud.noticeHidden()
-                    self?.pushH5(model: model)
-                    }, onError: { error in
-                        self.hud.failureHidden(self.errorMessage(error))
-                })
-                .disposed(by: disposeBag)
-        }else if title == "我的消息" {
-            hud.noticeLoading()
-            requestH5(type: .notification)
-                .subscribe(onNext: { [weak self] model in
-                    self?.hud.noticeHidden()
-                    self?.pushH5(model: model)
-                    }, onError: { error in
-                        self.hud.failureHidden(self.errorMessage(error))
-                })
-                .disposed(by: disposeBag)
-        }else if title == "设置" {
-            NoticesCenter.alert(message: "开发中...")
-        }else if title == "软件分享" {
-            hud.noticeLoading()
-            requestH5(type: .underDev)
-                .subscribe(onNext: { [weak self] model in
-                    self?.hud.noticeHidden()
-                    self?.pushH5(model: model)
-                    }, onError: { error in
-                        self.hud.failureHidden(self.errorMessage(error))
-                })
-                .disposed(by: disposeBag)
-        }else if title == "用户反馈" {
-            hud.noticeLoading()
-            requestH5(type: .memberFeedback)
-                .subscribe(onNext: { [weak self] model in
-                    self?.hud.noticeHidden()
-                    self?.pushH5(model: model)
-                    }, onError: { error in
-                        self.hud.failureHidden(self.errorMessage(error))
-                })
-                .disposed(by: disposeBag)
-        }
+    private func cellDidSelected(model: MenuListItemModel) {
+        hud.noticeLoading()
+        requestH5(type: model.h5Type)
+            .subscribe(onNext: { [weak self] model in
+                self?.hud.noticeHidden()
+                self?.pushH5(model: model)
+                }, onError: { error in
+                    self.hud.failureHidden(self.errorMessage(error))
+            })
+            .disposed(by: disposeBag)
     }
     
     private func requestH5(type: H5Type) ->Observable<H5InfoModel> {
@@ -121,8 +87,16 @@ class MineViewModel: BaseViewModel, VMNavigation {
     }
 
     private func requestUserInfo() {
-        let data = ["绑定机构", "我的消息", "设置", "软件分享", "用户反馈"]
-        datasource.onNext(data)
+        let bindType = (HCHelper.share.userInfoModel?.visitCard.count ?? 0) > 0 ? H5Type.succBind : H5Type.bindHos
+        let dataSignal = [SectionModel.init(model: 0, items: [MenuListItemModel.createModel(title: "认证管理", h5Type: bindType),
+                                                              MenuListItemModel.createModel(title: "配偶信息", h5Type: .memberMate),
+                                                              MenuListItemModel.createModel(title: "缴费记录", h5Type: .memberCharge),
+                                                              MenuListItemModel.createModel(title: "个人信息", h5Type: .memberInfo)]),
+                          SectionModel.init(model: 1, items: [MenuListItemModel.createModel(title: "我的消息", h5Type: .underDev)]),
+                          SectionModel.init(model: 2, items: [MenuListItemModel.createModel(title: "系统设置", h5Type: .underDev),
+                                                              MenuListItemModel.createModel(title: "软件分享", h5Type: .underDev),
+                                                              MenuListItemModel.createModel(title: "用户反馈", h5Type: .memberFeedback)])]
+        datasource.onNext(dataSignal)
         
         HCProvider.request(.selectInfo)
             .map(model: HCUserModel.self)
@@ -157,4 +131,20 @@ class MineViewModel: BaseViewModel, VMNavigation {
 //        HomeViewModel.push(BaseWebViewController.self, ["url": url])
     }
 
+}
+
+
+class MenuListItemModel {
+    var titleIcon: UIImage?
+    var title: String = ""
+    
+    var h5Type: H5Type = .underDev
+    
+    class func createModel(titleIcon: UIImage? = nil, title: String, h5Type: H5Type) ->MenuListItemModel {
+        let model = MenuListItemModel()
+        model.titleIcon = titleIcon
+        model.title = title
+        model.h5Type = h5Type
+        return model
+    }
 }
