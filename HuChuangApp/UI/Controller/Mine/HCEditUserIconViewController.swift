@@ -38,7 +38,7 @@ class HCEditUserIconViewController: BaseViewController {
             .bind(to: userIconOutlet.rx.image(forStrategy: .userIcon))
             .disposed(by: disposeBag)
         
-        addBarItem(title: "完成", titleColor: HC_MAIN_COLOR)
+        addBarItem(title: "完成", titleColor: .black)
             .map{ [unowned self] in self.selectedImage }
             .asObservable()
             .bind(to: viewModel.finishEdit)

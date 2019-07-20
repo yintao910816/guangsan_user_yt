@@ -32,7 +32,7 @@ class HCEditSexViewController: BaseViewController {
             .bind(to: inputOutlet.rx.text)
             .disposed(by: disposeBag)
         
-        addBarItem(title: "完成", titleColor: .white)
+        addBarItem(title: "完成", titleColor: .black)
             .map{ [unowned self] in self.inputOutlet.text ?? "" }
             .asObservable()
             .bind(to: viewModel.finishEdit)
