@@ -12,6 +12,7 @@ import JavaScriptCore
 class BaseWebViewController: BaseViewController {
 
     var url: String = ""
+    var redirect_url: String?
 
     private var context : JSContext?
     private var webTitle: String?
@@ -63,6 +64,19 @@ class BaseWebViewController: BaseViewController {
         webView.snp.makeConstraints{ $0.edges.equalTo(UIEdgeInsets.zero) }
         
         requestData()
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(wchatPayFinish),
+                                               name: NotificationName.Pay.wxPaySuccess,
+                                               object: nil)
+    }
+
+    @objc private func wchatPayFinish() {
+        if let urlStr = redirect_url, let aUrlStr = urlStr.removingPercentEncoding, let aurl = URL.init(string: aUrlStr) {
+            let mRequest = URLRequest.init(url: aurl)
+            webView.loadRequest(mRequest)
+            redirect_url = nil
+        }
     }
 
     private func setupBridge() {
@@ -108,6 +122,23 @@ extension BaseWebViewController: UIWebViewDelegate{
             return false
         }
         
+        let urlString = request.url?.absoluteString
+        let rs = "\(HCHelper.AppKeys.appSchame.rawValue)://".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+
+        if urlString?.contains("wx.tenpay.com") == true && urlString?.contains("redirect_url=\(rs)") == false
+        {
+            let sep = s!.components(separatedBy: "redirect_url=")
+            redirect_url = sep.last//sep.first(where: { !$0.contains("wx.tenpay.com") })
+            let reloadUrl = sep.first(where: { $0.contains("wx.tenpay.com") })!.appending("&redirect_url=\(rs)")
+            if let _url = URL.init(string: reloadUrl) {
+                var mRequest = URLRequest.init(url: _url)
+                mRequest.setValue("\(HCHelper.AppKeys.appSchame.rawValue)://", forHTTPHeaderField: "Referer")
+                webView.loadRequest(mRequest)
+            }
+            return false
+            
+        }
+
         return true
     }
     

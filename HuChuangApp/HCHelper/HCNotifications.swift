@@ -18,4 +18,9 @@ extension Notification.Name {
          */
         static let LoginSuccess = Notification.Name(rawValue: "org.user.notification.name.loginSuccess")
     }
+    
+    public struct Pay {
+        /// 微信支付成功
+        static let wxPaySuccess = Notification.Name(rawValue: "org.user.notification.name.wxPaySuccess")
+    }
 }

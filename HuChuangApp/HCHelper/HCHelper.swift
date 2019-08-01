@@ -11,6 +11,11 @@ import RxSwift
 
 class HCHelper {
     
+    enum AppKeys: String {
+        /// app schame
+        case appSchame = "ivf.gy3y.com"
+    }
+    
     static let share = HCHelper()
     
     typealias blankBlock = ()->()
