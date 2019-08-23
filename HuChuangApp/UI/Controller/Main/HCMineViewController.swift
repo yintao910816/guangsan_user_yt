@@ -74,20 +74,24 @@ class HCMineViewController: BaseViewController {
             HCHelper.presentLogin()
         }
         
-        header.yuyueOutlet.rx.tap.asDriver()
-            .map{ H5Type.memberSubscribe }
-            .drive(viewModel.pushH5Subject)
+        header.headerFuncPushH5
+            .bind(to: viewModel.pushH5Subject)
             .disposed(by: disposeBag)
         
-        header.wenzhenOutlet.rx.tap.asDriver()
-            .map{ H5Type.consultRecord }
-            .drive(viewModel.pushH5Subject)
-            .disposed(by: disposeBag)
-
-        header.quanziOutlet.rx.tap.asDriver()
-            .map{ H5Type.underDev }
-            .drive(viewModel.pushH5Subject)
-            .disposed(by: disposeBag)
+//        header.yuyueOutlet.rx.tap.asDriver()
+//            .map{ H5Type.memberSubscribe }
+//            .drive(viewModel.pushH5Subject)
+//            .disposed(by: disposeBag)
+//
+//        header.wenzhenOutlet.rx.tap.asDriver()
+//            .map{ H5Type.consultRecord }
+//            .drive(viewModel.pushH5Subject)
+//            .disposed(by: disposeBag)
+//
+//        header.quanziOutlet.rx.tap.asDriver()
+//            .map{ H5Type.underDev }
+//            .drive(viewModel.pushH5Subject)
+//            .disposed(by: disposeBag)
 
         viewModel.reloadSubject.onNext(Void())
     }

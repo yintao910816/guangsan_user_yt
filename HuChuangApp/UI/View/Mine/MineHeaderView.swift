@@ -27,9 +27,11 @@ class MineHeaderView: UIView {
     @IBOutlet weak var headerBgHeightCns: NSLayoutConstraint!
     @IBOutlet weak var headerTopCns: NSLayoutConstraint!
     
-    let userModel = PublishSubject<HCUserModel>()
-    let gotoEditUserInfo = PublishSubject<Void>()
+    public let userModel = PublishSubject<HCUserModel>()
+    public let gotoEditUserInfo = PublishSubject<Void>()
 
+    public let headerFuncPushH5 = PublishSubject<H5Type>()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -72,6 +74,22 @@ class MineHeaderView: UIView {
             .bind(to: gotoEditUserInfo)
             .disposed(by: disposeBag)
         
+        yuyueOutlet.rx.tap.asDriver()
+            .debug("yuyueOutlet")
+            .map{ H5Type.memberSubscribe }
+            .drive(headerFuncPushH5)
+            .disposed(by: disposeBag)
+        
+        wenzhenOutlet.rx.tap.asDriver()
+            .map{ H5Type.consultRecord }
+            .drive(headerFuncPushH5)
+            .disposed(by: disposeBag)
+
+        quanziOutlet.rx.tap.asDriver()
+            .map{ H5Type.underDev }
+            .drive(headerFuncPushH5)
+            .disposed(by: disposeBag)
+
         userModel.subscribe(onNext: { [unowned self] user in
             self.userIconOutlet.setImage(user.headPath, .userIcon)
             self.nickNameOutlet.text = user.name

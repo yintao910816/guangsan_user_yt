@@ -33,9 +33,7 @@ class MineViewModel: BaseViewModel, VMNavigation {
             })
             .disposed(by: disposeBag)
         
-        pushH5Subject
-            ._doNext(forNotice: hud)
-            .flatMap{ [unowned self] in self.requestH5(type: $0) }
+        pushH5Subject.concatMap{ [unowned self] in self.requestH5(type: $0) }
             .subscribe(onNext: { [unowned self] model in
                 self.hud.noticeHidden()
                 self.pushH5(model: model)
@@ -43,6 +41,17 @@ class MineViewModel: BaseViewModel, VMNavigation {
                     self.hud.failureHidden(self.errorMessage(error))
             })
             .disposed(by: disposeBag)
+
+//        pushH5Subject
+//            ._doNext(forNotice: hud)
+//            .flatMap{ [unowned self] in self.requestH5(type: $0) }
+//            .subscribe(onNext: { [unowned self] model in
+//                self.hud.noticeHidden()
+//                self.pushH5(model: model)
+//                }, onError: { [unowned self] error in
+//                    self.hud.failureHidden(self.errorMessage(error))
+//            })
+//            .disposed(by: disposeBag)
 
 //        pushH5Subject
 //            ._doNext(forNotice: hud)
