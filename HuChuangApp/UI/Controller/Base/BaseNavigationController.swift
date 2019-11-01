@@ -33,6 +33,8 @@ class BaseNavigationController: UINavigationController {
         
         isSideBackEnable = true
         
+        modalPresentationStyle = .fullScreen
+        
         self.navigationBar.barTintColor   =  UIColor.white
         navigationBar.isTranslucent       = false
         navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor :UIColor.black]

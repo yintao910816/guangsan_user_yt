@@ -17,6 +17,8 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        modalPresentationStyle = .fullScreen
+
         setupUI()
         rxBind()
     }

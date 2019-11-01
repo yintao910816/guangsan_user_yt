@@ -138,6 +138,14 @@ extension BaseWebViewController: UIWebViewDelegate{
             return false
             
         }
+        
+//        if urlString?.contains("wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb") == true && (redirect_url ?? "").count > 0
+//        {
+//            var mRequest = URLRequest.init(url: redirect_url!)
+//            mRequest.setValue("\(HCHelper.AppKeys.appSchame.rawValue)://", forHTTPHeaderField: "Referer")
+//            webView.loadRequest(mRequest)
+//            return false
+//        }
 
         return true
     }
