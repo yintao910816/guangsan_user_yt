@@ -78,14 +78,26 @@ extension HCAppDelegate : UNUserNotificationCenterDelegate{
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
+        var deviceTokenString = String()
+        let bytes = [UInt8](deviceToken)
+        for item in bytes {
+            deviceTokenString += String(format:"%02x", item&0x000000FF)
+        }
+        PrintLog("推送token \(deviceTokenString)")
+        
         UMessage.registerDeviceToken(deviceToken)
         
-        let data = deviceToken as NSData
-        let token = data.description.replacingOccurrences(of: "<", with: "").replacingOccurrences(of: ">", with: "").replacingOccurrences(of: " ", with: "")
-
-        self.deviceToken = token
-
+        self.deviceToken = deviceTokenString
         uploadUMToken()
+
+//        UMessage.registerDeviceToken(deviceToken)
+//
+//        let data = deviceToken as NSData
+//        let token = data.description.replacingOccurrences(of: "<", with: "").replacingOccurrences(of: ">", with: "").replacingOccurrences(of: " ", with: "")
+//
+//        self.deviceToken = token
+//
+//        uploadUMToken()
     }
     
     //收到远程推送消息
@@ -123,7 +135,31 @@ extension HCAppDelegate : UNUserNotificationCenterDelegate{
     func receiveRemoteNotificationForbackground(userInfo : [AnyHashable : Any]){
         PrintLog(userInfo)
         
-        let message = userInfo["alert"] as? String ?? "alert"
+        _ = HCProvider.request(.unitSetting(type: .notification))
+            .map(model: H5InfoModel.self)
+            .subscribe(onSuccess: { model in
+                guard model.setValue.count > 0 else { return }
+                let url = "\(model.setValue)?token=\(userDefault.token)&unitId=\(AppSetup.instance.unitId)"
+                DispatchQueue.main.async {
+                    HomeViewModel.push(BaseWebViewController.self, ["url": url, "title": model.name])
+                }
+            }) { _ in
+                
+        }
+        
+        
+//        messageListPublish
+//            ._doNext(forNotice: hud)
+//            .flatMap{ [unowned self] _ in self.requestH5(type: .notification) }
+//            .subscribe(onNext: { [unowned self] model in
+//                self.hud.noticeHidden()
+//                self.pushH5(model: model)
+//                }, onError: { error in
+//                    self.hud.failureHidden(self.errorMessage(error))
+//            })
+//            .disposed(by: disposeBag)
+        
+//        let message = userInfo["alert"] as? String ?? "alert"
         
 //        let tabVC = self.window?.rootViewController as! MainTabBarController
 //        let selVC = tabVC.selectedViewController as! UINavigationController

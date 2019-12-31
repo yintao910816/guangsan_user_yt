@@ -2793,7 +2793,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.huchuang.guangsanuser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = guangsan_user_dev_profile;
+				PROVISIONING_PROFILE_SPECIFIER = guangsanuser_dev_pro;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/HuChuangApp/Main/Config/HcChuangApp-Bridge-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

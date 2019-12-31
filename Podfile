@@ -1,6 +1,8 @@
 platform :ios,'9.0'
 use_frameworks!
 
+source 'https://github.com/CocoaPods/Specs.git'
+
 target 'HuChuangApp' do
 
 pod 'RxSwift', '~> 4.4.0'
