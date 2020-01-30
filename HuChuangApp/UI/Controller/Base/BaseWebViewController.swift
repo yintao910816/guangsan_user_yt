@@ -227,7 +227,7 @@ extension BaseWebViewController: UIWebViewDelegate{
         }
         context?.setObject(unsafeBitCast(appInfo, to: AnyObject.self), forKeyedSubscript: "appInfo" as NSCopying & NSObjectProtocol)
 
-//        setTitle()
+        setTitle()
     }
     
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error){

@@ -2784,6 +2784,7 @@
 				CODE_SIGN_ENTITLEMENTS = HuChuangApp/HuChuangApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1.1;
 				DEVELOPMENT_TEAM = J9M9SRP484;
 				INFOPLIST_FILE = HuChuangApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2791,7 +2792,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.006;
+				MARKETING_VERSION = 2.01.007;
 				PRODUCT_BUNDLE_IDENTIFIER = com.huchuang.guangsanuser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = guangsanuser_dev_pro;
@@ -2809,6 +2810,7 @@
 				CODE_SIGN_ENTITLEMENTS = HuChuangApp/HuChuangApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1.1;
 				DEVELOPMENT_TEAM = J9M9SRP484;
 				INFOPLIST_FILE = HuChuangApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2816,7 +2818,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.006;
+				MARKETING_VERSION = 2.01.007;
 				PRODUCT_BUNDLE_IDENTIFIER = com.huchuang.guangsanuser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = guangsanuser_hoc_pro;
