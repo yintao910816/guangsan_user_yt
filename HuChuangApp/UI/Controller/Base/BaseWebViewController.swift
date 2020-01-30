@@ -163,11 +163,15 @@ extension BaseWebViewController: UIWebViewDelegate{
         // 设置标题
         let changeTitle: @convention(block) () ->() = {[weak self] in
             guard let params = JSContext.currentArguments() else { return }
-
-            for idx in 0..<params.count {
-                if idx == 0 {
-                    let _title = ((params[0] as AnyObject).toString()) ?? ""
-                    self?.navigationItem.title = _title
+            PrintLog("h5 调用 - changeTitle")
+            
+            DispatchQueue.main.async {
+                for idx in 0..<params.count {
+                    if idx == 0 {
+                        let _title = ((params[0] as AnyObject).toString()) ?? ""
+                        PrintLog("h5 调用 - changeTitle -- \(_title)")
+                        self?.navigationItem.title = _title
+                    }
                 }
             }
         }
@@ -223,7 +227,7 @@ extension BaseWebViewController: UIWebViewDelegate{
         }
         context?.setObject(unsafeBitCast(appInfo, to: AnyObject.self), forKeyedSubscript: "appInfo" as NSCopying & NSObjectProtocol)
 
-        setTitle()
+//        setTitle()
     }
     
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error){

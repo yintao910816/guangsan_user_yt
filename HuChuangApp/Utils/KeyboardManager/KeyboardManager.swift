@@ -77,6 +77,9 @@ class KeyboardManager: NSObject {
 extension KeyboardManager { /** 视图移动 */
 
     fileprivate func viewTransform(_ options: UIView.AnimationOptions, _ duration: Double, _ endKbRect: CGRect) {
+        // superview可能为空，引起闪退
+        if superview == nil { return }
+        
         var newpoint = CGPoint.zero
         if superview.isKind(of: UITableView.self) == true {
             newpoint = subviewFrame.origin

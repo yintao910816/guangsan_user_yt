@@ -25,6 +25,12 @@ class HomeBannerModel: HJModel {
     override func mapping(mapper: HelpingMapper) {
         mapper.specify(property: &link, name: "url")
     }
+    
+    public var validLink: Bool {
+        get {
+            return link.count > 0 && link != "#"
+        }
+    }
 }
 
 extension HomeBannerModel: CarouselSource {
