@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -90,6 +88,7 @@
                         <constraint firstAttribute="trailing" secondItem="RCj-PO-nPn" secondAttribute="trailing" id="0ZH-jd-PzY"/>
                         <constraint firstItem="XO9-B7-yyH" firstAttribute="leading" secondItem="lEf-yX-CmG" secondAttribute="leading" id="4Fq-9N-5fG"/>
                         <constraint firstAttribute="trailing" secondItem="XO9-B7-yyH" secondAttribute="trailing" id="5pw-F7-YwL"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="eTO-CJ-vgH" secondAttribute="trailing" constant="15" id="Bbo-8i-hUv"/>
                         <constraint firstItem="eTO-CJ-vgH" firstAttribute="centerY" secondItem="Wsr-FN-kcU" secondAttribute="centerY" id="D2g-j8-Tu3"/>
                         <constraint firstItem="fe6-71-pFF" firstAttribute="top" secondItem="lEf-yX-CmG" secondAttribute="top" id="DkQ-J6-8sA"/>
                         <constraint firstAttribute="height" constant="85" id="M2d-99-t28"/>
@@ -120,7 +119,7 @@
                             </constraints>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="goodnews_title" translatesAutoresizingMaskIntoConstraints="NO" id="Jx1-L2-cH7">
-                            <rect key="frame" x="15" y="6" width="20" height="20"/>
+                            <rect key="frame" x="15" y="6" width="20" height="20.000000000000014"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="20" id="Jau-dE-YrU"/>
                                 <constraint firstAttribute="width" secondItem="Jx1-L2-cH7" secondAttribute="height" multiplier="1:1" id="aux-yD-407"/>
@@ -162,7 +161,7 @@
                     <rect key="frame" x="0.0" y="394" width="375" height="44"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="goodnews_title" translatesAutoresizingMaskIntoConstraints="NO" id="lz0-6a-4WW">
-                            <rect key="frame" x="15" y="12" width="20" height="20"/>
+                            <rect key="frame" x="15" y="12" width="20" height="20.000000000000014"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="20" id="Hly-jh-2QD"/>
                                 <constraint firstAttribute="width" secondItem="lz0-6a-4WW" secondAttribute="height" multiplier="1:1" id="cM9-id-8UW"/>
