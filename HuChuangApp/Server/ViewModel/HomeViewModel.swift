@@ -26,6 +26,7 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
     let noticeDidSelected = PublishSubject<Int>()
     let goodnewsDidSelected = PublishSubject<Int>()
     let todaySelected = PublishSubject<(HomeArticleModel, UINavigationController?)>()
+    let bannerSelected = PublishSubject<CarouselSource>()
 
     let functionItemDidSelected = PublishSubject<(HomeFunctionModel, UINavigationController?)>()
     let messageListPublish = PublishSubject<UINavigationController?>()
@@ -94,6 +95,13 @@ class HomeViewModel: RefreshVM<HomeArticleModel>, VMNavigation {
         refreshUnreadPublish
             .subscribe(onNext: { [unowned self] in
                 self.requestUnread()
+            })
+            .disposed(by: disposeBag)
+
+        bannerSelected
+            .subscribe(onNext: {
+                guard let bannerModel = $0 as? HomeBannerModel else { return }
+                HomeViewModel.push(BaseWebViewController.self, ["url":bannerModel.link, "title": bannerModel.title])
             })
             .disposed(by: disposeBag)
 

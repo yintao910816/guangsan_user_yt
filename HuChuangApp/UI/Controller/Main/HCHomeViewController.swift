@@ -130,6 +130,10 @@ class HCHomeViewController: BaseViewController {
         
 //        viewModel.reloadSubject.onNext(Void())
         tableView.headerRefreshing()
+        
+        header.bannerDidSelected
+            .bind(to: viewModel.bannerSelected)
+            .disposed(by: disposeBag)
     }
     
 }

@@ -42,6 +42,7 @@ class HomeHeaderView: UIView {
     public let goodnewsDidSelected = PublishSubject<Int>()
 
     public let functionDidSelected = PublishSubject<HomeFunctionModel>()
+    public let bannerDidSelected = PublishSubject<CarouselSource>()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -132,6 +133,7 @@ class HomeHeaderView: UIView {
             self?.goodnewsDidSelected.onNext(indexPath.row)
         }
 
+        carouselView.tapCallBack = { [weak self] in self?.bannerDidSelected.onNext($0) }
     }
 }
 
