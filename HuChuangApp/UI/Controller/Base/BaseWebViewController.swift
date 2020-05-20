@@ -19,6 +19,9 @@ class BaseWebViewController: BaseViewController {
     
     private var bridge: WebViewJavascriptBridge!
     
+    public var startLoad:(()->())?
+    public var finishLoad:(()->())?
+
     private lazy var hud: NoticesCenter = {
         return NoticesCenter()
     }()
@@ -152,11 +155,14 @@ extension BaseWebViewController: UIWebViewDelegate{
     
     func webViewDidStartLoad(_ webView: UIWebView){
         PrintLog("didStartLoad")
+        startLoad?()
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView){
         PrintLog("didFinishLoad")
         hud.noticeHidden()
+        
+        finishLoad?()
         
         context = (webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as! JSContext)
 

@@ -155,14 +155,20 @@ extension HomeViewModel {
         HCProvider.request(.messageUnreadCount)
             .mapJSON()
             .subscribe(onSuccess: { [weak self] res in
+//                if let dic = res as? [String: Any],
+//                    let count = dic["data"] as? Int,
+//                    count > 0{
+//                    let countString = "\(count)"
+//                    let countWidth = countString.getTexWidth(fontSize: 12, height: 20) + 10
+//                    self?.unreadCountObser.value = (countString, countWidth)
+//                }else {
+//                    self?.unreadCountObser.value = ("", 0)
+//                }
+                
                 if let dic = res as? [String: Any],
-                    let count = dic["data"] as? Int,
-                    count > 0{
-                    let countString = "\(count)"
-                    let countWidth = countString.getTexWidth(fontSize: 12, height: 20) + 10
-                    self?.unreadCountObser.value = (countString, countWidth)
-                }else {
-                    self?.unreadCountObser.value = ("", 0)
+                    let count = dic["data"] as? Int {
+                    let messageVC = (UIApplication.shared.keyWindow?.rootViewController as? HCTabBarViewController)?.viewControllers?[1]
+                    messageVC?.tabBarItem.badgeValue = count > 0 ? "\(count)" : nil
                 }
             }) { error in
                 PrintLog(error)

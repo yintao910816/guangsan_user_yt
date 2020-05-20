@@ -276,6 +276,8 @@
 		B8DE186D2474B75A004EC3CE /* HomeFunctionContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8DE186B2474B75A004EC3CE /* HomeFunctionContentCell.xib */; };
 		B8DE186F2474C4D6004EC3CE /* HomeFunctionContentFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DE186E2474C4D6004EC3CE /* HomeFunctionContentFlowLayout.swift */; };
 		B8DE18712474D894004EC3CE /* UIView+Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DE18702474D894004EC3CE /* UIView+Layer.swift */; };
+		B8DE187324756449004EC3CE /* HCMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DE187224756449004EC3CE /* HCMessageViewController.swift */; };
+		B8DE18752475670D004EC3CE /* HCMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DE18742475670D004EC3CE /* HCMessageViewModel.swift */; };
 		B8FC3AA52216FEEB00889483 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FC3AA42216FEEB00889483 /* HomeHeaderView.swift */; };
 		C4193D8422A7649F007A9E07 /* TYClickedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4193D8322A7649F007A9E07 /* TYClickedButton.swift */; };
 		C41A12C122BCF49100214216 /* String+Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41A12C022BCF49100214216 /* String+Operation.swift */; };
@@ -875,6 +877,8 @@
 		B8DE186B2474B75A004EC3CE /* HomeFunctionContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeFunctionContentCell.xib; sourceTree = "<group>"; };
 		B8DE186E2474C4D6004EC3CE /* HomeFunctionContentFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFunctionContentFlowLayout.swift; sourceTree = "<group>"; };
 		B8DE18702474D894004EC3CE /* UIView+Layer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layer.swift"; sourceTree = "<group>"; };
+		B8DE187224756449004EC3CE /* HCMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCMessageViewController.swift; sourceTree = "<group>"; };
+		B8DE18742475670D004EC3CE /* HCMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCMessageViewModel.swift; sourceTree = "<group>"; };
 		B8FC3AA42216FEEB00889483 /* HomeHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		C4193D8322A7649F007A9E07 /* TYClickedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TYClickedButton.swift; sourceTree = "<group>"; };
 		C41A12C022BCF49100214216 /* String+Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Operation.swift"; sourceTree = "<group>"; };
@@ -2004,6 +2008,7 @@
 			isa = PBXGroup;
 			children = (
 				C421333C220586BD006C10C4 /* HCHomeViewController.swift */,
+				B8DE187224756449004EC3CE /* HCMessageViewController.swift */,
 				C421333E220586D4006C10C4 /* HCConsultViewController.swift */,
 				C4213340220586DE006C10C4 /* HCCircleViewController.swift */,
 				C4213342220586E6006C10C4 /* HCMineViewController.swift */,
@@ -2021,6 +2026,7 @@
 				B8BE34FC221470D900EF16F1 /* EditUserInfoViewModel.swift */,
 				B8BE351A22147DE500EF16F1 /* EditViewModel.swift */,
 				B816EB59221DACA600F024D5 /* ScanViewModel.swift */,
+				B8DE18742475670D004EC3CE /* HCMessageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2425,6 +2431,7 @@
 				B816EA8A221DABF400F024D5 /* ZXByQuadrantReader.m in Sources */,
 				B816EB1F221DABF400F024D5 /* ZXAbstractRSSReader.m in Sources */,
 				B816EAD2221DABF400F024D5 /* ZXModulusGF.m in Sources */,
+				B8DE187324756449004EC3CE /* HCMessageViewController.swift in Sources */,
 				B8BE34F42214645900EF16F1 /* MineViewModel.swift in Sources */,
 				B816EAC6221DABF400F024D5 /* ZXIntArray.m in Sources */,
 				B816EAE3221DABF400F024D5 /* ZXDataMatrixEdifactEncoder.m in Sources */,
@@ -2439,6 +2446,7 @@
 				B816EAEC221DABF400F024D5 /* ZXDataMatrixHighLevelEncoder.m in Sources */,
 				B816EAFD221DABF400F024D5 /* ZXOneDReader.m in Sources */,
 				B816EB11221DABF400F024D5 /* ZXRSSExpandedCurrentParsingState.m in Sources */,
+				B8DE18752475670D004EC3CE /* HCMessageViewModel.swift in Sources */,
 				B816EACF221DABF400F024D5 /* ZXPDF417.m in Sources */,
 				B816EAA8221DABF400F024D5 /* ZXQRCodeDecodedBitStreamParser.m in Sources */,
 				B81C2F772215B60E00A887AF /* MineHeaderView.swift in Sources */,

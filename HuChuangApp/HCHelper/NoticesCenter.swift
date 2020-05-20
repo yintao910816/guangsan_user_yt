@@ -14,7 +14,7 @@ class NoticesCenter { /**HUD*/
     
     init() { }
     
-    public func noticeLoading(_ text: String? = nil, _ inView: UIView? = nil) {
+    public func noticeLoading(_ text: String? = nil, inView: UIView? = nil) {
         var hudView: UIView!
         if inView != nil {
             hudView = inView!
