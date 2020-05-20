@@ -272,6 +272,10 @@
 		B8BE351922147B4000EF16F1 /* HCEditSynopsisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE351822147B4000EF16F1 /* HCEditSynopsisViewController.swift */; };
 		B8BE351B22147DE500EF16F1 /* EditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE351A22147DE500EF16F1 /* EditViewModel.swift */; };
 		B8BE351D221484C600EF16F1 /* UINavigationController+BarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE351C221484C600EF16F1 /* UINavigationController+BarButtonItem.swift */; };
+		B8DE186C2474B75A004EC3CE /* HomeFunctionContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DE186A2474B75A004EC3CE /* HomeFunctionContentCell.swift */; };
+		B8DE186D2474B75A004EC3CE /* HomeFunctionContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8DE186B2474B75A004EC3CE /* HomeFunctionContentCell.xib */; };
+		B8DE186F2474C4D6004EC3CE /* HomeFunctionContentFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DE186E2474C4D6004EC3CE /* HomeFunctionContentFlowLayout.swift */; };
+		B8DE18712474D894004EC3CE /* UIView+Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DE18702474D894004EC3CE /* UIView+Layer.swift */; };
 		B8FC3AA52216FEEB00889483 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FC3AA42216FEEB00889483 /* HomeHeaderView.swift */; };
 		C4193D8422A7649F007A9E07 /* TYClickedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4193D8322A7649F007A9E07 /* TYClickedButton.swift */; };
 		C41A12C122BCF49100214216 /* String+Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41A12C022BCF49100214216 /* String+Operation.swift */; };
@@ -341,8 +345,8 @@
 		C421339E2205B224006C10C4 /* HttpImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421339A2205B224006C10C4 /* HttpImage.swift */; };
 		C42133A12205B41C006C10C4 /* BaseFilesOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42133A02205B41C006C10C4 /* BaseFilesOwner.swift */; };
 		C42133A52205B4FE006C10C4 /* HomeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C42133A42205B4FE006C10C4 /* HomeHeaderView.xib */; };
-		C43F09BB2214315900910437 /* HomeFunctionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43F09B92214315900910437 /* HomeFunctionCell.swift */; };
-		C43F09BC2214315900910437 /* HomeFunctionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C43F09BA2214315900910437 /* HomeFunctionCell.xib */; };
+		C43F09BB2214315900910437 /* HomeFunctionItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43F09B92214315900910437 /* HomeFunctionItemCell.swift */; };
+		C43F09BC2214315900910437 /* HomeFunctionItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C43F09BA2214315900910437 /* HomeFunctionItemCell.xib */; };
 		C43F09BE22143B5200910437 /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43F09BD22143B5200910437 /* BaseWebViewController.swift */; };
 		C43F09C3221448B000910437 /* HCNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43F09C2221448B000910437 /* HCNotifications.swift */; };
 		C4481E2422154D66007F4B0C /* BaseWKWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4481E2322154D66007F4B0C /* BaseWKWebViewViewController.swift */; };
@@ -867,6 +871,10 @@
 		B8BE351822147B4000EF16F1 /* HCEditSynopsisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCEditSynopsisViewController.swift; sourceTree = "<group>"; };
 		B8BE351A22147DE500EF16F1 /* EditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewModel.swift; sourceTree = "<group>"; };
 		B8BE351C221484C600EF16F1 /* UINavigationController+BarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+BarButtonItem.swift"; sourceTree = "<group>"; };
+		B8DE186A2474B75A004EC3CE /* HomeFunctionContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFunctionContentCell.swift; sourceTree = "<group>"; };
+		B8DE186B2474B75A004EC3CE /* HomeFunctionContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeFunctionContentCell.xib; sourceTree = "<group>"; };
+		B8DE186E2474C4D6004EC3CE /* HomeFunctionContentFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFunctionContentFlowLayout.swift; sourceTree = "<group>"; };
+		B8DE18702474D894004EC3CE /* UIView+Layer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layer.swift"; sourceTree = "<group>"; };
 		B8FC3AA42216FEEB00889483 /* HomeHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		C4193D8322A7649F007A9E07 /* TYClickedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TYClickedButton.swift; sourceTree = "<group>"; };
 		C41A12C022BCF49100214216 /* String+Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Operation.swift"; sourceTree = "<group>"; };
@@ -939,8 +947,8 @@
 		C421339F2205B366006C10C4 /* HcChuangApp-Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HcChuangApp-Bridge-Header.h"; sourceTree = "<group>"; };
 		C42133A02205B41C006C10C4 /* BaseFilesOwner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFilesOwner.swift; sourceTree = "<group>"; };
 		C42133A42205B4FE006C10C4 /* HomeHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeaderView.xib; sourceTree = "<group>"; };
-		C43F09B92214315900910437 /* HomeFunctionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFunctionCell.swift; sourceTree = "<group>"; };
-		C43F09BA2214315900910437 /* HomeFunctionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeFunctionCell.xib; sourceTree = "<group>"; };
+		C43F09B92214315900910437 /* HomeFunctionItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFunctionItemCell.swift; sourceTree = "<group>"; };
+		C43F09BA2214315900910437 /* HomeFunctionItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeFunctionItemCell.xib; sourceTree = "<group>"; };
 		C43F09BD22143B5200910437 /* BaseWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWebViewController.swift; sourceTree = "<group>"; };
 		C43F09C2221448B000910437 /* HCNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCNotifications.swift; sourceTree = "<group>"; };
 		C4481E2322154D66007F4B0C /* BaseWKWebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWKWebViewViewController.swift; sourceTree = "<group>"; };
@@ -1978,6 +1986,7 @@
 		C421333022056F96006C10C4 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				B8DE18702474D894004EC3CE /* UIView+Layer.swift */,
 				C41A12C022BCF49100214216 /* String+Operation.swift */,
 				B826AF81221C6C23000428C1 /* String+Extends.swift */,
 				B8BE351C221484C600EF16F1 /* UINavigationController+BarButtonItem.swift */,
@@ -2160,8 +2169,11 @@
 			isa = PBXGroup;
 			children = (
 				C43F09B822142DEA00910437 /* Base */,
-				C43F09B92214315900910437 /* HomeFunctionCell.swift */,
-				C43F09BA2214315900910437 /* HomeFunctionCell.xib */,
+				C43F09B92214315900910437 /* HomeFunctionItemCell.swift */,
+				C43F09BA2214315900910437 /* HomeFunctionItemCell.xib */,
+				B8DE186A2474B75A004EC3CE /* HomeFunctionContentCell.swift */,
+				B8DE186B2474B75A004EC3CE /* HomeFunctionContentCell.xib */,
+				B8DE186E2474C4D6004EC3CE /* HomeFunctionContentFlowLayout.swift */,
 				B8BE34F5221465D900EF16F1 /* MineCell.swift */,
 				B8BE34F6221465D900EF16F1 /* MineCell.xib */,
 				B8BE35022214723C00EF16F1 /* EditUserInfoCell.swift */,
@@ -2250,7 +2262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8BE35052214723C00EF16F1 /* EditUserInfoCell.xib in Resources */,
-				C43F09BC2214315900910437 /* HomeFunctionCell.xib in Resources */,
+				C43F09BC2214315900910437 /* HomeFunctionItemCell.xib in Resources */,
 				C42132F922054463006C10C4 /* LaunchScreen.storyboard in Resources */,
 				C42133A52205B4FE006C10C4 /* HomeHeaderView.xib in Resources */,
 				B816EA73221DABF400F024D5 /* CodeScan.bundle in Resources */,
@@ -2261,6 +2273,7 @@
 				C4213338220572C6006C10C4 /* HCMain.storyboard in Resources */,
 				B8BE34F8221465D900EF16F1 /* MineCell.xib in Resources */,
 				B879A062221AF0BB00E573C9 /* MineFooterView.xib in Resources */,
+				B8DE186D2474B75A004EC3CE /* HomeFunctionContentCell.xib in Resources */,
 				C42132F622054463006C10C4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2597,11 +2610,13 @@
 				B816EB38221DABF400F024D5 /* ZXAddressBookDoCoMoResultParser.m in Sources */,
 				C421333422056FB8006C10C4 /* UIDevice+Extension.swift in Sources */,
 				B816EA9E221DABF400F024D5 /* ZXMultiDetector.m in Sources */,
-				C43F09BB2214315900910437 /* HomeFunctionCell.swift in Sources */,
+				C43F09BB2214315900910437 /* HomeFunctionItemCell.swift in Sources */,
+				B8DE186F2474C4D6004EC3CE /* HomeFunctionContentFlowLayout.swift in Sources */,
 				B816EAB6221DABF400F024D5 /* ZXHybridBinarizer.m in Sources */,
 				B816EB44221DABF400F024D5 /* ZXResultParser.m in Sources */,
 				B816EA8C221DABF400F024D5 /* ZXAztecToken.m in Sources */,
 				C42133682205902A006C10C4 /* AccountViewModel.swift in Sources */,
+				B8DE186C2474B75A004EC3CE /* HomeFunctionContentCell.swift in Sources */,
 				B816EB52221DABF400F024D5 /* ZXVINParsedResult.m in Sources */,
 				B816EABE221DABF400F024D5 /* ZXDefaultGridSampler.m in Sources */,
 				B826AF7F221C671B000428C1 /* ColunmCollectionViewCell.swift in Sources */,
@@ -2630,6 +2645,7 @@
 				B816EAB4221DABF400F024D5 /* ZXByteArray.m in Sources */,
 				B816EA99221DABF400F024D5 /* ZXQRCode.m in Sources */,
 				B816EA94221DABF400F024D5 /* ZXAztecReader.m in Sources */,
+				B8DE18712474D894004EC3CE /* UIView+Layer.swift in Sources */,
 				B816EB33221DABF400F024D5 /* ZXAbstractDoCoMoResultParser.m in Sources */,
 				B816EAD7221DABF400F024D5 /* ZXPDF417ScanningDecoder.m in Sources */,
 				C421331C22056E83006C10C4 /* ViewControllerServer.swift in Sources */,

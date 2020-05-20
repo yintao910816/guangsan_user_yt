@@ -93,12 +93,33 @@ extension HomeGoodNewsItemModel: ScrollTextModel {
     var height: CGFloat { return 43 }
 }
 
-
-class HomeFunctionModel: HJModel {
+class HomeFunctionSectionModel: HJModel {
     var bak: String = ""
     var code: String = ""
     var createDate: String = ""
     var creates: String = ""
+    var hide: Bool = false
+    var iconPath: String = ""
+    var id: String = ""
+    var modifyDate: String = ""
+    var modifys: String = ""
+    var name: String = ""
+    var recom: String = ""
+    var sort: String = ""
+    var type: String = ""
+    var unitId: String = ""
+    var unitName: String = ""
+    
+    var functions: [HomeFunctionModel] = []
+}
+
+class HomeFunctionModel: HJModel {
+    var bak: String = ""
+    var bind: String = ""
+    var code: String = ""
+    var createDate: String = ""
+    var creates: String = ""
+    var functionTypeId: String = ""
     var functionUrl: String = ""
     var hide: String = ""
     var iconPath: String = ""

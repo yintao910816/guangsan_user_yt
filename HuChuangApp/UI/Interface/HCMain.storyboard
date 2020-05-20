@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RGT-h1-fgX">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RGT-h1-fgX">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -35,7 +33,7 @@
                 <navigationController id="x6K-Ya-dkR" customClass="MainNavigationController" customModule="HuChuangApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="首页" image="home_tab_unselected" selectedImage="home_tab_selected" id="wRe-aY-dVH"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VRV-Fw-Hfe">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -146,7 +144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3I-ox-O6o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="656.79999999999995" y="-1212.1439280359821"/>
+            <point key="canvasLocation" x="401" y="-1143"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="GJw-Zs-FAD">
@@ -157,7 +155,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="selectedImageTintColor" red="0.54117647058823526" green="0.23529411764705882" blue="0.42745098039215684" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="selectedImageTintColor" red="0.97254901960784312" green="0.47843137254901957" blue="0.44705882352941173" alpha="1" colorSpace="deviceRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="x6K-Ya-dkR" kind="relationship" relationship="viewControllers" id="vez-4M-ADp"/>
@@ -174,7 +172,7 @@
                 <navigationController id="lKa-jm-Nrv" customClass="MainNavigationController" customModule="HuChuangApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="咨询" image="consult_tab_unselected" selectedImage="consult_tab_selected" id="FqA-dv-3Nd"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hZg-Kl-8pn">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -191,7 +189,7 @@
                 <navigationController id="mqx-Jg-g2h" customClass="MainNavigationController" customModule="HuChuangApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="圈子" image="circle_tab_unselected" selectedImage="circle_tab_selected" id="6WG-x8-vpX"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XVf-SF-qfu">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -208,7 +206,7 @@
                 <navigationController id="FRr-GN-JsD" customClass="MainNavigationController" customModule="HuChuangApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="我的" image="mine_tab_unselected" selectedImage="mine_tab_selected" id="SCf-pw-k1l"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="T5e-l9-Dh1">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -288,7 +286,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gmw-lg-CjX">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -326,7 +324,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vog-VO-Wtp">
-                                <rect key="frame" x="25" y="84" width="325" height="50"/>
+                                <rect key="frame" x="25" y="64" width="325" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EWj-pY-OIg">
                                         <rect key="frame" x="10" y="10" width="315" height="30"/>
@@ -385,7 +383,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nqp-wU-O0Z">
-                                <rect key="frame" x="25" y="84" width="325" height="50"/>
+                                <rect key="frame" x="25" y="64" width="325" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="lRa-sv-BDp">
                                         <rect key="frame" x="10" y="10" width="315" height="30"/>
@@ -437,7 +435,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="agU-75-xXb">
-                                <rect key="frame" x="25" y="84" width="325" height="50"/>
+                                <rect key="frame" x="25" y="64" width="325" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="TeH-TC-Mf3">
                                         <rect key="frame" x="10" y="10" width="315" height="30"/>
@@ -489,7 +487,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HtN-lw-3SX">
-                                <rect key="frame" x="127.5" y="94" width="120" height="120"/>
+                                <rect key="frame" x="127.5" y="74" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="HN2-Jq-qT3"/>
                                     <constraint firstAttribute="width" secondItem="HtN-lw-3SX" secondAttribute="height" multiplier="1:1" id="jpd-rZ-7zC"/>
@@ -501,7 +499,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <button opaque="NO" clipsSubviews="YES" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XT9-Qh-8Ie">
-                                <rect key="frame" x="25" y="264" width="150" height="40"/>
+                                <rect key="frame" x="25" y="244" width="150" height="40"/>
                                 <color key="backgroundColor" red="0.54117647058823526" green="0.23529411764705882" blue="0.42745098039215684" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="BB6-ks-Edb"/>
@@ -520,7 +518,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qpa-ag-RyY">
-                                <rect key="frame" x="200" y="264" width="150" height="40"/>
+                                <rect key="frame" x="200" y="244" width="150" height="40"/>
                                 <color key="backgroundColor" red="0.54117647059999996" green="0.23529411759999999" blue="0.42745098040000001" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="15"/>
                                 <state key="normal" title="拍照">
@@ -570,7 +568,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ob-lZ-NTo">
-                                <rect key="frame" x="25" y="84" width="325" height="50"/>
+                                <rect key="frame" x="25" y="64" width="325" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mCn-tC-8dh">
                                         <rect key="frame" x="10" y="10" width="315" height="30"/>
@@ -593,12 +591,9 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ngW-lC-G6F">
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="ngW-lC-G6F">
                                 <rect key="frame" x="0.0" y="451" width="375" height="216"/>
                                 <color key="backgroundColor" red="0.81568627450980391" green="0.82352941176470584" blue="0.85098039215686272" alpha="1" colorSpace="deviceRGB"/>
-                                <date key="date" timeIntervalSinceReferenceDate="571775854.74774003">
-                                    <!--2019-02-13 18:37:34 +0000-->
-                                </date>
                                 <locale key="locale" localeIdentifier="zh-Hans"/>
                                 <connections>
                                     <action selector="dataChange:" destination="DcT-K7-wkX" eventType="valueChanged" id="gXF-wd-80r"/>
@@ -630,8 +625,8 @@
         <image name="circle_tab_unselected" width="20.5" height="20.5"/>
         <image name="consult_tab_selected" width="19" height="21.5"/>
         <image name="consult_tab_unselected" width="19" height="21.5"/>
-        <image name="home_tab_selected" width="18" height="20.5"/>
-        <image name="home_tab_unselected" width="18" height="20.5"/>
+        <image name="home_tab_selected" width="27" height="27"/>
+        <image name="home_tab_unselected" width="27" height="27"/>
         <image name="message_black" width="21" height="17"/>
         <image name="mine_tab_selected" width="22" height="20.5"/>
         <image name="mine_tab_unselected" width="22" height="20.5"/>

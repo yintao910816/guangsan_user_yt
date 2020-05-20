@@ -113,7 +113,7 @@ extension API: TargetType{
         case .selectBanner:
             return "api/index/selectBanner"
         case .functionList:
-            return "api/index/select"
+            return "api/index/selectType"
         case .noticeList(_):
             return "api/index/noticeList"
         case .messageUnreadCount:
@@ -220,6 +220,10 @@ extension API {
         case .unitSetting(let type):
             params["settingCode"] = type.rawValue
         
+        case .functionList:
+            // 是否推荐：空查所有，true 推荐，false 不推荐
+            params["isRecom"] = ""
+
         default:
             return nil
         }

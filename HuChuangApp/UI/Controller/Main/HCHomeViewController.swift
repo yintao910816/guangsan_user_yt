@@ -48,15 +48,22 @@ class HCHomeViewController: BaseViewController {
 
         rightBarButton.setEnlargeEdge(top: 10, bottom: 10, left: 10, right: 10)
         
-        header = HomeHeaderView.init(frame: .init(x: 0, y: 0, width: tableView.width, height: 0))
+        header = HomeHeaderView.init(frame: .init(x: 0, y: 0, width: tableView.width, height: 395))
+
+        tableView.tableHeaderView = header
         
-        tableView.rowHeight = 90
-        tableView.register(UINib.init(nibName: "ArticleCell", bundle: Bundle.main),
-                           forCellReuseIdentifier: "ArticleCellID")
+        tableView.register(UINib.init(nibName: "HomeFunctionContentCell", bundle: nil),
+                           forCellReuseIdentifier: HomeFunctionContentCell_identifier)
     }
     
     override func rxBind() {
         viewModel = HomeViewModel()
+        
+        viewModel.datasource.asDriver()
+            .drive(onNext: { [weak self] _ in
+                self?.tableView.reloadData()
+            })
+            .disposed(by: disposeBag)
         
         viewModel.unreadCountObser
             .asDriver()
@@ -70,70 +77,59 @@ class HCHomeViewController: BaseViewController {
         viewModel.bannerModelObser.asDriver()
             .drive(header.bannerModelObser)
             .disposed(by: disposeBag)
-        
-        viewModel.headerDataCountObser.asDriver()
-            .drive(onNext: { [weak self] data in
-                guard let strongSelf = self else { return }
-                var rect = strongSelf.header.frame
-                rect.size.height = strongSelf.header.headerHeight(functionDataCount: data.0, noticeDataCount: data.1, goodNewsDataCount: data.2)
-                strongSelf.header.frame = rect
-                strongSelf.tableView.tableHeaderView = strongSelf.header
-            })
-            .disposed(by: disposeBag)
-        
-        viewModel.functionModelsObser.asDriver()
-            .drive(header.functionModelObser)
-            .disposed(by: disposeBag)
-
-        viewModel.noticeModelObser.asDriver()
-            .drive(header.noticeModelObser)
-            .disposed(by: disposeBag)
-        
-        viewModel.goodNewsModelObser.asDriver()
-            .drive(header.goodNewsModelObser)
-            .disposed(by: disposeBag)
-        
-        tableView.prepare(viewModel, HomeArticleModel.self, showFooter: false, showHeader: true, isAddNoMoreContent: false)
-
-//        viewModel.datasource.asDriver()
-//            .drive(tableView.rx.items(cellIdentifier: "ArticleCellID", cellType: ArticleCell.self)) { _, model, cell in
-//                cell.model = model
-//            }
+                
+//        viewModel.functionModelsObser.asDriver()
+//            .drive(header.functionModelObser)
 //            .disposed(by: disposeBag)
+//
+//        viewModel.noticeModelObser.asDriver()
+//            .drive(header.noticeModelObser)
+//            .disposed(by: disposeBag)
+//
+//        viewModel.goodNewsModelObser.asDriver()
+//            .drive(header.goodNewsModelObser)
+//            .disposed(by: disposeBag)
+        
+        tableView.prepare(viewModel, HomeFunctionSectionModel.self, showFooter: false, showHeader: true, isAddNoMoreContent: false)
         
         header.functionDidSelected
             .map{ [unowned self] in ($0, self.navigationController) }
             .bind(to: viewModel.functionItemDidSelected)
             .disposed(by: disposeBag)
         
-        header.noticeDidSelected
-            .bind(to: viewModel.noticeDidSelected)
-            .disposed(by: disposeBag)
-        
-        header.goodnewsDidSelected
-            .bind(to: viewModel.goodnewsDidSelected)
-            .disposed(by: disposeBag)
-
-        // 今日知识
-        viewModel.columnModelObser.asDriver()
-            .drive(header.colunmModelObser)
-            .disposed(by: disposeBag)
-        
-        header.didSelectItemSubject
-            .bind(to: viewModel.didSelectItemSubject)
-            .disposed(by: disposeBag)
-        
-        tableView.rx.modelSelected(HomeArticleModel.self).asDriver()
-            .map{ [unowned self] in ($0, self.navigationController) }
-            .drive(viewModel.todaySelected)
-            .disposed(by: disposeBag)
-        
-//        viewModel.reloadSubject.onNext(Void())
-        tableView.headerRefreshing()
-        
+//        header.noticeDidSelected
+//            .bind(to: viewModel.noticeDidSelected)
+//            .disposed(by: disposeBag)
+//
         header.bannerDidSelected
             .bind(to: viewModel.bannerSelected)
             .disposed(by: disposeBag)
+        
+        tableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+        
+        tableView.rx.setDataSource(self)
+            .disposed(by: disposeBag)
+        
+        tableView.headerRefreshing()
     }
     
+}
+
+extension HCHomeViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: HomeFunctionContentCell_identifier) as! HomeFunctionContentCell
+        cell.models = viewModel.datasource.value
+        cell.itemDidSelected = { [unowned self] in self.viewModel.pushH5Subject.onNext($0) }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return HomeFunctionContentCell.cellHeight(for: viewModel.maxFuncRow)
+    }
 }

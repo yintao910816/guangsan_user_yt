@@ -8,7 +8,9 @@
 
 import UIKit
 
-class HomeFunctionCell: UICollectionViewCell {
+public let HomeFunctionItemCell_identifier = "HomeFunctionItemCell"
+
+class HomeFunctionItemCell: UICollectionViewCell {
 
     @IBOutlet weak var imageVOutlet: UIImageView!
     @IBOutlet weak var titleOutlet: UILabel!
