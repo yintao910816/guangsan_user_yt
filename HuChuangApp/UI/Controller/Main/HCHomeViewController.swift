@@ -11,42 +11,14 @@ import UIKit
 class HCHomeViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var navHeightCns: NSLayoutConstraint!
-    @IBOutlet weak var navOutlet: UIView!
-    @IBOutlet weak var unreadCountOutlet: UILabel!
-    @IBOutlet weak var rightBarButton: TYClickedButton!
-    @IBOutlet weak var unreadCountWidthCns: NSLayoutConstraint!
-    @IBOutlet weak var unreadBgOutlet: UIView!
 
     private var header: HomeHeaderView!
-    
     private var viewModel: HomeViewModel!
-
-    @IBAction func actions(_ sender: UIButton) {
-        switch sender.tag {
-        case 100:
-            navigationController?.pushViewController(HCScanViewController(), animated: true)
-        case 101:
-            viewModel.messageListPublish.onNext(navigationController)
-        default:
-            break
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-        if viewModel != nil { viewModel.refreshUnreadPublish.onNext(Void()) }
-    }
-    
     override func setupUI() {
         if #available(iOS 11, *) {
             tableView.contentInsetAdjustmentBehavior = .never
         }
-        navHeightCns.constant += LayoutSize.fitTopArea
-
-        rightBarButton.setEnlargeEdge(top: 10, bottom: 10, left: 10, right: 10)
         
         header = HomeHeaderView.init(frame: .init(x: 0, y: 0, width: tableView.width, height: 395))
 
@@ -58,6 +30,14 @@ class HCHomeViewController: BaseViewController {
     
     override func rxBind() {
         viewModel = HomeViewModel()
+                
+        addBarItem(normal: "home_icon_bar", right: false)
+            .drive(viewModel.pushCodeBarSubject)
+            .disposed(by: disposeBag)
+        
+        addBarItem(normal: "home_icon_account")
+            .drive(onNext: { HCHelper.presentLogin() })
+            .disposed(by: disposeBag)
         
         viewModel.recomFuncData.asDriver()
             .drive(header.funcModelObser)
@@ -68,31 +48,10 @@ class HCHomeViewController: BaseViewController {
                 self?.tableView.reloadData()
             })
             .disposed(by: disposeBag)
-        
-        viewModel.unreadCountObser
-            .asDriver()
-            .drive(onNext: { [unowned self] data in
-                self.unreadCountOutlet.text = data.0
-                self.unreadCountWidthCns.constant = data.1
-                self.unreadBgOutlet.layer.cornerRadius = data.1 / 2.0
-            })
-            .disposed(by: disposeBag)
-        
+                
         viewModel.bannerModelObser.asDriver()
             .drive(header.bannerModelObser)
             .disposed(by: disposeBag)
-                
-//        viewModel.functionModelsObser.asDriver()
-//            .drive(header.functionModelObser)
-//            .disposed(by: disposeBag)
-//
-//        viewModel.noticeModelObser.asDriver()
-//            .drive(header.noticeModelObser)
-//            .disposed(by: disposeBag)
-//
-//        viewModel.goodNewsModelObser.asDriver()
-//            .drive(header.goodNewsModelObser)
-//            .disposed(by: disposeBag)
         
         tableView.prepare(viewModel, HomeFunctionSectionModel.self, showFooter: false, showHeader: true, isAddNoMoreContent: false)
         
@@ -101,10 +60,6 @@ class HCHomeViewController: BaseViewController {
             .bind(to: viewModel.functionItemDidSelected)
             .disposed(by: disposeBag)
         
-//        header.noticeDidSelected
-//            .bind(to: viewModel.noticeDidSelected)
-//            .disposed(by: disposeBag)
-//
         header.bannerDidSelected
             .bind(to: viewModel.bannerSelected)
             .disposed(by: disposeBag)

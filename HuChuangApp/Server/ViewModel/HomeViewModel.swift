@@ -12,37 +12,25 @@ import RxSwift
 class HomeViewModel: RefreshVM<HomeFunctionSectionModel>, VMNavigation {
     
     public let recomFuncData = Variable([HomeFunctionModel]())
-    var bannerModelObser = Variable([HomeBannerModel]())
-    
-    /// 设置右上角消息数量提醒
-    var unreadCountObser = Variable(("", CGFloat(0.0)))
-    
-    let bannerSelected = PublishSubject<CarouselSource>()
+    public var bannerModelObser = Variable([HomeBannerModel]())
+    public let bannerSelected = PublishSubject<CarouselSource>()
 
-    let functionItemDidSelected = PublishSubject<(HomeFunctionModel, UINavigationController?)>()
-    let messageListPublish = PublishSubject<UINavigationController?>()
-    let refreshUnreadPublish = PublishSubject<Void>()
-
-    let pushH5Subject = PublishSubject<HomeFunctionModel>()
+    public let functionItemDidSelected = PublishSubject<(HomeFunctionModel, UINavigationController?)>()
+    public let pushH5Subject = PublishSubject<HomeFunctionModel>()
+    public let pushCodeBarSubject = PublishSubject<Void>()
 
     private var articleTypeID: String = ""
 
     override init() {
         super.init()
         hud.noticeLoading()
-        
-        messageListPublish
-            ._doNext(forNotice: hud)
-            .flatMap{ [unowned self] _ in self.requestH5(type: .notification) }
-            .subscribe(onNext: { [unowned self] model in
-                self.hud.noticeHidden()
-                self.pushH5(model: model)
-                }, onError: { error in
-                    self.hud.failureHidden(self.errorMessage(error))
-            })
-            .disposed(by: disposeBag)
-        
+                
         pushH5Subject
+            .subscribe(onNext: { [unowned self] in self.pushH5(model: $0) })
+            .disposed(by: disposeBag)
+                
+        pushCodeBarSubject
+            .flatMap { [unowned self] in self.requestH5(type: .myBarCode) }
             .subscribe(onNext: { [unowned self] in self.pushH5(model: $0) })
             .disposed(by: disposeBag)
 
@@ -51,12 +39,6 @@ class HomeViewModel: RefreshVM<HomeFunctionSectionModel>, VMNavigation {
         })
             .disposed(by: disposeBag)
                 
-        refreshUnreadPublish
-            .subscribe(onNext: { [unowned self] in
-                self.requestUnread()
-            })
-            .disposed(by: disposeBag)
-
         bannerSelected
             .subscribe(onNext: {
                 guard let bannerModel = $0 as? HomeBannerModel, bannerModel.validLink else { return }
@@ -67,6 +49,12 @@ class HomeViewModel: RefreshVM<HomeFunctionSectionModel>, VMNavigation {
         NotificationCenter.default.rx.notification(NotificationName.User.LoginSuccess)
             .subscribe(onNext: { [weak self] data in
                 self?.requestData(true)
+            })
+            .disposed(by: disposeBag)
+        
+        NotificationCenter.default.rx.notification(NotificationName.Logic.refreshMessageBadge)
+            .subscribe(onNext: { [weak self] _ in
+                self?.requestUnread()
             })
             .disposed(by: disposeBag)
     }
@@ -149,22 +137,13 @@ extension HomeViewModel {
         return HCProvider.request(.unitSetting(type: type))
             .map(model: H5InfoModel.self)
             .asObservable()
+            .catchErrorJustReturn(H5InfoModel())
     }
     
     private func requestUnread() {
         HCProvider.request(.messageUnreadCount)
             .mapJSON()
-            .subscribe(onSuccess: { [weak self] res in
-//                if let dic = res as? [String: Any],
-//                    let count = dic["data"] as? Int,
-//                    count > 0{
-//                    let countString = "\(count)"
-//                    let countWidth = countString.getTexWidth(fontSize: 12, height: 20) + 10
-//                    self?.unreadCountObser.value = (countString, countWidth)
-//                }else {
-//                    self?.unreadCountObser.value = ("", 0)
-//                }
-                
+            .subscribe(onSuccess: { res in
                 if let dic = res as? [String: Any],
                     let count = dic["data"] as? Int {
                     let messageVC = (UIApplication.shared.keyWindow?.rootViewController as? HCTabBarViewController)?.viewControllers?[1]

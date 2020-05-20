@@ -13,6 +13,12 @@ class HCMessageViewController: BaseViewController {
     private var viewModel: HCMessageViewModel!
     private var webCtrl: BaseWebViewController!
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        NotificationCenter.default.post(name: NotificationName.Logic.refreshMessageBadge, object: nil)
+    }
+    
     override func setupUI() {
         webCtrl = BaseWebViewController.init()
         webCtrl.view.frame = .init(x: 0, y: 0, width: view.width, height: view.height - (tabBarController?.tabBar.height ?? 0))

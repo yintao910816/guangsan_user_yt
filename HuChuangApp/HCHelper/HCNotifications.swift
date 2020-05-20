@@ -23,4 +23,9 @@ extension Notification.Name {
         /// 微信支付成功
         static let wxPaySuccess = Notification.Name(rawValue: "org.user.notification.name.wxPaySuccess")
     }
+    
+    public struct Logic {
+        /// 刷新消息角标
+        static let refreshMessageBadge = Notification.Name(rawValue: "org.user.notification.name.refreshMessageBadge")
+    }
 }

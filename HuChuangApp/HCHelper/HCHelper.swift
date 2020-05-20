@@ -29,6 +29,7 @@ class HCHelper {
         
         let loginSB = UIStoryboard.init(name: "HCLogin", bundle: Bundle.main)
         let loginControl = loginSB.instantiateViewController(withIdentifier: "loginControl")
+        loginControl.modalPresentationStyle = .fullScreen
         if let presentV = presentVC {
             presentV.present(loginControl, animated: true, completion: completion)
         }else{

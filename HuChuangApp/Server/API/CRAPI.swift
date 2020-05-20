@@ -50,6 +50,8 @@ enum H5Type: String {
     case memberCharge = "memberCharge"
     /// 个人信息
     case memberInfo = "memberInfo"
+    /// 电子就诊卡条码
+    case myBarCode = "myBarCode"
     
     /// 开发中
     case underDev = "underDev"
