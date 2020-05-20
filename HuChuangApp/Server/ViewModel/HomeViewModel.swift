@@ -11,6 +11,7 @@ import RxSwift
 
 class HomeViewModel: RefreshVM<HomeFunctionSectionModel>, VMNavigation {
     
+    public let recomFuncData = Variable([HomeFunctionModel]())
     var bannerModelObser = Variable([HomeBannerModel]())
     
     /// 设置右上角消息数量提醒
@@ -75,6 +76,17 @@ class HomeViewModel: RefreshVM<HomeFunctionSectionModel>, VMNavigation {
 
         requestUnread()
         
+        HCProvider.request(.functionList(isRecom: "1"))
+            .map(models: HomeFunctionSectionModel.self)
+            .subscribe(onSuccess: { [weak self] data in
+                var tempDatas: [HomeFunctionModel] = []
+                for item in data {
+                    tempDatas.append(contentsOf: item.functions)
+                }
+                self?.recomFuncData.value = tempDatas
+            }) { _ in }
+            .disposed(by: disposeBag)
+        
         requestHeaderData()
             .subscribe(onNext: { [weak self] data in
                 self?.hud.noticeHidden()
@@ -127,7 +139,7 @@ extension HomeViewModel {
     }
     
     private func requestFunctionList() ->Observable<[HomeFunctionSectionModel]>{
-        return HCProvider.request(.functionList)
+        return HCProvider.request(.functionList(isRecom: ""))
             .map(models: HomeFunctionSectionModel.self)
             .asObservable()
             .catchErrorJustReturn([HomeFunctionSectionModel]())

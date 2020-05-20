@@ -59,6 +59,10 @@ class HCHomeViewController: BaseViewController {
     override func rxBind() {
         viewModel = HomeViewModel()
         
+        viewModel.recomFuncData.asDriver()
+            .drive(header.funcModelObser)
+            .disposed(by: disposeBag)
+        
         viewModel.datasource.asDriver()
             .drive(onNext: { [weak self] _ in
                 self?.tableView.reloadData()

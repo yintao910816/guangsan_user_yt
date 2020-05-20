@@ -73,8 +73,8 @@ enum API{
     case uploadIcon(image: UIImage)
     /// 首页banner
     case selectBanner
-    /// 首页功能列表
-    case functionList
+    /// 首页功能列表   是否推荐：空查所有，true 推荐，false 不推荐
+    case functionList(isRecom: String)
     /// 好消息
     case goodNews
     /// 首页通知消息
@@ -220,9 +220,8 @@ extension API {
         case .unitSetting(let type):
             params["settingCode"] = type.rawValue
         
-        case .functionList:
-            // 是否推荐：空查所有，true 推荐，false 不推荐
-            params["isRecom"] = ""
+        case .functionList(let isRecom):
+            params["isRecom"] = isRecom
 
         default:
             return nil
