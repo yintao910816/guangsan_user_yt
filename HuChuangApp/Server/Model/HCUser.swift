@@ -51,3 +51,58 @@ class HCUserModel: HJModel {
     
 }
 
+import SQLite
+
+class HCLoginAccountModel {
+        
+    public var account: String = ""
+    public var pwd: String = ""
+    
+    struct ExpressionKey {
+        static let accountEx = Expression<String>("account")
+        static let pwdEx = Expression<String>("pwd")
+    }
+
+    public func insert() {
+        let filiter = HCLoginAccountModel.ExpressionKey.accountEx == account
+        let setters = [HCLoginAccountModel.ExpressionKey.accountEx <- account,
+                       HCLoginAccountModel.ExpressionKey.pwdEx <- pwd]
+        DBQueue.share.insterOrUpdateQueue(filiter, setters, accountTB, HCLoginAccountModel.self)
+    }
+    
+    public static func selectAll(result: @escaping (([HCLoginAccountModel]) ->())) {
+        let filiter = HCLoginAccountModel.ExpressionKey.accountEx != ""
+        DBQueue.share.selectQueue(filiter, accountTB, HCLoginAccountModel.self) { result(mapModel(query: $0)) }
+    }
+    
+    private static func mapModel(query: Table?) -> [HCLoginAccountModel] {
+        do {
+            guard let db = HCLoginAccountModel.db else { return [HCLoginAccountModel]() }
+            guard let t = query else {  return [HCLoginAccountModel]() }
+            
+            var datas = [HCLoginAccountModel]()
+            for item in try db.prepare(t) {
+                let model = HCLoginAccountModel();
+                model.account = item[HCLoginAccountModel.ExpressionKey.accountEx]
+                model.pwd = item[HCLoginAccountModel.ExpressionKey.pwdEx]
+
+                datas.append(model)
+            }
+            return datas
+            
+        } catch {
+            PrintLog("查询数据失败")
+        }
+        return [HCLoginAccountModel]()
+    }
+
+}
+
+extension HCLoginAccountModel: DBOperation {
+    
+    static func dbBind(_ builder: TableBuilder) {
+        builder.column(HCLoginAccountModel.ExpressionKey.accountEx)
+        builder.column(HCLoginAccountModel.ExpressionKey.pwdEx)
+    }
+    
+}

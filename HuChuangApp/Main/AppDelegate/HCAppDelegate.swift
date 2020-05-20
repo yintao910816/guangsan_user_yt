@@ -19,8 +19,11 @@ class HCAppDelegate: UIResponder, UIApplicationDelegate {
     var isAuthorizedPush: Bool = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        DbManager.dbSetup()
+        
         setupUM(launchOptions: launchOptions)
+
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
             self.checkVersion()
             

@@ -11,14 +11,8 @@ import Foundation
 //MARK
 //MARK: 数据基本配置
 let dbPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
-
 let dbName = "hcdb.sqlite3"
-
 let dbFullPath = "\(dbPath)/\(dbName)"
-
-struct DBUtls {
-    
-}
 
 //MARK
 //MARK: 数据库表名

@@ -10,28 +10,16 @@ import SQLite
 
 class DbManager {
 
-// MARK: - 创建 数据库、表
-    
+    // MARK: - 创建 数据库、表
     class public func dbSetup() -> Void {
-//        do {
-//            PrintLog(dbFullPath1)
-//            let db = try Connection(dbFullPath1)
-//            
-//        } catch {
-//            PrintLog("\(error)")
-//        }
-
         do {
             PrintLog(dbFullPath)
             let db = try Connection(dbFullPath)
             
             // 创建用户表
-            var table = Table(courseOrderTB)
-//            try db.run(table.create { t in
-//                CourseClassModel.dbBind(t)
-//            })
+            let table = Table(accountTB)
+            try db.run(table.create { HCLoginAccountModel.dbBind($0) })
 
-            
             update(db)
             PrintLog("数据库版本：\(db.userVersion)")
             

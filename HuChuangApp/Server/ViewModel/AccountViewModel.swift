@@ -19,10 +19,12 @@ class LoginViewModel: BaseViewModel {
     
     let codeEnable = Variable(true)
     
+    public var recordAccountObser = Variable([HCLoginAccountModel]())
+    
     init(input: (account: Driver<String>, pass: Driver<String>, loginType: Driver<LoginType>),
          tap: (loginTap: Driver<Void>, sendCodeTap: Driver<Void>)) {
         super.init()
-        
+                
         let inputSignal = Driver.combineLatest(input.account, input.pass, input.loginType) { ($0,$1,$2) }
         
         tap.loginTap.withLatestFrom(inputSignal)
@@ -35,6 +37,14 @@ class LoginViewModel: BaseViewModel {
             .filter{ [unowned self] in self.dealInputError(phone: $0) }
             ._doNext(forNotice: hud)
             .drive(onNext: { [unowned self] in self.sendCode(phone: $0) })
+            .disposed(by: disposeBag)
+        
+        reloadSubject
+            .subscribe(onNext: { [weak self] in
+                HCLoginAccountModel.selectAll { ret in
+                    self?.recordAccountObser.value = ret
+                }
+            })
             .disposed(by: disposeBag)
     }
     
@@ -60,6 +70,11 @@ class LoginViewModel: BaseViewModel {
         HCProvider.request(.login(mobile: data.0, smsCode: data.1))
             .map(model: HCUserModel.self)
             .subscribe(onSuccess: { [weak self] user in
+                let accountModel = HCLoginAccountModel()
+                accountModel.account = data.0
+                accountModel.pwd = data.1
+                accountModel.insert()
+                
                 userDefault.loginPhone = data.0
                 HCHelper.saveLogin(user: user)
 

@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RxDataSources
 
 class HCLoginViewController: BaseViewController {
 
@@ -17,7 +18,8 @@ class HCLoginViewController: BaseViewController {
     @IBOutlet weak var loginOutlet: UIButton!
     @IBOutlet weak var getAuthorOutlet: UIButton!
     @IBOutlet weak var contentBgView: UIView!
-        
+    @IBOutlet weak var tableView: UITableView!
+    
     private let loginTypeObser = Variable(LoginType.phone)
     
     private var timer: CountdownTimer!
@@ -28,6 +30,7 @@ class HCLoginViewController: BaseViewController {
     
     @IBAction func tapAction(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
+        self.tableView.isHidden = true
     }
     
     @IBAction func actions(_ sender: UIButton) {
@@ -35,6 +38,8 @@ class HCLoginViewController: BaseViewController {
             let webVC = BaseWebViewController()
             webVC.url = "http://120.24.79.125/static/html/roujiyunbao.html"
             navigationController?.pushViewController(webVC, animated: true)
+        }else if sender.tag == 1001 {
+            self.tableView.isHidden = !self.tableView.isHidden
         }
     }
     
@@ -46,6 +51,9 @@ class HCLoginViewController: BaseViewController {
 
     override func setupUI() {
         keyBoardManager.registerNotification()
+        
+        tableView.rowHeight = 40
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         timer = CountdownTimer.init(totleCount: 60)
         
@@ -97,6 +105,33 @@ class HCLoginViewController: BaseViewController {
                 self?.navigationController?.dismiss(animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
+        
+        viewModel.recordAccountObser.asDriver()
+            .drive(tableView.rx.items(cellIdentifier: "cell", cellType: UITableViewCell.self)) { _, model, cell in
+                cell.selectionStyle = .none
+                cell.textLabel?.text = model.account
+                cell.backgroundColor = .clear
+                cell.contentView.backgroundColor = .clear
+                
+                if cell.viewWithTag(100) == nil {
+                    let line = UIView.init(frame: .init(x: 0, y: cell.height - 1, width: cell.width, height: 1))
+                    line.backgroundColor = RGB(230, 230, 230)
+                    line.tag = 100
+                    cell.addSubview(line)
+                }
+        }
+        .disposed(by: disposeBag)
+        
+        tableView.rx.modelSelected(HCLoginAccountModel.self)
+            .asDriver()
+            .do(onNext: { [unowned self] _ in
+                self.tableView.isHidden = true
+            })
+            .map { $0.account }
+            .drive(accountInputOutlet.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.reloadSubject.onNext(Void())
     }
 }
 

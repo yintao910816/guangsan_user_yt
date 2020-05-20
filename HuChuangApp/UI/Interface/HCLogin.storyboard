@@ -82,13 +82,16 @@
                                                     <outlet property="delegate" destination="RTX-Se-1rC" id="uVW-Kt-xWw"/>
                                                 </connections>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JQP-cX-cvW" customClass="TYClickedButton" customModule="HuChuangApp" customModuleProvider="target">
+                                            <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JQP-cX-cvW" customClass="TYClickedButton" customModule="HuChuangApp" customModuleProvider="target">
                                                 <rect key="frame" x="245" y="10" width="25" height="25"/>
                                                 <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="25" id="9sU-Tx-S9E"/>
                                                     <constraint firstAttribute="height" constant="25" id="vcC-l8-eGw"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="actions:" destination="RTX-Se-1rC" eventType="touchUpInside" id="D1e-nz-Sv9"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="deviceRGB"/>
@@ -152,10 +155,18 @@
                                             <constraint firstAttribute="height" constant="1" id="MON-63-Gub"/>
                                         </constraints>
                                     </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wOE-TD-cXW">
+                                        <rect key="frame" x="45" y="257.5" width="285" height="120"/>
+                                        <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="deviceRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="BST-Pp-ToB"/>
+                                        </constraints>
+                                    </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
+                                    <constraint firstItem="wOE-TD-cXW" firstAttribute="trailing" secondItem="dIY-EJ-SQx" secondAttribute="trailing" id="3k4-2b-h2g"/>
                                     <constraint firstAttribute="trailing" secondItem="cJx-E6-iRZ" secondAttribute="trailing" constant="45" id="6Ax-ws-WOW"/>
                                     <constraint firstItem="GAm-FR-122" firstAttribute="leading" secondItem="pHx-03-8qa" secondAttribute="leading" id="729-gX-lwZ"/>
                                     <constraint firstItem="cJx-E6-iRZ" firstAttribute="top" secondItem="dIY-EJ-SQx" secondAttribute="bottom" constant="15" id="7U8-cA-SuK"/>
@@ -163,8 +174,10 @@
                                     <constraint firstItem="dIY-EJ-SQx" firstAttribute="leading" secondItem="a5u-Gp-u42" secondAttribute="leading" constant="45" id="Iln-ag-dbe"/>
                                     <constraint firstItem="Xj7-Wy-dLN" firstAttribute="trailing" secondItem="cJx-E6-iRZ" secondAttribute="trailing" id="MB6-pI-Dhb"/>
                                     <constraint firstItem="dIY-EJ-SQx" firstAttribute="top" secondItem="Alm-pQ-yEK" secondAttribute="bottom" constant="40.5" id="P1A-Z5-DKP"/>
+                                    <constraint firstItem="wOE-TD-cXW" firstAttribute="top" secondItem="dIY-EJ-SQx" secondAttribute="bottom" id="R18-ma-ITr"/>
                                     <constraint firstAttribute="trailing" secondItem="dIY-EJ-SQx" secondAttribute="trailing" constant="45" id="Sdr-oo-cLV"/>
                                     <constraint firstItem="Xj7-Wy-dLN" firstAttribute="leading" secondItem="cJx-E6-iRZ" secondAttribute="leading" id="UKL-Ta-HtD"/>
+                                    <constraint firstItem="wOE-TD-cXW" firstAttribute="leading" secondItem="dIY-EJ-SQx" secondAttribute="leading" id="Ube-54-AbU"/>
                                     <constraint firstAttribute="trailing" secondItem="Alm-pQ-yEK" secondAttribute="trailing" id="bFA-3v-bM7"/>
                                     <constraint firstItem="pHx-03-8qa" firstAttribute="centerX" secondItem="a5u-Gp-u42" secondAttribute="centerX" id="i0Q-UA-SEE"/>
                                     <constraint firstItem="GAm-FR-122" firstAttribute="trailing" secondItem="pHx-03-8qa" secondAttribute="trailing" id="i2j-tQ-5o2"/>
@@ -194,10 +207,11 @@
                         <outlet property="getAuthorOutlet" destination="vYa-PB-Sed" id="VOW-LI-LAd"/>
                         <outlet property="loginOutlet" destination="Xj7-Wy-dLN" id="FNw-25-fCV"/>
                         <outlet property="passInputOutlet" destination="71r-m4-x7N" id="3O0-5G-iiU"/>
+                        <outlet property="tableView" destination="wOE-TD-cXW" id="mau-Fb-1r4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dKW-FG-dGu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="PbT-Uf-dZq">
+                <tapGestureRecognizer enabled="NO" id="PbT-Uf-dZq">
                     <connections>
                         <action selector="tapAction:" destination="RTX-Se-1rC" id="ZxX-ge-mym"/>
                     </connections>
