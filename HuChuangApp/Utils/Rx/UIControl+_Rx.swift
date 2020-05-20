@@ -21,10 +21,10 @@ extension Reactive where Base: UIButton {
     public var enabled: Binder<Bool> {
         return Binder(self.base) { control, value in
             if value == true {
-                control.backgroundColor = HC_MAIN_COLOR
+//                control.backgroundColor = HC_MAIN_COLOR
                 control.isUserInteractionEnabled = true
             }else {
-                control.backgroundColor = .gray
+//                control.backgroundColor = .gray
                 control.isUserInteractionEnabled = false
             }
         }
