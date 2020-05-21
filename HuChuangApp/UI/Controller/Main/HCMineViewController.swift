@@ -28,16 +28,21 @@ class HCMineViewController: BaseViewController {
 //        else {
 //            automaticallyAdjustsScrollViewInsets = false
 //        }
-       
-        var headerHeight: CGFloat = 180
-        if UIDevice.current.isX { headerHeight += 44 }
-        header =  MineHeaderView.init(frame: .init(x: 0, y: 0, width: tableView.width, height: headerHeight))
+               
+        header =  MineHeaderView.init(frame: .init(x: 0, y: 0, width: PPScreenW, height: UIDevice.current.isX ? 225 + 44 : 225))
         tableView.tableHeaderView = header
+
+        header.updateHeight = { [unowned self] in
+            var frame = self.header.frame
+            frame.size.height = $0
+            self.header.frame = frame
+            self.tableView.tableHeaderView = self.header
+        }
         
-        footer = MineFooterView.init(frame: .init(x: 0, y: 0, width: tableView.width, height: 90))
+        footer = MineFooterView.init(frame: .init(x: 0, y: 0, width: tableView.width, height: 55))
         tableView.tableFooterView = footer
         
-        tableView.rowHeight = 45
+        tableView.rowHeight = 55
         tableView.register(UINib.init(nibName: "MineCell", bundle: Bundle.main), forCellReuseIdentifier: "MineCellID")
     }
     

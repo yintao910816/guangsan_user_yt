@@ -82,13 +82,14 @@
                                                     <outlet property="delegate" destination="RTX-Se-1rC" id="uVW-Kt-xWw"/>
                                                 </connections>
                                             </textField>
-                                            <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JQP-cX-cvW" customClass="TYClickedButton" customModule="HuChuangApp" customModuleProvider="target">
+                                            <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JQP-cX-cvW" customClass="TYClickedButton" customModule="HuChuangApp" customModuleProvider="target">
                                                 <rect key="frame" x="245" y="10" width="25" height="25"/>
-                                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="25" id="9sU-Tx-S9E"/>
                                                     <constraint firstAttribute="height" constant="25" id="vcC-l8-eGw"/>
                                                 </constraints>
+                                                <state key="normal" image="login_triangle_down"/>
                                                 <connections>
                                                     <action selector="actions:" destination="RTX-Se-1rC" eventType="touchUpInside" id="D1e-nz-Sv9"/>
                                                 </connections>
@@ -155,7 +156,7 @@
                                             <constraint firstAttribute="height" constant="1" id="MON-63-Gub"/>
                                         </constraints>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wOE-TD-cXW">
+                                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wOE-TD-cXW">
                                         <rect key="frame" x="45" y="257.5" width="285" height="120"/>
                                         <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="deviceRGB"/>
                                         <constraints>
@@ -222,5 +223,6 @@
     </scenes>
     <resources>
         <image name="banner" width="375" height="172.5"/>
+        <image name="login_triangle_down" width="15" height="11"/>
     </resources>
 </document>

@@ -31,9 +31,10 @@ class HomeFunctionContentFlowLayout: UICollectionViewFlowLayout {
 
         for section in 0..<sections {
             let rows = col.numberOfItems(inSection: section)
+            var y: CGFloat = 0
+
             for row in 0..<rows {
                 var x: CGFloat = CGFloat(section) * col.width + edgeInsets.left
-                var y: CGFloat = 0
                 if row > 0 {
                     x = lastFrame.maxX + interSpace
                 }
@@ -42,9 +43,6 @@ class HomeFunctionContentFlowLayout: UICollectionViewFlowLayout {
                     // 需要换行
                     x = CGFloat(section) * col.width + edgeInsets.left
                     y = lastFrame.maxY + lineSpacing
-                }else {
-                    // 不需要换行
-                    y = lastFrame.origin.y
                 }
                 
                 let att = UICollectionViewLayoutAttributes.init(forCellWith: IndexPath.init(row: row, section: section))

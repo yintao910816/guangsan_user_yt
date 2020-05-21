@@ -11,6 +11,7 @@ import UIKit
 class MineCell: UITableViewCell {
 
     @IBOutlet weak var titleOutlet: UILabel!
+    @IBOutlet weak var cellIcon: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,6 +22,7 @@ class MineCell: UITableViewCell {
     var model: MenuListItemModel! {
         didSet {
             titleOutlet.text = model.title
+            cellIcon.image = model.titleIcon
         }
     }
 }

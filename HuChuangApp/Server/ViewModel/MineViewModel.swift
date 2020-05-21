@@ -97,14 +97,30 @@ class MineViewModel: BaseViewModel, VMNavigation {
 
     private func requestUserInfo() {
         let bindType = (HCHelper.share.userInfoModel?.visitCard.count ?? 0) > 0 ? H5Type.succBind : H5Type.bindHos
-        let dataSignal = [SectionModel.init(model: 0, items: [MenuListItemModel.createModel(title: "认证管理", h5Type: bindType),
-                                                              MenuListItemModel.createModel(title: "配偶信息", h5Type: .memberMate),
-                                                              MenuListItemModel.createModel(title: "缴费记录", h5Type: .memberCharge),
-                                                              MenuListItemModel.createModel(title: "个人信息", h5Type: .memberInfo)]),
-                          SectionModel.init(model: 1, items: [MenuListItemModel.createModel(title: "我的消息", h5Type: .underDev)]),
-                          SectionModel.init(model: 2, items: [MenuListItemModel.createModel(title: "系统设置", h5Type: .underDev),
-                                                              MenuListItemModel.createModel(title: "软件分享", h5Type: .underDev),
-                                                              MenuListItemModel.createModel(title: "用户反馈", h5Type: .memberFeedback)])]
+        let dataSignal = [SectionModel.init(model: 0, items: [MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_renzheng"),
+                                                                                            title: "认证管理",
+                                                                                            h5Type: bindType),
+                                                              MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_peiou"),
+                                                                                            title: "配偶信息",
+                                                                                            h5Type: .memberMate),
+                                                              MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_jiaofei"),
+                                                                                            title: "缴费记录",
+                                                                                            h5Type: .memberCharge),
+                                                              MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_geren"),
+                                                                                            title: "个人信息",
+                                                                                            h5Type: .memberInfo)]),
+                          SectionModel.init(model: 1, items: [MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_xiaoxi"),
+                                                                                            title: "我的消息",
+                                                                                            h5Type: .underDev)]),
+                          SectionModel.init(model: 2, items: [MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_xitong"),
+                                                                                            title: "系统设置",
+                                                                                            h5Type: .underDev),
+                                                              MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_fenxiang"),
+                                                                                            title: "软件分享",
+                                                                                            h5Type: .underDev),
+                                                              MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_fankui"),
+                                                                                            title: "用户反馈",
+                                                                                            h5Type: .memberFeedback)])]
         datasource.onNext(dataSignal)
         
         HCProvider.request(.selectInfo)

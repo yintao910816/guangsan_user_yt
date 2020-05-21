@@ -14,6 +14,8 @@ class MineHeaderView: UIView {
     
     private let disposeBag = DisposeBag()
     
+    @IBOutlet weak var headerBgView: UIImageView!
+    
     @IBOutlet weak var userIconOutlet: UIButton!
     @IBOutlet weak var nickNameOutlet: UILabel!
     @IBOutlet weak var sexOutlet: UILabel!
@@ -22,15 +24,17 @@ class MineHeaderView: UIView {
     @IBOutlet weak var yuyueOutlet: UserFunctionButton!
     @IBOutlet weak var wenzhenOutlet: UserFunctionButton!
     @IBOutlet weak var quanziOutlet: UserFunctionButton!
-    @IBOutlet var tapGesture: UITapGestureRecognizer!
+        
+    @IBOutlet weak var shadowView: UIView!
     
-    @IBOutlet weak var headerBgHeightCns: NSLayoutConstraint!
-    @IBOutlet weak var headerTopCns: NSLayoutConstraint!
-    
+    private var tap: UITapGestureRecognizer!
+
     public let userModel = PublishSubject<HCUserModel>()
     public let gotoEditUserInfo = PublishSubject<Void>()
 
     public let headerFuncPushH5 = PublishSubject<H5Type>()
+    
+    public var updateHeight: ((CGFloat)->())?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,15 +44,15 @@ class MineHeaderView: UIView {
         
         contentView.snp.makeConstraints{ $0.edges.equalTo(UIEdgeInsets.zero) }
         
+        contentView.setNeedsLayout()
+        contentView.layoutIfNeeded()
+
         if UIDevice.current.isX {
-            var frame = contentView.frame
-            frame.size.height += 44
-            contentView.frame = frame
-            
-            headerBgHeightCns.constant += 44
-            headerTopCns.constant += 44
+            var aframe = contentView.frame
+            aframe.size.height += 44
+            contentView.frame = aframe
         }
-        
+                    
         setupUI()
         rxBind()
     }
@@ -58,22 +62,17 @@ class MineHeaderView: UIView {
     }
     
     private func setupUI() {
-        yuyueOutlet.setTitle("我的预约", for: .normal)
-        yuyueOutlet.setImage(UIImage.init(named: "mine_yuyue"), for: .normal)
+        tap = UITapGestureRecognizer.init()
+        headerBgView.isUserInteractionEnabled = true
+        headerBgView.addGestureRecognizer(tap)
         
-        wenzhenOutlet.setTitle("我的问诊", for: .normal)
-        wenzhenOutlet.setImage(UIImage.init(named: "mine_wenzen"), for: .normal)
-
-        quanziOutlet.setTitle("我的圈子", for: .normal)
-        quanziOutlet.setImage(UIImage.init(named: "mine_quanzi"), for: .normal)
-    }
-    
-    private func rxBind() {
-        tapGesture.rx.event
+        tap.rx.event
             .map{ _ in Void() }
             .bind(to: gotoEditUserInfo)
             .disposed(by: disposeBag)
-        
+    }
+    
+    private func rxBind() {
         yuyueOutlet.rx.tap.asDriver()
             .debug("yuyueOutlet")
             .map{ H5Type.memberSubscribe }
@@ -96,5 +95,10 @@ class MineHeaderView: UIView {
             self.sexOutlet.text      = "性别：\(user.sexText)"
         })
             .disposed(by: disposeBag)
+    }
+    
+    override func layoutSubviews() {
+        shadowView.setCornerAndShaow()
+        updateHeight?(shadowView.frame.maxY + 5)
     }
 }

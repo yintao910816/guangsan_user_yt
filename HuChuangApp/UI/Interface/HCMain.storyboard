@@ -268,7 +268,7 @@
                             <constraint firstItem="gmw-lg-CjX" firstAttribute="leading" secondItem="fCB-18-wqM" secondAttribute="leading" id="vRc-w7-iYv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="oPD-pw-5fw"/>
+                    <navigationItem key="navigationItem" title="个人信息" id="oPD-pw-5fw"/>
                     <connections>
                         <outlet property="tableView" destination="gmw-lg-CjX" id="9Z2-R3-gLu"/>
                         <segue destination="FTO-HI-WkE" kind="show" id="lXA-RQ-fm7"/>
