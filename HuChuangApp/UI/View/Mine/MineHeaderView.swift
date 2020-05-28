@@ -79,13 +79,14 @@ class MineHeaderView: UIView {
             .drive(headerFuncPushH5)
             .disposed(by: disposeBag)
         
+        let bindType = (HCHelper.share.userInfoModel?.visitCard.count ?? 0) > 0 ? H5Type.succBind : H5Type.bindHos
         wenzhenOutlet.rx.tap.asDriver()
-            .map{ H5Type.consultRecord }
+            .map{ bindType }
             .drive(headerFuncPushH5)
             .disposed(by: disposeBag)
 
         quanziOutlet.rx.tap.asDriver()
-            .map{ H5Type.underDev }
+            .map{ H5Type.memberMate }
             .drive(headerFuncPushH5)
             .disposed(by: disposeBag)
 

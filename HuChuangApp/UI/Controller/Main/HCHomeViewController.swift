@@ -30,15 +30,7 @@ class HCHomeViewController: BaseViewController {
     
     override func rxBind() {
         viewModel = HomeViewModel()
-                
-        addBarItem(normal: "home_icon_bar", right: false)
-            .drive(viewModel.pushCodeBarSubject)
-            .disposed(by: disposeBag)
-        
-        addBarItem(normal: "home_icon_account")
-            .drive(onNext: { HCHelper.presentLogin() })
-            .disposed(by: disposeBag)
-        
+                        
         viewModel.recomFuncData.asDriver()
             .drive(header.funcModelObser)
             .disposed(by: disposeBag)
@@ -70,6 +62,23 @@ class HCHomeViewController: BaseViewController {
         tableView.rx.setDataSource(self)
             .disposed(by: disposeBag)
         
+        addBarItem(normal: "home_icon_bar", right: false)
+            .drive(viewModel.pushCodeBarSubject)
+            .disposed(by: disposeBag)
+        
+        HCHelper.share.userInfoHasReload
+            .subscribe(onNext: { [unowned self] in
+                let icon = $0.sexText == "男" ? "home_icon_account_boy" : "home_icon_account_girl"
+                self.addBarItem(normal: icon)
+                    .drive(onNext: {
+                        NoticesCenter.alert(message: "是否切换当前登录账号", cancleTitle: "切换", okTitle: "取消", callBackCancle: {
+                            HCHelper.presentLogin()
+                        })
+                    })
+                    .disposed(by: self.disposeBag)
+            })
+            .disposed(by: disposeBag)
+
         tableView.headerRefreshing()
     }
     

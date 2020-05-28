@@ -19,6 +19,8 @@ class HomeViewModel: RefreshVM<HomeFunctionSectionModel>, VMNavigation {
     public let pushH5Subject = PublishSubject<HomeFunctionModel>()
     public let pushCodeBarSubject = PublishSubject<Void>()
 
+    public let reloadRightBarItemSubject = PublishSubject<Void>()
+
     private var articleTypeID: String = ""
 
     override init() {
@@ -48,6 +50,7 @@ class HomeViewModel: RefreshVM<HomeFunctionSectionModel>, VMNavigation {
 
         NotificationCenter.default.rx.notification(NotificationName.User.LoginSuccess)
             .subscribe(onNext: { [weak self] data in
+                self?.reloadRightBarItemSubject.onNext(Void())
                 self?.requestData(true)
             })
             .disposed(by: disposeBag)
@@ -57,6 +60,15 @@ class HomeViewModel: RefreshVM<HomeFunctionSectionModel>, VMNavigation {
                 self?.requestUnread()
             })
             .disposed(by: disposeBag)
+        
+        HCProvider.request(.selectInfo)
+            .map(model: HCUserModel.self)
+            .subscribe(onSuccess: { user in
+                HCHelper.saveLogin(user: user)
+            }) { error in
+                PrintLog(error)
+            }
+            .disposed(by: disposeBag)
     }
     
     override func requestData(_ refresh: Bool) {
@@ -64,14 +76,10 @@ class HomeViewModel: RefreshVM<HomeFunctionSectionModel>, VMNavigation {
 
         requestUnread()
         
-        HCProvider.request(.functionList(isRecom: "1"))
-            .map(models: HomeFunctionSectionModel.self)
+        HCProvider.request(.selectFunc(isRecom: "1"))
+            .map(models: HomeFunctionModel.self)
             .subscribe(onSuccess: { [weak self] data in
-                var tempDatas: [HomeFunctionModel] = []
-                for item in data {
-                    tempDatas.append(contentsOf: item.functions)
-                }
-                self?.recomFuncData.value = tempDatas
+                self?.recomFuncData.value = data
             }) { _ in }
             .disposed(by: disposeBag)
         
@@ -127,7 +135,7 @@ extension HomeViewModel {
     }
     
     private func requestFunctionList() ->Observable<[HomeFunctionSectionModel]>{
-        return HCProvider.request(.functionList(isRecom: ""))
+        return HCProvider.request(.selectFuncType(isRecom: "1", isRecomFunc: "0"))
             .map(models: HomeFunctionSectionModel.self)
             .asObservable()
             .catchErrorJustReturn([HomeFunctionSectionModel]())

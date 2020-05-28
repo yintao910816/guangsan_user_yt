@@ -88,27 +88,27 @@
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_wenzhen" translatesAutoresizingMaskIntoConstraints="NO" id="5g5-Fj-7Vi">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_quanzi" translatesAutoresizingMaskIntoConstraints="NO" id="5g5-Fj-7Vi">
                                     <rect key="frame" x="201.5" y="13" width="30" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="5g5-Fj-7Vi" secondAttribute="height" multiplier="1:1" id="ShC-lL-d0P"/>
                                         <constraint firstAttribute="width" constant="30" id="zBO-MR-fEG"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的问诊" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQC-Cc-tIs">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="认证管理" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQC-Cc-tIs">
                                     <rect key="frame" x="188.5" y="53" width="56" height="20"/>
                                     <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="14"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_quanzi" translatesAutoresizingMaskIntoConstraints="NO" id="exJ-rW-mkm">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_peiou_light" translatesAutoresizingMaskIntoConstraints="NO" id="exJ-rW-mkm">
                                     <rect key="frame" x="346" y="13" width="30" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="30" id="1Ld-Cj-Fab"/>
                                         <constraint firstAttribute="width" secondItem="exJ-rW-mkm" secondAttribute="height" multiplier="1:1" id="4DB-mD-X5Y"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的圈子" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbE-sm-Cwe">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="配偶信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbE-sm-Cwe">
                                     <rect key="frame" x="333" y="53" width="56" height="20"/>
                                     <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="14"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -187,8 +187,8 @@
         <image name="default_user_icon" width="202" height="202"/>
         <image name="mine_bg" width="375" height="189.5"/>
         <image name="mine_jiantou2" width="10" height="17.5"/>
-        <image name="mine_quanzi" width="30" height="30"/>
-        <image name="mine_wenzhen" width="30" height="30"/>
+        <image name="mine_peiou_light" width="27" height="27"/>
+        <image name="mine_quanzi" width="27" height="27"/>
         <image name="mine_yuyue" width="30" height="30"/>
     </resources>
 </document>

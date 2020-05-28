@@ -75,8 +75,10 @@ enum API{
     case uploadIcon(image: UIImage)
     /// 首页banner
     case selectBanner
-    /// 首页功能列表   是否推荐：空查所有，true 推荐，false 不推荐
-    case functionList(isRecom: String)
+    /// 首页功能列表（下面子功能区域）   是否推荐：空查所有，true 推荐，false 不推荐
+    case selectFuncType(isRecom: String, isRecomFunc: String)
+    /// 首页主功能区
+    case selectFunc(isRecom: String)
     /// 好消息
     case goodNews
     /// 首页通知消息
@@ -114,8 +116,10 @@ extension API: TargetType{
             return "api/upload/imgSingle"
         case .selectBanner:
             return "api/index/selectBanner"
-        case .functionList:
+        case .selectFuncType(_):
             return "api/index/selectType"
+        case .selectFunc(_):
+            return "api/index/select"
         case .noticeList(_):
             return "api/index/noticeList"
         case .messageUnreadCount:
@@ -149,6 +153,9 @@ extension API: TargetType{
             return .uploadMultipart([formData])
         case .version:
             return .requestParameters(parameters: ["type": "ios", "packageName": "com.huchuang.guangsanuser"],
+                                      encoding: URLEncoding.default)
+        case .selectFunc(let isRecom):
+            return .requestParameters(parameters: ["isRecom": isRecom],
                                       encoding: URLEncoding.default)
         default:
             if let _parameters = parameters {
@@ -222,7 +229,10 @@ extension API {
         case .unitSetting(let type):
             params["settingCode"] = type.rawValue
         
-        case .functionList(let isRecom):
+        case .selectFuncType(let isRecom, let isRecomFunc):
+            params["isRecom"] = isRecom
+            params["isRecomFunc"] = isRecomFunc
+        case .selectFunc(let isRecom):
             params["isRecom"] = isRecom
 
         default:

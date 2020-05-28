@@ -97,12 +97,13 @@ class MineViewModel: BaseViewModel, VMNavigation {
 
     private func requestUserInfo() {
         let bindType = (HCHelper.share.userInfoModel?.visitCard.count ?? 0) > 0 ? H5Type.succBind : H5Type.bindHos
-        let dataSignal = [SectionModel.init(model: 0, items: [MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_renzheng"),
-                                                                                            title: "认证管理",
-                                                                                            h5Type: bindType),
-                                                              MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_peiou"),
-                                                                                            title: "配偶信息",
-                                                                                            h5Type: .memberMate),
+        let dataSignal = [SectionModel.init(model: 0, items: [
+//            MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_renzheng"),
+//                                                                                            title: "认证管理",
+//                                                                                            h5Type: bindType),
+//                                                              MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_peiou"),
+//                                                                                            title: "配偶信息",
+//                                                                                            h5Type: .memberMate),
                                                               MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_jiaofei"),
                                                                                             title: "缴费记录",
                                                                                             h5Type: .memberCharge),
@@ -111,7 +112,7 @@ class MineViewModel: BaseViewModel, VMNavigation {
                                                                                             h5Type: .memberInfo)]),
                           SectionModel.init(model: 1, items: [MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_xiaoxi"),
                                                                                             title: "我的消息",
-                                                                                            h5Type: .underDev)]),
+                                                                                            h5Type: .notification)]),
                           SectionModel.init(model: 2, items: [MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_xitong"),
                                                                                             title: "系统设置",
                                                                                             h5Type: .underDev),

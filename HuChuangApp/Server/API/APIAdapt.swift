@@ -50,7 +50,7 @@ struct APIAssistance {
 //    private static let base   = "http://210.21.12.73:9090/hc-patient/"
 //    private static let fileBase = "http://210.21.12.73:9090/hc-files/"
     
-    private static let base   = "https://ivf.gy3y.com/hc-patient/"
+    private static let base   = "https://ivf.gy3y.com/hc-patients/"
     private static let fileBase = "https://ivf.gy3y.com/hc-files/"
 
     static public func baseURL(API: API) ->URL{
@@ -67,7 +67,7 @@ struct APIAssistance {
      */
     static public func mothed(API: API) ->Moya.Method{
         switch API {
-        case .version:
+        case .version, .selectFunc(_):
             return .get
         default:
             return .post
