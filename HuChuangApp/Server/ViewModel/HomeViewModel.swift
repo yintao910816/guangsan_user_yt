@@ -73,7 +73,7 @@ class HomeViewModel: RefreshVM<HomeFunctionSectionModel>, VMNavigation {
     
     override func requestData(_ refresh: Bool) {
         setOffset(refresh: refresh)
-
+        HCProvider.deallocated
         requestUnread()
         
         HCProvider.request(.selectFunc(isRecom: "1"))

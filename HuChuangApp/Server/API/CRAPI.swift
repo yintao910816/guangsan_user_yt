@@ -253,5 +253,6 @@ extension API {
 
 //MARK:
 //MARK: API server
-let HCProvider = MoyaProvider<API>(plugins: [MoyaPlugins.MyNetworkActivityPlugin,
-                                             RequestLoadingPlugin()]).rx
+//let HCProvider = MoyaProvider<API>(plugins: [MoyaPlugins.MyNetworkActivityPlugin,
+//                                             RequestLoadingPlugin()]).rx
+let HCProvider = AppSetup.instance.HCProvider

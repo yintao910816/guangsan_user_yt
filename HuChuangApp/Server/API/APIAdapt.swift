@@ -16,6 +16,19 @@ class AppSetup {
     
     var unitId: String = "36"
     
+    var HCProvider = MoyaProvider<API>(plugins: [MoyaPlugins.MyNetworkActivityPlugin,
+                                                 RequestLoadingPlugin()]).rx
+        
+    public func resetProvider() {
+        _ = HCProvider.deallocated
+            .subscribe(onNext: { _ in
+                PrintLog("释放 HCProvider")
+            })
+        
+        HCProvider = MoyaProvider<API>(plugins: [MoyaPlugins.MyNetworkActivityPlugin,
+        RequestLoadingPlugin()]).rx
+    }
+    
     /**
      版本号拼接到所有请求url
      不能超过1000

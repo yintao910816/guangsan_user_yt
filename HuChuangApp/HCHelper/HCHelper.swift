@@ -48,6 +48,10 @@ class HCHelper {
         userDefault.uid = user.uid
         userDefault.token = user.token
         
+        PrintLog("地址111：\(AppSetup.instance.HCProvider)")
+        AppSetup.instance.resetProvider()
+        PrintLog("地址222：\(AppSetup.instance.HCProvider)")
+
         HCHelper.share.userInfoModel = user
         
         HCHelper.share.userInfoHasReload.onNext(user)
