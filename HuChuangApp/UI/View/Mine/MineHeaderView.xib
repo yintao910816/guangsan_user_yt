@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -75,40 +75,40 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qE9-6j-Mq4" customClass="UserFunctionButton" customModule="HuChuangApp" customModuleProvider="target">
                                     <rect key="frame" x="288.5" y="0.0" width="144.5" height="80"/>
                                 </button>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_yuyue" translatesAutoresizingMaskIntoConstraints="NO" id="P8P-NT-4qb">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_gerenxinxi" translatesAutoresizingMaskIntoConstraints="NO" id="P8P-NT-4qb">
                                     <rect key="frame" x="57" y="13" width="30" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="30" id="5aY-li-Ghc"/>
                                         <constraint firstAttribute="width" secondItem="P8P-NT-4qb" secondAttribute="height" multiplier="1:1" id="obq-cE-vUq"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的预约" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kK-sX-K70">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="个人信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kK-sX-K70">
                                     <rect key="frame" x="44" y="53" width="56" height="20"/>
                                     <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="14"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_quanzi" translatesAutoresizingMaskIntoConstraints="NO" id="5g5-Fj-7Vi">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_peiou" translatesAutoresizingMaskIntoConstraints="NO" id="5g5-Fj-7Vi">
                                     <rect key="frame" x="201.5" y="13" width="30" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="5g5-Fj-7Vi" secondAttribute="height" multiplier="1:1" id="ShC-lL-d0P"/>
                                         <constraint firstAttribute="width" constant="30" id="zBO-MR-fEG"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="认证管理" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQC-Cc-tIs">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="配偶信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQC-Cc-tIs">
                                     <rect key="frame" x="188.5" y="53" width="56" height="20"/>
                                     <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="14"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_peiou_light" translatesAutoresizingMaskIntoConstraints="NO" id="exJ-rW-mkm">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_shouzhen" translatesAutoresizingMaskIntoConstraints="NO" id="exJ-rW-mkm">
                                     <rect key="frame" x="346" y="13" width="30" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="30" id="1Ld-Cj-Fab"/>
                                         <constraint firstAttribute="width" secondItem="exJ-rW-mkm" secondAttribute="height" multiplier="1:1" id="4DB-mD-X5Y"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="配偶信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbE-sm-Cwe">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="首诊信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbE-sm-Cwe">
                                     <rect key="frame" x="333" y="53" width="56" height="20"/>
                                     <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="14"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -186,9 +186,9 @@
     <resources>
         <image name="default_user_icon" width="202" height="202"/>
         <image name="mine_bg" width="375" height="189.5"/>
+        <image name="mine_gerenxinxi" width="27" height="27"/>
         <image name="mine_jiantou2" width="10" height="17.5"/>
-        <image name="mine_peiou_light" width="27" height="27"/>
-        <image name="mine_quanzi" width="27" height="27"/>
-        <image name="mine_yuyue" width="30" height="30"/>
+        <image name="mine_peiou" width="27" height="27"/>
+        <image name="mine_shouzhen" width="27" height="27"/>
     </resources>
 </document>

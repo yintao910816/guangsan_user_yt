@@ -52,6 +52,20 @@ enum H5Type: String {
     case memberInfo = "memberInfo"
     /// 电子就诊卡条码
     case myBarCode = "myBarCode"
+    /// 首诊信息
+    case fristMessage = "fristMessage"
+    /// 治疗信息
+    case cureMessage = "cureMessage"
+    /// 账号与安全
+    case accountSecurity = "accountSecurity"
+    /// 宣教指引
+    case missionToGuide = "missionToGuide"
+    /// 经期日记
+    case menstrualDiary = "menstrualDiary"
+    /// 预产期计算
+    case dueDate = "dueDate"
+    /// 孕妈日记
+    case pregantDiary = "pregantDiary"
     
     /// 开发中
     case underDev = "underDev"

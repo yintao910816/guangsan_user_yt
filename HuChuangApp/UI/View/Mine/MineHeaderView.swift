@@ -74,19 +74,17 @@ class MineHeaderView: UIView {
     
     private func rxBind() {
         yuyueOutlet.rx.tap.asDriver()
-            .debug("yuyueOutlet")
-            .map{ H5Type.memberSubscribe }
+            .map{ H5Type.memberInfo }
             .drive(headerFuncPushH5)
             .disposed(by: disposeBag)
         
-        let bindType = (HCHelper.share.userInfoModel?.visitCard.count ?? 0) > 0 ? H5Type.succBind : H5Type.bindHos
         wenzhenOutlet.rx.tap.asDriver()
-            .map{ bindType }
+            .map{ H5Type.memberMate }
             .drive(headerFuncPushH5)
             .disposed(by: disposeBag)
 
         quanziOutlet.rx.tap.asDriver()
-            .map{ H5Type.memberMate }
+            .map{ H5Type.fristMessage }
             .drive(headerFuncPushH5)
             .disposed(by: disposeBag)
 

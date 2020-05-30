@@ -39,7 +39,7 @@ class HCMineViewController: BaseViewController {
             self.tableView.tableHeaderView = self.header
         }
         
-        footer = MineFooterView.init(frame: .init(x: 0, y: 0, width: tableView.width, height: 55))
+        footer = MineFooterView.init(frame: .init(x: 0, y: 0, width: tableView.width, height: 67))
         tableView.tableFooterView = footer
         
         tableView.rowHeight = 55
