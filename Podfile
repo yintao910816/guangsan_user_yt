@@ -22,5 +22,7 @@ pod 'UMCCommon'
 pod 'UMCPush'
 pod 'UMCSecurityPlugins'
 pod 'UMCAnalytics'
+pod 'UMCShare/Social/WeChat'
+pod 'UMCShare/UI'
 
 end

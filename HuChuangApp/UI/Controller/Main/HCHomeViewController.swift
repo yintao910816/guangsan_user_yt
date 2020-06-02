@@ -45,7 +45,7 @@ class HCHomeViewController: BaseViewController {
             .drive(header.bannerModelObser)
             .disposed(by: disposeBag)
         
-        tableView.prepare(viewModel, HomeFunctionSectionModel.self, showFooter: false, showHeader: true, isAddNoMoreContent: false)
+        tableView.prepare(viewModel, showFooter: false, showHeader: true, isAddNoMoreContent: false)
         
         header.functionDidSelected
             .map{ [unowned self] in ($0, self.navigationController) }

@@ -14,6 +14,8 @@ import Foundation
 extension HCAppDelegate {
    
     func setupUM(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
+        registerAuthor()
+        
         UMConfigure.initWithAppkey(AppKey, channel: "App Store")
         MobClick.setScenarioType(.E_UM_NORMAL)
         UMConfigure.setLogEnabled(true)
@@ -253,6 +255,30 @@ extension HCAppDelegate {
             }
             
         }
+        
+    }
+}
+
+extension HCAppDelegate: WXApiDelegate {
+    
+    public func registerAuthor() {
+        UMSocialManager.default()?.openLog(true)
+//        UMSocialManager.default()?.setPlaform(.wechatSession,
+//                                              appKey: weixinAppid,
+//                                              appSecret: weixinSecret,
+//                                              redirectURL: "http://mobile.umeng.com/social")
+//
+//        UMSocialManager.default()?.setPlaform(.wechatTimeLine,
+//                                              appKey: weixinAppid,
+//                                              appSecret: weixinSecret,
+//                                              redirectURL: "http://mobile.umeng.com/social")
+    }
+    
+    func onReq(_ req: BaseReq!) {
+        PrintLog("wx onReq \(req)")
+    }
+    
+    func onResp(_ resp: BaseResp!) {
         
     }
 }

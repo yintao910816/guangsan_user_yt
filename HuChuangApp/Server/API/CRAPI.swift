@@ -9,19 +9,11 @@
 import Foundation
 import Moya
 
-/*
- 绑定用户    bindHos
- 功能暂未开放    underDev
- 喜报    goodnews
- 消息中心    notification
- 绑定成功    succBind
- 公告    announce
- 问诊记录    consultRecord
- 我的预约    memberSubscribe
- 我的收藏    memberCollect
- 用户反馈    memberFeedback
- 功能暂未开放 underDev
- **/
+/// 文章栏目编码
+enum HCWebCmsType: String {
+    /// 科普
+    case aa = "aa"
+}
 
 enum H5Type: String {
     /// 好孕消息
@@ -99,13 +91,16 @@ enum API{
     case noticeList(type: String, pageNum: Int, pageSize: Int)
     /// 获取未读消息
     case messageUnreadCount
-    /// 今日知识
-    case column(cmsCode: String)
-    case article(id: String)
     
     /// 获取h5地址
     case unitSetting(type: H5Type)
     
+    case allChannelArticle(cmsType: HCWebCmsType, pageNum: Int, pageSize: Int)
+    /// 课堂
+    case column(cmsType: HCWebCmsType)
+    /// 栏目文章列表
+    case articlePage(id: Int, pageNum: Int, pageSize: Int)
+
     /// 检查版本更新
     case version
 }
@@ -140,12 +135,16 @@ extension API: TargetType{
             return "api/messageCenter/unread"
         case .goodNews:
             return "api/index/goodNews"
-        case .column(_):
-            return "api/index/column"
-        case .article(_):
-            return "api/index/article"
         case .unitSetting(_):
             return "api/index/unitSetting"
+            
+        case .allChannelArticle(_):
+            return "api/index/allChannelArticle"
+        case .column(_):
+            return "api/index/column"
+        case .articlePage(_):
+            return "api/index/articlePage"
+
         case .version:
             return "api/apk/version"
         }
@@ -236,10 +235,6 @@ extension API {
             params["type"] = type
             params["pageNum"] = pageNum
             params["pageSize"] = pageSize
-        case .column(let cmsCode):
-            params["cmsCode"] = cmsCode
-        case .article(let id):
-            params["id"] = id
         case .unitSetting(let type):
             params["settingCode"] = type.rawValue
         
@@ -248,6 +243,20 @@ extension API {
             params["isRecomFunc"] = isRecomFunc
         case .selectFunc(let isRecom):
             params["isRecom"] = isRecom
+            
+        case .allChannelArticle(let articleType, let pageNum, let pageSize):
+            params["unitId"] = "36"
+            params["cmsCode"] = articleType.rawValue
+            params["pageNum"] = pageNum
+            params["pageSize"] = pageSize
+
+        case .column(let cmsType):
+            params["cmsCode"] = cmsType.rawValue
+        case .articlePage(let id, let pageNum, let pageSize):
+            params["id"] = id
+            params["unitId"] = "36"
+            params["pageNum"] = pageNum
+            params["pageSize"] = pageSize
 
         default:
             return nil

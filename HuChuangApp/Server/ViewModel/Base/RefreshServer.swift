@@ -14,12 +14,11 @@ import RxSwift
 extension UIScrollView {
 
     final func prepare<T>(_ ower: RefreshVM<T>,
-                          _ type: T.Type,
-                          showFooter: Bool = false,
+                          showFooter: Bool = true,
                           showHeader: Bool = true,
-                          isAddNoMoreContent: Bool = true) {
+                          isAddNoMoreContent: Bool = false) {
         addFreshView(ower: ower, showFooter: showFooter, showHeader: showHeader)
-        bind(ower, type, showFooter, showHeader, isAddNoMoreContent: isAddNoMoreContent)
+        bind(ower, showFooter, showHeader, isAddNoMoreContent: isAddNoMoreContent)
     }
     
     final func headerRefreshing() {
@@ -55,7 +54,6 @@ extension UIScrollView {
     }
     
     fileprivate func bind<T>(_ ower: RefreshVM<T>,
-                             _ type: T.Type,
                              _ hasFooter: Bool,
                              _ hasHeader: Bool,
                              isAddNoMoreContent: Bool) {
@@ -140,57 +138,134 @@ class RefreshVM<T>: BaseViewModel {
     public let itemSelected = PublishSubject<IndexPath>()
     public let modelSelected = PublishSubject<T>()
 
+    /// 用于多table
+    private var pageModels:[String: PageModel] = [:]
+    
     /**
      * 子类重写，响应上拉下拉加载数据
+     * 单个table中必须调用super，否则分页参数不正确
      */
     func requestData(_ refresh: Bool) {
-
+        pageModel.currentPage = refresh ? 1 : (pageModel.currentPage + 1)
     }
-
 }
 
+//MARK:--单个table
 extension RefreshVM {
-
     /**
-     刷新方法，发射刷新信号 - 用于列表数据(只有一个table)
+     * 刷新方法，发射刷新信号 - 用于列表数据(只有一个table)
+     * models - 列表数据
+     * pages - 总共分页数
      */
     public final func updateRefresh(_ refresh: Bool,
                                     _ models: [T]?,
-                                    _ totle: Int?) {
-        self.pageModel.totle = totle ?? 0
-        if refresh {  // 下拉刷新处理
-            let retData = models ?? [T]()
+                                    _ pages: Int) {
+        pageModel.totlePage = pages
+        let retData = models ?? [T]()
+
+        if refresh {
+            // 下拉刷新处理
             isEmptyContentObser.value = retData.count == 0
             refreshStatus.value = .DropDownSuccess
             datasource.value = retData
-        } else { // 上拉刷新处理
-            refreshStatus.value = pageModel.hasNext ? .PullSuccessHasMoreData : .PullSuccessNoMoreData
-            datasource.value.append(contentsOf: (models ?? [T]()))
+        } else {
+            // 上拉刷新处理
+            if retData.count > 0 {
+                refreshStatus.value = pageModel.hasNext ? .PullSuccessHasMoreData : .PullSuccessNoMoreData
+                datasource.value.append(contentsOf: retData)
+            }else {
+                pageModel.currentPage = pageModel.currentPage > 1 ? (pageModel.currentPage - 1) : 1
+                refreshStatus.value = .PullSuccessNoMoreData
+            }
         }
     }
-    
-    /**
-     刷新方法，发射刷新信号 - 用于单个模型的刷新
-     */
-    public final func stopRefresh() {
-        refreshStatus.value = .DropDownSuccess
-    }
-    
+        
     /**
      网络请求失败和出错都会统一调用这个方法
      */
     public final func revertCurrentPageAndRefreshStatus() {
+        pageModel.currentPage = pageModel.currentPage > 1 ? (pageModel.currentPage - 1) : 1
+
         // 修改刷新view的状态
         refreshStatus.value = .InvalidData
-        // 还原请求页
-        pageModel.offset = datasource.value.count
+    }
+}
+
+//MARK:--多table
+extension RefreshVM {
+   
+    /**
+     * 子类重写 func requestData(_ refresh: Bool)
+     *  必须调用，否则分页参数不正确
+     */
+    public final func updatePage(for pageKey: String, refresh: Bool) {
+        checkPage(pageKey: pageKey)
+        let curPageModel = pageModels[pageKey]!
+        curPageModel.currentPage = refresh ? 1 : (curPageModel.currentPage + 1)
     }
     
     /**
-     * 重写 requestData 时，必须调用
-     */    
-    public final func setOffset(refresh: Bool) {
-        pageModel.setOffset(offset: refresh == true ? 0 : datasource.value.count)
+     * 刷新方法，发射刷新信号 - 用于多个table
+     */
+    public final func updateRefresh(refresh: Bool,
+                                    models: [T]?,
+                                    dataModels: inout [T],
+                                    pages: Int,
+                                    pageKey: String) {
+        
+        checkPage(pageKey: pageKey)
+        guard let page = pageModels[pageKey] else { return }
+        
+        page.totlePage = pages
+
+        let retData = models ?? [T]()
+
+        if refresh {
+            // 下拉刷新处理
+            isEmptyContentObser.value = retData.count == 0
+            refreshStatus.value = pages > 1 ? .DropDownSuccess : .DropDownSuccessAndNoMoreData
+            dataModels.removeAll()
+            dataModels.append(contentsOf: retData)
+        } else {
+            // 上拉刷新处理
+            if retData.count > 0 {
+                refreshStatus.value = page.hasNext ? .PullSuccessHasMoreData : .PullSuccessNoMoreData
+                dataModels.append(contentsOf: retData)
+            }else {
+                page.currentPage = page.currentPage > 1 ? (page.currentPage - 1) : 1
+                refreshStatus.value = .PullSuccessNoMoreData
+            }
+        }
+    }
+        
+    /**
+     网络请求失败和出错都会统一调用这个方法
+     */
+    public final func revertCurrentPageAndRefreshStatus(pageKey: String) {
+        guard let page = pageModels[pageKey] else { return }
+
+        page.currentPage = page.currentPage > 1 ? (page.currentPage - 1) : 1
+
+        // 修改刷新view的状态
+        refreshStatus.value = .InvalidData
+    }
+
+    public func currentPage(for pageKey: String) ->Int {
+        checkPage(pageKey: pageKey)
+        return pageModels[pageKey]!.currentPage
+    }
+    
+    public func pageSize(for pageKey: String) ->Int {
+        checkPage(pageKey: pageKey)
+        return pageModels[pageKey]!.pageSize
+    }
+
+    private func checkPage(pageKey: String) {
+        if pageModels[pageKey] == nil {
+            let pageModel = PageModel()
+            pageModel.pageSize = 10
+            pageModels[pageKey] = pageModel
+        }
     }
 
 }

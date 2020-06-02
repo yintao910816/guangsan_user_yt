@@ -1,32 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RGT-h1-fgX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RGT-h1-fgX">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
-        <scene sceneID="j1Q-5C-PvY">
-            <objects>
-                <viewController id="IQH-3t-897" customClass="HCConsultViewController" customModule="HuChuangApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="3DP-dX-wVU"/>
-                        <viewControllerLayoutGuide type="bottom" id="NUX-HZ-mws"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Chg-p7-1Pm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="qW6-zk-Dcp"/>
-                    <navigationItem key="navigationItem" id="wPq-EA-uvV"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RuJ-8e-1a1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="401" y="-432"/>
-        </scene>
         <!--首页-->
         <scene sceneID="qWj-5b-UzD">
             <objects>
@@ -129,35 +109,19 @@
                     <connections>
                         <segue destination="x6K-Ya-dkR" kind="relationship" relationship="viewControllers" id="vez-4M-ADp"/>
                         <segue destination="kZu-7K-Xt7" kind="relationship" relationship="viewControllers" id="FCs-Fc-aJs"/>
-                        <segue destination="FRr-GN-JsD" kind="relationship" relationship="viewControllers" id="7Ir-pN-NaP"/>
+                        <segue destination="mqx-Jg-g2h" kind="relationship" relationship="viewControllers" id="Bts-TG-DgO"/>
+                        <segue destination="FRr-GN-JsD" kind="relationship" relationship="viewControllers" id="hdC-Cx-mZ5"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0wY-47-QrN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2750" y="-93"/>
         </scene>
-        <!--咨询-->
-        <scene sceneID="HJ3-Ax-Gcn">
-            <objects>
-                <navigationController id="lKa-jm-Nrv" customClass="MainNavigationController" customModule="HuChuangApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="咨询" image="consult_tab_unselected" selectedImage="consult_tab_selected" id="FqA-dv-3Nd"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hZg-Kl-8pn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="IQH-3t-897" kind="relationship" relationship="rootViewController" id="5bT-bW-CXd"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cjD-LS-p7w" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-698" y="-432"/>
-        </scene>
-        <!--圈子-->
+        <!--科普-->
         <scene sceneID="RC7-5s-esA">
             <objects>
                 <navigationController id="mqx-Jg-g2h" customClass="MainNavigationController" customModule="HuChuangApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="圈子" image="circle_tab_unselected" selectedImage="circle_tab_selected" id="6WG-x8-vpX"/>
+                    <tabBarItem key="tabBarItem" title="科普" image="icon_science_unsel" selectedImage="icon_science_sel" id="6WG-x8-vpX"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XVf-SF-qfu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -168,7 +132,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A29-s1-IMI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-698" y="259"/>
+            <point key="canvasLocation" x="-698" y="-36"/>
         </scene>
         <!--我的-->
         <scene sceneID="6tI-b1-oi9">
@@ -187,10 +151,10 @@
             </objects>
             <point key="canvasLocation" x="-698" y="962"/>
         </scene>
-        <!--Item 2-->
+        <!--科普-->
         <scene sceneID="VAx-z3-52P">
             <objects>
-                <viewController id="k8X-5M-F95" customClass="HCCircleViewController" customModule="HuChuangApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="k8X-5M-F95" customClass="HCClassRoomViewController" customModule="HuChuangApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ryh-vf-12z"/>
                         <viewControllerLayoutGuide type="bottom" id="dnP-Yx-xrn"/>
@@ -201,11 +165,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="yGv-Ec-XgC"/>
-                    <navigationItem key="navigationItem" id="7Um-3l-zZ6"/>
+                    <navigationItem key="navigationItem" title="科普" id="7Um-3l-zZ6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ei7-F2-j9D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="401" y="259"/>
+            <point key="canvasLocation" x="460" y="-36"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="Gn2-kR-cQ7">
@@ -597,15 +561,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="circle_tab_selected" width="20" height="20"/>
-        <image name="circle_tab_unselected" width="20.5" height="20.5"/>
-        <image name="consult_tab_selected" width="19" height="21.5"/>
-        <image name="consult_tab_unselected" width="19" height="21.5"/>
         <image name="home_tab_selected" width="27" height="27"/>
         <image name="home_tab_unselected" width="27" height="27"/>
         <image name="icon_consult_nsel" width="27" height="27"/>
         <image name="icon_consult_unsel" width="27" height="27"/>
         <image name="icon_my_sel" width="27" height="27.5"/>
         <image name="icon_my_unsel" width="27" height="27.5"/>
+        <image name="icon_science_sel" width="27" height="27.5"/>
+        <image name="icon_science_unsel" width="27" height="27.5"/>
     </resources>
 </document>

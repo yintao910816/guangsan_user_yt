@@ -161,38 +161,3 @@ class HomeArticleModel: HJModel {
     var hrefUrl: String = ""
     var readNumber: String = "0"
 }
-
-class HomeColumnItemModel: HJModel {
-    var id: String = ""
-    var shopId: String = ""
-    var parentId: String = ""
-    var path: String = ""
-    var name: String = ""
-    var type: String = ""
-    var url: String = ""
-    var target: String = ""
-    var sort: String = ""
-    var createDate: String = ""
-    var modifyDate: String = ""
-    var creates: String = ""
-    var modifys: String = ""
-    var bak: String = ""
-    var code: String = ""
-    var unitId: String = ""
-    var hide: Bool = false
-    var del: Bool = false
-    
-    var isSelected: Bool = false
-    
-    lazy var cellSize: CGSize = {
-        let width = self.name.getTexWidth(fontSize: 13, height: 20)
-        return CGSize.init(width: width, height: 35)
-    }()
-    
-    
-}
-
-class HomeColumnModel: HJModel {
-    var title: String = ""
-    var content: [HomeColumnItemModel] = []
-}

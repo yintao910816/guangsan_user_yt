@@ -72,8 +72,8 @@ class HomeViewModel: RefreshVM<HomeFunctionSectionModel>, VMNavigation {
     }
     
     override func requestData(_ refresh: Bool) {
-        setOffset(refresh: refresh)
-        HCProvider.deallocated
+        super.requestData(refresh)
+        
         requestUnread()
         
         HCProvider.request(.selectFunc(isRecom: "1"))
@@ -87,7 +87,7 @@ class HomeViewModel: RefreshVM<HomeFunctionSectionModel>, VMNavigation {
             .subscribe(onNext: { [weak self] data in
                 self?.hud.noticeHidden()
                 self?.bannerModelObser.value = data.0
-                self?.updateRefresh(refresh, data.1, nil)
+                self?.updateRefresh(refresh, data.1, 0)
                 }, onError: { [unowned self] error in
                     self.hud.failureHidden(self.errorMessage(error))
             })
