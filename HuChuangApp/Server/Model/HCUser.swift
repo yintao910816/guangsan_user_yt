@@ -55,17 +55,30 @@ import SQLite
 
 class HCLoginAccountModel {
         
+    /// 账号
     public var account: String = ""
-    public var pwd: String = ""
+    /// 昵称
+    public var nickName: String = ""
+    /// 头像
+    public var avatar: String = ""
+    /// 密码 - 837546
+    public var pwd: String = "837546"
+    
+    /// 添加账号 - 不存入数据库
+    public var isAdd: Bool = false
     
     struct ExpressionKey {
         static let accountEx = Expression<String>("account")
+        static let avatarEx = Expression<String>("avatar")
+        static let nickNameEx = Expression<String>("nickName")
         static let pwdEx = Expression<String>("pwd")
     }
 
     public func insert() {
         let filiter = HCLoginAccountModel.ExpressionKey.accountEx == account
         let setters = [HCLoginAccountModel.ExpressionKey.accountEx <- account,
+                       HCLoginAccountModel.ExpressionKey.nickNameEx <- nickName,
+                       HCLoginAccountModel.ExpressionKey.avatarEx <- avatar,
                        HCLoginAccountModel.ExpressionKey.pwdEx <- pwd]
         DBQueue.share.insterOrUpdateQueue(filiter, setters, accountTB, HCLoginAccountModel.self)
     }
@@ -84,8 +97,9 @@ class HCLoginAccountModel {
             for item in try db.prepare(t) {
                 let model = HCLoginAccountModel();
                 model.account = item[HCLoginAccountModel.ExpressionKey.accountEx]
+                model.avatar = item[HCLoginAccountModel.ExpressionKey.avatarEx]
                 model.pwd = item[HCLoginAccountModel.ExpressionKey.pwdEx]
-
+                model.nickName = item[HCLoginAccountModel.ExpressionKey.nickNameEx]
                 datas.append(model)
             }
             return datas
@@ -102,7 +116,9 @@ extension HCLoginAccountModel: DBOperation {
     
     static func dbBind(_ builder: TableBuilder) {
         builder.column(HCLoginAccountModel.ExpressionKey.accountEx)
+        builder.column(HCLoginAccountModel.ExpressionKey.avatarEx)
         builder.column(HCLoginAccountModel.ExpressionKey.pwdEx)
+        builder.column(HCLoginAccountModel.ExpressionKey.nickNameEx)
     }
     
 }

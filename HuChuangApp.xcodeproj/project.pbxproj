@@ -265,6 +265,10 @@
 		B8A7752A24861A0800271DA8 /* HCAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A7752924861A0800271DA8 /* HCAccountManager.swift */; };
 		B8A7752C24861A4300271DA8 /* HCClassRoomListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A7752B24861A4200271DA8 /* HCClassRoomListCell.swift */; };
 		B8A7752E2487583000271DA8 /* TYScrollTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A7752D2487583000271DA8 /* TYScrollTextView.swift */; };
+		B8A775302487801D00271DA8 /* HCAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A7752F2487801D00271DA8 /* HCAccountViewController.swift */; };
+		B8A775322487809C00271DA8 /* HCAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A775312487809C00271DA8 /* HCAccountViewModel.swift */; };
+		B8A775352487868D00271DA8 /* HCAccountListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A775332487868D00271DA8 /* HCAccountListCell.swift */; };
+		B8A775362487868D00271DA8 /* HCAccountListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8A775342487868D00271DA8 /* HCAccountListCell.xib */; };
 		B8BE34EF2214599B00EF16F1 /* MineHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BE34EE2214599B00EF16F1 /* MineHeaderView.xib */; };
 		B8BE34F222145DF000EF16F1 /* UserFunctionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE34F122145DF000EF16F1 /* UserFunctionButton.swift */; };
 		B8BE34F42214645900EF16F1 /* MineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE34F32214645900EF16F1 /* MineViewModel.swift */; };
@@ -876,6 +880,10 @@
 		B8A7752924861A0800271DA8 /* HCAccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCAccountManager.swift; sourceTree = "<group>"; };
 		B8A7752B24861A4200271DA8 /* HCClassRoomListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCClassRoomListCell.swift; sourceTree = "<group>"; };
 		B8A7752D2487583000271DA8 /* TYScrollTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TYScrollTextView.swift; sourceTree = "<group>"; };
+		B8A7752F2487801D00271DA8 /* HCAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCAccountViewController.swift; sourceTree = "<group>"; };
+		B8A775312487809C00271DA8 /* HCAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCAccountViewModel.swift; sourceTree = "<group>"; };
+		B8A775332487868D00271DA8 /* HCAccountListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCAccountListCell.swift; sourceTree = "<group>"; };
+		B8A775342487868D00271DA8 /* HCAccountListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HCAccountListCell.xib; sourceTree = "<group>"; };
 		B8BE34EE2214599B00EF16F1 /* MineHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineHeaderView.xib; sourceTree = "<group>"; };
 		B8BE34F122145DF000EF16F1 /* UserFunctionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFunctionButton.swift; sourceTree = "<group>"; };
 		B8BE34F32214645900EF16F1 /* MineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewModel.swift; sourceTree = "<group>"; };
@@ -2070,6 +2078,7 @@
 				B8BE351A22147DE500EF16F1 /* EditViewModel.swift */,
 				B816EB59221DACA600F024D5 /* ScanViewModel.swift */,
 				B8DE18742475670D004EC3CE /* HCMessageViewModel.swift */,
+				B8A775312487809C00271DA8 /* HCAccountViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2134,6 +2143,7 @@
 			isa = PBXGroup;
 			children = (
 				C421336522058F97006C10C4 /* HCLoginViewController.swift */,
+				B8A7752F2487801D00271DA8 /* HCAccountViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -2234,6 +2244,8 @@
 				B826AF7E221C671B000428C1 /* ColunmCollectionViewCell.xib */,
 				B826AF83221C7205000428C1 /* ArticleCell.swift */,
 				B826AF84221C7205000428C1 /* ArticleCell.xib */,
+				B8A775332487868D00271DA8 /* HCAccountListCell.swift */,
+				B8A775342487868D00271DA8 /* HCAccountListCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -2325,6 +2337,7 @@
 				B826AF80221C671B000428C1 /* ColunmCollectionViewCell.xib in Resources */,
 				C4213338220572C6006C10C4 /* HCMain.storyboard in Resources */,
 				B8BE34F8221465D900EF16F1 /* MineCell.xib in Resources */,
+				B8A775362487868D00271DA8 /* HCAccountListCell.xib in Resources */,
 				B879A062221AF0BB00E573C9 /* MineFooterView.xib in Resources */,
 				B8DE186D2474B75A004EC3CE /* HomeFunctionContentCell.xib in Resources */,
 				C42132F622054463006C10C4 /* Assets.xcassets in Resources */,
@@ -2480,6 +2493,7 @@
 				B816EB53221DABF400F024D5 /* ZXISBNParsedResult.m in Sources */,
 				B816EAA0221DABF400F024D5 /* ZXQRCodeDecoderMetaData.m in Sources */,
 				C421336F2205961D006C10C4 /* ObservableType+Extension.swift in Sources */,
+				B8A775322487809C00271DA8 /* HCAccountViewModel.swift in Sources */,
 				C421335F220588FD006C10C4 /* HandyModel.swift in Sources */,
 				B816EAD6221DABF400F024D5 /* ZXPDF417BarcodeMetadata.m in Sources */,
 				B816EB1D221DABF400F024D5 /* ZXRSSPair.m in Sources */,
@@ -2566,6 +2580,7 @@
 				B816EB36221DABF400F024D5 /* ZXVEventResultParser.m in Sources */,
 				B816EAA3221DABF400F024D5 /* ZXQRCodeVersion.m in Sources */,
 				B816EAF7221DABF400F024D5 /* ZXMaxiCodeBitMatrixParser.m in Sources */,
+				B8A775352487868D00271DA8 /* HCAccountListCell.swift in Sources */,
 				B816EAF3221DABF400F024D5 /* ZXDataMatrixDetector.m in Sources */,
 				B816EB03221DABF400F024D5 /* ZXEAN13Reader.m in Sources */,
 				B816EB3E221DABF400F024D5 /* ZXISBNResultParser.m in Sources */,
@@ -2589,6 +2604,7 @@
 				B816EAC0221DABF400F024D5 /* ZXBitMatrix.m in Sources */,
 				B816EAF8221DABF400F024D5 /* ZXMaxiCodeReader.m in Sources */,
 				B816EB3A221DABF400F024D5 /* ZXGeoResultParser.m in Sources */,
+				B8A775302487801D00271DA8 /* HCAccountViewController.swift in Sources */,
 				B816EB35221DABF400F024D5 /* ZXTelResultParser.m in Sources */,
 				B8A775262486193300271DA8 /* HCArticleDetailViewController.swift in Sources */,
 				B816EAC7221DABF400F024D5 /* ZXMultiFormatReader.m in Sources */,

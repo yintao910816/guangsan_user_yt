@@ -37,7 +37,7 @@ class HCMessageViewController: BaseViewController {
             .skip(1)
             .drive(onNext: { [unowned self] in
                 self.webCtrl.url = $0.setValue
-                self.webCtrl.setupUI()
+                self.webCtrl.refreshWeb()
             })
             .disposed(by: disposeBag)
         

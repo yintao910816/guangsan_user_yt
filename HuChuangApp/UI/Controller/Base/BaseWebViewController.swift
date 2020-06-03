@@ -17,6 +17,8 @@ class BaseWebViewController: BaseViewController {
     private var context : JSContext?
     private var webTitle: String?
     
+    private var needHud: Bool = true
+    
     private var bridge: WebViewJavascriptBridge!
     
     public var startLoad:(()->())?
@@ -26,13 +28,27 @@ class BaseWebViewController: BaseViewController {
         return NoticesCenter()
     }()
     
-    private lazy var webView: UIWebView = {
-        let w = UIWebView()
-        w.backgroundColor = .clear
-        w.scrollView.bounces = false
-        w.delegate = self
-        return w
-    }()
+    private var webView: UIWebView!
+    
+    private func configWebView() {
+        if webView != nil {
+            webView.delegate = nil
+            webView.removeFromSuperview()
+            webView = nil
+        }
+        
+        webView = UIWebView.init(frame: view.bounds)
+        webView.backgroundColor = .clear
+        webView.scrollView.bounces = false
+        webView.delegate = self
+        view.addSubview(webView)
+
+        if #available(iOS 11, *) {
+            webView.scrollView.contentInsetAdjustmentBehavior = .never
+        }
+
+        requestData()
+    }
     
     override func prepare(parameters: [String : Any]?) {
         guard let _url = parameters?["url"] as? String else {
@@ -52,22 +68,24 @@ class BaseWebViewController: BaseViewController {
         return false
     }
     
+    public func refreshWeb(needHud: Bool = true){
+        self.needHud = needHud
+
+        configWebView()
+    }
+    
     override func setupUI() {
         view.backgroundColor = .white
+        
+        configWebView()
+
         if #available(iOS 11, *) {
             webView.scrollView.contentInsetAdjustmentBehavior = .never
         }
-
-        view.addSubview(webView)
-        
 //        setupBridge()
         
         if webTitle?.count ?? 0 > 0 { navigationItem.title = webTitle }
-        
-        webView.snp.makeConstraints{ $0.edges.equalTo(UIEdgeInsets.zero) }
-        
-        requestData()
-        
+                        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(wchatPayFinish),
                                                name: NotificationName.Pay.wxPaySuccess,
@@ -93,7 +111,9 @@ class BaseWebViewController: BaseViewController {
     }
     
     private func requestData(){
-        hud.noticeLoading()
+        if needHud {
+            hud.noticeLoading()
+        }
         
         if let requestUrl = URL.init(string: url) {
             let request = URLRequest.init(url: requestUrl)

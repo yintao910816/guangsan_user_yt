@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -44,6 +44,9 @@
                                             <constraint firstAttribute="width" secondItem="Alm-pQ-yEK" secondAttribute="height" multiplier="375:172" id="TfE-Z5-ZZe"/>
                                         </constraints>
                                     </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_text_image" translatesAutoresizingMaskIntoConstraints="NO" id="YG7-el-IML">
+                                        <rect key="frame" x="45" y="75.5" width="285" height="21.5"/>
+                                    </imageView>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xj7-Wy-dLN">
                                         <rect key="frame" x="45" y="332.5" width="285" height="45"/>
                                         <color key="backgroundColor" red="0.97254901960784312" green="0.47843137254901957" blue="0.44705882352941173" alpha="1" colorSpace="deviceRGB"/>
@@ -75,7 +78,7 @@
                                         <rect key="frame" x="45" y="212.5" width="285" height="45"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aQN-Sn-6aU">
-                                                <rect key="frame" x="17" y="12" width="223" height="21"/>
+                                                <rect key="frame" x="17" y="11.5" width="223" height="22.5"/>
                                                 <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -114,7 +117,7 @@
                                         <rect key="frame" x="45" y="272.5" width="285" height="45"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="71r-m4-x7N">
-                                                <rect key="frame" x="17" y="12" width="168" height="21"/>
+                                                <rect key="frame" x="17" y="11.5" width="168" height="22.5"/>
                                                 <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -180,11 +183,13 @@
                                     <constraint firstItem="Xj7-Wy-dLN" firstAttribute="leading" secondItem="cJx-E6-iRZ" secondAttribute="leading" id="UKL-Ta-HtD"/>
                                     <constraint firstItem="wOE-TD-cXW" firstAttribute="leading" secondItem="dIY-EJ-SQx" secondAttribute="leading" id="Ube-54-AbU"/>
                                     <constraint firstAttribute="trailing" secondItem="Alm-pQ-yEK" secondAttribute="trailing" id="bFA-3v-bM7"/>
+                                    <constraint firstItem="YG7-el-IML" firstAttribute="centerX" secondItem="Alm-pQ-yEK" secondAttribute="centerX" id="hZN-1j-9Pu"/>
                                     <constraint firstItem="pHx-03-8qa" firstAttribute="centerX" secondItem="a5u-Gp-u42" secondAttribute="centerX" id="i0Q-UA-SEE"/>
                                     <constraint firstItem="GAm-FR-122" firstAttribute="trailing" secondItem="pHx-03-8qa" secondAttribute="trailing" id="i2j-tQ-5o2"/>
                                     <constraint firstItem="cJx-E6-iRZ" firstAttribute="leading" secondItem="a5u-Gp-u42" secondAttribute="leading" constant="45" id="jca-y5-BA7"/>
                                     <constraint firstItem="Xj7-Wy-dLN" firstAttribute="top" secondItem="cJx-E6-iRZ" secondAttribute="bottom" constant="15" id="mIk-dG-0Fy"/>
                                     <constraint firstItem="pHx-03-8qa" firstAttribute="top" secondItem="Xj7-Wy-dLN" secondAttribute="bottom" constant="15" id="rCz-JY-2XF"/>
+                                    <constraint firstItem="YG7-el-IML" firstAttribute="centerY" secondItem="Alm-pQ-yEK" secondAttribute="centerY" id="toH-Z6-Zt9"/>
                                     <constraint firstItem="Alm-pQ-yEK" firstAttribute="leading" secondItem="a5u-Gp-u42" secondAttribute="leading" id="tuf-5L-hmu"/>
                                     <constraint firstItem="Alm-pQ-yEK" firstAttribute="top" secondItem="a5u-Gp-u42" secondAttribute="top" id="ufs-Al-E79"/>
                                 </constraints>
@@ -222,7 +227,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="banner" width="375" height="172.5"/>
+        <image name="banner" width="375" height="187.5"/>
+        <image name="login_text_image" width="285" height="21.5"/>
         <image name="login_triangle_down" width="15" height="11"/>
     </resources>
 </document>

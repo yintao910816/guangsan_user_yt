@@ -2,20 +2,21 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "login_text.png",
       "scale" : "1x"
     },
     {
+      "filename" : "861591170778_.pic_hd.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "871591170779_.pic_hd.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

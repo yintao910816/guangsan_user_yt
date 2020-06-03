@@ -88,9 +88,10 @@ class HCHomeViewController: BaseViewController {
                 let icon = $0.sexText == "男" ? "home_icon_account_boy" : "home_icon_account_girl"
                 self.addBarItem(normal: icon)
                     .drive(onNext: {
-                        NoticesCenter.alert(message: "是否切换当前登录账号", cancleTitle: "切换", okTitle: "取消", callBackCancle: {
-                            HCHelper.presentLogin()
-                        })
+                        self.navigationController?.pushViewController(HCAccountViewController(), animated: true)
+//                        NoticesCenter.alert(message: "是否切换当前登录账号", cancleTitle: "切换", okTitle: "取消", callBackCancle: {
+//                        HCHelper.presentLogin()
+//                        })
                     })
                     .disposed(by: self.disposeBag)
             })

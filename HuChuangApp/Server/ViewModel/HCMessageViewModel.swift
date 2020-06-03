@@ -29,15 +29,22 @@ class HCMessageViewModel: BaseViewModel {
             .disposed(by: disposeBag)
         
         reloadSubject
-            .subscribe(onNext: { [weak self] in self?.requestH5URL() })
-        .disposed(by: disposeBag)
+            .subscribe(onNext: { [weak self] in
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [unowned self] in
+                    self?.hud.noticeLoading(inView: self?.hudView)
+                }
+                self?.requestH5URL()
+            })
+            .disposed(by: disposeBag)
+        
+        NotificationCenter.default.rx.notification(NotificationName.User.LoginSuccess)
+            .subscribe(onNext: { [weak self] data in
+                self?.requestH5URL()
+            })
+            .disposed(by: disposeBag)
     }
     
     private func requestH5URL() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [unowned self] in
-            self.hud.noticeLoading(inView: self.hudView)
-        }
-                
         HCProvider.request(.unitSetting(type: .notification))
             .map(model: H5InfoModel.self)
             .subscribe(onSuccess: { [weak self] in

@@ -72,6 +72,8 @@ class LoginViewModel: BaseViewModel {
             .subscribe(onSuccess: { [weak self] user in
                 let accountModel = HCLoginAccountModel()
                 accountModel.account = data.0
+                accountModel.nickName = user.name
+                accountModel.avatar = user.headPath
                 accountModel.pwd = data.1
                 accountModel.insert()
                 
