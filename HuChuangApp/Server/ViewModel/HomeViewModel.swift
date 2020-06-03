@@ -13,6 +13,8 @@ class HomeViewModel: RefreshVM<HomeFunctionSectionModel>, VMNavigation {
     
     public let recomFuncData = Variable([HomeFunctionModel]())
     public var bannerModelObser = Variable([HomeBannerModel]())
+    public var noticeModelObser = Variable([HomeNoticeModel]())
+
     public let bannerSelected = PublishSubject<CarouselSource>()
 
     public let functionItemDidSelected = PublishSubject<(HomeFunctionModel, UINavigationController?)>()
@@ -88,6 +90,7 @@ class HomeViewModel: RefreshVM<HomeFunctionSectionModel>, VMNavigation {
                 self?.hud.noticeHidden()
                 self?.bannerModelObser.value = data.0
                 self?.updateRefresh(refresh, data.1, 0)
+                self?.noticeModelObser.value = data.2
                 }, onError: { [unowned self] error in
                     self.hud.failureHidden(self.errorMessage(error))
             })
@@ -122,11 +125,18 @@ class HomeViewModel: RefreshVM<HomeFunctionSectionModel>, VMNavigation {
 
 extension HomeViewModel {
     
-    private func requestHeaderData() ->Observable<([HomeBannerModel], [HomeFunctionSectionModel])> {
-        return Observable.combineLatest(requestBanner(), requestFunctionList()){ ($0, $1) }
+    private func requestHeaderData() ->Observable<([HomeBannerModel], [HomeFunctionSectionModel], [HomeNoticeModel])> {
+        return Observable.combineLatest(requestBanner(), requestFunctionList(), requestNotice()){ ($0, $1, $2) }
             .asObservable()
     }
 
+    private func requestNotice() ->Observable<[HomeNoticeModel]> {
+        return HCProvider.request(.noticeList(type: "new", pageNum: 0, pageSize: 20))
+            .map(models: HomeNoticeModel.self)
+            .asObservable()
+            .catchErrorJustReturn([HomeNoticeModel]())
+    }
+    
     private func requestBanner() ->Observable<[HomeBannerModel]>{
         return HCProvider.request(.selectBanner)
             .map(models: HomeBannerModel.self)

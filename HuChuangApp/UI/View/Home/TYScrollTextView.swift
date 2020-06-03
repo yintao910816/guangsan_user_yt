@@ -8,24 +8,30 @@
 
 import UIKit
 
-class ScrollTextView: UITableView {
+class TYScrollTextView: UIView {
 
+    private var noticeImg: UIImageView!
+    private var tableView: UITableView!
+    private var arrowImg: UIImageView!
+    
     private var timer: Timer!
     private var scrolToRow: Int = 0
     
     public var cellDidScroll: ((Int) ->())?
     public var cellDidSelected: ((IndexPath) ->())?
 
-    var datasourceModel: [ScrollTextModel]! {
+    var datasourceModel: [ScrollTextModel] = [] {
         didSet {
-            reloadData()
+            tableView.reloadData()
             
             beginScroll()
         }
     }
     
-    override init(frame: CGRect, style: UITableView.Style) {
-        super.init(frame: frame, style: .plain)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setupUI()
     }
     
     override func awakeFromNib() {
@@ -39,13 +45,27 @@ class ScrollTextView: UITableView {
     }
     
     private func setupUI() {
-        register(ScrollTextCell.self, forCellReuseIdentifier: "ScrollTextCellID")
+        backgroundColor = .clear
         
-        isScrollEnabled = false
-        separatorStyle = .none
-        showsVerticalScrollIndicator = false
-        dataSource = self
-        delegate   = self
+        noticeImg = UIImageView(image: UIImage.init(named: "home_notice"))
+        noticeImg.clipsToBounds = true
+        noticeImg.contentMode = .scaleAspectFill
+
+        tableView = UITableView.init(frame: .init(x: 30, y: 0, width: width - 30, height: height), style: .plain)
+        tableView.isScrollEnabled = false
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
+        tableView.dataSource = self
+        tableView.delegate   = self
+        tableView.register(ScrollTextCell.self, forCellReuseIdentifier: "ScrollTextCellID")
+
+        arrowImg = UIImageView(image: UIImage.init(named: "mine_jiantou"))
+        arrowImg.clipsToBounds = true
+        arrowImg.contentMode = .scaleAspectFill
+
+        addSubview(noticeImg)
+        addSubview(tableView)
+        addSubview(arrowImg)
     }
     
     private func beginScroll() {
@@ -79,11 +99,11 @@ class ScrollTextView: UITableView {
         if scrolToRow >= datasourceModel.count {
             scrolToRow = 0
             scrolIndexPath = IndexPath.init(row: scrolToRow, section: 0)
-            scrollToRow(at: scrolIndexPath, at: .top, animated: true)
+            tableView.scrollToRow(at: scrolIndexPath, at: .top, animated: true)
             cellDidScroll?(scrolToRow)
         }else {
             scrolIndexPath = IndexPath.init(row: scrolToRow, section: 0)
-            scrollToRow(at: scrolIndexPath, at: .top, animated: true)
+            tableView.scrollToRow(at: scrolIndexPath, at: .top, animated: true)
             cellDidScroll?(scrolToRow)
         }
     }
@@ -113,21 +133,31 @@ class ScrollTextView: UITableView {
         PrintLog("计时器释放了")
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        var imgSize = noticeImg.image?.size ?? CGSize.init(width: 30, height: 30)
+        noticeImg.frame = .init(x: 0, y: (height - imgSize.height) / 2.0, width: imgSize.width, height: imgSize.height)
+        
+        imgSize = arrowImg.image?.size ?? CGSize.init(width: 20, height: 20)
+        arrowImg.frame = .init(x: width - imgSize.width, y: (height - imgSize.height) / 2.0, width: imgSize.width, height: imgSize.height)
+        
+        tableView.frame = .init(x: noticeImg.frame.maxX + 10, y: 0, width: arrowImg.frame.minX - noticeImg.frame.maxX - 20, height: height)
+    }
 }
 
-extension ScrollTextView {
+extension TYScrollTextView {
     
     
 }
 
-extension ScrollTextView: UITableViewDataSource, UITableViewDelegate {
+extension TYScrollTextView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return datasourceModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = dequeueReusableCell(withIdentifier: "ScrollTextCellID") as! ScrollTextCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ScrollTextCellID") as! ScrollTextCell
         cell.model = datasourceModel[indexPath.row]
         return cell
     }
@@ -144,7 +174,6 @@ extension ScrollTextView: UITableViewDataSource, UITableViewDelegate {
 class ScrollTextCell: UITableViewCell {
     
     private var titleLable: UILabel!
-//    private var pointView: UIView!
     
     var model: ScrollTextModel! {
         didSet{
@@ -162,35 +191,21 @@ class ScrollTextCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
     
-    func setupUI(){
+    private func setupUI(){
         selectionStyle = .none
         
-//        pointView = UIView()
-//        pointView.layer.cornerRadius = 3
-//        pointView.clipsToBounds = true
-//        pointView.backgroundColor = HC_MAIN_COLOR
-
         titleLable = UILabel()
-        titleLable.font = UIFont.systemFont(ofSize: 13)
-        titleLable.numberOfLines = 2
-        titleLable.lineBreakMode = .byCharWrapping
+        titleLable.font = UIFont.systemFont(ofSize: 14)
         titleLable.textColor = RGB(65, 65, 65)
-        
-//        contentView.addSubview(pointView)
+        titleLable.textAlignment = .center
         contentView.addSubview(titleLable)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
         
-//        pointView.snp.makeConstraints { make in
-//            make.left.equalTo(contentView).offset(15)
-//            make.top.equalTo(contentView).offset(12)
-//            make.size.equalTo(CGSize.init(width: 6, height: 6))
-//        }
-        
-        titleLable.snp.makeConstraints { make in
-            make.left.equalTo(contentView).offset(15)
-            make.right.equalTo(contentView).offset(-15)
-            make.top.equalTo(contentView)
-            make.bottom.equalTo(contentView)
-        }
+        let size = titleLable.sizeThatFits(.init(width: CGFloat(MAXFLOAT), height: 20.0))
+        titleLable.frame = .init(x: 0, y: (height - size.height) / 2.0, width: min(size.width, width), height: size.height)
     }
     
 }

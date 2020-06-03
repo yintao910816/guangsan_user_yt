@@ -14,6 +14,12 @@ class HCClassRoomViewController: BaseViewController {
     
     private var slideCtrl: TYSlideMenuController!
     
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        
+//        navigationItem.title = "科普"
+//    }
+    
     override func setupUI() {
         view.backgroundColor = .white
                        
@@ -40,6 +46,8 @@ class HCClassRoomViewController: BaseViewController {
                     ctrl.view.backgroundColor = .white
                     ctrl.bind(viewModel: strongSelf.viewModel, canRefresh: true, canLoadMore: true, isAddNoMoreContent: false)
                     ctrl.didSelectedCallBack = { [weak self] in
+                        self?.viewModel.increReadingSubject.onNext($0.id)
+                        
                         let ctrl = HCArticleDetailViewController()
                         ctrl.prepare(parameters: HCArticleDetailViewController.preprare(model: $0))
                         self?.navigationController?.pushViewController(ctrl, animated: true)

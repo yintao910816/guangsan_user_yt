@@ -10,9 +10,9 @@ import Foundation
 import Moya
 
 /// 文章栏目编码
-enum HCWebCmsType: String {
+enum HCWebCmsCode: String {
     /// 科普
-    case aa = "aa"
+    case classRoom = "ff"
 }
 
 enum H5Type: String {
@@ -45,7 +45,7 @@ enum H5Type: String {
     /// 电子就诊卡条码
     case myBarCode = "myBarCode"
     /// 首诊信息
-    case fristMessage = "fristMessage"
+    case firstMessage = "firstMessage"
     /// 治疗信息
     case cureMessage = "cureMessage"
     /// 账号与安全
@@ -95,11 +95,21 @@ enum API{
     /// 获取h5地址
     case unitSetting(type: H5Type)
     
-    case allChannelArticle(cmsType: HCWebCmsType, pageNum: Int, pageSize: Int)
+    case allChannelArticle(cmsCode: HCWebCmsCode, pageNum: Int, pageSize: Int)
     /// 课堂
-    case column(cmsType: HCWebCmsType)
+    case column(cmsType: HCWebCmsCode)
     /// 栏目文章列表
-    case articlePage(id: Int, pageNum: Int, pageSize: Int)
+    case articlePage(cmsCode: HCWebCmsCode, id: Int, pageNum: Int, pageSize: Int)
+    /// 文章当前收藏数量
+    case storeAndStatus(articleId: String)
+    /// 文章收藏取消
+    case articelStore(articleId: String, status: Bool)
+
+    /// 更新阅读量
+    case increReading(id: String)
+    
+    /// 点击消息时调用，更新未读数
+    case refreshMessageCenter
 
     /// 检查版本更新
     case version
@@ -115,7 +125,7 @@ extension API: TargetType{
             return "api/umeng/add"
         case .validateCode(_):
             return "api/login/validateCode"
-        case .login(_):
+        case .login(_, _):
             return "api/login/login"
         case .selectInfo:
             return "api/member/selectInfo"
@@ -125,11 +135,11 @@ extension API: TargetType{
             return "api/upload/imgSingle"
         case .selectBanner:
             return "api/index/selectBanner"
-        case .selectFuncType(_):
+        case .selectFuncType(_, _):
             return "api/index/selectType"
         case .selectFunc(_):
             return "api/index/select"
-        case .noticeList(_):
+        case .noticeList(_, _, _):
             return "api/index/noticeList"
         case .messageUnreadCount:
             return "api/messageCenter/unread"
@@ -138,13 +148,23 @@ extension API: TargetType{
         case .unitSetting(_):
             return "api/index/unitSetting"
             
-        case .allChannelArticle(_):
+        case .allChannelArticle(_, _, _):
             return "api/index/allChannelArticle"
         case .column(_):
             return "api/index/column"
-        case .articlePage(_):
+        case .articlePage(_, _, _, _):
             return "api/index/articlePage"
+        case .storeAndStatus(_):
+            return "api/cms/storeAndStatus"
+        case .articelStore(_):
+            return "api/cms/store"
 
+        case .increReading(_):
+            return "api/index/increReading"
+            
+        case .refreshMessageCenter:
+            return "api/messageCenter/batchReads"
+            
         case .version:
             return "api/apk/version"
         }
@@ -244,19 +264,29 @@ extension API {
         case .selectFunc(let isRecom):
             params["isRecom"] = isRecom
             
-        case .allChannelArticle(let articleType, let pageNum, let pageSize):
-            params["unitId"] = "36"
-            params["cmsCode"] = articleType.rawValue
+        case .allChannelArticle(let cmsCode, let pageNum, let pageSize):
+            params["cmsCode"] = cmsCode.rawValue
             params["pageNum"] = pageNum
             params["pageSize"] = pageSize
+            params["unitId"] = "36"
 
-        case .column(let cmsType):
-            params["cmsCode"] = cmsType.rawValue
-        case .articlePage(let id, let pageNum, let pageSize):
+        case .column(let cmsCode):
+            params["cmsCode"] = cmsCode.rawValue
+        case .articlePage(let cmsCode, let id, let pageNum, let pageSize):
+            params["cmsCode"] = cmsCode.rawValue
             params["id"] = id
-            params["unitId"] = "36"
             params["pageNum"] = pageNum
             params["pageSize"] = pageSize
+        case .storeAndStatus(let articleId):
+            params["articleId"] = articleId
+        case .articelStore(let articleId, let status):
+            params["articleId"] = articleId
+            params["status"] = status
+            
+        case .increReading(let id):
+            params["id"] = id
+        case .refreshMessageCenter:
+            params["unitId"] = "36"
 
         default:
             return nil

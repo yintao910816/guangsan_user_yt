@@ -44,6 +44,7 @@ class HCMessageViewController: BaseViewController {
         viewModel.reloadSubject.onNext(Void())
     }
     
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         

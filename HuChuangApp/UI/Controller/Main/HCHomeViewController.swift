@@ -20,8 +20,7 @@ class HCHomeViewController: BaseViewController {
             tableView.contentInsetAdjustmentBehavior = .never
         }
         
-        header = HomeHeaderView.init(frame: .init(x: 0, y: 0, width: tableView.width, height: 395))
-
+        header = HomeHeaderView.init(frame: .init(x: 0, y: 0, width: tableView.width, height: HomeHeaderView.viewHieht(hasNotice: false)))
         tableView.tableHeaderView = header
         
         tableView.register(UINib.init(nibName: "HomeFunctionContentCell", bundle: nil),
@@ -40,6 +39,18 @@ class HCHomeViewController: BaseViewController {
                 self?.tableView.reloadData()
             })
             .disposed(by: disposeBag)
+        
+        viewModel.noticeModelObser.asDriver()
+            .do(onNext: { [unowned self] in
+                if $0.count > 0 {
+                    var rect = self.header.frame
+                    rect.size.height = HomeHeaderView.viewHieht(hasNotice: true)
+                    self.header.frame = rect
+                    self.tableView.tableHeaderView = self.header
+                }
+            })
+            .drive(header.noticeModelObser)
+            .disposed(by: disposeBag)
                 
         viewModel.bannerModelObser.asDriver()
             .drive(header.bannerModelObser)
@@ -54,6 +65,12 @@ class HCHomeViewController: BaseViewController {
         
         header.bannerDidSelected
             .bind(to: viewModel.bannerSelected)
+            .disposed(by: disposeBag)
+        
+        header.noticeDidSelected
+            .subscribe(onNext: { [unowned self] _ in
+                self.tabBarController?.selectedIndex = 1
+            })
             .disposed(by: disposeBag)
         
         tableView.rx.setDelegate(self)

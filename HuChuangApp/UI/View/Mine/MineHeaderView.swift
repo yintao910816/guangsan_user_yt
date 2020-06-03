@@ -84,7 +84,7 @@ class MineHeaderView: UIView {
             .disposed(by: disposeBag)
 
         quanziOutlet.rx.tap.asDriver()
-            .map{ H5Type.fristMessage }
+            .map{ H5Type.firstMessage }
             .drive(headerFuncPushH5)
             .disposed(by: disposeBag)
 

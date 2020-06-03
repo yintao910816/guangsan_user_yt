@@ -48,8 +48,10 @@ class HCArticleDetailViewController: BaseWebViewController {
         shareButton.setImage(UIImage(named: "button_share_white"), for: .normal)
 //        shareButton.sizeToFit()
 
-        navigationItem.rightBarButtonItems = [UIBarButtonItem.init(customView: shareButton),
-                                              UIBarButtonItem.init(customView: storeButton)]
+//        navigationItem.rightBarButtonItems = [UIBarButtonItem.init(customView: storeButton)]
+
+//        navigationItem.rightBarButtonItems = [UIBarButtonItem.init(customView: shareButton),
+//                                              UIBarButtonItem.init(customView: storeButton)]
     }
     
     override func rxBind() {
@@ -58,10 +60,12 @@ class HCArticleDetailViewController: BaseWebViewController {
         let storeDriver = storeButton.rx.tap.asDriver()
             .map{ [unowned self] in !self.storeButton.isSelected }
         
-        viewModel = HCArticleDetailViewModel.init(articleModel: articleModel,
-                                                  tap: (storeDriver: storeDriver,
-                                                        shareDriver: shareButton.rx.tap.asDriver()))
-        
+//        viewModel = HCArticleDetailViewModel.init(articleModel: articleModel,
+//                                                  tap: (storeDriver: storeDriver,
+//                                                        shareDriver: shareButton.rx.tap.asDriver()))
+  
+        viewModel = HCArticleDetailViewModel.init(articleModel: articleModel, storeDriver: storeDriver)
+
         viewModel.storeEnable.asDriver()
             .drive(storeButton.rx.enabled)
             .disposed(by: disposeBag)

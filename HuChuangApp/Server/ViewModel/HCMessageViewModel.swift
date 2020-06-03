@@ -24,6 +24,7 @@ class HCMessageViewModel: BaseViewModel {
         finishLoadSubject
             .subscribe(onNext: { [unowned self] in
                 self.hud.noticeHidden()
+                self.requestRefreshMessageCenter()
             })
             .disposed(by: disposeBag)
         
@@ -46,5 +47,16 @@ class HCMessageViewModel: BaseViewModel {
                 self?.webURLObser.value = $0
             }) { _ in }
             .disposed(by: disposeBag)
+    }
+    
+    private func requestRefreshMessageCenter() {
+        HCProvider.request(.refreshMessageCenter)
+            .mapJSON()
+            .subscribe(onSuccess: { res in
+                PrintLog("更新未读数：\(res)")
+            }) { error in
+                PrintLog("更新未读数失败：\(error)")
+        }
+        .disposed(by: disposeBag)
     }
 }

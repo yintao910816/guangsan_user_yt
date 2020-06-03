@@ -20,6 +20,7 @@ class HCClassRoomViewModel: RefreshVM<HCArticleItemModel> {
     
     public let menuItemData = PublishSubject<[TYSlideItemModel]>()
     public let pageListData = PublishSubject<([HCArticleItemModel], Int)>()
+    public let increReadingSubject = PublishSubject<String>()
 
     override init() {
         super.init()
@@ -38,6 +39,12 @@ class HCClassRoomViewModel: RefreshVM<HCArticleItemModel> {
                 }
             })
             .disposed(by: disposeBag)
+        
+        increReadingSubject
+            .subscribe(onNext: { [unowned self] in
+                self.increReadingRequest(id: $0)
+            })
+            .disposed(by: disposeBag)
     }
     
     override func requestData(_ refresh: Bool) {
@@ -45,11 +52,11 @@ class HCClassRoomViewModel: RefreshVM<HCArticleItemModel> {
         updatePage(for: "\(page)", refresh: refresh)
         
         let item = columnData.content[page]
-        var signal = HCProvider.request(.articlePage(id: item.id, pageNum: currentPage(for: "\(page)"), pageSize: pageSize(for: "\(page)")))
+        var signal = HCProvider.request(.articlePage(cmsCode: .classRoom, id: item.id, pageNum: currentPage(for: "\(page)"), pageSize: pageSize(for: "\(page)")))
             .map(model: HCArticlePageDataModel.self)
         
         if page == 0 {
-            signal = HCProvider.request(.allChannelArticle(cmsType: .aa, pageNum: currentPage(for: "\(page)"), pageSize: pageSize(for: "\(page)")))
+            signal = HCProvider.request(.allChannelArticle(cmsCode: .classRoom, pageNum: currentPage(for: "\(page)"), pageSize: pageSize(for: "\(page)")))
                 .map(model: HCArticlePageDataModel.self)
         }
         
@@ -70,7 +77,7 @@ class HCClassRoomViewModel: RefreshVM<HCArticleItemModel> {
     
     /// 滚动菜单
     private func requestColumnData() {
-        HCProvider.request(.column(cmsType: .aa))
+        HCProvider.request(.column(cmsType: .classRoom))
             .map(model: HomeColumnModel.self)
             .subscribe(onSuccess: { [weak self] model in
                 model.content.insert(HomeColumnItemModel.creatAllColum(), at: 0)
@@ -84,5 +91,16 @@ class HCClassRoomViewModel: RefreshVM<HCArticleItemModel> {
                 
         }
         .disposed(by: disposeBag)
+    }
+    
+    private func increReadingRequest(id: String) {
+        HCProvider.request(.increReading(id: id))
+            .mapJSON()
+            .subscribe(onSuccess: { res in
+                PrintLog("阅读量更新：\(res)")
+            }) { error in
+                PrintLog("阅读量更新失败：\(error)")
+            }
+            .disposed(by: disposeBag)
     }
 }

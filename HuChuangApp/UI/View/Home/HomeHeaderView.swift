@@ -16,6 +16,8 @@ class HomeHeaderView: UIView {
     
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var carouselView: CarouselView!
+    @IBOutlet weak var scrollTextView: TYScrollTextView!
+    @IBOutlet weak var changeTopCns: NSLayoutConstraint!
     
     @IBOutlet weak var firstImgV: UIImageView!
     @IBOutlet weak var secondImgV: UIImageView!
@@ -31,9 +33,11 @@ class HomeHeaderView: UIView {
 
     public var bannerModelObser = Variable([HomeBannerModel]())
     public var funcModelObser = Variable([HomeFunctionModel]())
+    public var noticeModelObser = Variable([HomeNoticeModel]())
 
     public let functionDidSelected = PublishSubject<HomeFunctionModel>()
     public let bannerDidSelected = PublishSubject<CarouselSource>()
+    public let noticeDidSelected = PublishSubject<Int>()
 
     @IBAction func actions(_ sender: UIButton) {
         let idx = sender.tag - 1000
@@ -71,7 +75,15 @@ class HomeHeaderView: UIView {
             })
             .disposed(by: disposeBag)
 
-                
+        noticeModelObser.asDriver()
+            .drive(onNext: { [weak self] data in
+                self?.changeTopCns.constant = data.count > 0 ? 60 : 15
+                self?.scrollTextView.datasourceModel = data
+            })
+            .disposed(by: disposeBag)
+        
+        scrollTextView.cellDidSelected = { [weak self] in self?.noticeDidSelected.onNext($0.row) }
+
         carouselView.tapCallBack = { [weak self] in self?.bannerDidSelected.onNext($0) }
     }
     
@@ -86,5 +98,9 @@ class HomeHeaderView: UIView {
                 titles[idx].text = item.name
             }
         }
+    }
+    
+    class func viewHieht(hasNotice: Bool) ->CGFloat {
+        return hasNotice ? 425 : 380
     }
 }

@@ -24,7 +24,7 @@ public extension Response {
         if serverModel.code == RequestCode.success.rawValue {
             return serverModel
         }else {
-            throw MapperError.server(message: serverModel.message)
+            throw MapperError.server(message: serverModel.message, code: serverModel.code)
         }
     }
     
@@ -39,7 +39,7 @@ public extension Response {
         if serverModel.code == RequestCode.success.rawValue, let model = serverModel.data {
             return model
         }else {
-            throw MapperError.server(message: serverModel.message)
+            throw MapperError.server(message: serverModel.message, code: serverModel.code)
         }
     }
     
@@ -54,7 +54,7 @@ public extension Response {
         if serverModel.code == RequestCode.success.rawValue, let models = serverModel.data {
             return models
         }else {
-            throw MapperError.server(message: serverModel.message)
+            throw MapperError.server(message: serverModel.message, code: serverModel.code)
         }
     }
     
@@ -70,7 +70,7 @@ public extension Response {
         if serverModel.code == RequestCode.success.rawValue {
             return serverModel
         }else {
-            throw MapperError.server(message: serverModel.message)
+            throw MapperError.server(message: serverModel.message, code: serverModel.code)
         }
     }
     
@@ -86,7 +86,7 @@ public extension Response {
         if serverModel.code == RequestCode.success.rawValue {
             return serverModel
         }else {
-            throw MapperError.server(message: serverModel.message)
+            throw MapperError.server(message: serverModel.message, code: serverModel.code)
         }
     }
     
@@ -95,7 +95,7 @@ public extension Response {
 enum MapperError: Swift.Error {
     case ok(message: String?)
     case json(message: String?)
-    case server(message: String?)
+    case server(message: String?, code: Int)
 }
 
 extension MapperError {
@@ -106,8 +106,20 @@ extension MapperError {
             return (text ?? "操作成功!")
         case .json(let text):
             return (text ?? "解析失败！")
-        case .server(let text):
+        case .server(let text, _):
             return text ?? "错误：52000"
         }
     }
+    
+    public var code: Int {
+        switch self {
+        case .ok(_):
+            return 200
+        case .json(_):
+            return 4000
+        case .server(_, let code):
+            return code
+        }
+    }
+
 }

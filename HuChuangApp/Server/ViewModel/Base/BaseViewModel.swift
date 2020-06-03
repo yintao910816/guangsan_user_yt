@@ -47,6 +47,15 @@ class BaseViewModel: NSObject {
         
     }
 
+    public func errorCode(_ error: Swift.Error) ->Int {
+        
+        if let _error = error as? MapperError {
+            return _error.code
+        }
+        
+        return 10000
+    }
+
     deinit {
         PrintLog("释放了 \(self)")
     }

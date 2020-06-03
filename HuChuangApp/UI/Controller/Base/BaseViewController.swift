@@ -12,6 +12,8 @@ import RxCocoa
 
 class BaseViewController: UIViewController {
 
+    public var navBarColor: UIColor = .white
+
     lazy var disposeBag: DisposeBag = { return DisposeBag() }()
 
     override func viewDidLoad() {
@@ -30,7 +32,8 @@ class BaseViewController: UIViewController {
         
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.navigationController?.navigationBar.barTintColor = navBarColor
+
         if UIApplication.shared.statusBarStyle != .lightContent {
             UIApplication.shared.statusBarStyle = .lightContent
         }

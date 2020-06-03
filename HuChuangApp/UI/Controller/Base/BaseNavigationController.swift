@@ -8,8 +8,16 @@
 
 import UIKit
 
+enum HCBackItemInterface: String {
+    case white = "navigationButtonReturnClick"
+    case red = "navigationButtonReturn"
+}
+
 class BaseNavigationController: UINavigationController {
     
+    /// 返回按钮图片
+    var backItemInterface: HCBackItemInterface = .white
+
     /**
      * 是否开启右滑返回手势
      */
@@ -46,8 +54,19 @@ class BaseNavigationController: UINavigationController {
             viewController.hidesBottomBarWhenPushed = true
             
             let backButton : UIButton = UIButton(type : .system)
-            backButton.setImage(UIImage(named :"navigationButtonReturn")?.withRenderingMode(.alwaysOriginal), for: .normal)
-            backButton.setImage(UIImage(named :"navigationButtonReturnClick")?.withRenderingMode(.alwaysOriginal), for: .highlighted)
+            
+            var backImage = UIImage(named: HCBackItemInterface.white.rawValue)
+//            if viewController.isKind(of: HCArticleDetailViewController.self) {
+//                backImage = UIImage(named: HCBackItemInterface.red.rawValue)
+//                navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white,
+//                                                     NSAttributedString.Key.font : UIFont.font(fontSize: 18, fontName: .PingFRegular)]
+//            }else {
+                navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : RGB(51, 51, 51),
+                                                     NSAttributedString.Key.font : UIFont.font(fontSize: 18, fontName: .PingFRegular)]
+//            }
+
+            
+            backButton.setImage(backImage?.withRenderingMode(.alwaysOriginal), for: .normal)
             backButton.addTarget(self, action :#selector(backAction), for: .touchUpInside)
             backButton.sizeToFit()
             viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(customView:backButton)

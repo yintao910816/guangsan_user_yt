@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeHeaderView" customModule="HuChuangApp" customModuleProvider="target">
             <connections>
                 <outlet property="carouselView" destination="Ce6-H2-Zcr" id="nBX-aN-c8e"/>
+                <outlet property="changeTopCns" destination="2Lb-WV-2CH" id="5XU-er-wXX"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="ogv-8i-3t2"/>
                 <outlet property="fifthImgV" destination="f1M-5j-Nc4" id="zoy-Xs-gWL"/>
                 <outlet property="fifthLabel" destination="5ZI-Le-5a1" id="pCR-1g-xqc"/>
@@ -17,6 +18,7 @@
                 <outlet property="firstLabel" destination="Tt0-st-9SZ" id="pND-CC-SjS"/>
                 <outlet property="firthImgV" destination="rTt-8X-foX" id="SYV-64-TaG"/>
                 <outlet property="firthLabel" destination="Vya-wy-Jm2" id="5Ph-mQ-dIv"/>
+                <outlet property="scrollTextView" destination="Vnp-Eu-M8d" id="fgD-Tj-x3l"/>
                 <outlet property="secondImgV" destination="IA2-tO-EQX" id="FgH-ZB-MmW"/>
                 <outlet property="secondLabel" destination="HQ8-7D-9Id" id="9y1-KZ-uxx"/>
                 <outlet property="thirdImgV" destination="be1-4A-Nbp" id="jJ2-fa-zOr"/>
@@ -25,7 +27,7 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="395"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="380"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ce6-H2-Zcr" customClass="CarouselView" customModule="HuChuangApp" customModuleProvider="target">
@@ -219,18 +221,28 @@
                         <constraint firstItem="XmA-6K-2OR" firstAttribute="height" secondItem="KXt-Ru-zMG" secondAttribute="height" id="yVH-oQ-jma"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vnp-Eu-M8d" customClass="TYScrollTextView" customModule="HuChuangApp" customModuleProvider="target">
+                    <rect key="frame" x="15" y="235" width="345" height="30"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="2lU-OX-toY"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="U5b-e6-A5L" firstAttribute="top" secondItem="Ce6-H2-Zcr" secondAttribute="bottom" constant="15" id="2Lb-WV-2CH"/>
                 <constraint firstItem="Ce6-H2-Zcr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="AoJ-an-9Nv"/>
+                <constraint firstItem="Vnp-Eu-M8d" firstAttribute="top" secondItem="Ce6-H2-Zcr" secondAttribute="bottom" constant="15" id="TIx-aL-G7n"/>
                 <constraint firstItem="Ce6-H2-Zcr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="TNp-r4-TEE"/>
+                <constraint firstAttribute="trailing" secondItem="Vnp-Eu-M8d" secondAttribute="trailing" constant="15" id="aYn-hN-YT0"/>
                 <constraint firstAttribute="trailing" secondItem="U5b-e6-A5L" secondAttribute="trailing" constant="15" id="acH-Ai-JLi"/>
+                <constraint firstItem="Vnp-Eu-M8d" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="dDU-Wg-ZNh"/>
                 <constraint firstAttribute="trailing" secondItem="Ce6-H2-Zcr" secondAttribute="trailing" id="kxD-z6-evo"/>
                 <constraint firstItem="U5b-e6-A5L" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="nJ1-C0-raZ"/>
-                <constraint firstItem="U5b-e6-A5L" firstAttribute="top" secondItem="Ce6-H2-Zcr" secondAttribute="bottom" constant="15" id="r7h-SM-mhU"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="8.8000000000000007" y="-33.733133433283363"/>
+            <point key="canvasLocation" x="8.8000000000000007" y="-40.479760119940032"/>
         </view>
     </objects>
     <resources>

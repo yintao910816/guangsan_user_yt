@@ -264,6 +264,7 @@
 		B8A775282486199500271DA8 /* HCArticleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A775272486199500271DA8 /* HCArticleDetailViewModel.swift */; };
 		B8A7752A24861A0800271DA8 /* HCAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A7752924861A0800271DA8 /* HCAccountManager.swift */; };
 		B8A7752C24861A4300271DA8 /* HCClassRoomListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A7752B24861A4200271DA8 /* HCClassRoomListCell.swift */; };
+		B8A7752E2487583000271DA8 /* TYScrollTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A7752D2487583000271DA8 /* TYScrollTextView.swift */; };
 		B8BE34EF2214599B00EF16F1 /* MineHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BE34EE2214599B00EF16F1 /* MineHeaderView.xib */; };
 		B8BE34F222145DF000EF16F1 /* UserFunctionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE34F122145DF000EF16F1 /* UserFunctionButton.swift */; };
 		B8BE34F42214645900EF16F1 /* MineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE34F32214645900EF16F1 /* MineViewModel.swift */; };
@@ -363,7 +364,6 @@
 		C43F09C3221448B000910437 /* HCNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43F09C2221448B000910437 /* HCNotifications.swift */; };
 		C4481E2422154D66007F4B0C /* BaseWKWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4481E2322154D66007F4B0C /* BaseWKWebViewViewController.swift */; };
 		C449FA5B2298021D00B7803E /* AppAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C449FA5A2298021D00B7803E /* AppAbout.swift */; };
-		C4C3257B2205B8490091783C /* ScrollTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C3257A2205B8490091783C /* ScrollTextView.swift */; };
 		C4C3257D2205C3AD0091783C /* UIView+XIB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C3257C2205C3AC0091783C /* UIView+XIB.swift */; };
 		C4F3E87622201D1B008B143C /* H5.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F3E87522201D1B008B143C /* H5.swift */; };
 /* End PBXBuildFile section */
@@ -875,6 +875,7 @@
 		B8A775272486199500271DA8 /* HCArticleDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCArticleDetailViewModel.swift; sourceTree = "<group>"; };
 		B8A7752924861A0800271DA8 /* HCAccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCAccountManager.swift; sourceTree = "<group>"; };
 		B8A7752B24861A4200271DA8 /* HCClassRoomListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCClassRoomListCell.swift; sourceTree = "<group>"; };
+		B8A7752D2487583000271DA8 /* TYScrollTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TYScrollTextView.swift; sourceTree = "<group>"; };
 		B8BE34EE2214599B00EF16F1 /* MineHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineHeaderView.xib; sourceTree = "<group>"; };
 		B8BE34F122145DF000EF16F1 /* UserFunctionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFunctionButton.swift; sourceTree = "<group>"; };
 		B8BE34F32214645900EF16F1 /* MineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewModel.swift; sourceTree = "<group>"; };
@@ -977,7 +978,6 @@
 		C43F09C2221448B000910437 /* HCNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCNotifications.swift; sourceTree = "<group>"; };
 		C4481E2322154D66007F4B0C /* BaseWKWebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWKWebViewViewController.swift; sourceTree = "<group>"; };
 		C449FA5A2298021D00B7803E /* AppAbout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAbout.swift; sourceTree = "<group>"; };
-		C4C3257A2205B8490091783C /* ScrollTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollTextView.swift; sourceTree = "<group>"; };
 		C4C3257C2205C3AC0091783C /* UIView+XIB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+XIB.swift"; sourceTree = "<group>"; };
 		C4F3E87522201D1B008B143C /* H5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H5.swift; sourceTree = "<group>"; };
 		DA49B288AA9976792B904C2F /* Pods_HuChuangApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HuChuangApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2181,9 +2181,9 @@
 		C421338D2205B155006C10C4 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				B8A7752D2487583000271DA8 /* TYScrollTextView.swift */,
 				B8FC3AA42216FEEB00889483 /* HomeHeaderView.swift */,
 				C42133A42205B4FE006C10C4 /* HomeHeaderView.xib */,
-				C4C3257A2205B8490091783C /* ScrollTextView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -2442,6 +2442,7 @@
 				B816EAB7221DABF400F024D5 /* ZXCharacterSetECI.m in Sources */,
 				B816EACD221DABF400F024D5 /* ZXPDF417HighLevelEncoder.m in Sources */,
 				B816EB2F221DABF400F024D5 /* ZXUPCEANExtensionSupport.m in Sources */,
+				B8A7752E2487583000271DA8 /* TYScrollTextView.swift in Sources */,
 				B816EAD3221DABF400F024D5 /* ZXPDF417ECErrorCorrection.m in Sources */,
 				B8BE350B221478A900EF16F1 /* VCServer.swift in Sources */,
 				C421332722056F24006C10C4 /* HUDIndicatorView.swift in Sources */,
@@ -2668,7 +2669,6 @@
 				B816EB1E221DABF400F024D5 /* ZXRSSUtils.m in Sources */,
 				B816EA86221DABF400F024D5 /* ZXDecodeHints.m in Sources */,
 				B816EAB2221DABF400F024D5 /* ZXDetectorResult.m in Sources */,
-				C4C3257B2205B8490091783C /* ScrollTextView.swift in Sources */,
 				B83F5A8122395CEF00EAC675 /* Timer.swift in Sources */,
 				C42133592205883D006C10C4 /* PageModel.swift in Sources */,
 				B816EA9C221DABF400F024D5 /* ZXQRCodeBlockPair.m in Sources */,

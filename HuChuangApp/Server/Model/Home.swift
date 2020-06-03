@@ -60,7 +60,7 @@ extension HomeNoticeModel: ScrollTextModel {
         return content
     }
     
-    var height: CGFloat { return 45 }
+    var height: CGFloat { return 30 }
     
 }
 
