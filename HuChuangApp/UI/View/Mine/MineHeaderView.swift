@@ -19,6 +19,8 @@ class MineHeaderView: UIView {
     @IBOutlet weak var userIconOutlet: UIButton!
     @IBOutlet weak var nickNameOutlet: UILabel!
     @IBOutlet weak var sexOutlet: UILabel!
+    /// 专科号
+    @IBOutlet weak var clientTypeOutlet: UILabel!
     
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var yuyueOutlet: UserFunctionButton!
@@ -92,6 +94,7 @@ class MineHeaderView: UIView {
             self.userIconOutlet.setImage(user.headPath, .userIcon)
             self.nickNameOutlet.text = user.name
             self.sexOutlet.text      = "性别：\(user.sexText)"
+            self.clientTypeOutlet.text = user.clinicNo.count > 0 ? "专科号：\(user.clinicNo)" : ""
         })
             .disposed(by: disposeBag)
     }

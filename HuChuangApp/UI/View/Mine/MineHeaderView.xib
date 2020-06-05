@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MineHeaderView" customModule="HuChuangApp" customModuleProvider="target">
             <connections>
+                <outlet property="clientTypeOutlet" destination="OBO-3J-huw" id="NO1-Ii-HuI"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="Lr0-5T-znd"/>
                 <outlet property="headerBgView" destination="X1O-qV-UPD" id="adM-a1-vK3"/>
                 <outlet property="nickNameOutlet" destination="93l-iK-VRw" id="A1d-IU-Kcv"/>
@@ -49,13 +50,13 @@
                     </userDefinedRuntimeAttributes>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称未填写" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="93l-iK-VRw">
-                    <rect key="frame" x="103" y="61" width="90.5" height="25.5"/>
+                    <rect key="frame" x="103" y="51" width="90.5" height="25.5"/>
                     <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="18"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="性别：女" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSt-rG-dUH">
-                    <rect key="frame" x="103" y="90" width="48" height="17"/>
+                    <rect key="frame" x="103" y="83.5" width="48" height="17"/>
                     <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="12"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -161,20 +162,29 @@
                         <constraint firstItem="7Xu-WB-amG" firstAttribute="leading" secondItem="dGT-G7-7ab" secondAttribute="leading" id="yjp-L1-wM4"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="专科号：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBO-3J-huw">
+                    <rect key="frame" x="103" y="107.5" width="48" height="17"/>
+                    <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="XSt-rG-dUH" firstAttribute="leading" secondItem="93l-iK-VRw" secondAttribute="leading" id="7Dx-jT-xuo"/>
+                <constraint firstItem="OBO-3J-huw" firstAttribute="top" secondItem="XSt-rG-dUH" secondAttribute="bottom" constant="7" id="CZV-bQ-mMP"/>
+                <constraint firstItem="OBO-3J-huw" firstAttribute="leading" secondItem="XSt-rG-dUH" secondAttribute="leading" id="GZg-KS-bcI"/>
                 <constraint firstAttribute="trailing" secondItem="9l2-VP-N6K" secondAttribute="trailing" constant="15" id="QvQ-kd-AT3"/>
                 <constraint firstItem="dGT-G7-7ab" firstAttribute="top" secondItem="Vh6-Ls-td3" secondAttribute="bottom" constant="20" id="S8S-sb-chv"/>
-                <constraint firstItem="93l-iK-VRw" firstAttribute="top" secondItem="Vh6-Ls-td3" secondAttribute="top" constant="17" id="Uha-BT-y8J"/>
+                <constraint firstItem="93l-iK-VRw" firstAttribute="top" secondItem="Vh6-Ls-td3" secondAttribute="top" constant="7" id="Uha-BT-y8J"/>
                 <constraint firstItem="Vh6-Ls-td3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="44" id="VfC-UF-k7o"/>
                 <constraint firstItem="9l2-VP-N6K" firstAttribute="centerY" secondItem="Vh6-Ls-td3" secondAttribute="centerY" id="YQf-2z-78P"/>
+                <constraint firstItem="9l2-VP-N6K" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OBO-3J-huw" secondAttribute="trailing" constant="10" id="cNM-IT-ZNa"/>
                 <constraint firstAttribute="trailing" secondItem="X1O-qV-UPD" secondAttribute="trailing" id="cUd-je-KzX"/>
                 <constraint firstItem="X1O-qV-UPD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dAS-4Z-RvE"/>
                 <constraint firstItem="Vh6-Ls-td3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="ddM-VW-iiO"/>
                 <constraint firstItem="dGT-G7-7ab" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="fu6-t2-e9x"/>
-                <constraint firstItem="XSt-rG-dUH" firstAttribute="bottom" secondItem="Vh6-Ls-td3" secondAttribute="bottom" constant="-17" id="mHJ-TF-2xr"/>
+                <constraint firstItem="XSt-rG-dUH" firstAttribute="top" secondItem="93l-iK-VRw" secondAttribute="bottom" constant="7" id="ixg-93-JNW"/>
                 <constraint firstItem="X1O-qV-UPD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="r6x-va-3Su"/>
                 <constraint firstAttribute="trailing" secondItem="dGT-G7-7ab" secondAttribute="trailing" constant="15" id="tOj-IX-Uc2"/>
                 <constraint firstItem="93l-iK-VRw" firstAttribute="leading" secondItem="Vh6-Ls-td3" secondAttribute="trailing" constant="8" id="wuE-9j-uuU"/>

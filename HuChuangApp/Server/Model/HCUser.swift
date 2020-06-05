@@ -40,6 +40,8 @@ class HCUserModel: HJModel {
     var age: String = ""
     var createDate: String = ""
     var headPath: String = ""
+    /// 专科号
+    var clinicNo: String = ""
     
     var sexText: String {
         get {
