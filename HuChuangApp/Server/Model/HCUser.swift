@@ -42,7 +42,16 @@ class HCUserModel: HJModel {
     var headPath: String = ""
     
     var sexText: String {
-        get { return sex == 1 ? "男" : "女" }
+        get {
+            switch sex {
+            case 0:
+                return "女"
+            case 1:
+                return "男"
+            default:
+                return "未知"
+            }
+        }
     }
         
     override func mapping(mapper: HelpingMapper) {
