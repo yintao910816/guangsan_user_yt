@@ -103,9 +103,10 @@ class MineViewModel: BaseViewModel, VMNavigation {
                                                               MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_zhiliao"),
                                                                                             title: "治疗信息",
                                                                                             h5Type: .cureMessage)]),
-                          SectionModel.init(model: 1, items: [MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_xiaoxi"),
-                                                                                            title: "我的通知",
-                                                                                            h5Type: .notification),
+                          SectionModel.init(model: 1, items: [
+//                            MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_xiaoxi"),
+//                                                                                            title: "我的通知",
+//                                                                                            h5Type: .notification),
                                                               MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_xitong"),
                                                                                             title: "账户与安全",
                                                                                             h5Type: .accountSecurity)]),

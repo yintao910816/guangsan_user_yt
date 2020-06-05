@@ -188,6 +188,7 @@ extension BaseWebViewController: UIWebViewDelegate{
 
         // 设置标题
         let changeTitle: @convention(block) () ->() = {[weak self] in
+            if self?.isKind(of: HCArticleDetailViewController.self) == true { return }
             guard let params = JSContext.currentArguments() else { return }
             PrintLog("h5 调用 - changeTitle")
             
@@ -255,7 +256,10 @@ extension BaseWebViewController: UIWebViewDelegate{
         }
         context?.setObject(unsafeBitCast(appInfo, to: AnyObject.self), forKeyedSubscript: "appInfo" as NSCopying & NSObjectProtocol)
 
-        setTitle()
+        if isKind(of: HCArticleDetailViewController.self) == false
+        {
+            setTitle()
+        }
     }
     
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error){
