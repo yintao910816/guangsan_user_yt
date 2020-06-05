@@ -252,6 +252,7 @@
 		B842D1FE22258CC000A4F8DF /* HCAppDelegate+UM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B842D1FD22258CC000A4F8DF /* HCAppDelegate+UM.swift */; };
 		B879A060221AF0B200E573C9 /* MineFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879A05F221AF0B200E573C9 /* MineFooterView.swift */; };
 		B879A062221AF0BB00E573C9 /* MineFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B879A061221AF0BB00E573C9 /* MineFooterView.xib */; };
+		B87B1035248A0AC100F4393B /* HCBindPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B1034248A0AC100F4393B /* HCBindPhoneViewController.swift */; };
 		B8A77514248616B000271DA8 /* HCClassRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A77513248616B000271DA8 /* HCClassRoomViewController.swift */; };
 		B8A77516248616E500271DA8 /* HCClassRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A77515248616E500271DA8 /* HCClassRoomViewModel.swift */; };
 		B8A7751A2486172900271DA8 /* TYSlideDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A775182486172800271DA8 /* TYSlideDatasource.swift */; };
@@ -867,6 +868,7 @@
 		B842D1FF22258D7F00A4F8DF /* HuChuangApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HuChuangApp.entitlements; sourceTree = "<group>"; };
 		B879A05F221AF0B200E573C9 /* MineFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineFooterView.swift; sourceTree = "<group>"; };
 		B879A061221AF0BB00E573C9 /* MineFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineFooterView.xib; sourceTree = "<group>"; };
+		B87B1034248A0AC100F4393B /* HCBindPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCBindPhoneViewController.swift; sourceTree = "<group>"; };
 		B8A77513248616B000271DA8 /* HCClassRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCClassRoomViewController.swift; sourceTree = "<group>"; };
 		B8A77515248616E500271DA8 /* HCClassRoomViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCClassRoomViewModel.swift; sourceTree = "<group>"; };
 		B8A775182486172800271DA8 /* TYSlideDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TYSlideDatasource.swift; sourceTree = "<group>"; };
@@ -2142,6 +2144,7 @@
 		C421336422058F8C006C10C4 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				B87B1034248A0AC100F4393B /* HCBindPhoneViewController.swift */,
 				C421336522058F97006C10C4 /* HCLoginViewController.swift */,
 				B8A7752F2487801D00271DA8 /* HCAccountViewController.swift */,
 			);
@@ -2413,6 +2416,7 @@
 				B816EAA9221DABF400F024D5 /* ZXQRCodeErrorCorrectionLevel.m in Sources */,
 				B8BE351B22147DE500EF16F1 /* EditViewModel.swift in Sources */,
 				B816EB27221DABF400F024D5 /* ZXCodaBarWriter.m in Sources */,
+				B87B1035248A0AC100F4393B /* HCBindPhoneViewController.swift in Sources */,
 				B816EB04221DABF400F024D5 /* ZXRSSExpandedRow.m in Sources */,
 				B816EB0C221DABF400F024D5 /* ZXRSSExpandedFieldParser.m in Sources */,
 				B816EB08221DABF400F024D5 /* ZXAI013x0x1xDecoder.m in Sources */,

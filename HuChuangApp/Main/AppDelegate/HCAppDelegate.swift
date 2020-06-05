@@ -36,15 +36,6 @@ class HCAppDelegate: UIResponder, UIApplicationDelegate {
         }
         return true
     }
-
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        if url.scheme?.contains(HCHelper.AppKeys.appSchame.rawValue) == true  {
-            let not = Notification.init(name: NotificationName.Pay.wxPaySuccess, object: nil, userInfo: nil)
-            NotificationCenter.default.post(not)
-        }
-
-        return true
-    }
 }
 
 import Alamofire

@@ -16,6 +16,7 @@ class HCLoginViewController: BaseViewController {
     @IBOutlet weak var passInputOutlet: UITextField!
     
     @IBOutlet weak var loginOutlet: UIButton!
+    @IBOutlet weak var wchatLoginOutlet: UIButton!
     @IBOutlet weak var getAuthorOutlet: UIButton!
     @IBOutlet weak var contentBgView: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -93,7 +94,8 @@ class HCLoginViewController: BaseViewController {
                                                 pass: passInputOutlet.rx.text.orEmpty.asDriver(),
                                                 loginType: loginTypeObser.asDriver()),
                                         tap: (loginTap: loginDriver,
-                                              sendCodeTap: sendCodeDriver))
+                                              sendCodeTap: sendCodeDriver,
+                                              weChatTap: wchatLoginOutlet.rx.tap.asDriver()))
         viewModel.codeEnable.asDriver()
             .drive(getAuthorOutlet.rx.enabled)
             .disposed(by: disposeBag)
@@ -122,6 +124,12 @@ class HCLoginViewController: BaseViewController {
         }
         .disposed(by: disposeBag)
         
+        viewModel.pushBindSubject
+            .subscribe(onNext: { [weak self] in
+                self?.performSegue(withIdentifier: "bindPhoneSegue", sender: $0)
+            })
+            .disposed(by: disposeBag)
+        
         tableView.rx.modelSelected(HCLoginAccountModel.self)
             .asDriver()
             .do(onNext: { [unowned self] _ in
@@ -132,6 +140,12 @@ class HCLoginViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         viewModel.reloadSubject.onNext(Void())
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "bindPhoneSegue" {
+            segue.destination.prepare(parameters: ["model": sender!])
+        }
     }
 }
 

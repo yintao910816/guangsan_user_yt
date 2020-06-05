@@ -91,15 +91,6 @@ extension HCAppDelegate : UNUserNotificationCenterDelegate{
         
         self.deviceToken = deviceTokenString
         uploadUMToken()
-
-//        UMessage.registerDeviceToken(deviceToken)
-//
-//        let data = deviceToken as NSData
-//        let token = data.description.replacingOccurrences(of: "<", with: "").replacingOccurrences(of: ">", with: "").replacingOccurrences(of: " ", with: "")
-//
-//        self.deviceToken = token
-//
-//        uploadUMToken()
     }
     
     //收到远程推送消息
@@ -263,10 +254,10 @@ extension HCAppDelegate: WXApiDelegate {
     
     public func registerAuthor() {
         UMSocialManager.default()?.openLog(true)
-//        UMSocialManager.default()?.setPlaform(.wechatSession,
-//                                              appKey: weixinAppid,
-//                                              appSecret: weixinSecret,
-//                                              redirectURL: "http://mobile.umeng.com/social")
+        UMSocialManager.default()?.setPlaform(.wechatSession,
+                                              appKey: "wx196281a50790dca7",
+                                              appSecret: "68a70b1e1683b779c780ebf90975cb42",
+                                              redirectURL: "http://mobile.umeng.com/social")
 //
 //        UMSocialManager.default()?.setPlaform(.wechatTimeLine,
 //                                              appKey: weixinAppid,
@@ -280,5 +271,36 @@ extension HCAppDelegate: WXApiDelegate {
     
     func onResp(_ resp: BaseResp!) {
         
+    }
+}
+
+extension HCAppDelegate {
+    
+    func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
+//        let urlString = url.absoluteString
+//
+//        if urlString.contains("wx") {
+//            return WXApi.handleOpen(url, delegate: self)
+//        }
+                
+        let result = UMSocialManager.default()?.handleOpen(url)
+        return result!
+    }
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        if url.scheme?.contains(HCHelper.AppKeys.appSchame.rawValue) == true  {
+            let not = Notification.init(name: NotificationName.Pay.wxPaySuccess, object: nil, userInfo: nil)
+            NotificationCenter.default.post(not)
+        }
+
+        if url.absoluteString.contains(HCHelper.AppKeys.appSchame.rawValue) {
+            let param = url.absoluteString.replacingOccurrences(of: "\(HCHelper.AppKeys.appSchame.rawValue)://", with: "")
+            NoticesCenter.alert(title: "应用唤起", message: param)
+            return true
+        }
+
+//        return WXApi.handleOpen(url, delegate: self)
+//        BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url sourceApplication:sourceApplication annotation:annotation];
+        let result = UMSocialManager.default()?.handleOpen(url, sourceApplication: sourceApplication, annotation: annotation)
+        return result!
     }
 }

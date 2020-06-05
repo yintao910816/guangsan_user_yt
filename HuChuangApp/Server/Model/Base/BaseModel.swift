@@ -13,6 +13,8 @@ enum RequestCode: Int {
     case success = 200
     /// 身份验证不通过，需要重新登录
     case invalid = 401
+    /// 微信授权未绑定手机号
+    case unBindPhone = 402
     /// 其它错误
     case badRequest
 }

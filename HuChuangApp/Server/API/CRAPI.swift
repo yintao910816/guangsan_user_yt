@@ -73,6 +73,10 @@ enum API{
     case validateCode(mobile: String)
     /// 登录
     case login(mobile: String, smsCode: String)
+    /// 微信授权登录---获取绑定信息
+    case getAuthMember(openId: String)
+    /// 绑定微信
+    case bindAuthMember(userInfo: UMSocialUserInfoResponse, mobile: String, smsCode: String)
     /// 获取用户信息
     case selectInfo
     /// 修改用户信息
@@ -127,6 +131,10 @@ extension API: TargetType{
             return "api/login/validateCode"
         case .login(_, _):
             return "api/login/login"
+        case .getAuthMember(_):
+            return "api/login/getAuthMember"
+        case .bindAuthMember(_):
+            return "api/login/bindAuthMember"
         case .selectInfo:
             return "api/member/selectInfo"
         case .updateInfo(_):
@@ -247,6 +255,18 @@ extension API {
         case .login(let mobile, let smsCode):
             params["mobile"] = mobile
             params["smsCode"] = smsCode
+        case .getAuthMember(let openId):
+            params["openId"] = openId
+            params["appType"] = "IOS"
+            params["oauthType"] = "weixin"
+        case .bindAuthMember(let userInfo, let mobile, let smsCode):
+            params["openId"] = userInfo.openid
+            params["accessToken"] = userInfo.accessToken
+            params["appType"] = "IOS"
+            params["oauthType"] = "weixin"
+            params["mobile"] = mobile
+            params["smsCode"] = smsCode
+
         case .updateInfo(let param):
             params = param
         case .selectBanner:
