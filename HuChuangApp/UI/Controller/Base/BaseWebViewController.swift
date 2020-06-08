@@ -124,7 +124,7 @@ class BaseWebViewController: BaseViewController {
     }
 
     private func setTitle() {
-        if let title = webView.stringByEvaluatingJavaScript(from: "document.title"){
+        if let title = webView.stringByEvaluatingJavaScript(from: "document.title"), title.count > 0{
             navigationItem.title = title
         }
     }
