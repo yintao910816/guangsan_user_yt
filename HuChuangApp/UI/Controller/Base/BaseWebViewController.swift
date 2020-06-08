@@ -37,11 +37,13 @@ class BaseWebViewController: BaseViewController {
             webView = nil
         }
         
-        webView = UIWebView.init(frame: view.bounds)
+        webView = UIWebView()
         webView.backgroundColor = .clear
         webView.scrollView.bounces = false
         webView.delegate = self
         view.addSubview(webView)
+
+        webView.snp.makeConstraints{ $0.edges.equalTo(UIEdgeInsets.zero) }
 
         if #available(iOS 11, *) {
             webView.scrollView.contentInsetAdjustmentBehavior = .never
