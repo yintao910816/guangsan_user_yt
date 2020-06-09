@@ -10,11 +10,13 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MineHeaderView" customModule="HuChuangApp" customModuleProvider="target">
             <connections>
                 <outlet property="clientTypeOutlet" destination="OBO-3J-huw" id="NO1-Ii-HuI"/>
+                <outlet property="clientTypeWidthCns" destination="g8V-cV-XLK" id="xdb-uM-Nbd"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="Lr0-5T-znd"/>
                 <outlet property="headerBgView" destination="X1O-qV-UPD" id="adM-a1-vK3"/>
                 <outlet property="nickNameOutlet" destination="93l-iK-VRw" id="A1d-IU-Kcv"/>
                 <outlet property="quanziOutlet" destination="qE9-6j-Mq4" id="UIg-kM-RHY"/>
                 <outlet property="sexOutlet" destination="XSt-rG-dUH" id="pVl-oX-9sQ"/>
+                <outlet property="sexWidthCns" destination="XW2-T0-xRf" id="dcP-70-2aB"/>
                 <outlet property="shadowView" destination="dGT-G7-7ab" id="KXe-Bs-XtQ"/>
                 <outlet property="userIconOutlet" destination="Vh6-Ls-td3" id="3bc-5g-KNl"/>
                 <outlet property="wenzhenOutlet" destination="cfm-Cq-IfZ" id="3eB-fk-2L6"/>
@@ -55,11 +57,20 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="性别：女" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSt-rG-dUH">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="性别：女" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSt-rG-dUH">
                     <rect key="frame" x="103" y="83.5" width="48" height="17"/>
+                    <color key="backgroundColor" red="0.8784313725490196" green="0.38431372549019605" blue="0.3529411764705882" alpha="0.5" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="48" id="XW2-T0-xRf"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="12"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dGT-G7-7ab">
                     <rect key="frame" x="15" y="144" width="433" height="80"/>
@@ -162,11 +173,20 @@
                         <constraint firstItem="7Xu-WB-amG" firstAttribute="leading" secondItem="dGT-G7-7ab" secondAttribute="leading" id="yjp-L1-wM4"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="专科号：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBO-3J-huw">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="专科号：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBO-3J-huw">
                     <rect key="frame" x="103" y="107.5" width="48" height="17"/>
+                    <color key="backgroundColor" red="0.8784313725490196" green="0.38431372549019605" blue="0.3529411764705882" alpha="0.5" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="48" id="g8V-cV-XLK"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="12"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -179,7 +199,6 @@
                 <constraint firstItem="93l-iK-VRw" firstAttribute="top" secondItem="Vh6-Ls-td3" secondAttribute="top" constant="7" id="Uha-BT-y8J"/>
                 <constraint firstItem="Vh6-Ls-td3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="44" id="VfC-UF-k7o"/>
                 <constraint firstItem="9l2-VP-N6K" firstAttribute="centerY" secondItem="Vh6-Ls-td3" secondAttribute="centerY" id="YQf-2z-78P"/>
-                <constraint firstItem="9l2-VP-N6K" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OBO-3J-huw" secondAttribute="trailing" constant="10" id="cNM-IT-ZNa"/>
                 <constraint firstAttribute="trailing" secondItem="X1O-qV-UPD" secondAttribute="trailing" id="cUd-je-KzX"/>
                 <constraint firstItem="X1O-qV-UPD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dAS-4Z-RvE"/>
                 <constraint firstItem="Vh6-Ls-td3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="ddM-VW-iiO"/>

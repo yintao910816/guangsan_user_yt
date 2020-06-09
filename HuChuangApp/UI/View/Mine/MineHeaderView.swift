@@ -26,7 +26,9 @@ class MineHeaderView: UIView {
     @IBOutlet weak var yuyueOutlet: UserFunctionButton!
     @IBOutlet weak var wenzhenOutlet: UserFunctionButton!
     @IBOutlet weak var quanziOutlet: UserFunctionButton!
-        
+    @IBOutlet weak var sexWidthCns: NSLayoutConstraint!
+    @IBOutlet weak var clientTypeWidthCns: NSLayoutConstraint!
+    
     @IBOutlet weak var shadowView: UIView!
     
     private var tap: UITapGestureRecognizer!
@@ -94,7 +96,12 @@ class MineHeaderView: UIView {
             self.userIconOutlet.setImage(user.headPath, .userIcon)
             self.nickNameOutlet.text = user.name
             self.sexOutlet.text      = "性别：\(user.sexText)"
-            self.clientTypeOutlet.text = user.clinicNo.count > 0 ? "专科号：\(user.clinicNo)" : ""
+            self.clientTypeOutlet.text = user.clinicNo.count > 0 ? "专科号：\(user.clinicNo)" : "专科号：无"
+            
+            let sexSize = self.sexOutlet.sizeThatFits(.init(width: Double(MAXFLOAT), height: 20.0))
+            self.sexWidthCns.constant = sexSize.width + 16
+            let clinetSize = self.clientTypeOutlet.sizeThatFits(.init(width: Double(MAXFLOAT), height: 20.0))
+            self.clientTypeWidthCns.constant = clinetSize.width + 16
         })
             .disposed(by: disposeBag)
     }
