@@ -71,6 +71,12 @@ class HCMineViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         tableView.rx.modelSelected(MenuListItemModel.self)
+            .do(onNext: { [unowned self] in
+                if $0.segue.count > 0 {
+                    self.performSegue(withIdentifier: $0.segue, sender: nil)
+                }
+            })
+            .filter{ $0.segue.count == 0 }
             .bind(to: viewModel.cellDidSelected)
             .disposed(by: disposeBag)
         

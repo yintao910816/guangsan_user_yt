@@ -13,6 +13,8 @@ import Moya
 enum HCWebCmsCode: String {
     /// 科普
     case classRoom = "ff"
+    /// 宣教指引
+    case xuanjiao = "aa"
 }
 
 enum H5Type: String {

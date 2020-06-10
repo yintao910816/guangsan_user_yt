@@ -250,6 +250,8 @@
 		B826AF86221C7205000428C1 /* ArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B826AF84221C7205000428C1 /* ArticleCell.xib */; };
 		B83F5A8122395CEF00EAC675 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83F5A8022395CEF00EAC675 /* Timer.swift */; };
 		B842D1FE22258CC000A4F8DF /* HCAppDelegate+UM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B842D1FD22258CC000A4F8DF /* HCAppDelegate+UM.swift */; };
+		B85B6D4924907005004E3123 /* HCXuanjiaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85B6D4824907005004E3123 /* HCXuanjiaoViewController.swift */; };
+		B85B6D4B2490738F004E3123 /* HCXuanjiaoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85B6D4A2490738F004E3123 /* HCXuanjiaoViewModel.swift */; };
 		B879A060221AF0B200E573C9 /* MineFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879A05F221AF0B200E573C9 /* MineFooterView.swift */; };
 		B879A062221AF0BB00E573C9 /* MineFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B879A061221AF0BB00E573C9 /* MineFooterView.xib */; };
 		B87B1035248A0AC100F4393B /* HCBindPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B1034248A0AC100F4393B /* HCBindPhoneViewController.swift */; };
@@ -866,6 +868,8 @@
 		B83F5A8022395CEF00EAC675 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		B842D1FD22258CC000A4F8DF /* HCAppDelegate+UM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HCAppDelegate+UM.swift"; sourceTree = "<group>"; };
 		B842D1FF22258D7F00A4F8DF /* HuChuangApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HuChuangApp.entitlements; sourceTree = "<group>"; };
+		B85B6D4824907005004E3123 /* HCXuanjiaoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCXuanjiaoViewController.swift; sourceTree = "<group>"; };
+		B85B6D4A2490738F004E3123 /* HCXuanjiaoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCXuanjiaoViewModel.swift; sourceTree = "<group>"; };
 		B879A05F221AF0B200E573C9 /* MineFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineFooterView.swift; sourceTree = "<group>"; };
 		B879A061221AF0BB00E573C9 /* MineFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineFooterView.xib; sourceTree = "<group>"; };
 		B87B1034248A0AC100F4393B /* HCBindPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCBindPhoneViewController.swift; sourceTree = "<group>"; };
@@ -1841,6 +1845,7 @@
 				B8BE351422147AFF00EF16F1 /* HCEditSexViewController.swift */,
 				B8BE351622147B1E00EF16F1 /* HCEditBirthdayViewController.swift */,
 				B8BE351822147B4000EF16F1 /* HCEditSynopsisViewController.swift */,
+				B85B6D4824907005004E3123 /* HCXuanjiaoViewController.swift */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -2081,6 +2086,7 @@
 				B816EB59221DACA600F024D5 /* ScanViewModel.swift */,
 				B8DE18742475670D004EC3CE /* HCMessageViewModel.swift */,
 				B8A775312487809C00271DA8 /* HCAccountViewModel.swift */,
+				B85B6D4A2490738F004E3123 /* HCXuanjiaoViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2584,6 +2590,7 @@
 				B816EB36221DABF400F024D5 /* ZXVEventResultParser.m in Sources */,
 				B816EAA3221DABF400F024D5 /* ZXQRCodeVersion.m in Sources */,
 				B816EAF7221DABF400F024D5 /* ZXMaxiCodeBitMatrixParser.m in Sources */,
+				B85B6D4924907005004E3123 /* HCXuanjiaoViewController.swift in Sources */,
 				B8A775352487868D00271DA8 /* HCAccountListCell.swift in Sources */,
 				B816EAF3221DABF400F024D5 /* ZXDataMatrixDetector.m in Sources */,
 				B816EB03221DABF400F024D5 /* ZXEAN13Reader.m in Sources */,
@@ -2732,6 +2739,7 @@
 				B816EB32221DABF400F024D5 /* ZXURIResultParser.m in Sources */,
 				C421338A22059D7A006C10C4 /* HomeViewModel.swift in Sources */,
 				B816EAD5221DABF400F024D5 /* ZXPDF417BoundingBox.m in Sources */,
+				B85B6D4B2490738F004E3123 /* HCXuanjiaoViewModel.swift in Sources */,
 				B816EA7D221DABF400F024D5 /* ZXBinarizer.m in Sources */,
 				B826AF82221C6C24000428C1 /* String+Extends.swift in Sources */,
 				B816EA7C221DABF400F024D5 /* ZXByteMatrix.m in Sources */,

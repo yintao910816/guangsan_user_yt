@@ -201,6 +201,7 @@
                     <connections>
                         <outlet property="tableView" destination="Whz-Wr-R97" id="yPN-fY-aqj"/>
                         <segue destination="Jwe-DR-KVc" kind="show" identifier="editUserInfoSegue" id="KaQ-fq-1tw"/>
+                        <segue destination="aUx-z0-Brc" kind="show" identifier="xuanjiaoSegue" id="O5t-I7-rVj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fG3-g1-Csn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -493,6 +494,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="778-iA-7ic" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2140" y="-432"/>
+        </scene>
+        <!--宣教指引-->
+        <scene sceneID="rgT-Ex-JbP">
+            <objects>
+                <viewController id="aUx-z0-Brc" customClass="HCXuanjiaoViewController" customModule="HuChuangApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rSW-qe-uAD"/>
+                        <viewControllerLayoutGuide type="bottom" id="yGr-rI-N5c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="u6q-qY-PFY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="宣教指引" id="1p5-Qd-CoB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KHS-eK-brT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1137" y="1766"/>
         </scene>
         <!--修改生日-->
         <scene sceneID="Rt3-Vw-pj9">

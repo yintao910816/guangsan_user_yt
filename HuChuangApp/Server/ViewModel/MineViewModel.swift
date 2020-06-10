@@ -112,7 +112,8 @@ class MineViewModel: BaseViewModel, VMNavigation {
                                                                                             h5Type: .accountSecurity)]),
                           SectionModel.init(model: 2, items: [MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_xuanjiao"),
                                                                                             title: "宣教指引",
-                                                                                            h5Type: .missionToGuide),
+                                                                                            h5Type: .missionToGuide,
+                                                                                            segue: "xuanjiaoSegue"),
                                                               MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_jingqi"),
                                                                                             title: "经期日记",
                                                                                             h5Type: .menstrualDiary),
@@ -165,12 +166,14 @@ class MenuListItemModel {
     var title: String = ""
     
     var h5Type: H5Type = .underDev
+    var segue: String = ""
     
-    class func createModel(titleIcon: UIImage? = nil, title: String, h5Type: H5Type) ->MenuListItemModel {
+    class func createModel(titleIcon: UIImage? = nil, title: String, h5Type: H5Type, segue: String = "") ->MenuListItemModel {
         let model = MenuListItemModel()
         model.titleIcon = titleIcon
         model.title = title
         model.h5Type = h5Type
+        model.segue = segue
         return model
     }
 }
