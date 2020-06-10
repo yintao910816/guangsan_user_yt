@@ -53,7 +53,7 @@ class BaseWebViewController: BaseViewController {
     }
     
     override func prepare(parameters: [String : Any]?) {
-        guard let _url = parameters?["url"] as? String else {
+        guard let _url = (parameters?["url"] as? String ?? "").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), _url.count > 0 else {
             return
         }
         
