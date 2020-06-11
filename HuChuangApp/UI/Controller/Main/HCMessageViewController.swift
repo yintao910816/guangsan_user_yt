@@ -20,7 +20,7 @@ class HCMessageViewController: BaseViewController {
     }
     
     override func setupUI() {
-        webCtrl = BaseWebViewController.init()
+        webCtrl = BaseWebViewController.init(autoLoadRequest: false)
         webCtrl.view.frame = .init(x: 0, y: 0, width: view.width, height: view.height - (tabBarController?.tabBar.height ?? 0))
         addChild(webCtrl)
         view.addSubview(webCtrl.view)

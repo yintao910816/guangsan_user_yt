@@ -19,6 +19,8 @@ class BaseWebViewController: BaseViewController {
     
     private var needHud: Bool = true
     
+    private var autoLoadRequest: Bool = true
+    
     private var bridge: WebViewJavascriptBridge!
     
     public var startLoad:(()->())?
@@ -29,6 +31,20 @@ class BaseWebViewController: BaseViewController {
     }()
     
     private var webView: UIWebView!
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    convenience init(autoLoadRequest: Bool) {
+        self.init(nibName: nil, bundle: nil)
+        
+        self.autoLoadRequest = autoLoadRequest
+    }
+        
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
     
     private func configWebView() {
         if webView != nil {
@@ -53,12 +69,16 @@ class BaseWebViewController: BaseViewController {
     }
     
     override func prepare(parameters: [String : Any]?) {
-        guard let _url = (parameters?["url"] as? String ?? "").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), _url.count > 0 else {
+        guard let _url = parameters?["url"] as? String else {
             return
         }
         
+        var charSet = CharacterSet.urlQueryAllowed
+        charSet.insert(charactersIn: "#")
+        let encodingURL = _url.addingPercentEncoding(withAllowedCharacters: charSet)
+        
         webTitle = (parameters?["title"] as? String)
-        url = _url
+        url = encodingURL ?? ""
     }
     
     func webCanBack(_ goBack: Bool = true) -> Bool {
@@ -72,7 +92,7 @@ class BaseWebViewController: BaseViewController {
     
     public func refreshWeb(needHud: Bool = true){
         self.needHud = needHud
-
+        autoLoadRequest = true
         configWebView()
     }
     
@@ -113,6 +133,10 @@ class BaseWebViewController: BaseViewController {
     }
     
     private func requestData(){
+        if !autoLoadRequest {
+            return
+        }
+        
         if needHud {
             hud.noticeLoading()
         }
@@ -121,6 +145,7 @@ class BaseWebViewController: BaseViewController {
             let request = URLRequest.init(url: requestUrl)
             webView.loadRequest(request)
         }else {
+            NoticesCenter.alert(message: url)
             hud.failureHidden("url错误")
         }
     }

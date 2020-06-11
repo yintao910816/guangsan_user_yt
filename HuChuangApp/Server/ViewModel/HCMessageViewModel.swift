@@ -30,9 +30,9 @@ class HCMessageViewModel: BaseViewModel {
         
         reloadSubject
             .subscribe(onNext: { [weak self] in
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [unowned self] in
-                    self?.hud.noticeLoading(inView: self?.hudView)
-                }
+//                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [unowned self] in
+//                    self?.hud.noticeLoading(inView: self?.hudView)
+//                }
                 self?.requestH5URL()
             })
             .disposed(by: disposeBag)
@@ -52,6 +52,7 @@ class HCMessageViewModel: BaseViewModel {
                 let url = "\($0.setValue)?token=\(userDefault.token)&unitId=\(AppSetup.instance.unitId)"
                 $0.setValue = url
                 self?.webURLObser.value = $0
+//                self?.hud.noticeHidden()
             }) { _ in }
             .disposed(by: disposeBag)
     }
