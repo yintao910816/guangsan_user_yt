@@ -9,11 +9,17 @@
 import UIKit
 import JavaScriptCore
 
+import JXPhotoBrowser
+import Kingfisher
+
 class BaseWebViewController: BaseViewController {
 
-    var url: String = ""
-    var redirect_url: String?
+    public var url: String = ""
+    public var redirect_url: String?
 
+    /// 是否需要根据h5获取标题
+    public var needWebTitle: Bool = true
+    
     private var context : JSContext?
     private var webTitle: String?
     
@@ -25,7 +31,9 @@ class BaseWebViewController: BaseViewController {
     
     public var startLoad:(()->())?
     public var finishLoad:(()->())?
-
+    
+    private var singleTap: UITapGestureRecognizer!
+    
     private lazy var hud: NoticesCenter = {
         return NoticesCenter()
     }()
@@ -58,7 +66,15 @@ class BaseWebViewController: BaseViewController {
         webView.scrollView.bounces = false
         webView.delegate = self
         view.addSubview(webView)
+        
+        if singleTap == nil {
+            singleTap = UITapGestureRecognizer.init(target: self, action: #selector(signalTapAction))
+            singleTap.cancelsTouchesInView = false
+            singleTap.delegate = self
+        }
 
+        webView.addGestureRecognizer(singleTap)
+        
         webView.snp.makeConstraints{ $0.edges.equalTo(UIEdgeInsets.zero) }
 
         if #available(iOS 11, *) {
@@ -66,6 +82,38 @@ class BaseWebViewController: BaseViewController {
         }
 
         requestData()
+    }
+    
+    @objc private func signalTapAction() {
+        let pt = singleTap.location(in: webView)
+        let imgURL = "document.elementFromPoint(\(pt.x), \(pt.y)).src"
+        let urlToSave = webView.stringByEvaluatingJavaScript(from: imgURL)
+//        PrintLog("ssssss - \(urlToSave ?? "")")
+        guard let urlStr = urlToSave, url.count > 0 else {
+            return
+        }
+        
+        guard let url = URL(string: urlStr) else {
+            return
+        }
+        
+        let browser = TYImageBrower()
+//        browser.imageV.setImage(urlStr)
+        browser.show()
+        
+//        let browser = JXPhotoBrowser()
+//
+//        browser.numberOfItems = {
+//            return 1
+//        }
+//
+        PrintLog("图片地址：\(urlStr)")
+        ImageDownloader.default.downloadImage(with: url, retrieveImageTask: nil, options: nil, progressBlock: nil) { (image, error, url, data) in
+            browser.image = image
+            PrintLog("图片大小：\(image?.size)")
+        }
+//
+//        browser.show()
     }
     
     override func prepare(parameters: [String : Any]?) {
@@ -151,7 +199,7 @@ class BaseWebViewController: BaseViewController {
     }
 
     private func setTitle() {
-        if let title = webView.stringByEvaluatingJavaScript(from: "document.title"), title.count > 0{
+        if let title = webView.stringByEvaluatingJavaScript(from: "document.title"), title.count > 0, needWebTitle == true {
             navigationItem.title = title
         }
     }
@@ -307,5 +355,68 @@ extension BaseWebViewController {
         guard let jsonString =  String.init(data: jsonData, encoding: .utf8) else { return "" }
         PrintLog("app信息：\(jsonString)")
         return jsonString
+    }
+}
+
+extension BaseWebViewController: UIGestureRecognizerDelegate {
+  
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true;
+    }
+}
+
+
+
+class TYImageBrower: UIView {
+    
+    private var imageV = UIImageView()
+    
+    private var tapGes: UITapGestureRecognizer!
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        backgroundColor = .black
+        
+        imageV.clipsToBounds = true
+        imageV.contentMode = .scaleAspectFit
+        addSubview(imageV)
+        
+        tapGes = UITapGestureRecognizer.init(target: self, action: #selector(tapAction))
+        addGestureRecognizer(tapGes)
+    }
+    
+    @objc private func tapAction() {
+        UIView.animate(withDuration: 0.25, animations: {
+            self.alpha = 0
+        }) { [weak self] in
+            if $0 { self?.removeFromSuperview() }
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    public var image: UIImage? {
+        didSet {
+            imageV.image = image
+        }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        imageV.frame = bounds
+    }
+    
+    public func show() {
+        self.frame = .init(x: 0, y: 0, width: PPScreenW, height: PPScreenH)
+        UIApplication.shared.keyWindow?.addSubview(self)
+        
+        alpha = 0
+        UIView.animate(withDuration: 0.25, animations: {
+            self.alpha = 1
+        })
     }
 }

@@ -19,6 +19,8 @@ class HCArticleDetailViewController: BaseWebViewController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 
+        needWebTitle = false
+        
 //        navBarColor = HC_MAIN_COLOR
 //        (navigationController as? BaseNavigationController)?.backItemInterface = .red
     }
@@ -30,7 +32,7 @@ class HCArticleDetailViewController: BaseWebViewController {
     override func setupUI() {
         super.setupUI()
         
-        title = articleModel.title
+        title = "文章详情"
         
         storeButton = TYClickedButton.init(type: .custom)
         storeButton.frame = .init(x: 0, y: 0, width: 30, height: 30)

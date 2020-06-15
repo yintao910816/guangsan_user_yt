@@ -59,12 +59,12 @@ class AppSetup {
 import Moya
 
 struct APIAssistance {
-    
-//    private static let base   = "http://210.21.12.73:9090/hc-patient/"
-//    private static let fileBase = "http://210.21.12.73:9090/hc-files/"
-    
+        
     private static let base   = "https://ivf.gy3y.com/hc-patients/"
     private static let fileBase = "https://ivf.gy3y.com/hc-files/"
+
+//    private static let base   = "https://ivf.gy3y.com/hc-patient/"
+//    private static let fileBase = "https://ivf.gy3y.com/hc-files/"
 
     static public func baseURL(API: API) ->URL{
         switch API {

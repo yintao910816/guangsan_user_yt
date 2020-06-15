@@ -25,4 +25,6 @@ pod 'UMCAnalytics'
 pod 'UMCShare/Social/WeChat'
 pod 'UMCShare/UI'
 
+pod 'JXPhotoBrowser', '~> 3.0'
+
 end

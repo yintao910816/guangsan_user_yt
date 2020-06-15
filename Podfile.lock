@@ -2,6 +2,7 @@ PODS:
   - Alamofire (4.9.1)
   - Differentiator (3.1.0)
   - HandyJSON (5.0.1)
+  - JXPhotoBrowser (3.0.5)
   - Kingfisher (4.6.4)
   - MJRefresh (3.1.15.7)
   - Moya/Core (12.0.1):
@@ -46,6 +47,7 @@ PODS:
 
 DEPENDENCIES:
   - HandyJSON (~> 5.0.0-beta.1)
+  - JXPhotoBrowser (~> 3.0)
   - Kingfisher (~> 4.6.1)
   - MJRefresh (~> 3.1.15.3)
   - Moya/RxSwift (~> 12.0.1)
@@ -67,6 +69,7 @@ SPEC REPOS:
     - Alamofire
     - Differentiator
     - HandyJSON
+    - JXPhotoBrowser
     - Kingfisher
     - MJRefresh
     - Moya
@@ -88,6 +91,7 @@ SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
   HandyJSON: d45b8415c501e3affc59ca9762c1197ff0feb646
+  JXPhotoBrowser: 63a8d6f6c92ed94f7b6bd81a1f194d065adbe180
   Kingfisher: 68498a706e46c2a050b0c9572f100e5db407f6e0
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
@@ -105,6 +109,6 @@ SPEC CHECKSUMS:
   UMCShare: e0cef55c0fd6051254c8cda1d0630eb578b27bad
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
 
-PODFILE CHECKSUM: 064fcd0644b9b5bb8e9d5604fdf90ee50589553e
+PODFILE CHECKSUM: 24df50b3e68f25c4bb60d9d7c2dd1d7c54301ad2
 
 COCOAPODS: 1.8.3
