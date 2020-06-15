@@ -60,11 +60,11 @@ import Moya
 
 struct APIAssistance {
         
-    private static let base   = "https://ivf.gy3y.com/hc-patients/"
-    private static let fileBase = "https://ivf.gy3y.com/hc-files/"
-
-//    private static let base   = "https://ivf.gy3y.com/hc-patient/"
+//    private static let base   = "https://ivf.gy3y.com/hc-patients/"
 //    private static let fileBase = "https://ivf.gy3y.com/hc-files/"
+
+    private static let base   = "https://ivf.gy3y.com/hc-patient/"
+    private static let fileBase = "https://ivf.gy3y.com/hc-files/"
 
     static public func baseURL(API: API) ->URL{
         switch API {

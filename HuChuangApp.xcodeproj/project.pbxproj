@@ -298,6 +298,7 @@
 		B8DE18712474D894004EC3CE /* UIView+Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DE18702474D894004EC3CE /* UIView+Layer.swift */; };
 		B8DE187324756449004EC3CE /* HCMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DE187224756449004EC3CE /* HCMessageViewController.swift */; };
 		B8DE18752475670D004EC3CE /* HCMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DE18742475670D004EC3CE /* HCMessageViewModel.swift */; };
+		B8F894D42497A7BC00912F23 /* HCArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F894D32497A7BC00912F23 /* HCArticleCell.swift */; };
 		B8FC3AA52216FEEB00889483 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FC3AA42216FEEB00889483 /* HomeHeaderView.swift */; };
 		C4193D8422A7649F007A9E07 /* TYClickedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4193D8322A7649F007A9E07 /* TYClickedButton.swift */; };
 		C41A12C122BCF49100214216 /* String+Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41A12C022BCF49100214216 /* String+Operation.swift */; };
@@ -916,6 +917,7 @@
 		B8DE18702474D894004EC3CE /* UIView+Layer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layer.swift"; sourceTree = "<group>"; };
 		B8DE187224756449004EC3CE /* HCMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCMessageViewController.swift; sourceTree = "<group>"; };
 		B8DE18742475670D004EC3CE /* HCMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCMessageViewModel.swift; sourceTree = "<group>"; };
+		B8F894D32497A7BC00912F23 /* HCArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCArticleCell.swift; sourceTree = "<group>"; };
 		B8FC3AA42216FEEB00889483 /* HomeHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		C4193D8322A7649F007A9E07 /* TYClickedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TYClickedButton.swift; sourceTree = "<group>"; };
 		C41A12C022BCF49100214216 /* String+Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Operation.swift"; sourceTree = "<group>"; };
@@ -2238,6 +2240,7 @@
 		C43F09B722142DEA00910437 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				B8F894D32497A7BC00912F23 /* HCArticleCell.swift */,
 				B8A7752B24861A4200271DA8 /* HCClassRoomListCell.swift */,
 				C43F09B822142DEA00910437 /* Base */,
 				C43F09B92214315900910437 /* HomeFunctionItemCell.swift */,
@@ -2758,6 +2761,7 @@
 				B816EB33221DABF400F024D5 /* ZXAbstractDoCoMoResultParser.m in Sources */,
 				B816EAD7221DABF400F024D5 /* ZXPDF417ScanningDecoder.m in Sources */,
 				C421331C22056E83006C10C4 /* ViewControllerServer.swift in Sources */,
+				B8F894D42497A7BC00912F23 /* HCArticleCell.swift in Sources */,
 				B816EADB221DABF400F024D5 /* ZXPDF417DetectionResult.m in Sources */,
 				B816EB19221DABF400F024D5 /* ZXBitArrayBuilder.m in Sources */,
 				B816EAE1221DABF400F024D5 /* ZXDataMatrixReader.m in Sources */,

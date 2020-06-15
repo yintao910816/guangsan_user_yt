@@ -24,9 +24,10 @@ class HCClassRoomItemController: HCSlideItemController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 0
-        tableView.rowHeight = HCClassRoomListCell_height
+//        tableView.rowHeight = HCClassRoomListCell_height
 
-        tableView.register(HCClassRoomListCell.self, forCellReuseIdentifier: HCClassRoomListCell_identifier)
+//        tableView.register(HCClassRoomListCell.self, forCellReuseIdentifier: HCClassRoomListCell_identifier)
+        tableView.register(HCArticleCell.self, forCellReuseIdentifier: HCArticleCell_identifier)
     }
     
     required init?(coder: NSCoder) {
@@ -56,13 +57,18 @@ class HCClassRoomItemController: HCSlideItemController {
 
 extension HCClassRoomItemController: UITableViewDelegate, UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        datasource[indexPath.row].articleCellHeight
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return datasource.count
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = (tableView.dequeueReusableCell(withIdentifier: HCClassRoomListCell_identifier) as! HCClassRoomListCell)
+        let cell = (tableView.dequeueReusableCell(withIdentifier: HCArticleCell_identifier) as! HCArticleCell)
         cell.model = datasource[indexPath.row]
+        cell.hiddenLine = indexPath.row == datasource.count - 1
         return cell
     }
     

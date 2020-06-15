@@ -62,6 +62,16 @@ class HCArticleItemModel: HJModel {
         return height
     }()
     
+    lazy var articleCellHeight: CGFloat = {
+        
+        var height: CGFloat = 12.0
+        var titleH: CGFloat = self.title.getTextHeigh(fontSize: 14,
+                                                      width: UIScreen.main.bounds.width - 30,
+                                                      fontName: FontName.PingFRegular.rawValue)
+        height += (titleH + 12.0 + 8)
+        return height
+    }()
+    
     lazy var readCountText: String = {
         return "\(self.readNumber) 阅读"
     }()
