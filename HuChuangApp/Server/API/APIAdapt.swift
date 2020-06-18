@@ -54,6 +54,19 @@ class AppSetup {
         
         PrintLog("默认请求参数已改变：\(requestParam)")
     }
+    
+    /// 处理跳转h5链接
+    public static func transformURL(urlStr: String, unitId: String = AppSetup.instance.unitId) ->String {
+        PrintLog("h5拼接前地址：\(urlStr)")
+        var retURL = urlStr
+        if retURL.contains("?") == false {
+            retURL += "?token=\(userDefault.token)&unitId=\(unitId)"
+        }else {
+            retURL += "&token=\(userDefault.token)&unitId=\(unitId)"
+        }
+        PrintLog("h5拼接后地址：\(retURL)")
+        return retURL
+    }
 }
 
 import Moya

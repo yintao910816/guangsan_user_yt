@@ -48,7 +48,7 @@ extension HCAppDelegate {
                 
                 if Bundle.main.isNewest(version: res.versionName) == false
                 {
-                    NoticesCenter.alert(title: "提示", message: "有最新版本可以升级", cancleTitle: "取消", okTitle: "去更新", callBackOK: {
+                    NoticesCenter.alert(title: "提示", message: res.descriptionInfo, cancleTitle: "取消", okTitle: "去更新", callBackOK: {
                         let storeProductVC = SKStoreProductViewController()
                         storeProductVC.delegate = self
                         storeProductVC.loadProduct(withParameters: [SKStoreProductParameterITunesItemIdentifier: "1454537873"],

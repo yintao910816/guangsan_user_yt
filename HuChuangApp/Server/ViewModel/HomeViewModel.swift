@@ -99,13 +99,15 @@ class HomeViewModel: RefreshVM<HomeFunctionSectionModel>, VMNavigation {
     
     private func pushH5(model: H5InfoModel) {
         guard model.setValue.count > 0 else { return }
-        let url = "\(model.setValue)?token=\(userDefault.token)&unitId=\(AppSetup.instance.unitId)"
+//        let url = "\(model.setValue)?token=\(userDefault.token)&unitId=\(AppSetup.instance.unitId)"
+        let url = AppSetup.transformURL(urlStr: model.setValue)
         HomeViewModel.push(BaseWebViewController.self, ["url": url, "title": model.name])
     }
     
     private func pushH5(model: HomeFunctionModel) {
         guard model.functionUrl.count > 0 else { return }
-        let url = "\(model.functionUrl)?token=\(userDefault.token)&unitId=\(AppSetup.instance.unitId)"
+//        let url = "\(model.functionUrl)?token=\(userDefault.token)&unitId=\(AppSetup.instance.unitId)"
+        let url = AppSetup.transformURL(urlStr: model.functionUrl, unitId: model.unitId)
         HomeViewModel.push(BaseWebViewController.self, ["url": url, "title": model.name])
     }
     

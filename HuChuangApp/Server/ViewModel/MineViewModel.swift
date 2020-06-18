@@ -136,16 +136,15 @@ class MineViewModel: BaseViewModel, VMNavigation {
         guard model.setValue.count > 0 else { return }
         
         if model.setValue.count > 0 {
-            var url = model.setValue
-            PrintLog("h5拼接前地址：\(url)")
-            if url.contains("?") == false {
-                url += "?token=\(userDefault.token)&unitId=36"
-            }else {
-                url += "&token=\(userDefault.token)&unitId=36"
-            }
-            PrintLog("h5拼接后地址：\(url)")
-            
-            HomeViewModel.push(BaseWebViewController.self, ["url": url])
+//            var url = model.setValue
+//            PrintLog("h5拼接前地址：\(url)")
+//            if url.contains("?") == false {
+//                url += "?token=\(userDefault.token)&unitId=36"
+//            }else {
+//                url += "&token=\(userDefault.token)&unitId=36"
+//            }
+//            PrintLog("h5拼接后地址：\(url)")
+            HomeViewModel.push(BaseWebViewController.self, ["url": AppSetup.transformURL(urlStr: model.setValue)])
         }else {
             hud.failureHidden("功能暂不开放")
         }

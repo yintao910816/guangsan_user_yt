@@ -132,7 +132,8 @@ extension HCAppDelegate : UNUserNotificationCenterDelegate{
             .map(model: H5InfoModel.self)
             .subscribe(onSuccess: { model in
                 guard model.setValue.count > 0 else { return }
-                let url = "\(model.setValue)?token=\(userDefault.token)&unitId=\(AppSetup.instance.unitId)"
+//                let url = "\(model.setValue)?token=\(userDefault.token)&unitId=\(AppSetup.instance.unitId)"
+                let url = AppSetup.transformURL(urlStr: model.setValue)
                 DispatchQueue.main.async {
                     HomeViewModel.push(BaseWebViewController.self, ["url": url, "title": model.name])
                 }
