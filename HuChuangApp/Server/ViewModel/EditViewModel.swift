@@ -153,7 +153,7 @@ class EditSexViewModel: BaseViewModel {
         }
         let params: [String: String] = ["patientId": user.uid,
                                         "name": user.name,
-                                        "sex": sex == "男" ? "1" : "2",
+                                        "sex": sex == "男" ? "1" : "0",
                                         "headPath": user.headPath,
                                         "synopsis": user.synopsis,
                                         "birthday": user.birthday]

@@ -130,13 +130,7 @@ class HCLoginViewController: BaseViewController {
             })
             .disposed(by: disposeBag)
         
-        tableView.rx.modelSelected(HCLoginAccountModel.self)
-            .asDriver()
-            .do(onNext: { [unowned self] _ in
-                self.tableView.isHidden = true
-            })
-            .map { $0.account }
-            .drive(accountInputOutlet.rx.text)
+        tableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
         viewModel.reloadSubject.onNext(Void())
@@ -154,5 +148,19 @@ extension HCLoginViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         keyBoardManager.move(coverView: loginOutlet, moveView: contentBgView)
         return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if !tableView.isHidden {
+            tableView.isHidden = true
+        }
+        return true
+    }
+}
+
+extension HCLoginViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        accountInputOutlet.text = viewModel.recordAccountObser.value[indexPath.row].account
     }
 }

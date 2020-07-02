@@ -51,7 +51,7 @@ class HCUserModel: HJModel {
             case 1:
                 return "男"
             default:
-                return "未知"
+                return "–"
             }
         }
     }
