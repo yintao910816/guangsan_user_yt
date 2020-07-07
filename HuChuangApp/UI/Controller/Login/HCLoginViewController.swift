@@ -162,5 +162,6 @@ extension HCLoginViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         accountInputOutlet.text = viewModel.recordAccountObser.value[indexPath.row].account
+        tableView.isHidden = true
     }
 }

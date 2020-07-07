@@ -25,6 +25,8 @@ class HCAccountViewController: BaseViewController {
         tableView.rowHeight = 50
         view.addSubview(tableView)
         
+        tableView.snp.makeConstraints{ $0.edges.equalTo(UIEdgeInsets.zero) }
+        
         tableView.register(UINib.init(nibName: "HCAccountListCell", bundle: nil), forCellReuseIdentifier: "HCAccountListCell")
     }
     

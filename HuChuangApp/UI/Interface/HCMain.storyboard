@@ -202,6 +202,7 @@
                         <outlet property="tableView" destination="Whz-Wr-R97" id="yPN-fY-aqj"/>
                         <segue destination="Jwe-DR-KVc" kind="show" identifier="editUserInfoSegue" id="KaQ-fq-1tw"/>
                         <segue destination="aUx-z0-Brc" kind="show" identifier="xuanjiaoSegue" id="O5t-I7-rVj"/>
+                        <segue destination="kOq-sK-PLf" kind="show" identifier="aboutSegue" id="GqG-FN-gLf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fG3-g1-Csn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -495,6 +496,94 @@
             </objects>
             <point key="canvasLocation" x="2140" y="-432"/>
         </scene>
+        <!--关于柔济孕宝-->
+        <scene sceneID="Nrk-uE-hmO">
+            <objects>
+                <viewController id="kOq-sK-PLf" customClass="HCAboutViewController" customModule="HuChuangApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HLf-Aj-pvU"/>
+                        <viewControllerLayoutGuide type="bottom" id="2MD-lX-hSC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pph-YE-7JJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hc_icon" translatesAutoresizingMaskIntoConstraints="NO" id="kPD-Sq-3Hf">
+                                <rect key="frame" x="137.5" y="79" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="94c-sk-Kcg"/>
+                                    <constraint firstAttribute="width" secondItem="kPD-Sq-3Hf" secondAttribute="height" multiplier="1:1" id="LhV-QL-D8r"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="50"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="巧韵科技旗下产品" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="meg-co-4AT">
+                                <rect key="frame" x="127.5" y="219" width="120" height="21"/>
+                                <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="柔济孕宝IO版" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ClE-jY-pta">
+                                <rect key="frame" x="148" y="250" width="79" height="19"/>
+                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="13"/>
+                                <color key="textColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YQu-vK-0Sm">
+                                <rect key="frame" x="186.5" y="594" width="2" height="12"/>
+                                <color key="backgroundColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="iuc-bz-wsE"/>
+                                    <constraint firstAttribute="width" constant="2" id="tGS-PC-XiA"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ax-S2-jUJ">
+                                <rect key="frame" x="97.5" y="584.5" width="79" height="31"/>
+                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="13"/>
+                                <state key="normal" title="《服务协议》">
+                                    <color key="titleColor" red="0.92156862745098034" green="0.72549019607843135" blue="0.35686274509803922" alpha="1" colorSpace="deviceRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="actions:" destination="kOq-sK-PLf" eventType="touchUpInside" id="6tF-ni-TTQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZN-GO-a7k">
+                                <rect key="frame" x="198.5" y="584.5" width="79" height="31"/>
+                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="13"/>
+                                <state key="normal" title="《隐私政策》">
+                                    <color key="titleColor" red="0.92156862750000001" green="0.72549019609999998" blue="0.35686274509999999" alpha="1" colorSpace="deviceRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="actions:" destination="kOq-sK-PLf" eventType="touchUpInside" id="78w-zD-pTO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ClE-jY-pta" firstAttribute="centerX" secondItem="pph-YE-7JJ" secondAttribute="centerX" id="2q5-xN-XJA"/>
+                            <constraint firstItem="YQu-vK-0Sm" firstAttribute="centerX" secondItem="pph-YE-7JJ" secondAttribute="centerX" id="JPD-MJ-yOr"/>
+                            <constraint firstItem="kPD-Sq-3Hf" firstAttribute="top" secondItem="HLf-Aj-pvU" secondAttribute="bottom" constant="35" id="MCv-kj-vUe"/>
+                            <constraint firstItem="meg-co-4AT" firstAttribute="centerX" secondItem="pph-YE-7JJ" secondAttribute="centerX" id="MVw-oW-5Fg"/>
+                            <constraint firstItem="kPD-Sq-3Hf" firstAttribute="centerX" secondItem="pph-YE-7JJ" secondAttribute="centerX" id="OaU-co-wjf"/>
+                            <constraint firstItem="2MD-lX-hSC" firstAttribute="top" secondItem="YQu-vK-0Sm" secondAttribute="bottom" constant="12" id="P9d-OA-prn"/>
+                            <constraint firstItem="meg-co-4AT" firstAttribute="top" secondItem="kPD-Sq-3Hf" secondAttribute="bottom" constant="40" id="SaK-J6-dbY"/>
+                            <constraint firstItem="YQu-vK-0Sm" firstAttribute="leading" secondItem="8ax-S2-jUJ" secondAttribute="trailing" constant="10" id="WXG-If-8eS"/>
+                            <constraint firstItem="mZN-GO-a7k" firstAttribute="leading" secondItem="YQu-vK-0Sm" secondAttribute="trailing" constant="10" id="beP-Cu-gc7"/>
+                            <constraint firstItem="8ax-S2-jUJ" firstAttribute="centerY" secondItem="YQu-vK-0Sm" secondAttribute="centerY" id="eJK-i8-6rt"/>
+                            <constraint firstItem="mZN-GO-a7k" firstAttribute="centerY" secondItem="YQu-vK-0Sm" secondAttribute="centerY" id="j4o-tX-Hwr"/>
+                            <constraint firstItem="ClE-jY-pta" firstAttribute="top" secondItem="meg-co-4AT" secondAttribute="bottom" constant="10" id="lTf-wM-cn8"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="关于柔济孕宝" id="6qZ-KP-kJh"/>
+                    <connections>
+                        <outlet property="versionOutlet" destination="ClE-jY-pta" id="JW5-Ma-KiI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t89-XA-C5B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="309.60000000000002" y="1757.2713643178413"/>
+        </scene>
         <!--宣教指引-->
         <scene sceneID="rgT-Ex-JbP">
             <objects>
@@ -581,6 +670,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="hc_icon" width="180" height="180"/>
         <image name="home_tab_selected" width="27" height="27"/>
         <image name="home_tab_unselected" width="27" height="27"/>
         <image name="icon_consult_nsel" width="27" height="27"/>

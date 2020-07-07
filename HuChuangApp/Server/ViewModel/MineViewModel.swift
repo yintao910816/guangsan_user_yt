@@ -103,9 +103,12 @@ class MineViewModel: BaseViewModel, VMNavigation {
                                                               MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_zhiliao"),
                                                                                             title: "治疗信息",
                                                                                             h5Type: .cureMessage),
+//                                                              MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_xitong"),
+//                                                                                            title: "账户与安全",
+//                                                                                            h5Type: .accountSecurity)]
                                                               MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_xitong"),
-                                                                                            title: "账户与安全",
-                                                                                            h5Type: .accountSecurity)]),
+                                                                                            title: "关于柔济孕宝",
+                                                                                            segue: "aboutSegue")]),
                           SectionModel.init(model: 1, items: [MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_xuanjiao"),
                                                                                             title: "宣教指引",
                                                                                             h5Type: .missionToGuide,
@@ -163,7 +166,7 @@ class MenuListItemModel {
     var h5Type: H5Type = .underDev
     var segue: String = ""
     
-    class func createModel(titleIcon: UIImage? = nil, title: String, h5Type: H5Type, segue: String = "") ->MenuListItemModel {
+    class func createModel(titleIcon: UIImage? = nil, title: String, h5Type: H5Type = .underDev, segue: String = "") ->MenuListItemModel {
         let model = MenuListItemModel()
         model.titleIcon = titleIcon
         model.title = title

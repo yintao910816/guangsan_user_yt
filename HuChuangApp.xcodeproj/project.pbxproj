@@ -272,6 +272,7 @@
 		B8A775322487809C00271DA8 /* HCAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A775312487809C00271DA8 /* HCAccountViewModel.swift */; };
 		B8A775352487868D00271DA8 /* HCAccountListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A775332487868D00271DA8 /* HCAccountListCell.swift */; };
 		B8A775362487868D00271DA8 /* HCAccountListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8A775342487868D00271DA8 /* HCAccountListCell.xib */; };
+		B8BCB6DB24B4291400861DC1 /* HCAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BCB6DA24B4291400861DC1 /* HCAboutViewController.swift */; };
 		B8BE34EF2214599B00EF16F1 /* MineHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BE34EE2214599B00EF16F1 /* MineHeaderView.xib */; };
 		B8BE34F222145DF000EF16F1 /* UserFunctionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE34F122145DF000EF16F1 /* UserFunctionButton.swift */; };
 		B8BE34F42214645900EF16F1 /* MineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE34F32214645900EF16F1 /* MineViewModel.swift */; };
@@ -891,6 +892,7 @@
 		B8A775312487809C00271DA8 /* HCAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCAccountViewModel.swift; sourceTree = "<group>"; };
 		B8A775332487868D00271DA8 /* HCAccountListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCAccountListCell.swift; sourceTree = "<group>"; };
 		B8A775342487868D00271DA8 /* HCAccountListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HCAccountListCell.xib; sourceTree = "<group>"; };
+		B8BCB6DA24B4291400861DC1 /* HCAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCAboutViewController.swift; sourceTree = "<group>"; };
 		B8BE34EE2214599B00EF16F1 /* MineHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineHeaderView.xib; sourceTree = "<group>"; };
 		B8BE34F122145DF000EF16F1 /* UserFunctionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFunctionButton.swift; sourceTree = "<group>"; };
 		B8BE34F32214645900EF16F1 /* MineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewModel.swift; sourceTree = "<group>"; };
@@ -1848,6 +1850,7 @@
 				B8BE351622147B1E00EF16F1 /* HCEditBirthdayViewController.swift */,
 				B8BE351822147B4000EF16F1 /* HCEditSynopsisViewController.swift */,
 				B85B6D4824907005004E3123 /* HCXuanjiaoViewController.swift */,
+				B8BCB6DA24B4291400861DC1 /* HCAboutViewController.swift */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -2577,6 +2580,7 @@
 				B816EB2A221DABF400F024D5 /* ZXUPCEANWriter.m in Sources */,
 				B816EB0A221DABF400F024D5 /* ZXRSSExpandedDecodedInformation.m in Sources */,
 				B816EA8B221DABF400F024D5 /* ZXAztecDetectorResult.m in Sources */,
+				B8BCB6DB24B4291400861DC1 /* HCAboutViewController.swift in Sources */,
 				C421332B22056F24006C10C4 /* HUD.swift in Sources */,
 				B816EA7B221DABF400F024D5 /* ZXPlanarYUVLuminanceSource.m in Sources */,
 				B8A7751D2486176100271DA8 /* HCClassRoom.swift in Sources */,
@@ -2923,7 +2927,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.02.003;
+				MARKETING_VERSION = 2.02.004;
 				PRODUCT_BUNDLE_IDENTIFIER = com.huchuang.guangsanuser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = guangsanuser_dev_pro;
@@ -2950,7 +2954,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.02.003;
+				MARKETING_VERSION = 2.02.004;
 				PRODUCT_BUNDLE_IDENTIFIER = com.huchuang.guangsanuser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = guangsanuser_hoc_pro;

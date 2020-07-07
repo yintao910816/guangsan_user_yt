@@ -32,14 +32,7 @@ class CarouselView: UIView {
     
     public var timeInterval: TimeInterval = 4.0 {
         didSet {
-            timer?.invalidate()
-            timer = nil
-            
-            timer = Timer.scheduledTimer(timeInterval: timeInterval,
-                                         target: self,
-                                         selector: #selector(timerAction),
-                                         userInfo: nil,
-                                         repeats: true)
+            resetTimer()
             timer?.fireDate = Date.init(timeIntervalSinceNow: timeInterval)
         }
     }
@@ -72,6 +65,7 @@ class CarouselView: UIView {
             
             setCarouselImage()
             
+            resetTimer()
             timer?.fireDate = Date.init(timeIntervalSinceNow: timeInterval)
         }
     }
@@ -121,15 +115,8 @@ class CarouselView: UIView {
         tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(tapCarousel(_:)))
         tapGesture.isEnabled = false
         addGestureRecognizer(tapGesture)
-        
-        timer = Timer.scheduledTimer(timeInterval: timeInterval,
-                                     target: self,
-                                     selector: #selector(timerAction),
-                                     userInfo: nil,
-                                     repeats: true)
-        timer?.fireDate = Date.distantFuture
     }
-    
+        
     @objc private func timerAction() {
         scroll.setContentOffset(CGPoint.init(x: width * 2, y: 0), animated: true)
     }
@@ -170,9 +157,7 @@ class CarouselView: UIView {
     }
     
     deinit {
-        timer?.invalidate()
-        timer = nil
-        
+        dellocTimer()
         PrintLog("计时器释放了 -- \(self)")
     }
 }
@@ -201,4 +186,23 @@ extension CarouselView: UIScrollViewDelegate {
         scrollViewDidEndDecelerating(scrollView)
     }
     
+}
+
+extension CarouselView {
+    
+    private func resetTimer() {
+        dellocTimer()
+        
+        timer = Timer.scheduledTimer(timeInterval: timeInterval,
+                                     target: self,
+                                     selector: #selector(timerAction),
+                                     userInfo: nil,
+                                     repeats: true)
+        timer?.fireDate = Date.distantFuture
+    }
+
+    private func dellocTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
 }

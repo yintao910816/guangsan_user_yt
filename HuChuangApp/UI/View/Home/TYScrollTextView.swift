@@ -73,29 +73,17 @@ class TYScrollTextView: UIView {
         
         timerRemove()
         
-        if #available(iOS 10.0, *) {
-            timer = Timer.init(fire: Date.init(timeIntervalSinceNow: 3),
-                               interval: TimeInterval(3),
-                               repeats: true,
-                               block: { [unowned self] timer in
-                                self.cellScroll()
-            })
-        } else {
-            timer = Timer.init(fireAt: Date.init(timeIntervalSinceNow: 3),
-                               interval: TimeInterval(3),
-                               target: self,
-                               selector: #selector(cellScroll),
-                               userInfo: nil,
-                               repeats: true)
-            timer.fireDate = Date()
-        }
-        
-        RunLoop.main.add(timer, forMode: RunLoop.Mode.default)
+        timer = Timer.scheduledTimer(timeInterval: 3,
+                                     target: self,
+                                     selector: #selector(cellScroll),
+                                     userInfo: nil,
+                                     repeats: true)
+        timer?.fireDate = Date.init(timeIntervalSinceNow: 3)
     }
 
     @objc private func cellScroll() {
         scrolToRow += 1
-        var scrolIndexPath: IndexPath!
+        var scrolIndexPath: IndexPath = IndexPath.init(row: 0, section: 0)
         if scrolToRow >= datasourceModel.count {
             scrolToRow = 0
             scrolIndexPath = IndexPath.init(row: scrolToRow, section: 0)
