@@ -518,20 +518,14 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="50"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="巧韵科技旗下产品" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="meg-co-4AT">
-                                <rect key="frame" x="127.5" y="219" width="120" height="21"/>
-                                <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="柔济孕宝IO版" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ClE-jY-pta">
-                                <rect key="frame" x="148" y="250" width="79" height="19"/>
+                                <rect key="frame" x="148" y="204" width="79" height="19"/>
                                 <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="13"/>
                                 <color key="textColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YQu-vK-0Sm">
-                                <rect key="frame" x="186.5" y="594" width="2" height="12"/>
+                                <rect key="frame" x="186.5" y="581" width="2" height="12"/>
                                 <color key="backgroundColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="12" id="iuc-bz-wsE"/>
@@ -539,7 +533,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ax-S2-jUJ">
-                                <rect key="frame" x="97.5" y="584.5" width="79" height="31"/>
+                                <rect key="frame" x="97.5" y="571.5" width="79" height="31"/>
                                 <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="13"/>
                                 <state key="normal" title="《服务协议》">
                                     <color key="titleColor" red="0.92156862745098034" green="0.72549019607843135" blue="0.35686274509803922" alpha="1" colorSpace="deviceRGB"/>
@@ -549,7 +543,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZN-GO-a7k">
-                                <rect key="frame" x="198.5" y="584.5" width="79" height="31"/>
+                                <rect key="frame" x="198.5" y="571.5" width="79" height="31"/>
                                 <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="13"/>
                                 <state key="normal" title="《隐私政策》">
                                     <color key="titleColor" red="0.92156862750000001" green="0.72549019609999998" blue="0.35686274509999999" alpha="1" colorSpace="deviceRGB"/>
@@ -564,15 +558,13 @@
                             <constraint firstItem="ClE-jY-pta" firstAttribute="centerX" secondItem="pph-YE-7JJ" secondAttribute="centerX" id="2q5-xN-XJA"/>
                             <constraint firstItem="YQu-vK-0Sm" firstAttribute="centerX" secondItem="pph-YE-7JJ" secondAttribute="centerX" id="JPD-MJ-yOr"/>
                             <constraint firstItem="kPD-Sq-3Hf" firstAttribute="top" secondItem="HLf-Aj-pvU" secondAttribute="bottom" constant="35" id="MCv-kj-vUe"/>
-                            <constraint firstItem="meg-co-4AT" firstAttribute="centerX" secondItem="pph-YE-7JJ" secondAttribute="centerX" id="MVw-oW-5Fg"/>
                             <constraint firstItem="kPD-Sq-3Hf" firstAttribute="centerX" secondItem="pph-YE-7JJ" secondAttribute="centerX" id="OaU-co-wjf"/>
-                            <constraint firstItem="2MD-lX-hSC" firstAttribute="top" secondItem="YQu-vK-0Sm" secondAttribute="bottom" constant="12" id="P9d-OA-prn"/>
-                            <constraint firstItem="meg-co-4AT" firstAttribute="top" secondItem="kPD-Sq-3Hf" secondAttribute="bottom" constant="40" id="SaK-J6-dbY"/>
+                            <constraint firstItem="2MD-lX-hSC" firstAttribute="top" secondItem="YQu-vK-0Sm" secondAttribute="bottom" constant="25" id="P9d-OA-prn"/>
                             <constraint firstItem="YQu-vK-0Sm" firstAttribute="leading" secondItem="8ax-S2-jUJ" secondAttribute="trailing" constant="10" id="WXG-If-8eS"/>
                             <constraint firstItem="mZN-GO-a7k" firstAttribute="leading" secondItem="YQu-vK-0Sm" secondAttribute="trailing" constant="10" id="beP-Cu-gc7"/>
                             <constraint firstItem="8ax-S2-jUJ" firstAttribute="centerY" secondItem="YQu-vK-0Sm" secondAttribute="centerY" id="eJK-i8-6rt"/>
                             <constraint firstItem="mZN-GO-a7k" firstAttribute="centerY" secondItem="YQu-vK-0Sm" secondAttribute="centerY" id="j4o-tX-Hwr"/>
-                            <constraint firstItem="ClE-jY-pta" firstAttribute="top" secondItem="meg-co-4AT" secondAttribute="bottom" constant="10" id="lTf-wM-cn8"/>
+                            <constraint firstItem="ClE-jY-pta" firstAttribute="top" secondItem="kPD-Sq-3Hf" secondAttribute="bottom" constant="25" id="y2i-cn-ohX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="关于柔济孕宝" id="6qZ-KP-kJh"/>
