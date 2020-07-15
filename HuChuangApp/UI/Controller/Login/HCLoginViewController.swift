@@ -65,9 +65,23 @@ class HCLoginViewController: BaseViewController {
         #else
         accountInputOutlet.text = userDefault.loginPhone
         #endif
+        
+        contrlThirdLogin(enabel: HCHelper.share.enableWchatLogin)
+    }
+    
+    private func contrlThirdLogin(enabel: Bool) {
+        for tag in 205...208 {
+            contentBgView.viewWithTag(tag)?.isHidden = !enabel
+        }
     }
     
     override func rxBind() {
+        HCHelper.share.enableWchatLoginSubjet
+            .subscribe(onNext: { [weak self] in
+                self?.contrlThirdLogin(enabel: $0)
+            })
+            .disposed(by: disposeBag)
+        
         timer.showText.asDriver()
             .skip(1)
             .drive(onNext: { [weak self] second in

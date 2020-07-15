@@ -65,6 +65,15 @@ extension Bundle {
         return intAppVersion >= intVersion
     }
     
+    /// 如果后台返回版本号于当前版本号不一致，则不是审核状态
+    func isInCheck(version aVersion: String) ->Bool {
+        let transFormVersion = transformVersion(version: aVersion)
+        guard let intVersion = NumberFormatter().number(from: transFormVersion)?.intValue else {
+            return false
+        }
+        return intAppVersion != intVersion
+    }
+    
     private func transformVersion(version: String) ->String {
         let tempArr = version.components(separatedBy: ".")
         let tempString = tempArr.joined(separator: "")

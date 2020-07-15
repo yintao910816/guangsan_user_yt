@@ -24,6 +24,9 @@ class HCHelper {
     public var userInfoModel: HCUserModel?
     public var isPresentLogin: Bool = false
     
+    public var enableWchatLoginSubjet = PublishSubject<Bool>()
+    public var enableWchatLogin: Bool = false
+
     class func presentLogin(presentVC: UIViewController? = nil, _ completion: (() ->())? = nil) {
         HCHelper.share.isPresentLogin = true
         
