@@ -46,7 +46,7 @@ class HomeViewModel: RefreshVM<HomeFunctionSectionModel>, VMNavigation {
         bannerSelected
             .subscribe(onNext: {
                 guard let bannerModel = $0 as? HomeBannerModel, bannerModel.validLink else { return }
-                HomeViewModel.push(BaseWebViewController.self, ["url":bannerModel.link, "title": bannerModel.title])
+                HomeViewModel.push(BaseWebViewController.self, ["url":bannerModel.link, "title": bannerModel.title, "canViewBigPhoto": true])
             })
             .disposed(by: disposeBag)
 

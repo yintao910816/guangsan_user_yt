@@ -69,10 +69,10 @@ class TYScrollTextView: UIView {
     }
     
     private func beginScroll() {
-        if datasourceModel.count < 2 { return }
-        
         timerRemove()
-        
+
+        if datasourceModel.count < 2 { return }
+                
         timer = Timer.scheduledTimer(timeInterval: 3,
                                      target: self,
                                      selector: #selector(cellScroll),

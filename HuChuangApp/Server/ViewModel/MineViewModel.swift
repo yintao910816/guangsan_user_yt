@@ -100,28 +100,26 @@ class MineViewModel: BaseViewModel, VMNavigation {
         let dataSignal = [SectionModel.init(model: 0, items: [MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_renzheng"),
                                                                                             title: "认证管理",
                                                                                             h5Type: bindType),
+                                                              MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_jingqi"),
+                                                                                            title: "经期日记",
+                                                                                            h5Type: .menstrualDiary),
                                                               MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_zhiliao"),
                                                                                             title: "治疗信息",
-                                                                                            h5Type: .cureMessage),
-//                                                              MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_xitong"),
-//                                                                                            title: "账户与安全",
-//                                                                                            h5Type: .accountSecurity)]
-                                                              MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_xitong"),
-                                                                                            title: "关于柔济孕宝",
-                                                                                            segue: "aboutSegue")]),
+                                                                                            h5Type: .cureMessage)
+        ]),
                           SectionModel.init(model: 1, items: [MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_xuanjiao"),
                                                                                             title: "宣教指引",
                                                                                             h5Type: .missionToGuide,
                                                                                             segue: "xuanjiaoSegue"),
-                                                              MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_jingqi"),
-                                                                                            title: "经期日记",
-                                                                                            h5Type: .menstrualDiary),
                                                               MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_yuchanqi"),
                                                                                             title: "预产期计算",
                                                                                             h5Type: .dueDate),
                                                               MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_yunma"),
                                                                                             title: "孕妈日记",
-                                                                                            h5Type: .pregantDiary)])]
+                                                                                            h5Type: .pregantDiary),
+                                                              MenuListItemModel.createModel(titleIcon: UIImage(named: "mine_xitong"),
+                                                                                            title: "关于柔济孕宝",
+                                                                                            segue: "aboutSegue")])]
         datasource.onNext(dataSignal)
         
         HCProvider.request(.selectInfo)

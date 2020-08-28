@@ -42,12 +42,10 @@ class HCHomeViewController: BaseViewController {
         
         viewModel.noticeModelObser.asDriver()
             .do(onNext: { [unowned self] in
-                if $0.count > 0 {
-                    var rect = self.header.frame
-                    rect.size.height = HomeHeaderView.viewHieht(hasNotice: true)
-                    self.header.frame = rect
-                    self.tableView.tableHeaderView = self.header
-                }
+                var rect = self.header.frame
+                rect.size.height = HomeHeaderView.viewHieht(hasNotice: $0.count > 0)
+                self.header.frame = rect
+                self.tableView.tableHeaderView = self.header
             })
             .drive(header.noticeModelObser)
             .disposed(by: disposeBag)

@@ -58,7 +58,8 @@ class HCClassRoomItemController: HCSlideItemController {
 extension HCClassRoomItemController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        datasource[indexPath.row].articleCellHeight
+//        datasource[indexPath.row].articleCellHeight
+        return 120
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

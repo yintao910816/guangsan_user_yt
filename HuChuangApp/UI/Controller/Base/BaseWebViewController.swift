@@ -16,6 +16,8 @@ class BaseWebViewController: BaseViewController {
 
     public var url: String = ""
     public var redirect_url: String?
+    /// 是否可以点击h5图片查看大图  -  目前只有文章才能点击查看大图
+    public var canViewBigPhoto: Bool = false
 
     /// 是否需要根据h5获取标题
     public var needWebTitle: Bool = true
@@ -67,13 +69,19 @@ class BaseWebViewController: BaseViewController {
         webView.delegate = self
         view.addSubview(webView)
         
-        if singleTap == nil {
+        if !canViewBigPhoto && (url.contains("mp.weixin.qq.com") || url.contains("ivfcn.com")) {
+            canViewBigPhoto = true
+        }
+        
+        if singleTap == nil && canViewBigPhoto {
             singleTap = UITapGestureRecognizer.init(target: self, action: #selector(signalTapAction))
             singleTap.cancelsTouchesInView = false
             singleTap.delegate = self
         }
 
-        webView.addGestureRecognizer(singleTap)
+        if canViewBigPhoto && singleTap != nil {
+            webView.addGestureRecognizer(singleTap)
+        }
         
         webView.snp.makeConstraints{ $0.edges.equalTo(UIEdgeInsets.zero) }
 
@@ -117,6 +125,10 @@ class BaseWebViewController: BaseViewController {
     }
     
     override func prepare(parameters: [String : Any]?) {
+        if let _canViewBigPhoto = parameters?["canViewBigPhoto"] as? Bool {
+            canViewBigPhoto = _canViewBigPhoto
+        }
+        
         guard let _url = parameters?["url"] as? String else {
             return
         }

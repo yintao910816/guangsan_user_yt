@@ -43,6 +43,7 @@ class HCXuanjiaoViewController: BaseViewController {
                         self?.viewModel.increReadingSubject.onNext($0.id)
                         
                         let ctrl = HCArticleDetailViewController()
+                        ctrl.canViewBigPhoto = true
                         ctrl.prepare(parameters: HCArticleDetailViewController.preprare(model: $0))
                         self?.navigationController?.pushViewController(ctrl, animated: true)
                     }
