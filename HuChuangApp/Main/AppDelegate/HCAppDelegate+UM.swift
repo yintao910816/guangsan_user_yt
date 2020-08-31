@@ -295,7 +295,7 @@ extension HCAppDelegate {
 
         if url.absoluteString.contains(HCHelper.AppKeys.appSchame.rawValue) {
             let param = url.absoluteString.replacingOccurrences(of: "\(HCHelper.AppKeys.appSchame.rawValue)://", with: "")
-            NoticesCenter.alert(title: "应用唤起", message: param)
+//            NoticesCenter.alert(title: "应用唤起", message: param)
             return true
         }
 
